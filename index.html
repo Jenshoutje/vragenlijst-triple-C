@@ -1,49 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head><script type="module">
-    // Import Firebase functies
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
-
-    // Firebase configuratie
-    const firebaseConfig = {
-        apiKey: "AIzaSyCWMYvuSm2vuq85Kr3LjeZ5NyJRHn8XnJs",
-        authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
-        projectId: "ontwerpgerichtonderzoek",
-        storageBucket: "ontwerpgerichtonderzoek.firebasestorage.app",
-        messagingSenderId: "1087936453818",
-        appId: "1:1087936453818:web:9ec4f6c8b8cbcc503ff683",
-        measurementId: "G-078FVL26HV"
-    };
-
-    // Firebase initialiseren
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    // Data opslaan (voorbeeldfunctie)
-    async function saveSurveyResponse(name, experience) {
-        try {
-            const docRef = await addDoc(collection(db, "surveyResponses"), {
-                name: name || "Anoniem",
-                experience: experience,
-                timestamp: new Date()
-            });
-            console.log("Document geschreven met ID: ", docRef.id);
-        } catch (error) {
-            console.error("Fout bij opslaan: ", error);
-        }
-    }
-
-    // Formulierverwerking
-    document.getElementById("surveyForm").addEventListener("submit", async (e) => {
-        e.preventDefault(); // Voorkom pagina-herladen
-        const name = document.getElementById("name").value;
-        const experience = document.getElementById("experience").value;
-        await saveSurveyResponse(name, experience);
-        alert("Bedankt voor het invullen!");
-        document.getElementById("surveyForm").reset(); // Reset het formulier
-    });
-</script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vragenlijst Triple-C</title>
