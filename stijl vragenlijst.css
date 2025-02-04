@@ -87,4 +87,15 @@ body {
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
+}.vogel-knop {
+    width: 150px; /* Pas de breedte van de knop aan */
+    height: auto; /* Houd de verhouding correct */
+    display: block;
+    margin: 20px auto; /* Centreer de knop */
+    transition: transform 0.3s ease;
+}
+
+.vogel-knop:hover {
+    transform: scale(1.1); /* Vergroot de knop bij hover */
+    cursor: pointer;
 }
