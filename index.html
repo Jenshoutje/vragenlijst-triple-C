@@ -3,17 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vragenlijst Triple-C</title>
-    <link rel="stylesheet" href="stijl vragenlijst.css">
+    <title>Triple C Evaluatie - Home</title>
+    <link rel="stylesheet" href="./stijl vragenlijst.css"> <!-- Koppel je CSS-bestand -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Titel en beschrijving -->
-    <h1>Welkom op de vragenlijst Triple-C</h1>
-    <p>Hier kun je beginnen met de vragenlijst.</p>
-    
-    <!-- Afbeelding als knop -->
-    <a href="ontwerpgerichtanalyseren.html">
-        <img src="Alliadevogel.png" alt="Start de vragenlijst" class="vogel-knop">
-    </a>
+    <header>
+        <div class="container">
+            <h1>Alliade Onderzoek</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="vragenlijst huisstijl.html">Vragenlijst</a></li>
+                    <li><a href="ontwerpgerichtanalyseren.html">Analyse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Welkom bij Triple C Evaluatie</h2>
+            <p>Deze website is bedoeld om inzicht te krijgen in de implementatie van Triple C en biedt toegang tot vragenlijsten en andere bronnen.</p>
+            <p>Gebruik de navigatie hierboven om te beginnen.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Alliade Onderzoek. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./js/firebase.js"></script> <!-- Koppel je Firebase-script -->
 </body>
 </html>
