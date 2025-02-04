@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
+<head><script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSy...",
+        authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
+        projectId: "ontwerpgerichtonderzoek",
+        storageBucket: "ontwerpgerichtonderzoek.firebasestorage.app",
+        messagingSenderId: "1087936453818",
+        appId: "1:1087936453818:web:9ec4f6c8b8cbcc503ff683",
+        measurementId: "G-078FVL26HV"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.getElementById("surveyForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const experience = document.getElementById("experience").value;
+        try {
+            await addDoc(collection(db, "surveyResponses"), {
+                name: name || "Anoniem",
+                experience: experience,
+                timestamp: new Date()
+            });
+            alert("Bedankt voor het invullen!");
+        } catch (error) {
+            console.error("Fout bij opslaan: ", error);
+        }
+    });
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triple C Evaluatie - Vragenlijst</title>
