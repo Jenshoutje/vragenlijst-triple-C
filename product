@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mijn Product - Houtje Inc.</title>
+    <link rel="stylesheet" href="stijl vragenlijst.css"> <!-- Koppel je bestaande CSS-bestand -->
+    <style>
+        /* Extra stijlen specifiek voor de productpagina */
+        .product-page {
+            background-color: #F3EFFF;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .product-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #B05DF5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background-color: #8A4CA6;
+        }
+    </style>
+</head>
+<body class="product-page">
+
+    <!-- Navigatiebalk -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="over-mij.html">Over mij</a></li>
+                <li><a href="producten.html">Producten</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="vragenlijst.html">Vragenlijst</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Content -->
+    <main>
+        <div class="product-container">
+            <h1>Mijn Product</h1>
+            <p>Hier kun je het product bekijken en downloaden.</p>
+
+            <!-- PDF Viewer -->
+            <iframe src="mijn-product.pdf"></iframe>
+
+            <!-- Downloadlink -->
+            <p><a href="mijn-product.pdf" download class="back-button">Download PDF</a></p>
+
+            <!-- Terug-knop -->
+            <a href="index.html" class="back-button">Terug naar Home</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+    </footer>
+
+</body>
+</html>
