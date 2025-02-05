@@ -65,9 +65,10 @@ nav {
 #menuToggle {
     background: none;
     border: none;
-    font-size: 1.5rem; /* Grotere knop */
-    color: white;
+    font-size: 3rem; /* Grotere knop */
+    color: ;light purple; 
     cursor: pointer;
+    padding: 10px;
 }
 
 /* Navigatie-items */
