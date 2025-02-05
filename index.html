@@ -3,51 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triple C Houtje inc. - Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <title>Houtje Inc. - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stijl-vragenlijst.css"> <!-- Externe CSS -->
     <style>
+        /* Algemene stijlen */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #F3EFFF;
         }
-        header {
-            background-color: #0073e6;
+
+        /* Navigatie */
+        header nav {
+            background-color: #6A35C1;
             color: white;
             padding: 10px 20px;
         }
         nav ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
         }
         nav ul li {
-            display: inline;
-            margin-right: 15px;
+            margin: 0 15px;
         }
         nav ul li a {
             color: white;
             text-decoration: none;
+            font-weight: bold;
         }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
+        nav ul li a:hover {
+            text-decoration: underline;
         }
+
+        /* Hero-sectie */
+        .hero {
+            background: linear-gradient(135deg, #B05DF5, #6A35C1);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #F3EFFF;
+            color: #6A35C1;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #D9C7F8;
+        }
+
+        /* Alliade-vogel sectie */
         .vogel-container {
             text-align: center;
-            margin-top: 20px;
+            margin: 30px 0;
         }
         .vogel-container img {
-            width: 150px;
+            width: 200px;
             cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #6A35C1;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
+    <!-- Navigatie -->
     <header>
-         <link rel="stylesheet" href="stijl vragenlijst.css"> <!-- Koppel je CSS-bestand -->
-    <div class="container">
-        <h1>Houtje Inc.</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -58,42 +102,36 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-    </div>
-</header>
-    <header>
-        <div class="container">
-            <h1>Alliade Onderzoek</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="vragenlijst.html">Vragenlijst</a></li>
-                    <li><a href="ontwerpgerichtanalyseren.html">Analyse</a></li>
-                </ul>
-            </nav>
-        </div>
     </header>
 
+    <!-- Hero-sectie -->
+    <section class="hero">
+        <h1>Welkom bij Houtje Inc.</h1>
+        <p>Samen doen wat wél kan.</p>
+        <a href="over-mij.html" class="cta-button">Lees meer</a>
+    </section>
+
+    <!-- Inhoud -->
     <main>
         <div class="container">
-            <h2>Welkom bij Triple C Evaluatie</h2>
-            <p>Samen doen wat wél kan.</p>
-            <p>Gebruik de navigatie hierboven om te beginnen.</p>
+            <h2>Triple C Evaluatie</h2>
+            <p>Deze website biedt inzicht in de implementatie van Triple C en toont verschillende producten en informatie.</p>
 
             <!-- Alliade-vogel als knop -->
             <div class="vogel-container">
                 <a href="vragenlijst.html">
                     <img src="Alliadevogel.png" alt="Alliade Vogel Logo">
                 </a>
+                <p>Klik op de vogel om de vragenlijst in te vullen.</p>
             </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Alliade Onderzoek. Alle rechten voorbehouden.</p>
-        </div>
+        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
     </footer>
 
-    <script type="module" src="./js/firebase.js"></script> <!-- Koppel je Firebase-script -->
+    <script type="module" src="./js/firebase.js"></script> <!-- Firebase-script -->
 </body>
 </html>
