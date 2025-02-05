@@ -6,7 +6,7 @@
     <title>Mijn Product - Houtje Inc.</title>
     <link rel="stylesheet" href="stijl vragenlijst.css"> <!-- Koppel je bestaande CSS-bestand -->
     <style>
-        /* Extra stijlen specifiek voor de productpagina */
+        /* Extra stijlen specifiek voor de tijdelijke GIF */
         .product-page {
             background-color: #F3EFFF;
             text-align: center;
@@ -22,10 +22,17 @@
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .placeholder-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: bold;
         }
 
         .back-button {
@@ -60,17 +67,15 @@
         </nav>
     </header>
 
-    <!-- Product Content -->
+    <!-- Placeholder Content -->
     <main>
         <div class="product-container">
             <h1>Mijn Product</h1>
-            <p>Hier kun je het product bekijken en downloaden.</p>
-
-            <!-- PDF Viewer -->
-            <iframe src="mijn-product.pdf"></iframe>
-
-            <!-- Downloadlink -->
-            <p><a href="mijn-product.pdf" download class="back-button">Download PDF</a></p>
+            <div class="gif-container">
+                <!-- Voeg hier de GIF toe -->
+                <img src="workinprogress.gif" alt="Er wordt aan gewerkt">
+            </div>
+            <p class="placeholder-text">Er wordt hard gewerkt aan deze pagina. Kom later terug om het eindresultaat te zien!</p>
 
             <!-- Terug-knop -->
             <a href="index.html" class="back-button">Terug naar Home</a>
