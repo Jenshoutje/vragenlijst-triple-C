@@ -87,4 +87,23 @@ nav {
     #menu {
         display: flex;
     }
+
+    .product-page {
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+        .back-button {
+    font-size: 1.5rem; /* Grotere tekst */
+    padding: 15px 30px; /* Grotere knop */
+    border: 2px solid #fff; /* Witte rand */
+}
+.back-button:hover {
+    background-color: #d892f5; /* Hover effect */
+} @media (max-width: 768px) {
+    .product-container {
+        padding: 10px;
+    }
+    .placeholder-text {
+        font-size: 1rem;
+    }
+}
+}
 }
