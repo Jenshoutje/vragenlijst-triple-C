@@ -40,3 +40,49 @@ nav ul li a {
 nav ul li a:hover {
     color: #A86DC1; /* Donkerpaars accentkleur */
 }
+/* Standaard navigatiestijl */
+nav {
+    background-color: #0073e6; /* Blauwe achtergrond */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Verberg het menu standaard */
+#menu {
+    display: none; /* Verberg menu standaard */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-direction: column; /* Zet items onder elkaar */
+    background-color: #0073e6; /* Zelfde achtergrondkleur als navigatiebalk */
+    width: 100%; /* Menu neemt volledige breedte */
+    text-align: center;
+}
+
+/* Hamburgermenu-knop */
+#menuToggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem; /* Grotere knop */
+    color: white;
+    cursor: pointer;
+}
+
+/* Navigatie-items */
+#menu li {
+    margin: 10px 0; /* Ruimte tussen items */
+}
+#menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem; /* Maak tekst groter */
+}
+
+/* Zorg dat het menu zichtbaar wordt bij kleine schermen */
+@media (max-width: 600px) {
+    #menu {
+        display: flex;
+    }
+}
