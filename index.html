@@ -138,5 +138,12 @@
     </footer>
 
     <script type="module" src="./js/firebase.js"></script> <!-- Firebase-script -->
+    <script>
+    // Toggle het menu aan/uit wanneer op de knop wordt gedrukt
+    document.getElementById("menuToggle").addEventListener("click", () => {
+        const menu = document.getElementById("menu");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    });
+</script>
 </body>
 </html>
