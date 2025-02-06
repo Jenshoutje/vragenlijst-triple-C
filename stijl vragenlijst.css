@@ -15,17 +15,19 @@ header {
 }
 
 header h1 {
-    color: black;
+    color: white;
     font-size: 24px;
     margin: 0;
 }
 
 nav {
-    background-color: #linear-gradient(135deg, #b05df5, #f3e5ff) /* Blauwe achtergrond */
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Kleurverloop */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte */
 }
 
 nav ul {
@@ -58,11 +60,12 @@ nav ul li a:hover {
     font-size: 2.5rem;
     color: white;
     cursor: pointer;
-    display: flex; /* Verborgen op grotere schermen */
+    display: none; /* Verborgen op grotere schermen */
 }
 
+/* Mobiele menu */
 #menu {
-    display: flex; /* Menu standaard verborgen */
+    display: none; /* Menu standaard verborgen */
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -70,6 +73,10 @@ nav ul li a:hover {
     background-color: #0073e6;
     width: 100%;
     text-align: center;
+}
+
+#menu.active {
+    display: flex; /* Toon menu als actief */
 }
 
 /* Mobiele menu-items */
@@ -92,7 +99,7 @@ nav ul li a:hover {
 
 .product-page h1 {
     font-size: 2.5rem;
-    background-color: #linear-gradient(135deg, #b05df5, #f3e5ff) /* Donkergrijs */
+    color: white;
     margin-bottom: 20px;
 }
 
@@ -128,15 +135,19 @@ nav ul li a:hover {
 /* Responsiviteit */
 @media (max-width: 768px) {
     nav ul {
-        display: none; /* Verberg menu op kleinere schermen */
+        display: none; /* Verberg standaard menu op kleinere schermen */
     }
 
     #menuToggle {
         display: block; /* Toon hamburgermenu */
     }
 
-    #menu {
+    #menu.active {
         display: flex; /* Toon mobiele menu */
+    }
+
+    nav ul li {
+        margin: 10px 0;
     }
 
     .product-page {
