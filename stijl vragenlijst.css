@@ -92,7 +92,7 @@ nav ul li a:hover {
 
 .product-page h1 {
     font-size: 2.5rem;
-    color: #2b2b2b; /* Donkergrijs */
+        background-color: #linear-gradient(135deg, #b05df5, #f3e5ff) /* Donkergrijs */
     margin-bottom: 20px;
 }
 
