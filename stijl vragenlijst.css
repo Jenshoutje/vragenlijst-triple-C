@@ -20,15 +20,24 @@ header h1 {
     margin: 0;
 }
 
+nav {
+    background-color: #0073e6; /* Blauwe achtergrond */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    gap: 15px; /* Ruimte tussen items */
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    margin: 0;
 }
 
 nav ul li a {
@@ -41,69 +50,109 @@ nav ul li a {
 nav ul li a:hover {
     color: #A86DC1; /* Donkerpaars accentkleur */
 }
-/* Standaard navigatiestijl */
-nav {
-    background-color: #0073e6; /* Blauwe achtergrond */
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Verberg het menu standaard */
-#menu {
-    display: none; /* Verberg menu standaard */
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    flex-direction: column; /* Zet items onder elkaar */
-    background-color: #0073e6; /* Zelfde achtergrondkleur als navigatiebalk */
-    width: 100%; /* Menu neemt volledige breedte */
-    text-align: center;
-}
 
 /* Hamburgermenu-knop */
 #menuToggle {
     background: none;
     border: none;
-    font-size: 3rem; /* Grotere knop */
-    color: ;light purple; 
+    font-size: 2.5rem;
+    color: white;
     cursor: pointer;
-    padding: 10px;
+    display: none; /* Verborgen op grotere schermen */
 }
 
-/* Navigatie-items */
-#menu li {
-    margin: 10px 0; /* Ruimte tussen items */
+#menu {
+    display: none; /* Menu standaard verborgen */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    background-color: #0073e6;
+    width: 100%;
+    text-align: center;
 }
+
+/* Mobiele menu-items */
+#menu li {
+    margin: 10px 0;
+}
+
 #menu li a {
     color: white;
     text-decoration: none;
-    font-size: 1.2rem; /* Maak tekst groter */
+    font-size: 1.2rem;
 }
 
-/* Zorg dat het menu zichtbaar wordt bij kleine schermen */
-@media (max-width: 600px) {
+/* Productpagina */
+.product-page {
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paars verloop */
+    padding: 20px;
+    text-align: center;
+}
+
+.product-page h1 {
+    font-size: 2.5rem;
+    color: #2b2b2b; /* Donkergrijs */
+    margin-bottom: 20px;
+}
+
+.product-page p {
+    font-size: 1.2rem;
+    color: #444; /* Donkergrijs */
+}
+
+.product-page img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+/* Terug-knop */
+.back-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #005bb5; /* Donkerder blauw bij hover */
+}
+
+/* Responsiviteit */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Verberg menu op kleinere schermen */
+    }
+
+    #menuToggle {
+        display: block; /* Toon hamburgermenu */
+    }
+
     #menu {
-        display: flex;
+        display: flex; /* Toon mobiele menu */
     }
 
     .product-page {
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
-        .back-button {
-    font-size: 1.5rem; /* Grotere tekst */
-    padding: 15px 30px; /* Grotere knop */
-    border: 2px solid #fff; /* Witte rand */
-}
-.back-button:hover {
-    background-color: #d892f5; /* Hover effect */
-} @media (max-width: 768px) {
-    .product-container {
         padding: 10px;
     }
-    .placeholder-text {
+
+    .product-page h1 {
+        font-size: 2rem;
+    }
+
+    .product-page p {
         font-size: 1rem;
     }
-}
-}
+
+    .back-button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
 }
