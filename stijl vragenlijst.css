@@ -15,13 +15,13 @@ header {
 }
 
 header h1 {
-    color: white;
+    color: black;
     font-size: 24px;
     margin: 0;
 }
 
 nav {
-    background-color: #0073e6; /* Blauwe achtergrond */
+    background-color: #linear-gradient(135deg, #b05df5, #f3e5ff) /* Blauwe achtergrond */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
