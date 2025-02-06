@@ -8,16 +8,16 @@ body {
 }
 
 /* Header en navigatie */
-header {
-    background-color: #2b2b2b; /* Donker voor een moderne look */
-    padding: 15px 0;
-    text-align: center;
+nav ul li a {
+    text-decoration: none;
+    color: white; /* Verander hier de kleur */
+    font-size: 18px;
+    transition: color 0.3s ease;
 }
 
 header h1 {
-    color: white;
-    font-size: 24px;
-    margin: 0;
+    color: white; /* Verander hier de kleur van de titel */
+    font-size: 24px; /* Pas de grootte aan */
 }
 
 nav {
