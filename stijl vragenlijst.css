@@ -58,11 +58,11 @@ nav ul li a:hover {
     font-size: 2.5rem;
     color: white;
     cursor: pointer;
-    display: none; /* Verborgen op grotere schermen */
+    display: flex; /* Verborgen op grotere schermen */
 }
 
 #menu {
-    display: none; /* Menu standaard verborgen */
+    display: flex; /* Menu standaard verborgen */
     list-style-type: none;
     padding: 0;
     margin: 0;
