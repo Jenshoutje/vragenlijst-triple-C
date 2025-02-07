@@ -244,7 +244,7 @@ nav ul li a:hover {
 
 /* Content binnen de onderzoeksfases */
 .research-content {
-    max-width: 800px;
+    max-width: 100px;
     margin: auto;
     padding: 20px;
     background: white;
@@ -253,7 +253,7 @@ nav ul li a:hover {
 }
 
 /* Responsiviteit voor onderzoeksfases */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .onderzoek-grid {
         flex-direction: column;
     }
@@ -312,11 +312,7 @@ nav ul li a:hover {
 
 /* Responsieve weergave */
 @media (max-width: 768px) {
-    .tools-container {
-        flex-direction: column;
-    }
-
-    .tool-item {
-        max-width: 100%;
+    .onderzoek-item img {
+        max-width: 75px; /* Verklein de pictogrammen op kleinere schermen */
     }
 }
