@@ -1,70 +1,64 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <script type="module" src="./js/firebase.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triple C Evaluatie - Vragenlijst</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h2 { color: #0073e6; }
-        form { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
-        label { font-weight: bold; margin-top: 10px; display: block; }
-        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
-        button { margin-top: 20px; padding: 10px 20px; background-color: #0073e6; color: white; border: none; cursor: pointer; }
-    </style>
-</head>
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triple C Evaluatie - Vragenlijst</title>
+    <title>Onderzoekstools - Houtje Inc.</title>
+    <link rel="stylesheet" href="stijl-vragenlijst.css">
     <script type="module" src="./js/firebase.js"></script>
 </head>
 <body>
-    <h2>Triple C Implementatie Evaluatie</h2>
-    <p>Deze vragenlijst is bedoeld om inzicht te krijgen in hoe begeleiders de implementatie van Triple C ervaren.</p>
-    
-    <form id="surveyForm">
-        <label for="name">Naam (optioneel):</label>
-        <input type="text" id="name" name="name">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="onderzoek.html">Onderzoek</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="tools.html">Onderzoekstools</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <label for="experience">Hoe lang werk je al op deze woongroep?</label>
-        <select id="experience" name="experience">
-            <option value="minder dan 1 jaar">Minder dan 1 jaar</option>
-            <option value="1-3 jaar">1-3 jaar</option>
-            <option value="3-5 jaar">3-5 jaar</option>
-            <option value="meer dan 5 jaar">Meer dan 5 jaar</option>
-        </select>
+    <main class="tools-page">
+        <h1>Onderzoekstools</h1>
+        <p>Hier vind je de belangrijkste onderzoeksmethoden en analysetools die in mijn onderzoek worden gebruikt.</p>
 
-        <label for="tripleC">Hoe ervaar je de implementatie van Triple C binnen deze woongroep?</label>
-        <textarea id="tripleC" name="tripleC" rows="4" placeholder="Schrijf hier je ervaring..."></textarea>
+        <div class="tools-container">
+            <div class="tool-item">
+                <h2>Decision Matrix (Inclusief Triple C Vragenlijst)</h2>
+                <p>Een gestructureerde manier om beslissingen te nemen, waarbij input van collega's via de Triple C vragenlijst wordt meegenomen.</p>
+                <a href="decision-matrix.html" class="tool-button">Start Decision Matrix</a>
+            </div>
 
-        <label for="challenges">Welke knelpunten ervaar je bij het toepassen van Triple C?</label>
-        <textarea id="challenges" name="challenges" rows="4" placeholder="Schrijf hier je antwoord..."></textarea>
+            <div class="tool-item">
+                <h2>FFF-Bijeenkomst</h2>
+                <p>Een methode om samen te reflecteren en tot inzichten te komen.</p>
+                <a href="fff-bijeenkomst.html" class="tool-button">Bekijk tool</a>
+            </div>
 
-        <label for="improvements">Waar zie je mogelijkheden voor verbetering?</label>
-        <textarea id="improvements" name="improvements" rows="4" placeholder="Schrijf hier je suggesties..."></textarea>
+            <div class="tool-item">
+                <h2>Thematische Analyse</h2>
+                <p>Analyseer teksten en ontdek patronen en thema’s in kwalitatieve data.</p>
+                <a href="thematische-analyse.html" class="tool-button">Start analyse</a>
+            </div>
 
-        <label for="agreement">Ben je het eens met de stelling: 'Triple C sluit goed aan op de behoeften van onze cliënten'?</label>
-        <select id="agreement" name="agreement">
-            <option value="Helemaal mee eens">Helemaal mee eens</option>
-            <option value="Mee eens">Mee eens</option>
-            <option value="Neutraal">Neutraal</option>
-            <option value="Oneens">Oneens</option>
-            <option value="Helemaal oneens">Helemaal oneens</option>
-        </select>
+            <div class="tool-item">
+                <h2>Interviews</h2>
+                <p>Een kwalitatieve onderzoeksmethode om diepgaande inzichten te verkrijgen.</p>
+                <a href="interviews.html" class="tool-button">Bekijk tool</a>
+            </div>
 
-        <label for="additional">Opmerkingen of aanvullingen?</label>
-        <textarea id="additional" name="additional" rows="3" placeholder="Extra informatie..."></textarea>
+            <div class="tool-item">
+                <h2>AI-geïntegreerde Data Analyse</h2>
+                <p>Een AI-gestuurde tool die helpt bij het verwerken en analyseren van grote datasets.</p>
+                <a href="ai-data-analyse.html" class="tool-button">Start AI-analyse</a>
+            </div>
+        </div>
+    </main>
 
-        <button type="button" id="submitButton">Verstuur</button>
-    </form>
-
-    <script type="module">
-        import { submitForm } from "./js/firebase.js";
-
-        // Koppel de klikactie van de knop aan de functie
-        document.getElementById("submitButton").addEventListener("click", submitForm);
-    </script>
+    <footer>
+        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+    </footer>
 </body>
 </html>
