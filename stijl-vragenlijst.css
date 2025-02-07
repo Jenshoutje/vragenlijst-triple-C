@@ -178,7 +178,7 @@ nav ul li a:hover {
 }
 /* Stijl voor de pictogrammen binnen de fases */
 .onderzoek-item img {
-    max-width: 50px; /* Maximale breedte van de afbeelding */
+    max-width: 10px; /* Maximale breedte van de afbeelding */
     height: auto; /* Zorg dat de hoogte proportioneel blijft */
     margin-bottom: 10px; /* Ruimte onder het pictogram */
     display: block;
