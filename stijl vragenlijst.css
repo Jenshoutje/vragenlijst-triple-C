@@ -53,7 +53,7 @@ nav ul li a:hover {
 }
 
 #menu {
-    display: none; /* Verborgen menu standaard */
+    display: flex; /* Verborgen menu standaard */
     list-style-type: none;
     padding: 0;
     margin: 0;
