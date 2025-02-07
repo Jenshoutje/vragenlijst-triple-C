@@ -36,7 +36,7 @@ nav ul {
 /* Navigatie items */
 nav ul li a {
     text-decoration: none;
-    color: orange;
+    color: white;
     font-size: 18px;
     font-weight: bold;
     padding: 10px;
@@ -84,7 +84,7 @@ nav ul li a:hover {
 
  /* Stijl voor de pictogrammen binnen de fases */
 .onderzoek-item img {
-    max-width: 150px; /* Beperk de maximale breedte tot 150px */
+    max-width: 75px; /* Beperk de maximale breedte tot 150px */
     height: auto; /* Zorg ervoor dat de hoogte proportioneel blijft */
     margin-bottom: 10px; /* Ruimte onder de afbeelding */
     display: block;
