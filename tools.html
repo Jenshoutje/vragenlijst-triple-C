@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onderzoekstools - Houtje Inc.</title>
     <link rel="stylesheet" href="stijl-vragenlijst.css">
-    <script type="module" src="./js/firebase.js"></script>
 </head>
 <body>
+    <!-- Navigatiebalk -->
     <header>
         <nav>
             <ul>
@@ -15,48 +15,61 @@
                 <li><a href="onderzoek.html">Onderzoek</a></li>
                 <li><a href="product.html">Product</a></li>
                 <li><a href="tools.html">Onderzoekstools</a></li>
-                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Hoofdcontent -->
     <main class="tools-page">
-        <h1>Onderzoekstools</h1>
-        <p>Hier vind je de belangrijkste onderzoeksmethoden en analysetools die in mijn onderzoek worden gebruikt.</p>
+        <section class="intro">
+            <h1>Onderzoekstools</h1>
+            <p>Hier vind je de belangrijkste onderzoeksmethoden en analysetools die gebruikt zijn in dit onderzoek onderzoek gebruik. Klik op een tool voor meer informatie.</p>
+        </section>
 
-        <div class="tools-container">
-            <div class="tool-item">
+        <section class="tools-grid">
+            <!-- Tool 1 -->
+            <div class="tool-card">
+                <img src="icons/decision-matrix.png" alt="Decision Matrix Icon">
                 <h2>Decision Matrix (Inclusief Triple C Vragenlijst)</h2>
                 <p>Een gestructureerde manier om beslissingen te nemen, waarbij input van collega's via de Triple C vragenlijst wordt meegenomen.</p>
-                <a href="decision-matrix.html" class="tool-button">Start Decision Matrix</a>
+                <a href="decision-matrix.html" class="tool-button">Meer Informatie</a>
             </div>
 
-            <div class="tool-item">
+            <!-- Tool 2 -->
+            <div class="tool-card">
+                <img src="icons/fff-meeting.png" alt="FFF Bijeenkomst Icon">
                 <h2>FFF-Bijeenkomst</h2>
                 <p>Een methode om samen te reflecteren en tot inzichten te komen.</p>
-                <a href="fff-bijeenkomst.html" class="tool-button">Bekijk tool</a>
+                <a href="fff-bijeenkomst.html" class="tool-button">Meer Informatie</a>
             </div>
 
-            <div class="tool-item">
+            <!-- Tool 3 -->
+            <div class="tool-card">
+                <img src="icons/thematic-analysis.png" alt="Thematische Analyse Icon">
                 <h2>Thematische Analyse</h2>
-                <p>Analyseer teksten en ontdek patronen en thema’s in kwalitatieve data.</p>
-                <a href="thematische-analyse.html" class="tool-button">Start analyse</a>
+                <p>Analyseer teksten en ontdek patronen en thema's in kwalitatieve data.</p>
+                <a href="thematic-analysis.html" class="tool-button">Meer Informatie</a>
             </div>
 
-            <div class="tool-item">
+            <!-- Tool 4 -->
+            <div class="tool-card">
+                <img src="icons/interviews.png" alt="Interviews Icon">
                 <h2>Interviews</h2>
                 <p>Een kwalitatieve onderzoeksmethode om diepgaande inzichten te verkrijgen.</p>
-                <a href="interviews.html" class="tool-button">Bekijk tool</a>
+                <a href="interviews.html" class="tool-button">Meer Informatie</a>
             </div>
 
-            <div class="tool-item">
+            <!-- Tool 5 -->
+            <div class="tool-card">
+                <img src="icons/ai-analysis.png" alt="AI Analyse Icon">
                 <h2>AI-geïntegreerde Data Analyse</h2>
                 <p>Een AI-gestuurde tool die helpt bij het verwerken en analyseren van grote datasets.</p>
-                <a href="ai-data-analyse.html" class="tool-button">Start AI-analyse</a>
+                <a href="ai-analysis.html" class="tool-button">Meer Informatie</a>
             </div>
-        </div>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
     </footer>
