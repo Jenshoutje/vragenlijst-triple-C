@@ -34,10 +34,6 @@ nav ul {
 }
 
 /* Navigatie items */
-nav ul li {
-    margin: 0;
-}
-
 nav ul li a {
     text-decoration: none;
     color: orange;
@@ -50,100 +46,6 @@ nav ul li a {
 nav ul li a:hover {
     color: #6A35C1;
 }
-
-/* Responsieve navigatie op mobiel */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 0;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-        padding: 0;
-    }
-
-    nav ul li {
-        margin: 5px 0;
-    }
-
-    nav ul li a {
-        font-size: 16px;
-    }
-}
-
-/* ============================= */
-/* PRODUCTPAGINA */
-/* ============================= */
-
-.product-page {
-    text-align: center;
-    padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
-}
-
-/* Product container */
-.product-container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Grid weergave voor producten */
-.product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-/* Stijl voor elk individueel product */
-.product-item {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 300px;
-    transition: transform 0.3s ease;
-}
-
-.product-item:hover {
-    transform: scale(1.05);
-}
-
-/* Product afbeeldingen */
-.product-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Stijl voor de productknoppen */
-.product-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #6A35C1;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    transition: background 0.3s ease;
-}
-
-.product-button:hover {
-    background: #5028A1;
-}
-
-/* ============================= */
-/* ONDERZOEKSPAGINA */
-/* ============================= */
 
 /* Onderzoekspagina */
 .onderzoek-page {
@@ -163,7 +65,9 @@ nav ul li a:hover {
 
 /* Knoppen voor de fases */
 .onderzoek-item {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px 30px;
     background-color: #6A35C1;
     color: white;
@@ -176,16 +80,16 @@ nav ul li a:hover {
     width: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 /* Stijl voor de pictogrammen binnen de fases */
 .onderzoek-item img {
-    max-width: 10px; /* Maximale breedte van de afbeelding */
+    max-width: 100px; /* Stel een realistische maximale breedte in */
     height: auto; /* Zorg dat de hoogte proportioneel blijft */
     margin-bottom: 10px; /* Ruimte onder het pictogram */
     display: block;
-    margin-left: auto;
-    margin-right: auto; /* Centraal uitlijnen */
 }
 
+/* Hover-effect op de knoppen */
 .onderzoek-item:hover {
     background-color: #5028A1;
     transform: scale(1.05);
@@ -201,117 +105,7 @@ nav ul li a:hover {
         width: 100%;
         padding: 15px 20px;
     }
-}
 
-/* ============================= */
-/* STIJL VOOR ONDERZOEKSFASES */
-/* ============================= */
-
-.research-page {
-    text-align: center;
-    padding: 50px;
-}
-
-/* Navigatie binnen de onderzoeksfases */
-.research-page nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-}
-
-/* Stijlen voor de knoppen in onderzoeksnavigatie */
-.research-page nav ul li {
-    list-style: none;
-}
-
-.research-page nav ul li a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #6A35C1;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background 0.3s ease;
-}
-
-.research-page nav ul li a:hover {
-    background-color: #5028A1;
-}
-
-/* Content binnen de onderzoeksfases */
-.research-content {
-    max-width: 100px;
-    margin: auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsiviteit voor onderzoeksfases */
-@media (max-width: 800px) {
-    .onderzoek-grid {
-        flex-direction: column;
-    }
-
-    .onderzoek-item {
-        max-width: 100%;
-    }
-}
-
-/* Onderzoekstools pagina */
-.tools-page {
-    text-align: center;
-    padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
-}
-
-/* Grid layout voor de tools */
-.tools-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-/* Stijl voor elk onderzoekstool-item */
-.tool-item {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 300px;
-    transition: transform 0.3s ease;
-}
-
-.tool-item:hover {
-    transform: scale(1.05);
-}
-
-/* Stijl voor tool-knoppen */
-.tool-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #6A35C1;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    transition: background 0.3s ease;
-}
-
-.tool-button:hover {
-    background: #5028A1;
-}
-
-/* Responsieve weergave */
-@media (max-width: 768px) {
     .onderzoek-item img {
         max-width: 75px; /* Verklein de pictogrammen op kleinere schermen */
     }
