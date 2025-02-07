@@ -9,10 +9,10 @@ body {
 
 /* Navigatiebalk - Altijd zichtbaar */
 nav {
-    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Kleurverloop */
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
     padding: 10px 20px;
     display: flex;
-    justify-content: center; /* Zorgt dat het menu gecentreerd blijft */
+    justify-content: center;
     align-items: center;
     height: 60px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -22,14 +22,14 @@ nav {
     width: 100%;
 }
 
-/* Navigatie lijst - Altijd zichtbaar */
+/* Navigatie lijst */
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-wrap: wrap; /* Zorgt ervoor dat de navigatie op mobiel goed blijft */
-    justify-content: center; /* Centreren van de menu-items */
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
 }
 
@@ -48,10 +48,10 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #6A35C1; /* Donker accentkleur */
+    color: #6A35C1;
 }
 
-/* Responsieve weergave voor kleine schermen */
+/* Responsieve navigatie op mobiel */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -60,7 +60,7 @@ nav ul li a:hover {
     }
 
     nav ul {
-        flex-wrap: wrap; /* Zorgt dat de items correct uitlijnen */
+        flex-wrap: wrap;
         padding: 0;
     }
 
@@ -69,59 +69,21 @@ nav ul li a:hover {
     }
 
     nav ul li a {
-        font-size: 16px; /* Maak het menu iets compacter op mobiel */
+        font-size: 16px;
     }
 }
 
-/* Stijl voor de productpagina */
-.product-page {
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
-    padding: 20px;
-    text-align: center;
-}
+/* ============================= */
+/* PRODUCTPAGINA */
+/* ============================= */
 
-.product-page h1 {
-    font-size: 2.5rem;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.product-page p {
-    font-size: 1.2rem;
-    color: #444;
-}
-
-.product-page img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-}
-
-/* Knoppen */
-.back-button {
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    background-color: #0073e6;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: #005bb5;
-}
-/* Productpagina */
 .product-page {
     text-align: center;
     padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Mooie achtergrond */
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
 }
 
-/* Container voor producten */
+/* Product container */
 .product-container {
     max-width: 900px;
     margin: auto;
@@ -155,7 +117,7 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* Afbeelding binnen product */
+/* Product afbeeldingen */
 .product-item img {
     max-width: 100%;
     height: auto;
@@ -179,15 +141,97 @@ nav ul li a:hover {
     background: #5028A1;
 }
 
-/* Responsiviteit */
+/* ============================= */
+/* ONDERZOEKSPAGINA */
+/* ============================= */
+
+.onderzoek-page {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+}
+
+/* Grid weergave voor de onderzoeksfases */
+.onderzoek-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Knoppen voor de onderzoeksfases */
+.onderzoek-item {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #6A35C1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.onderzoek-item:hover {
+    background-color: #5028A1;
+}
+
+/* ============================= */
+/* STIJL VOOR ONDERZOEKSFASES */
+/* ============================= */
+
+.research-page {
+    text-align: center;
+    padding: 50px;
+}
+
+/* Navigatie binnen de onderzoeksfases */
+.research-page nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Stijlen voor de knoppen in onderzoeksnavigatie */
+.research-page nav ul li {
+    list-style: none;
+}
+
+.research-page nav ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6A35C1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.research-page nav ul li a:hover {
+    background-color: #5028A1;
+}
+
+/* Content binnen de onderzoeksfases */
+.research-content {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsiviteit voor onderzoeksfases */
 @media (max-width: 768px) {
-    .product-grid {
+    .onderzoek-grid {
         flex-direction: column;
     }
 
-    .product-item {
+    .onderzoek-item {
         max-width: 100%;
     }
 }
-
-
