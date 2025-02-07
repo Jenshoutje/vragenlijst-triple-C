@@ -64,12 +64,13 @@ nav ul li a:hover {
 }
 
 /* Container voor de afbeelding */
-.onderzoek-item img{
-    display: flex; /* Gebruik flexbox om items uit te lijnen */
-    flex-direction: center; /* Zorg ervoor dat de inhoud verticaal wordt gestapeld */
-    align-items: center; /* Centreer de inhoud horizontaal */
-    justify-content: center; /* Centreer de inhoud verticaal */
-    padding: 20px 30px;
+/* Onderzoek-item container */
+.onderzoek-item {
+    display: flex;
+    flex-direction: column; /* Stapel inhoud verticaal */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
     background-color: #6A35C1;
     color: white;
     text-decoration: none;
@@ -78,7 +79,7 @@ nav ul li a:hover {
     font-weight: bold;
     transition: transform 0.3s ease, background-color 0.3s ease;
     text-align: center;
-    width: 75px;
+    width: 200px; /* Stel breedte van het container-item in */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -87,7 +88,7 @@ nav ul li a:hover {
     max-width: 75px; /* Beperk de maximale breedte */
     height: auto; /* Zorg dat de hoogte proportioneel blijft */
     margin-bottom: 10px; /* Ruimte onder het pictogram */
-    display: block; /* Zorg ervoor dat het een blokelement is */
+    display: block; /* Zorg ervoor dat de afbeelding gecentreerd wordt */
 }
     
 
