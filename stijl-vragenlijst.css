@@ -235,3 +235,61 @@ nav ul li a:hover {
         max-width: 100%;
     }
 }
+
+/* Onderzoekstools pagina */
+.tools-page {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+}
+
+/* Grid layout voor de tools */
+.tools-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Stijl voor elk onderzoekstool-item */
+.tool-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.tool-item:hover {
+    transform: scale(1.05);
+}
+
+/* Stijl voor tool-knoppen */
+.tool-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #6A35C1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.tool-button:hover {
+    background: #5028A1;
+}
+
+/* Responsieve weergave */
+@media (max-width: 768px) {
+    .tools-container {
+        flex-direction: column;
+    }
+
+    .tool-item {
+        max-width: 100%;
+    }
+}
