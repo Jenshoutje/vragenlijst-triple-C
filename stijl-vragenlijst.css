@@ -63,11 +63,10 @@ nav ul li a:hover {
     margin-top: 30px;
 }
 
-/* Container voor de afbeelding */
 /* Onderzoek-item container */
 .onderzoek-item {
     display: flex;
-    flex-direction: column; /* Stapel inhoud verticaal */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
@@ -79,18 +78,17 @@ nav ul li a:hover {
     font-weight: bold;
     transition: transform 0.3s ease, background-color 0.3s ease;
     text-align: center;
-    width: 200px; /* Stel breedte van het container-item in */
+    width: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Stijl voor de afbeelding */
 .onderzoek-item img {
-    max-width: 75px; /* Beperk de maximale breedte */
-    height: auto; /* Zorg dat de hoogte proportioneel blijft */
-    margin-bottom: 10px; /* Ruimte onder het pictogram */
-    display: block; /* Zorg ervoor dat de afbeelding gecentreerd wordt */
+    max-width: 100px; /* Stel een vaste maximale breedte in */
+    height: auto;
+    margin-bottom: 10px;
+    display: block;
 }
-    
 
 /* Hover-effect op de knoppen */
 .onderzoek-item:hover {
@@ -113,6 +111,7 @@ nav ul li a:hover {
         max-width: 75px; /* Verklein de pictogrammen op kleinere schermen */
     }
 }
+
 /* Onderzoekstools pagina */
 .tools-page {
     text-align: center;
