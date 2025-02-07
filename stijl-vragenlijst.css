@@ -113,37 +113,86 @@ nav ul li a:hover {
 }
 
 /* Onderzoekstools pagina */
+/* Algemene stijlen */
+body {
+    overflow-x: hidden;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+/* Onderzoekstools pagina */
 .tools-page {
     text-align: center;
     padding: 50px;
     background: linear-gradient(135deg, #b05df5, #f3e5ff);
 }
 
-/* Grid layout voor de tools */
-.tools-container {
+/* Introductiesectie */
+.intro {
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Grid layout voor tools */
+.tools-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    margin-top: 30px;
 }
 
-/* Stijl voor elk onderzoekstool-item */
-.tool-item {
+/* Stijl voor elke tool */
+.tool-card {
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
     max-width: 300px;
-    transition: transform 0.3s ease;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.tool-item:hover {
-    transform: scale(1.05);
+.tool-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Stijl voor tool-knoppen */
+/* Tool afbeelding */
+.tool-card img {
+    max-width: 100px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Tool titel */
+.tool-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #6A35C1;
+}
+
+/* Tool beschrijving */
+.tool-card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Tool knoppen */
 .tool-button {
     display: inline-block;
     padding: 10px 20px;
@@ -151,10 +200,17 @@ nav ul li a:hover {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 10px;
-    transition: background 0.3s ease;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .tool-button:hover {
     background: #5028A1;
+}
+
+/* Responsieve weergave */
+@media (max-width: 768px) {
+    .tool-card {
+        max-width: 100%;
+    }
 }
