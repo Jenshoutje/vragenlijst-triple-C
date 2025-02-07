@@ -145,13 +145,14 @@ nav ul li a:hover {
 /* ONDERZOEKSPAGINA */
 /* ============================= */
 
+/* Onderzoekspagina */
 .onderzoek-page {
     text-align: center;
     padding: 50px;
     background: linear-gradient(135deg, #b05df5, #f3e5ff);
 }
 
-/* Grid weergave voor de onderzoeksfases */
+/* Grid layout voor de fases */
 .onderzoek-grid {
     display: flex;
     flex-wrap: wrap;
@@ -160,20 +161,37 @@ nav ul li a:hover {
     margin-top: 30px;
 }
 
-/* Knoppen voor de onderzoeksfases */
+/* Knoppen voor de fases */
 .onderzoek-item {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 20px 30px;
     background-color: #6A35C1;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1.2rem;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .onderzoek-item:hover {
     background-color: #5028A1;
+    transform: scale(1.05);
+}
+
+/* Responsieve weergave */
+@media (max-width: 768px) {
+    .onderzoek-grid {
+        flex-direction: column;
+    }
+
+    .onderzoek-item {
+        width: 100%;
+        padding: 15px 20px;
+    }
 }
 
 /* ============================= */
