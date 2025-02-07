@@ -1,29 +1,41 @@
 /* Algemene stijlen */
 body {
-    overflow-x: hidden; 
+    overflow-x: hidden;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
 }
 
-/* Navigatiebalk */
+/* Navigatiebalk - Altijd zichtbaar */
 nav {
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Kleurverloop */
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Zorgt dat het menu gecentreerd blijft */
     align-items: center;
     height: 60px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
 }
 
+/* Navigatie lijst - Altijd zichtbaar */
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
+    flex-wrap: wrap; /* Zorgt ervoor dat de navigatie op mobiel goed blijft */
+    justify-content: center; /* Centreren van de menu-items */
     gap: 15px;
+}
+
+/* Navigatie items */
+nav ul li {
+    margin: 0;
 }
 
 nav ul li a {
@@ -31,49 +43,37 @@ nav ul li a {
     color: white;
     font-size: 18px;
     font-weight: bold;
+    padding: 10px;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #6A35C1;
+    color: #6A35C1; /* Donker accentkleur */
 }
 
-/* Hamburgermenu */
-#menuToggle {
-    background: none;
-    border: none;
-    font-size: 2.5rem;
-    color: white;
-    cursor: pointer;
-    display: none;
+/* Responsieve weergave voor kleine schermen */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    nav ul {
+        flex-wrap: wrap; /* Zorgt dat de items correct uitlijnen */
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    nav ul li a {
+        font-size: 16px; /* Maak het menu iets compacter op mobiel */
+    }
 }
 
-#menu {
-    display: none;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    flex-direction: column;
-    background-color: #b05df5;
-    width: 100%;
-    text-align: center;
-}
-
-#menu.active {
-    display: flex;
-}
-
-#menu li {
-    margin: 10px 0;
-}
-
-#menu li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-
-/* Productpagina */
+/* Stijl voor de productpagina */
 .product-page {
     background: linear-gradient(135deg, #b05df5, #f3e5ff);
     padding: 20px;
@@ -84,6 +84,11 @@ nav ul li a:hover {
     font-size: 2.5rem;
     color: white;
     margin-bottom: 20px;
+}
+
+.product-page p {
+    font-size: 1.2rem;
+    color: #444;
 }
 
 .product-page img {
@@ -100,26 +105,12 @@ nav ul li a:hover {
     padding: 10px 20px;
     background-color: #0073e6;
     color: white;
-    border: none;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .back-button:hover {
     background-color: #005bb5;
-}
-
-/* Responsiviteit */
-@media (max-width: 768px) {
-    nav ul {
-        display: none;
-    }
-
-    #menuToggle {
-        display: block;
-    }
-
-    #menu.active {
-        display: flex;
-    }
 }
