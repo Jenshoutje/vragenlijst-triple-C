@@ -64,7 +64,7 @@ nav ul li a:hover {
 }
 
 /* Container voor de afbeelding */
-.onderzoek-item {
+.onderzoek-item img{
     display: flex; /* Gebruik flexbox om items uit te lijnen */
     flex-direction: column; /* Zorg ervoor dat de inhoud verticaal wordt gestapeld */
     align-items: center; /* Centreer de inhoud horizontaal */
