@@ -186,13 +186,13 @@ body {
 .tool-card h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #6A35C1;
+    color: #white;
 }
 
 /* Tool beschrijving */
 .tool-card p {
     font-size: 1rem;
-    color: #555;
+    color: #white;
     margin-bottom: 15px;
 }
 
