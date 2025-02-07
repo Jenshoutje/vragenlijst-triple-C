@@ -171,11 +171,15 @@ body {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Tool afbeelding */
+/* Iconen binnen de tool-kaarten */
 .tool-card img {
-    max-width: 100px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+    max-width: 100px; /* Maximale breedte van de afbeelding */
+    max-height: 100px; /* Maximale hoogte van de afbeelding */
+    height: auto; /* Zorg ervoor dat de hoogte proportioneel blijft */
+    margin-bottom: 15px; /* Ruimte onder de afbeelding */
+    display: block; /* Zorg dat de afbeelding gecentreerd wordt */
+    margin-left: auto;
+    margin-right: auto; /* Horizontaal centreren */
 }
 
 /* Tool titel */
