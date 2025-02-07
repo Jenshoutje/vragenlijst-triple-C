@@ -81,12 +81,17 @@ nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Stijl voor de pictogrammen binnen de fases */
+
+ /* Stijl voor de pictogrammen binnen de fases */
 .onderzoek-item img {
-    max-width: 100px; /* Stel een realistische maximale breedte in */
-    height: auto; /* Zorg dat de hoogte proportioneel blijft */
-    margin-bottom: 10px; /* Ruimte onder het pictogram */
+    max-width: 150px; /* Beperk de maximale breedte tot 150px */
+    height: auto; /* Zorg ervoor dat de hoogte proportioneel blijft */
+    margin-bottom: 10px; /* Ruimte onder de afbeelding */
     display: block;
+    margin-left: auto;
+    margin-right: auto; /* Centreer afbeelding */
+    border-radius: 10px; /* Optioneel: Voeg afgeronde hoeken toe */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optioneel: Lichte schaduw */
 }
 
 /* Hover-effect op de knoppen */
