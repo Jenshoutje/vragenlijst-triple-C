@@ -66,7 +66,7 @@ nav ul li a:hover {
 /* Container voor de afbeelding */
 .onderzoek-item img{
     display: flex; /* Gebruik flexbox om items uit te lijnen */
-    flex-direction: column; /* Zorg ervoor dat de inhoud verticaal wordt gestapeld */
+    flex-direction: center; /* Zorg ervoor dat de inhoud verticaal wordt gestapeld */
     align-items: center; /* Centreer de inhoud horizontaal */
     justify-content: center; /* Centreer de inhoud verticaal */
     padding: 20px 30px;
@@ -78,7 +78,7 @@ nav ul li a:hover {
     font-weight: bold;
     transition: transform 0.3s ease, background-color 0.3s ease;
     text-align: center;
-    width: 200px;
+    width: 75px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
