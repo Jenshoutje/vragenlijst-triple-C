@@ -176,6 +176,15 @@ nav ul li a:hover {
     width: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+/* Stijl voor de pictogrammen binnen de fases */
+.onderzoek-item img {
+    max-width: 50px; /* Maximale breedte van de afbeelding */
+    height: auto; /* Zorg dat de hoogte proportioneel blijft */
+    margin-bottom: 10px; /* Ruimte onder het pictogram */
+    display: block;
+    margin-left: auto;
+    margin-right: auto; /* Centraal uitlijnen */
+}
 
 .onderzoek-item:hover {
     background-color: #5028A1;
