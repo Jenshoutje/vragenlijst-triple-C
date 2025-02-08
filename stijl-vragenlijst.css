@@ -220,63 +220,55 @@ body {
 }
 
 /* ============================= */
-/* STIJLING VOOR DECISION MATRIX */
+/* STIJLEN VOOR DECISION MATRIX */
 /* ============================= */
 
 .matrix-container {
     max-width: 900px;
-    margin: 40px auto;
+    margin: auto;
     padding: 20px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
-.matrix-container h1 {
-    font-size: 2rem;
-    color: #6A35C1;
-}
-
-.matrix-container p {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Tabelstijl */
-table {
+/* Stijl voor de tabel */
+.matrix-container table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: center;
-    font-size: 1rem;
-}
-
-th {
+/* Stijl voor tabelkoppen */
+.matrix-container th {
     background-color: #6A35C1;
     color: white;
-    font-weight: bold;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
 }
 
-/* Dropdowns in de tabel */
-select {
+/* Stijl voor tabelrijen */
+.matrix-container td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Stijl voor de dropdowns */
+.matrix-container select {
     width: 100%;
     padding: 8px;
-    font-size: 1rem;
     border-radius: 5px;
     border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    font-size: 1rem;
     cursor: pointer;
+    text-align: center;
 }
 
-/* Knop om de resultaten in te sturen */
-button {
+/* Stijl voor de submit-knop */
+.matrix-container button {
     margin-top: 20px;
     padding: 12px 20px;
     background-color: #6A35C1;
@@ -284,27 +276,30 @@ button {
     border: none;
     border-radius: 5px;
     font-size: 1.2rem;
+    font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
-button:hover {
+.matrix-container button:hover {
     background-color: #5028A1;
 }
 
-/* Responsiviteit: tabel aanpassen voor kleinere schermen */
+/* Responsieve weergave */
 @media (max-width: 768px) {
-    th, td {
-        font-size: 0.9rem;
-        padding: 10px;
+    .matrix-container {
+        padding: 15px;
     }
 
-    select {
+    .matrix-container table {
         font-size: 0.9rem;
-        padding: 6px;
     }
 
-    button {
+    .matrix-container select {
+        font-size: 0.9rem;
+    }
+
+    .matrix-container button {
         font-size: 1rem;
         padding: 10px 15px;
     }
