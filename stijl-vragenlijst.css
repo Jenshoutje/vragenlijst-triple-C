@@ -240,42 +240,43 @@ body {
 
 /* Koptekst en beschrijving van de pagina */
 /* Header stijl voor Decision Matrix */
-/* Stijl voor de headerbalk */
 .matrix-header {
-    background: linear-gradient(135deg, #C45928, #F8A85B); /* Oranje gradient */
-    color: white;
+    background: linear-gradient(135deg, #FF7F50, #FFDAB9); /* Zachtere, moderne perzik gradient */
+    color: #4A4A4A; /* Donkere tekstkleur voor beter contrast */
     text-align: center;
-    padding: 30px;
-    border-radius: 10px; /* Maak de hoeken afgerond */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Voeg een subtiele schaduw toe */
+    padding: 40px; /* Meer ruimte voor een open uitstraling */
+    border-radius: 15px; /* Rondere hoeken voor een modernere look */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Zachtere en subtielere schaduw */
     margin-bottom: 30px;
+    font-family: 'Arial', sans-serif; /* Gebruik een modern lettertype */
 }
 
 /* Stijl voor de titel */
 .matrix-header h1 {
-    font-size: 2.5rem; /* Grotere, opvallende titel */
+    font-size: 3rem; /* Grotere titel voor meer impact */
     margin: 0;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Voeg een subtiele schaduw toe aan de tekst */
+    font-weight: 700; /* Extra dikke tekst voor een krachtige uitstraling */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtiele tekstschaduw voor diepte */
+    color: #333333; /* Donkergrijs voor een zachter contrast dan zwart */
 }
 
 /* Stijl voor de ondertekst */
 .matrix-header p {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    line-height: 1.5; /* Zorg voor voldoende spatiëring */
-    color: rgba(255, 255, 255, 0.9); /* Iets lichtere tint voor de tekst */
+    font-size: 1.3rem; /* Iets grotere ondertekst voor betere leesbaarheid */
+    margin-top: 15px;
+    line-height: 1.7; /* Meer spatiëring voor een open gevoel */
+    color: #555555; /* Zachter grijs voor ondertekst */
 }
 
-/* Voeg visuele elementen toe */
+/* Decoratief element */
 .matrix-header::after {
-    content: ""; /* Plaats een decoratief element */
+    content: ""; /* Pseudo-element voor visuele decoratie */
     display: block;
-    width: 60px;
+    width: 70px; /* Breder dan de oude versie */
     height: 4px;
-    background: white;
-    margin: 15px auto 0; /* Centreer het element onder de tekst */
-    border-radius: 2px; /* Maak de hoeken afgerond */
+    background: #FF7F50; /* Helder accentkleur passend bij de gradient */
+    margin: 20px auto 0; /* Ruimte onder de tekst */
+    border-radius: 3px; /* Zachtere hoeken */
 }
 
 /* Tabelstijl */
