@@ -363,31 +363,52 @@ footer {
 }
 
 /* Responsieve weergave */
+/* Responsieve weergave voor Decision Matrix */
 @media (max-width: 768px) {
-    .matrix-container {
-        padding: 20px;
-    }
-
+    /* Zorg ervoor dat de tabel horizontaal scrollbaar is */
     .matrix-container table {
-        font-size: 0.9rem;
+        display: block;
+        overflow-x: auto; /* Maak horizontaal scrollen mogelijk */
+        white-space: nowrap; /* Zorg ervoor dat cellen niet afbreken */
     }
 
+    /* Pas tekstgrootte aan */
+    .matrix-container th, 
+    .matrix-container td {
+        font-size: 0.9rem; /* Kleiner lettertype op mobiele apparaten */
+        padding: 8px; /* Minder padding om ruimte te besparen */
+    }
+
+    /* Dropdowns kleiner maken */
     .matrix-container select {
         font-size: 0.9rem;
+        padding: 6px;
     }
 
-    .submit-button {
-        font-size: 0.9rem;
-        padding: 10px 15px;
+    /* Knoppen aanpassen voor kleinere schermen */
+    .matrix-container button,
+    .matrix-nav a {
+        font-size: 1rem; /* Kleinere tekst op knoppen */
+        padding: 10px 15px; /* Compactere knoppen */
+        width: 100%; /* Knoppen strekken zich uit over de breedte */
+        margin-bottom: 10px; /* Ruimte tussen knoppen */
     }
 
-    .button-container {
-        flex-direction: column;
-        gap: 10px;
+    /* Zorg dat navigatie flexibel blijft */
+    .matrix-nav {
+        flex-direction: column; /* Knoppen onder elkaar */
+        align-items: stretch; /* Knoppen volledig uitlijnen */
     }
 
-    .back-button {
-        width: 100%;
-        text-align: center;
+    .matrix-header {
+        padding: 20px 10px; /* Minder padding voor compactheid */
+    }
+
+    .matrix-header h1 {
+        font-size: 1.8rem; /* Titelgrootte aanpassen */
+    }
+
+    .matrix-header p {
+        font-size: 1rem; /* Kleinere ondertekst */
     }
 }
