@@ -218,3 +218,115 @@ body {
         max-width: 100%;
     }
 }
+/* Algemene stijlen */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Matrix-container */
+.matrix-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead th {
+    background: #6A35C1;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+    border-bottom: 2px solid #ddd;
+}
+
+tbody td {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Select dropdown */
+select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    text-align: center;
+    background: #fff;
+}
+
+/* Submit button */
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6A35C1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #5028A1;
+}
+
+/* Responsiviteit */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    table {
+        font-size: 0.8rem;
+    }
+
+    select {
+        font-size: 0.9rem;
+    }
+}
