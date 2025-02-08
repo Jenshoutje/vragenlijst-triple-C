@@ -241,7 +241,7 @@ body {
 /* Koptekst en beschrijving van de pagina */
 /* Header stijl voor Decision Matrix */
 .matrix-header {
-    background: white/* Wit naar zachte paars fade */
+    background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
     color: #4A4A4A; /* Donkergrijze tekst voor contrast */
     text-align: center;
     padding: 30px;
