@@ -239,16 +239,32 @@ body {
 }
 
 /* Koptekst en beschrijving van de pagina */
-.matrix-container h1 {
-    font-size: 2rem;
-    color: #6A35C1;
-    margin-bottom: 15px;
+/* Header stijl voor Decision Matrix */
+.matrix-header {
+    background: rgb(196, 89, 40); /* Oranje tint */
+    color: white;
+    padding: 40px 20px; /* Ruime padding */
+    text-align: center;
+    border-radius: 0 0 10px 10px; /* Ronde hoeken onderaan */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtiele schaduw */
 }
 
-.matrix-container p {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 20px;
+.matrix-header .header-container {
+    max-width: 800px;
+    margin: auto; /* Centreer de inhoud */
+}
+
+.matrix-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.matrix-header p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-top: 0;
 }
 
 /* Tabelstijl */
