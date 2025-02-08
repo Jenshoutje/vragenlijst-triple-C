@@ -3,78 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decision Matrix</title>
-    <link rel="stylesheet" href="stijl-vragenlijst.css">
+    <title>Decision Matrix - Triple C Implementatie</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="tools.html">Onderzoekstools</a></li>
-            </ul>
-        </nav>
+        <h1>Decision Matrix - Implementatie Triple C</h1>
+        <p>
+            Vul de onderstaande matrix in op basis van jouw ervaring en inzichten. 
+            Geef per knelpunt een score van **1 (zeer laag belang)** tot **5 (zeer hoog belang)** voor elk criterium.
+        </p>
     </header>
 
-    <main class="decision-matrix-page">
-        <h1>Decision Matrix</h1>
-        <p>Beoordeel de volgende knelpunten op effectiviteit, haalbaarheid, impact op cliëntwelzijn en urgentie.</p>
-
-        <form id="decisionMatrixForm">
+    <section class="matrix-container">
+        <form id="decision-matrix-form">
             <table>
                 <thead>
                     <tr>
                         <th>Knelpunt</th>
-                        <th>Effectiviteit (1-5)</th>
-                        <th>Haalbaarheid (1-5)</th>
-                        <th>Impact op cliëntwelzijn (1-5)</th>
-                        <th>Urgentie (1-5)</th>
-                        <th>Opmerkingen</th>
+                        <th>Effectiviteit</th>
+                        <th>Haalbaarheid</th>
+                        <th>Impact op cliëntwelzijn</th>
+                        <th>Urgentie</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Knelpunt 1 -->
                     <tr>
                         <td>Gebrek aan eenduidige interpretatie van Triple C</td>
-                        <td><select name="effectiveness_1">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select></td>
-                        <td><select name="feasibility_1">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select></td>
-                        <td><select name="impact_1">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select></td>
-                        <td><select name="urgency_1">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select></td>
-                        <td><textarea name="comments_1" rows="2" placeholder="Opmerkingen"></textarea></td>
+                        <td>
+                            <select name="knelpunt1_effectiviteit">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="knelpunt1_haalbaarheid">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="knelpunt1_clientwelzijn">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="knelpunt1_urgentie">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
                     </tr>
-                    <!-- Voeg extra rijen toe voor meer knelpunten -->
+
+                    <!-- Knelpunt 2 -->
+                    <tr>
+                        <td>Hoge werkdruk belemmert proactief handelen</td>
+                        <td>
+                            <select name="knelpunt2_effectiviteit">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="knelpunt2_haalbaarheid">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="knelpunt2_clientwelzijn">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="knelpunt2_urgentie">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!-- Knelpunt 3 -->
+                    <tr>
+                        <td>Onvoldoende training en ondersteuning</td>
+                        <td>
+                            <select name="knelpunt3_effectiviteit">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="knelpunt3_haalbaarheid">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="knelpunt3_clientwelzijn">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="knelpunt3_urgentie">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
-            <button type="submit">Verzenden</button>
+            <button type="submit">Verstuur scores</button>
         </form>
-    </main>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
