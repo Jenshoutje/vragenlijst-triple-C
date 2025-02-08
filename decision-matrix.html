@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Matrix</title>
+    <link rel="stylesheet" href="stijl-vragenlijst.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tools.html">Onderzoekstools</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="define.html">Define</a></li>
+                <li><a href="develop.html">Develop</a></li>
+                <li><a href="deliver.html">Deliver</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="decision-matrix-page">
+        <h1>Decision Matrix</h1>
+        <p>Beoordeel de volgende knelpunten op effectiviteit, haalbaarheid, impact op cliëntwelzijn en urgentie.</p>
+
+        <form id="decisionMatrixForm">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Knelpunt</th>
+                        <th>Effectiviteit (1-5)</th>
+                        <th>Haalbaarheid (1-5)</th>
+                        <th>Impact op cliëntwelzijn (1-5)</th>
+                        <th>Urgentie (1-5)</th>
+                        <th>Opmerkingen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gebrek aan eenduidige interpretatie van Triple C</td>
+                        <td><select name="effectiveness_1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></td>
+                        <td><select name="feasibility_1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></td>
+                        <td><select name="impact_1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></td>
+                        <td><select name="urgency_1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></td>
+                        <td><textarea name="comments_1" rows="2" placeholder="Opmerkingen"></textarea></td>
+                    </tr>
+                    <!-- Voeg extra rijen toe voor meer knelpunten -->
+                </tbody>
+            </table>
+
+            <button type="submit">Verzenden</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+    </footer>
+</body>
+</html>
