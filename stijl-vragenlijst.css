@@ -218,115 +218,94 @@ body {
         max-width: 100%;
     }
 }
-/* Algemene stijlen decision matrix page */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
-}
 
-/* Header */
-header {
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+/* ============================= */
+/* STIJLING VOOR DECISION MATRIX */
+/* ============================= */
 
-header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-header p {
-    font-size: 1.2rem;
-    margin: 0;
-}
-
-/* Matrix-container */
 .matrix-container {
     max-width: 900px;
     margin: 40px auto;
+    padding: 20px;
     background: white;
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-/* Tabel */
+.matrix-container h1 {
+    font-size: 2rem;
+    color: #6A35C1;
+}
+
+.matrix-container p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Tabelstijl */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-thead th {
-    background: #6A35C1;
-    color: white;
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
     text-align: center;
-    padding: 10px;
     font-size: 1rem;
-    border-bottom: 2px solid #ddd;
 }
 
-tbody td {
-    text-align: center;
-    padding: 10px;
-    font-size: 0.9rem;
-    border-bottom: 1px solid #ddd;
+th {
+    background-color: #6A35C1;
+    color: white;
+    font-weight: bold;
 }
 
-tbody tr:nth-child(even) {
-    background: #f9f9f9;
-}
-
-/* Select dropdown */
+/* Dropdowns in de tabel */
 select {
     width: 100%;
     padding: 8px;
+    font-size: 1rem;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 1rem;
-    text-align: center;
-    background: #fff;
+    background-color: #f9f9f9;
+    cursor: pointer;
 }
 
-/* Submit button */
-button[type="submit"] {
+/* Knop om de resultaten in te sturen */
+button {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 12px 20px;
     background-color: #6A35C1;
     color: white;
     border: none;
     border-radius: 5px;
+    font-size: 1.2rem;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
-button[type="submit"]:hover {
+button:hover {
     background-color: #5028A1;
 }
 
-/* Responsiviteit */
+/* Responsiviteit: tabel aanpassen voor kleinere schermen */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8rem;
-    }
-
-    header p {
-        font-size: 1rem;
-    }
-
-    table {
-        font-size: 0.8rem;
+    th, td {
+        font-size: 0.9rem;
+        padding: 10px;
     }
 
     select {
         font-size: 0.9rem;
+        padding: 6px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px 15px;
     }
 }
