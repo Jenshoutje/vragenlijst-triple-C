@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decision Matrix - Triple C Implementatie</title>
- <link rel="stylesheet" href="stijl-vragenlijst.css">
+    <link rel="stylesheet" href="stijl-vragenlijst.css">
 </head>
 <body>
     <header>
         <h1>Decision Matrix - Implementatie Triple C</h1>
         <p>
             Vul de onderstaande matrix in op basis van jouw ervaring en inzichten. 
-            Geef per knelpunt een score van **1 (zeer laag belang)** tot **5 (zeer hoog belang)** voor elk criterium.
+            Geef per knelpunt een score van <strong>1 (zeer laag belang)</strong> tot <strong>5 (zeer hoog belang)</strong> voor elk criterium.
         </p>
     </header>
 
@@ -69,94 +69,23 @@
                         </td>
                     </tr>
 
-                    <!-- Knelpunt 2 -->
-                    <tr>
-                        <td>Hoge werkdruk belemmert proactief handelen</td>
-                        <td>
-                            <select name="knelpunt2_effectiviteit">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="knelpunt2_haalbaarheid">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="knelpunt2_clientwelzijn">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="knelpunt2_urgentie">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </td>
-                    </tr>
-
-                    <!-- Knelpunt 3 -->
-                    <tr>
-                        <td>Onvoldoende training en ondersteuning</td>
-                        <td>
-                            <select name="knelpunt3_effectiviteit">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="knelpunt3_haalbaarheid">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="knelpunt3_clientwelzijn">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="knelpunt3_urgentie">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </td>
-                    </tr>
+                    <!-- Extra rijen kunnen hier worden toegevoegd -->
                 </tbody>
             </table>
 
-            <button type="submit">Verstuur scores</button>
+            <!-- Knoppen voor navigatie -->
+            <div class="button-container">
+                <a href="index.html" class="back-button">Terug naar Home</a>
+                <a href="tools.html" class="back-button">Terug naar Tools</a>
+                <button type="submit" class="submit-button">Verstuur scores</button>
+            </div>
         </form>
     </section>
 
-  <script src="decision-matrix.js"></script>
+    <footer>
+        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script src="decision-matrix.js"></script>
 </body>
 </html>
