@@ -220,17 +220,37 @@ body {
 }
 
 /* ============================= */
-/* STIJLEN VOOR DECISION MATRIX */
+/* DECISION MATRIX PAGINA */
 /* ============================= */
 
+.matrix-page {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Zelfde stijl als tools/onderzoek */
+}
+
+/* Container voor Decision Matrix */
 .matrix-container {
     max-width: 900px;
     margin: auto;
-    padding: 20px;
+    padding: 30px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+}
+
+/* Koptekst van de pagina */
+.matrix-container h1 {
+    font-size: 2rem;
+    color: #6A35C1;
+    margin-bottom: 10px;
+}
+
+.matrix-container p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
 }
 
 /* Stijl voor de tabel */
@@ -285,6 +305,29 @@ body {
     background-color: #5028A1;
 }
 
+/* Navigatieknoppen */
+.matrix-nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.matrix-nav a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #6A35C1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.matrix-nav a:hover {
+    background-color: #5028A1;
+}
+
 /* Responsieve weergave */
 @media (max-width: 768px) {
     .matrix-container {
@@ -302,5 +345,15 @@ body {
     .matrix-container button {
         font-size: 1rem;
         padding: 10px 15px;
+    }
+
+    .matrix-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .matrix-nav a {
+        width: 100%;
+        text-align: center;
     }
 }
