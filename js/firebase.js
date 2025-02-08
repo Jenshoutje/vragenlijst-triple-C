@@ -43,42 +43,39 @@ export async function submitSurveyForm() {
     }
 }
 
-// ✅ **Functie om de Decision Matrix op te slaan**
-export async function submitDecisionMatrixForm() {
-    // Decision Matrix formulier ophalen
-    const form = document.getElementById("decision-matrix-form");
-
-    // Gegevens verzamelen uit de matrix
-    const matrixData = {
+// Functie om de ingevulde Decision Matrix op te slaan
+export async function submitDecisionMatrix() {
+    // Verzamel de data uit de Decision Matrix
+    const formData = {
         knelpunt1: {
-            effectiviteit: form.knelpunt1_effectiviteit.value,
-            haalbaarheid: form.knelpunt1_haalbaarheid.value,
-            impact: form.knelpunt1_clientwelzijn.value,
-            urgentie: form.knelpunt1_urgentie.value
+            effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt1_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt1_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt1_urgentie"]').value,
         },
         knelpunt2: {
-            effectiviteit: form.knelpunt2_effectiviteit.value,
-            haalbaarheid: form.knelpunt2_haalbaarheid.value,
-            impact: form.knelpunt2_clientwelzijn.value,
-            urgentie: form.knelpunt2_urgentie.value
+            effectiviteit: document.querySelector('select[name="knelpunt2_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt2_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt2_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt2_urgentie"]').value,
         },
         knelpunt3: {
-            effectiviteit: form.knelpunt3_effectiviteit.value,
-            haalbaarheid: form.knelpunt3_haalbaarheid.value,
-            impact: form.knelpunt3_clientwelzijn.value,
-            urgentie: form.knelpunt3_urgentie.value
+            effectiviteit: document.querySelector('select[name="knelpunt3_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt3_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt3_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt3_urgentie"]').value,
         },
-        timestamp: new Date().toISOString()
+        timestamp: new Date() // Voeg een tijdstempel toe
     };
 
     try {
-        // Gegevens opslaan in Firestore onder 'decisionMatrixResponses'
-        const docRef = await addDoc(collection(db, "decisionMatrixResponses"), matrixData);
+        // Opslaan in de Firestore-collectie "decisionMatrixResponses"
+        const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
         console.log("Decision Matrix opgeslagen met ID:", docRef.id);
-        alert("Bedankt! Jouw Decision Matrix is succesvol opgeslagen.");
-        form.reset(); // Reset het formulier na verzenden
+        alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
+        document.getElementById("decision-matrix-form").reset(); // Reset het formulier
     } catch (error) {
-        console.error("Fout bij opslaan:", error);
-        alert("Er is iets misgegaan. Probeer het opnieuw.");
+        console.error("Fout bij opslaan van Decision Matrix:", error);
+        alert("Er is een fout opgetreden bij het verzenden. Probeer het opnieuw.");
     }
 }
