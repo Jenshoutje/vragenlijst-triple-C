@@ -241,42 +241,41 @@ body {
 /* Koptekst en beschrijving van de pagina */
 /* Header stijl voor Decision Matrix */
 .matrix-header {
-    background: linear-gradient(135deg, #FFFFFF, #E6E6FA); /* Zachtere, moderne perzik gradient */
-    color: #4A4A4A; /* Donkere tekstkleur voor beter contrast */
+    background: linear-gradient(135deg, #FFFFFF, #E6E6FA); /* Wit naar zachte paars fade */
+    color: #4A4A4A; /* Donkergrijze tekst voor contrast */
     text-align: center;
-    padding: 40px; /* Meer ruimte voor een open uitstraling */
-    border-radius: 15px; /* Rondere hoeken voor een modernere look */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Zachtere en subtielere schaduw */
+    padding: 30px;
+    border-radius: 10px; /* Subtiel afgeronde hoeken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte */
     margin-bottom: 30px;
-    font-family: 'Arial', sans-serif; /* Gebruik een modern lettertype */
+    font-family: 'Arial', sans-serif; /* Modern en professioneel lettertype */
 }
 
 /* Stijl voor de titel */
 .matrix-header h1 {
-    font-size: 3rem; /* Grotere titel voor meer impact */
+    font-size: 2.5rem; /* Grote, opvallende titel */
     margin: 0;
-    font-weight: 700; /* Extra dikke tekst voor een krachtige uitstraling */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtiele tekstschaduw voor diepte */
-    color: #333333; /* Donkergrijs voor een zachter contrast dan zwart */
+    font-weight: bold;
+    color: #6A35C1; /* Paarse kleur passend bij de stijl van de site */
 }
 
 /* Stijl voor de ondertekst */
 .matrix-header p {
-    font-size: 1.3rem; /* Iets grotere ondertekst voor betere leesbaarheid */
-    margin-top: 15px;
-    line-height: 1.7; /* Meer spatiëring voor een open gevoel */
-    color: #555555; /* Zachter grijs voor ondertekst */
+    font-size: 1.2rem; /* Duidelijke ondertekst */
+    margin-top: 10px;
+    line-height: 1.6; /* Goede spatiëring voor leesbaarheid */
+    color: #555555; /* Zacht grijs */
 }
 
-/* Decoratief element */
+/* Subtiele decoratieve lijn */
 .matrix-header::after {
-    content: ""; /* Pseudo-element voor visuele decoratie */
+    content: ""; /* Decoratief element */
     display: block;
-    width: 70px; /* Breder dan de oude versie */
-    height: 4px;
-    background: #FF7F50; /* Helder accentkleur passend bij de gradient */
-    margin: 20px auto 0; /* Ruimte onder de tekst */
-    border-radius: 3px; /* Zachtere hoeken */
+    width: 80px; /* Brede lijn */
+    height: 3px;
+    background: #6A35C1; /* Paarse kleur voor consistentie */
+    margin: 15px auto 0; /* Geplaatst onder de tekst */
+    border-radius: 2px; /* Lichte afronding */
 }
 
 /* Tabelstijl */
