@@ -8,17 +8,25 @@
 </head>
 <body class="matrix-page">
 
+    <!-- Navigatiebalk -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="onderzoek.html">Onderzoek</a></li>
+        </ul>
+    </nav>
+
     <!-- Header met titel en ondertekst -->
     <header class="matrix-header">
-           <div class="matrix-header">
-    <h1>Decision Matrix - Implementatie Triple C</h1>
-    <p>
-        Vul de onderstaande matrix in op basis van jouw ervaring en inzichten. 
-        Geef per knelpunt een score van **1 (zeer laag belang)** tot **5 (zeer hoog belang)** voor elk criterium.
-    </p>
-</div>
+        <h1>Decision Matrix - Implementatie Triple C</h1>
+        <p>
+            Vul de onderstaande matrix in op basis van jouw ervaring en inzichten. 
+            Geef per knelpunt een score van **1 (zeer laag belang)** tot **5 (zeer hoog belang)** voor elk criterium.
+        </p>
     </header>
 
+    <!-- Matrix-container -->
     <section class="matrix-container">
         <form id="decision-matrix-form">
             <table>
@@ -32,7 +40,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Knelpunt 1 -->
+                    <!-- Knelpunten -->
                     <tr>
                         <td>Gebrek aan eenduidige interpretatie van Triple C</td>
                         <td>
@@ -72,8 +80,6 @@
                             </select>
                         </td>
                     </tr>
-
-                    <!-- Knelpunt 2 -->
                     <tr>
                         <td>Hoge werkdruk belemmert proactief handelen</td>
                         <td>
@@ -113,8 +119,6 @@
                             </select>
                         </td>
                     </tr>
-
-                    <!-- Knelpunt 3 -->
                     <tr>
                         <td>Onvoldoende training en ondersteuning</td>
                         <td>
@@ -157,8 +161,7 @@
                 </tbody>
             </table>
 
-
-            <!-- Knoppen voor navigatie -->
+            <!-- Knoppen -->
             <div class="button-container">
                 <a href="index.html" class="back-button">Terug naar Home</a>
                 <a href="tools.html" class="back-button">Terug naar Tools</a>
@@ -171,6 +174,6 @@
         <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
     </footer>
 
-<script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/firebase.js"></script>
 </body>
 </html>
