@@ -241,7 +241,7 @@ body {
 /* Koptekst en beschrijving van de pagina */
 /* Header stijl voor Decision Matrix */
 .matrix-header {
-    background: linear-gradient(135deg, #FFFFFF, #E6E6FA); /* Wit naar zachte paars fade */
+    background: white/* Wit naar zachte paars fade */
     color: #4A4A4A; /* Donkergrijze tekst voor contrast */
     text-align: center;
     padding: 30px;
@@ -376,50 +376,34 @@ footer {
 /* Responsieve weergave */
 /* Responsieve weergave voor Decision Matrix */
 @media (max-width: 768px) {
-    /* Zorg ervoor dat de tabel horizontaal scrollbaar is */
-    .matrix-container table {
-        display: block;
-        overflow-x: auto; /* Maak horizontaal scrollen mogelijk */
-        white-space: nowrap; /* Zorg ervoor dat cellen niet afbreken */
+    .matrix-container {
+        padding: 15px;
+        overflow-x: auto; /* Zorg dat de tabel horizontaal scrolt als dat nodig is */
     }
 
-    /* Pas tekstgrootte aan */
-    .matrix-container th, 
-    .matrix-container td {
-        font-size: 0.9rem; /* Kleiner lettertype op mobiele apparaten */
-        padding: 8px; /* Minder padding om ruimte te besparen */
+    table {
+        display: block; /* Zet de tabel in een scroll-container */
+        width: 100%; /* Zorg dat de tabel breedte volledig benut */
+        overflow-x: auto;
+        white-space: nowrap; /* Voorkom dat de inhoud afbreekt */
     }
 
-    /* Dropdowns kleiner maken */
-    .matrix-container select {
-        font-size: 0.9rem;
-        padding: 6px;
+    th, td {
+        font-size: 0.9rem; /* Maak de tekst kleiner voor betere schaalbaarheid */
+        padding: 8px; /* Minder padding voor mobiel */
     }
 
-    /* Knoppen aanpassen voor kleinere schermen */
-    .matrix-container button,
-    .matrix-nav a {
-        font-size: 1rem; /* Kleinere tekst op knoppen */
-        padding: 10px 15px; /* Compactere knoppen */
-        width: 100%; /* Knoppen strekken zich uit over de breedte */
-        margin-bottom: 10px; /* Ruimte tussen knoppen */
+    select {
+        font-size: 0.9rem; /* Maak dropdowns kleiner */
     }
 
-    /* Zorg dat navigatie flexibel blijft */
-    .matrix-nav {
-        flex-direction: column; /* Knoppen onder elkaar */
-        align-items: stretch; /* Knoppen volledig uitlijnen */
+    .button-container {
+        flex-direction: column; /* Stapel knoppen verticaal op mobiel */
+        gap: 10px;
+        text-align: center;
     }
 
-    .matrix-header {
-        padding: 20px 10px; /* Minder padding voor compactheid */
-    }
-
-    .matrix-header h1 {
-        font-size: 1.8rem; /* Titelgrootte aanpassen */
-    }
-
-    .matrix-header p {
-        font-size: 1rem; /* Kleinere ondertekst */
+    .button-container a, .button-container button {
+        width: 100%; /* Knoppen nemen de volledige breedte in op mobiel */
     }
 }
