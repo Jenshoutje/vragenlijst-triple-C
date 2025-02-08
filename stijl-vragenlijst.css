@@ -240,31 +240,42 @@ body {
 
 /* Koptekst en beschrijving van de pagina */
 /* Header stijl voor Decision Matrix */
+/* Stijl voor de headerbalk */
 .matrix-header {
-    background: rgb(196, 89, 40); /* Oranje tint */
+    background: linear-gradient(135deg, #C45928, #F8A85B); /* Oranje gradient */
     color: white;
-    padding: 40px 20px; /* Ruime padding */
     text-align: center;
-    border-radius: 0 0 10px 10px; /* Ronde hoeken onderaan */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtiele schaduw */
+    padding: 30px;
+    border-radius: 10px; /* Maak de hoeken afgerond */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Voeg een subtiele schaduw toe */
+    margin-bottom: 30px;
 }
 
-.matrix-header .header-container {
-    max-width: 800px;
-    margin: auto; /* Centreer de inhoud */
-}
-
+/* Stijl voor de titel */
 .matrix-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2.5rem; /* Grotere, opvallende titel */
+    margin: 0;
     font-weight: bold;
-    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Voeg een subtiele schaduw toe aan de tekst */
 }
 
+/* Stijl voor de ondertekst */
 .matrix-header p {
     font-size: 1.2rem;
-    line-height: 1.5;
-    margin-top: 0;
+    margin-top: 10px;
+    line-height: 1.5; /* Zorg voor voldoende spatiëring */
+    color: rgba(255, 255, 255, 0.9); /* Iets lichtere tint voor de tekst */
+}
+
+/* Voeg visuele elementen toe */
+.matrix-header::after {
+    content: ""; /* Plaats een decoratief element */
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: white;
+    margin: 15px auto 0; /* Centreer het element onder de tekst */
+    border-radius: 2px; /* Maak de hoeken afgerond */
 }
 
 /* Tabelstijl */
