@@ -150,55 +150,117 @@ footer {
 /* Onderzoekspagina */
 /* Algemene stijl voor de onderzoekspagina */
 /* Onderzoekspagina */
-.onderzoek-page {
+/* Container voor het dubbel diamant-model */
+.double-diamond-container {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto;
     text-align: center;
-    padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
 }
 
-/* Grid layout voor de fases */
-.onderzoek-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 30px;
+/* Afbeelding stijl */
+.double-diamond-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
-/* Onderzoek-item container */
-.onderzoek-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: #6A35C1;
+/* Knoppen stijl */
+.fase-button {
+    position: absolute;
     color: white;
-    text-decoration: none;
+    background: linear-gradient(135deg, #381B85, #A873F7);
+    padding: 10px 15px;
     border-radius: 10px;
-    font-size: 1.2rem;
+    text-decoration: none;
     font-weight: bold;
-    transition: transform 0.3s ease, background-color 0.3s ease;
     text-align: center;
-    width: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover-effect op de knoppen */
-.onderzoek-item:hover {
-    background-color: #5028A1;
-    transform: scale(1.05);
+.fase-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsieve weergave */
+/* Specifieke posities voor knoppen */
+.discover {
+    top: 40%; /* Aanpassen voor precieze positie */
+    left: 25%;
+}
+
+.define {
+    top: 40%;
+    right: 25%;
+}
+
+.develop {
+    bottom: 40%;
+    left: 25%;
+}
+
+.deliver {
+    bottom: 40%;
+    right: 25%;
+}
+
+/* Teksten onder knoppen */
+.fase-desc {
+    position: absolute;
+    color: #555;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 120px;
+}
+
+.discover-desc {
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.define-desc {
+    top: 50%;
+    right: 25%;
+    transform: translate(50%, -50%);
+}
+
+.develop-desc {
+    bottom: 30%;
+    left: 25%;
+    transform: translate(-50%, 50%);
+}
+
+.deliver-desc {
+    bottom: 30%;
+    right: 25%;
+    transform: translate(50%, 50%);
+}
 @media (max-width: 768px) {
-    .onderzoek-grid {
-        flex-direction: column;
+    .fase-button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
 
-    .onderzoek-item {
-        width: 100%;
-        padding: 15px 20px;
+    .discover {
+        top: 35%;
+        left: 20%;
+    }
+
+    .define {
+        top: 35%;
+        right: 20%;
+    }
+
+    .develop {
+        bottom: 35%;
+        left: 20%;
+    }
+
+    .deliver {
+        bottom: 35%;
+        right: 20%;
     }
 }
 
