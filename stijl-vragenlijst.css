@@ -151,6 +151,11 @@ footer {
 /* Algemene stijl voor de onderzoekspagina */
 /* Onderzoekspagina */
 /* Container voor het dubbel diamant-model */
+.onderzoek-page {
+    text-align: center;
+    padding: 50px;
+    background-color: white; /* Witte achtergrond */
+}
 .double-diamond-container {
     position: relative;
     max-width: 900px;
