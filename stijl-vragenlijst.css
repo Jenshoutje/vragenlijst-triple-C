@@ -1,4 +1,4 @@
-/* Algemene stijlen */
+/* ALGEMENE STIJLEN */
 body {
     font-family: 'Nunito', sans-serif;
     margin: 0;
@@ -65,23 +65,85 @@ p {
 
 /* Footer */
 footer {
-    background-color: white; /* Paarse kleur zoals in je navigatie */
-    color: black; /* Witte tekst */
+    background-color: white; /* Witte achtergrond */
+    color: black; /* Zwarte tekst */
     text-align: center;
     padding: 10px;
     font-size: 0.9rem;
     margin-top: auto; /* Zorg dat de footer naar beneden wordt gedrukt */
 }
 
-/* Responsiviteit */
+/* HERO-SECTIE */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Hoogte aangepast */
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse gradient achtergrond */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.hero-content {
+    background: rgba(255, 255, 255, 0.8); /* Witte overlay */
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtiele schaduw */
+}
+
+.hero-content h1 {
+    font-size: 2.5rem; /* Grotere titel */
+    margin-bottom: 10px;
+    color: #6A35C1;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #333; /* Donkere tekstkleur */
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #FFA500;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background: #cc7400;
+    transform: scale(1.05);
+}
+
+/* RESPONSIVITEIT */
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    .hero {
+        height: 250px; /* Kleinere hoogte op mobiel */
     }
 
-    nav ul li a {
-        font-size: 16px; /* Kleinere tekstgrootte voor mobiel */
+    .hero-content {
+        padding: 15px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 1rem;
     }
 }
 
