@@ -6,137 +6,91 @@
     <title>Houtje Inc. - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stijl-vragenlijst.css"> 
-<!-- Externe CSS -->
-    <style>
-        /* Algemene stijlen */
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #F3EFFF;
-        }
-
-        /* Navigatie */
-        header nav {
-            background-color: #6A35C1;
-            color: white;
-            padding: 10px 20px;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        /* Hero-sectie */
-        .hero {
-            background: linear-gradient(135deg, #B05DF5, #6A35C1);
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-        .cta-button {
-            display: inline-block;
-            background: #F3EFFF;
-            color: #6A35C1;
-            padding: 12px 25px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .cta-button:hover {
-            background: #D9C7F8;
-        }
-
-        /* Alliade-vogel sectie */
-        .vogel-container {
-            text-align: center;
-            margin: 30px 0;
-        }
-        .vogel-container img {
-            width: 200px;
-            cursor: pointer;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #6A35C1;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 30px;
-        }
-    </style>
+    <script defer src="js/home.js"></script> <!-- JavaScript voor interactieve elementen -->
 </head>
-<body>
-    <!-- Navigatie -->
-   <header>
-    <nav>
+<body class="home-page">
+
+    <!-- Navigatiebalk -->
+    <nav class="navbar">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="onderzoek.html">onderzoek</a></li>
-            <li><a href="product.html">Producten</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="onderzoek.html">Onderzoek</a></li>
             <li><a href="tools.html">Onderzoeksmethode</a></li>
+            <li><a href="product.html">Product</a></li>
         </ul>
     </nav>
-</header>
- 
 
-    <!-- Hero-sectie -->
-    <section class="hero">
-        <h1>Welkom bij Houtje Inc.</h1>
-        <p>Samen doen wat wél kan.</p>
-        <a href="leesmeer.html" class="cta-button">Lees meer</a>
-    </section>
-
-    <!-- Inhoud -->
-    <main>
-        <div class="container">
-            <h2>Triple C Evaluatie</h2>
-            <p>Deze website biedt inzicht in de implementatie van Triple C en toont verschillende producten en informatie.</p>
-
-            <!-- Alliade-vogel als knop -->
-            <div class="vogel-container">
-                <a href="product.html">
-                    <img src="Alliadevogel.png" alt="Alliade Vogel Logo">
-                </a>
-                <p> volg de vogel en bekijk de reis.</p>
+    <!-- Hero sectie met slideshow -->
+    <header class="hero">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="images/slide1.png" alt="Slide 1">
+            </div>
+            <div class="slide fade">
+                <img src="images/slide2.png" alt="Slide 2">
+            </div>
+            <div class="slide fade">
+                <img src="images/slide3.png" alt="Slide 3">
             </div>
         </div>
-    </main>
+        <div class="hero-overlay">
+            <h1>Welkom bij Houtje Inc.</h1>
+            <p>Samen doen wat wél kan.</p>
+            <a href="leesmeer.html" class="cta-button">Lees meer</a>
+        </div>
+    </header>
+
+    <!-- Parallax sectie -->
+    <section class="parallax">
+        <h2>Triple C Evaluatie</h2>
+        <p>Deze website biedt inzicht in de implementatie van Triple C en toont verschillende producten en informatie.</p>
+    </section>
+
+    <!-- Alliade-vogel als knop -->
+    <section class="vogel-container">
+        <a href="product.html">
+            <img src="Alliadevogel.png" alt="Alliade Vogel Logo">
+        </a>
+        <p>Volg de vogel en bekijk de reis.</p>
+    </section>
+
+    <!-- Tools sectie -->
+    <section class="tools-preview">
+        <h2>Onderzoekstools</h2>
+        <div class="tools-container">
+            <div class="tool-item">
+                <img src="icons/decision-matrix.png" alt="Decision Matrix">
+                <h3>Decision Matrix</h3>
+            </div>
+            <div class="tool-item">
+                <img src="icons/fff-meeting.png" alt="FFF Meeting">
+                <h3>FFF Bijeenkomst</h3>
+            </div>
+        </div>
+        <a href="tools.html" class="cta-button">Bekijk alle tools</a>
+    </section>
+
+    <!-- Product sectie -->
+    <section class="product-preview">
+        <h2>Ontdek het Product</h2>
+        <p>Bekijk hoe ons innovatieve product de implementatie van Triple C kan verbeteren.</p>
+        <a href="product.html" class="cta-button">Meer informatie</a>
+    </section>
+
+    <!-- Contact sectie -->
+    <section class="contact-section">
+        <h2>Contact</h2>
+        <p>Heb je vragen of suggesties? Neem contact op!</p>
+        <a href="contact.html" class="cta-button">Contacteer ons</a>
+    </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
     </footer>
 
+    <!-- JavaScript -->
     <script type="module" src="./js/firebase.js"></script> <!-- Firebase-script -->
     <script src="./js/main.js"></script>
-    
-    
-    });
-</script>
 </body>
 </html>
