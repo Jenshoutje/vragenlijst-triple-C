@@ -212,23 +212,23 @@ footer {
 
 /* Specifieke posities voor knoppen */
 .discover {
-    top: 40%; /* Aanpassen voor precieze positie */
-    left: 25%;
+    top: 45%; /* Aanpassen voor precieze positie */
+    left: 14%;
 }
 
 .define {
-    top: 40%;
-    right: 25%;
-}
-
-.develop {
-    bottom: 40%;
+    top: 45%;
     left: 25%;
 }
 
-.deliver {
-    bottom: 40%;
+.develop {
+    bottom: 49%;
     right: 25%;
+}
+
+.deliver {
+    bottom: 49%;
+    right: 14%;
 }
 
 /* Teksten onder knoppen */
@@ -242,25 +242,25 @@ footer {
 
 .discover-desc {
     top: 50%;
-    left: 25%;
+    left: 10%;
     transform: translate(-50%, -50%);
 }
 
 .define-desc {
     top: 50%;
-    right: 25%;
+    left: 27%;
     transform: translate(50%, -50%);
 }
 
 .develop-desc {
-    bottom: 30%;
-    left: 25%;
+    bottom: 49%;
+    left: 27%;
     transform: translate(-50%, 50%);
 }
 
 .deliver-desc {
-    bottom: 30%;
-    right: 25%;
+    bottom: 49%;
+    right: 7%;
     transform: translate(50%, 50%);
 }
 @media (max-width: 768px) {
