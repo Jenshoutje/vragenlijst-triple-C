@@ -167,9 +167,11 @@ footer {
 .dubbel-diamant-afbeelding {
     display: block;
     margin: 0 auto;
-    max-width: 90%; /* Past zich aan het scherm aan */
+    max-width: 100%; /* Vul de volledige breedte van de container */
     height: auto;
     position: relative; /* Voor positionering knoppen */
+    padding: 10px; /* Voeg wat ruimte rondom toe, optioneel */
+    box-sizing: border-box; /* Zorg dat padding bij de breedte wordt gerekend */
 }
 
 /* Knoppen op de afbeelding */
