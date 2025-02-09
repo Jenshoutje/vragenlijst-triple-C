@@ -114,19 +114,20 @@ nav ul li a:hover {
 
 /* Onderzoekstools pagina */
 /* Algemene stijlen */
+/* Algemene opmaak */
 body {
     overflow-x: hidden;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse achtergrond */
 }
 
 /* Tools-pagina */
 .tools-page {
     text-align: center;
     padding: 50px 20px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse achtergrond */
+    position: relative;
 }
 
 /* Header in een witte box */
@@ -136,8 +137,10 @@ body {
     padding: 20px 30px;
     background: white; /* Witte achtergrond */
     border-radius: 10px; /* Afgeronde hoeken */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Grotere schaduw voor zwevend effect */
     text-align: center;
+    z-index: 2;
+    position: relative; /* Zorg dat het over de achtergrond hangt */
 }
 
 /* Titel van de Tools-pagina */
@@ -161,7 +164,8 @@ body {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: -20px; /* Overlapping met de header voorkomen */
+    padding-top: 20px;
 }
 
 /* Tool-kaarten */
@@ -182,13 +186,15 @@ body {
 
 /* Tool afbeelding */
 .tool-card img {
-    max-width: 100px;
-    max-height: 100px;
-    height: auto;
-    margin-bottom: 15px;
-    display: block;
+    max-width: 100px; /* Maximale breedte van de afbeelding */
+    max-height: 100px; /* Maximale hoogte van de afbeelding */
+    height: auto; /* Zorg ervoor dat de hoogte proportioneel blijft */
+    margin-bottom: 15px; /* Ruimte onder de afbeelding */
+    display: block; /* Zorg dat de afbeelding gecentreerd wordt */
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; /* Horizontaal centreren */
+    filter: brightness(0) invert(1); /* Verwijdert witte achtergrond en maakt het icoon wit op paars */
+    mix-blend-mode: multiply; /* Laat het icoon zich mengen met de achtergrondkleur */
 }
 
 /* Titel van de tool */
@@ -244,7 +250,6 @@ body {
         font-size: 1rem;
     }
 }
-
 /* Algemene paginastijl decision-matrix */
 .matrix-page {
     text-align: center;
