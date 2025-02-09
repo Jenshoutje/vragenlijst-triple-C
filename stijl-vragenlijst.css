@@ -192,9 +192,7 @@ body {
     margin-bottom: 15px; /* Ruimte onder de afbeelding */
     display: block; /* Zorg dat de afbeelding gecentreerd wordt */
     margin-left: auto;
-    margin-right: auto; /* Horizontaal centreren */
-    filter: brightness(0) invert(1); /* Verwijdert witte achtergrond en maakt het icoon wit op paars */
-    mix-blend-mode: multiply; /* Laat het icoon zich mengen met de achtergrondkleur */
+    margin-right: auto; /* Horizontaal centreren *//*    filter: brightness(0) invert(1);    mix-blend-mode: multiply;  /* Verwijdert witte achtergrond en maakt het icoon wit op paars */
 }
 
 /* Titel van de tool */
