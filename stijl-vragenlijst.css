@@ -65,8 +65,8 @@ p {
 
 /* Footer */
 footer {
-    background-color: #6A35C1; /* Paarse kleur zoals in je navigatie */
-    color: white; /* Witte tekst */
+    background-color: white; /* Paarse kleur zoals in je navigatie */
+    color: black; /* Witte tekst */
     text-align: center;
     padding: 10px;
     font-size: 0.9rem;
