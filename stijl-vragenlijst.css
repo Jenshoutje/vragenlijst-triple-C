@@ -163,7 +163,7 @@ body {
 
 /* Stijl voor elke tool */
 .tool-card {
-    background: linear-gradient(135deg, #FFFFFF, #FFFFFF);;
+    background: linear-gradient(135deg, #381B85, #A873F7);;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -238,7 +238,7 @@ body {
     max-width: 900px;
     margin: auto;
     padding: 30px;
-    background: white;
+    background: linear-gradient(135deg, #381B85, #A873F7); 
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -279,7 +279,7 @@ body {
     display: block;
     width: 80px; /* Brede lijn */
     height: 3px;
-    background: #6A35C1; /* Paarse kleur voor consistentie */
+    background: #FFFFFF; /* Paarse kleur voor consistentie */
     margin: 15px auto 0; /* Geplaatst onder de tekst */
     border-radius: 2px; /* Lichte afronding */
 }
