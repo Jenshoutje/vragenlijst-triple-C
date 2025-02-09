@@ -199,9 +199,9 @@ footer {
 
 /* Dubbel Diamant-model */
 .dubbel-diamant {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Twee gelijke kolommen */
-    gap: 50px; /* Ruimte tussen de diamanten */
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
     margin: 50px auto;
     max-width: 900px;
     text-align: center;
@@ -212,37 +212,71 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     position: relative;
-    gap: 30px;
 }
 
 .diamant::before {
     content: "";
     position: absolute;
-    top: 50%; /* Centreer de lijn verticaal */
-    left: 0; /* Start aan de linkerkant */
-    right: 0; /* Eindig aan de rechterkant */
-    height: 4px; /* Dikte van de lijn */
-    background: white; /* Paarse lijnkleur */
-    z-index: -1; /* Zorg dat de lijn achter de knoppen staat */
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: #6A35C1; /* Paarse verbindingslijn */
+    z-index: -1;
 }
 
-/* Responsieve aanpassingen */
+/* Knoppen (Fases) */
+.fase {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #381B85, #A873F7);
+    padding: 15px 20px;
+    border-radius: 50%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fase:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #5028A1, #6A35C1); /* Hover-kleur */
+}
+
+/* Contextuele informatie */
+.context {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.boven {
+    margin-bottom: 10px;
+}
+
+.onder {
+    margin-top: 10px;
+}
+
+/* Responsiviteit */
 @media (max-width: 768px) {
     .dubbel-diamant {
-        grid-template-columns: 1fr; /* Eén kolom op mobiel */
         gap: 30px;
     }
 
     .diamant {
-        flex-direction: column; /* Plaats knoppen onder elkaar */
+        flex-direction: column;
         gap: 20px;
-        position: relative;
     }
 
     .diamant::before {
-        display: none; /* Verberg de lijnen op mobiel */
+        display: none; /* Verwijder lijn op mobiel */
+    }
+
+    .fase {
+        font-size: 1rem;
+        padding: 10px 15px;
     }
 }
 
