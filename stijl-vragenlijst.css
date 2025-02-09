@@ -236,15 +236,25 @@ footer {
 }
 
 /* Verbindingslijn tussen fases */
+/* Verbindingslijn tussen fases voor een diamantvorm */
 .diamant::before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 10%;
-    right: 10%;
-    height: 5px;
-    background: #6A35C1;
-    z-index: -1;
+    top: 50%; /* Verticaal gecentreerd */
+    left: 10%; /* Start bij 10% van de breedte */
+    right: 10%; /* Eindigt bij 10% van de breedte */
+    height: 4px;
+    background: #6A35C1; /* Paarse verbindingslijn */
+    z-index: -1; /* Achter de fases */
+}
+
+/* Voeg een overlap tussen de diamanten toe */
+.dubbel-diamant .diamant:first-child {
+    margin-bottom: -30px; /* Laat de diamanten elkaar overlappen */
+}
+
+.dubbel-diamant .diamant:last-child {
+    margin-top: -30px; /* Laat de diamanten elkaar overlappen */
 }
 
 /* Responsieve aanpassingen */
