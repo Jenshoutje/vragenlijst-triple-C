@@ -6,16 +6,18 @@ body {
     background-color: #f8f8f8; /* Neutrale achtergrondkleur */
 }
 
-/* Navigatiebalk */
+/* NAVIGATIEBALK */
+/* ============================= */
+
 nav {
-    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Gradient */
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse gradient achtergrond */
     padding: 10px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 60px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
-    position: sticky;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Vast aan de bovenkant bij scrollen */
     top: 0;
     z-index: 1000;
     width: 100%;
@@ -26,22 +28,21 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
+    color: white;
+    font-size: 1rem;
     font-weight: bold;
-    font-size: 18px;
-    padding: 10px;
+    padding: 10px 15px;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
     color: #FFA500; /* Oranje accent bij hover */
 }
-
 /* Algemene typografie */
 h1, h2, h3, h4, h5, h6 {
     color: #6A35C1; /* Paarse kleur */
