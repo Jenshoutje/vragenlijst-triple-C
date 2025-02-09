@@ -149,13 +149,14 @@ footer {
 
 /* Onderzoekspagina */
 /* Algemene stijl voor de onderzoekspagina */
+/* Onderzoekspagina */
 .onderzoek-page {
     text-align: center;
     padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Achtergrond blijft gelijk */
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
 }
 
-/* Grid layout blijft als fallback */
+/* Grid layout voor de fases */
 .onderzoek-grid {
     display: flex;
     flex-wrap: wrap;
@@ -164,7 +165,7 @@ footer {
     margin-top: 30px;
 }
 
-/* Onderzoek-items blijven intact */
+/* Onderzoek-item container */
 .onderzoek-item {
     display: flex;
     flex-direction: column;
@@ -183,160 +184,21 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Stijl voor de afbeeldingen */
-.onderzoek-item img {
-    max-width: 100px; /* Stel een vaste maximale breedte in */
-    height: auto;
-    margin-bottom: 10px;
-    display: block;
-}
-
-/* Hover-effect voor de onderzoek-items */
+/* Hover-effect op de knoppen */
 .onderzoek-item:hover {
     background-color: #5028A1;
     transform: scale(1.05);
 }
 
-/* Dubbel Diamant-model */
-.dubbel-diamant {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    margin: 50px auto;
-    max-width: 900px;
-    text-align: center;
-}
-
-/* Diamant-structuur */
-.diamant {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-
-.diamant::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    right: 5%;
-    height: 2px;
-    background: #6A35C1; /* Paarse verbindingslijn */
-    z-index: -1;
-}
-
-/* Knoppen (Fases) */
-.fase {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background: linear-gradient(135deg, #381B85, #A873F7);
-    padding: 15px 20px;
-    border-radius: 50%;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.fase:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #5028A1, #6A35C1); /* Hover-kleur */
-}
-
-/* Contextuele informatie */
-.context {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.boven {
-    margin-bottom: 10px;
-}
-
-.onder {
-    margin-top: 10px;
-}
-
-/* Responsiviteit */
+/* Responsieve weergave */
 @media (max-width: 768px) {
-    .dubbel-diamant {
-        gap: 30px;
-    }
-
-    .diamant {
+    .onderzoek-grid {
         flex-direction: column;
-        gap: 20px;
     }
 
-    .diamant::before {
-        display: none; /* Verwijder lijn op mobiel */
-    }
-
-    .fase {
-        font-size: 1rem;
-        padding: 10px 15px;
-    }
-}
-
-/* Algemene responsieve aanpassingen */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li a {
-        font-size: 16px;
-    }
-
-    .hero {
-        height: 300px; /* Verminder de hoogte voor kleinere schermen */
-    }
-
-    .hero-overlay h1 {
-        font-size: 2rem; /* Kleiner lettertype voor titel */
-    }
-
-    .hero-overlay p {
-        font-size: 1rem; /* Kleiner lettertype voor ondertekst */
-    }
-
-    .cta-button {
-        padding: 10px 20px; /* Compactere knop */
-        font-size: 1rem; /* Kleinere tekst in de knop */
-    }
-}
-@media (max-width: 768px) {
-    .dubbel-diamant {
-        display: none; /* Verberg het complexe model op mobiel */
-    }
-
-    .mobile-diamant {
-        display: flex; /* Toon de mobiele versie */
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-    .mobile-diamant .fase {
-        text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: bold;
-        background: linear-gradient(135deg, #381B85, #A873F7);
-        color: white;
+    .onderzoek-item {
+        width: 100%;
         padding: 15px 20px;
-        border-radius: 10px;
-        text-align: center;
-        width: 80%; /* Zorg dat knoppen niet te breed zijn */
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .mobile-diamant .fase:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 }
 
