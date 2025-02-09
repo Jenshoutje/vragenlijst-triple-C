@@ -249,42 +249,43 @@ body {
 
 /* Koptekst en beschrijving van de pagina */
 /* Header stijl voor Decision Matrix */
+/* Algemene stijl header */
 .matrix-header {
-    background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
-    color: #4A4A4A; /* Donkergrijze tekst voor contrast */
+    background: linear-gradient(135deg, #FFFFFF, #FFFFFF); /* Witte achtergrond */
+    color: #4A4A4A; /* Donkergrijze tekst */
     text-align: center;
     padding: 30px;
-    border-radius: 10px; /* Subtiel afgeronde hoeken */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte */
+    border-radius: 10px; /* Afgeronde hoeken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
     margin-bottom: 30px;
-    font-family: 'Arial', sans-serif; /* Modern en professioneel lettertype */
+    font-family: 'Arial', sans-serif;
 }
 
 /* Stijl voor de titel */
 .matrix-header h1 {
-    font-size: 2.5rem; /* Grote, opvallende titel */
+    font-size: 2.5rem;
     margin: 0;
     font-weight: bold;
-    color: #6A35C1; /* Paarse kleur passend bij de stijl van de site */
+    color: #6A35C1; /* Paarse kleur */
 }
 
 /* Stijl voor de ondertekst */
 .matrix-header p {
-    font-size: 1.2rem; /* Duidelijke ondertekst */
+    font-size: 1.2rem;
     margin-top: 10px;
-    line-height: 1.6; /* Goede spatiëring voor leesbaarheid */
-    color: #555555; /* Zacht grijs */
+    line-height: 1.6; /* Spatiëring */
+    color: #555555;
 }
 
-/* Subtiele decoratieve lijn */
+/* Decoratieve lijn onder de header */
 .matrix-header::after {
-    content: ""; /* Decoratief element */
+    content: "";
     display: block;
-    width: 80px; /* Brede lijn */
+    width: 80px;
     height: 3px;
-    background: #FFFFFF; /* Paarse kleur voor consistentie */
-    margin: 15px auto 0; /* Geplaatst onder de tekst */
-    border-radius: 2px; /* Lichte afronding */
+    background: #6A35C1; /* Paarse lijn */
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
 /* Tabelstijl */
@@ -292,6 +293,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background: #FFFFFF; /* Witte achtergrond voor de matrix */
 }
 
 /* Stijl voor tabelkoppen */
@@ -311,9 +313,9 @@ body {
     text-align: center;
 }
 
-/* Afwisselende rijkleur voor leesbaarheid */
+/* Afwisselende rijkleur */
 .matrix-container tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Lichtgrijs */
 }
 
 /* Dropdown-stijl */
@@ -324,9 +326,7 @@ body {
     border: 1px solid #ccc;
     font-size: 1rem;
     cursor: pointer;
-    text-align: center;
     background: #fff;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Hover-effect voor dropdown */
@@ -383,10 +383,8 @@ footer {
 }
 
 /* Responsieve weergave */
-/* Responsieve weergave voor Decision Matrix */
-/* Compacte header voor mobiel */
 @media (max-width: 768px) {
-    /* Header optimaliseren */
+    /* Compacte header */
     .matrix-header {
         padding: 15px;
         font-size: 1rem;
@@ -394,7 +392,7 @@ footer {
         top: 0;
         z-index: 1000;
         background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optionele schaduw voor betere scheiding */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .matrix-header h1 {
@@ -407,7 +405,7 @@ footer {
         line-height: 1.2;
     }
 
-    /* Matrix container en inhoud aanpassen */
+    /* Matrix container en inhoud */
     .matrix-container {
         padding: 15px;
     }
