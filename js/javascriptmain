@@ -1,9 +1,0 @@
-// Navigatiebalk toggle
-document.getElementById("menuToggle").addEventListener("click", function () {
-    const menu = document.getElementById("menu");
-    if (menu.style.display === "flex") {
-        menu.style.display = "none"; // Sluit het menu
-    } else {
-        menu.style.display = "flex"; // Open het menu
-    }
-});
