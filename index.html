@@ -5,18 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Houtje Inc. - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stijl-vragenlijst.css"> 
-<!-- Externe CSS -->
+    <link rel="stylesheet" href="stijl-vragenlijst.css"> <!-- Verwijzing naar je CSS -->
     <style>
-        /* Algemene stijlen */
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #F3EFFF;
-        }
-
-        /* Navigatie */
+        /* Navigatiebalk */
         header nav {
             background-color: #6A35C1;
             color: white;
@@ -92,76 +83,43 @@
 </head>
 <body>
     <!-- Navigatie -->
-   <header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="onderzoek.html">onderzoek</a></li>
-            <li><a href="product.html">Producten</a></li>
-            <li><a href="tools.html">Onderzoeksmethode</a></li>
-        </ul>
-    </nav>
-</header>
- 
-    <!-- Hero sectie met slideshow -->
-    <header class="hero">
-        <div class="slideshow-container">
-            <div class="slide fade">
-                <img src="images/slide1.png" alt="Slide 1">
-            </div>
-            <div class="slide fade">
-                <img src="images/slide2.png" alt="Slide 2">
-            </div>
-            <div class="slide fade">
-                <img src="images/slide3.png" alt="Slide 3">
-            </div>
-        </div>
-        <div class="hero-overlay">
-            <h1>Welkom bij Houtje Inc.</h1>
-            <p>Samen doen wat wél kan.</p>
-            <a href="leesmeer.html" class="cta-button">Lees meer</a>
-        </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="onderzoek.html">Onderzoek</a></li>
+                <li><a href="tools.html">Onderzoeksmethode</a></li>
+                <li><a href="product.html">Product</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Parallax sectie -->
-    <section class="parallax">
-        <h2>Triple C Evaluatie</h2>
-        <p>Deze website biedt inzicht in de implementatie van Triple C en toont verschillende producten en informatie.</p>
+    <!-- Hero-sectie -->
+    <section class="hero">
+        <h1>Welkom bij Houtje Inc.</h1>
+        <p>Samen doen wat wél kan.</p>
+        <a href="leesmeer.html" class="cta-button">Lees meer</a>
     </section>
 
-    <!-- Alliade-vogel als knop -->
-    <section class="vogel-container">
-        <a href="product.html">
-            <img src="Alliadevogel.png" alt="Alliade Vogel Logo">
-        </a>
-        <p>Volg de vogel en bekijk de reis.</p>
-    </section>
+    <!-- Inhoud -->
+    <main>
+        <div class="container">
+            <h2>Triple C Evaluatie</h2>
+            <p>Deze website biedt inzicht in de implementatie van Triple C en toont verschillende producten en informatie.</p>
 
-  <!-- Quotes Sectie -->
-<section class="quotes-container">
-    <div class="quote-bubble">
-        <p>"Samen doen wat wél kan."</p>
-        <span>- Alliade</span>
-    </div>
-    
-    <div class="quote-bubble">
-        <p>"De enige manier om vooruit te komen, is om iets nieuws te proberen."</p>
-        <span>- Albert Einstein</span>
-    </div>
-
-    <div class="quote-bubble">
-        <p>"Elke grote prestatie begint met een klein stapje."</p>
-        <span>- Confucius</span>
-    </div>
-</section>
+            <!-- Alliade-vogel als knop -->
+            <div class="vogel-container">
+                <a href="product.html">
+                    <img src="Alliadevogel.png" alt="Alliade Vogel Logo">
+                </a>
+                <p>Volg de vogel en bekijk de reis.</p>
+            </div>
+        </div>
+    </main>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
     </footer>
-
-    <!-- JavaScript -->
-    <script type="module" src="./js/firebase.js"></script> <!-- Firebase-script -->
-    <script src="./js/main.js"></script>
 </body>
 </html>
