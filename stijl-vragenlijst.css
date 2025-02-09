@@ -158,12 +158,38 @@ footer {
     text-align: center;
 }
 
-/* Afbeelding stijl */
-.double-diamond-image {
-    width: 100%;
-    height: auto;
+/* Afbeelding styling */
+.dubbel-diamant-afbeelding {
     display: block;
     margin: 0 auto;
+    max-width: 90%; /* Past zich aan het scherm aan */
+    height: auto;
+    position: relative; /* Voor positionering knoppen */
+}
+
+/* Knoppen op de afbeelding */
+.knop-container {
+    position: absolute;
+    top: 50%; /* Pas de positie aan naar wens */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centreert de knoppen */
+    display: flex;
+    gap: 20px;
+}
+
+.knop-container .fase-knop {
+    background: #6A35C1;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.knop-container .fase-knop:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Knoppen stijl */
