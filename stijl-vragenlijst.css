@@ -130,21 +130,27 @@ body {
 }
 
 /* Introductiesectie */
-.intro {
-    max-width: 800px;
-    margin: auto;
-    margin-bottom: 40px;
-    color: white;
+.matrix-header {
+    max-width: 900px; /* Beperk de breedte */
+    margin: 30px auto; /* Centreer de box */
+    padding: 20px 30px;
+    background: white; /* Witte achtergrond */
+    border-radius: 10px; /* Maak de hoeken afgerond */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+    text-align: center;
 }
 
-.intro h1 {
-    font-size: 2.5rem;
+.matrix-header h1 {
+    font-size: 2.5rem; /* Grotere, opvallende titel */
     margin-bottom: 10px;
+    color: #6A35C1; /* Paarse tekstkleur */
+    font-weight: bold;
 }
 
-.intro p {
-    font-size: 1.2rem;
-    line-height: 1.5;
+.matrix-header p {
+    font-size: 1.2rem; /* Formaat van de ondertekst */
+    line-height: 1.6;
+    color: #555; /* Donkergrijze tekstkleur */
 }
 
 /* Grid layout voor tools */
@@ -157,7 +163,7 @@ body {
 
 /* Stijl voor elke tool */
 .tool-card {
-    background: linear-gradient(135deg, #BF7BFF, #340B9C);;
+    background: linear-gradient(135deg, #FFFFFF, #FFFFFF);;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -377,26 +383,33 @@ footer {
 /* Responsieve weergave voor Decision Matrix */
 /* Compacte header voor mobiel */
 @media (max-width: 768px) {
+    /* Header optimaliseren */
     .matrix-header {
-        padding: 15px; /* Minder padding */
-        font-size: 1rem; /* Kleinere tekstgrootte */
+        padding: 15px;
+        font-size: 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optionele schaduw voor betere scheiding */
     }
 
     .matrix-header h1 {
-        font-size: 1.5rem; /* Compactere titel */
+        font-size: 1.5rem;
         margin-bottom: 10px;
     }
 
     .matrix-header p {
-        font-size: 0.9rem; /* Kleinere ondertekst */
-        line-height: 1.2; /* Minder ruimte tussen regels */
+        font-size: 0.9rem;
+        line-height: 1.2;
     }
-}
-@media (max-width: 768px) {
+
+    /* Matrix container en inhoud aanpassen */
     .matrix-container {
         padding: 15px;
     }
 
+    /* Gebruik cards voor gestapelde weergave */
     .matrix-card {
         background: white;
         margin-bottom: 20px;
@@ -425,13 +438,17 @@ footer {
         border: 1px solid #ccc;
         font-size: 1rem;
     }
-}
-@media (max-width: 768px) {
-    .matrix-header {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: linear-gradient(135deg, #C45928, #F8A85B);
+
+    /* Knoppen onderaan aanpassen */
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-container a,
+    .button-container button {
+        width: 100%;
+        text-align: center;
     }
 }
 
