@@ -236,17 +236,51 @@ footer {
     }
 
     .diamant {
-        flex-direction: column;
+        flex-direction: column; /* Plaats fases onder elkaar */
         align-items: center;
+        gap: 20px;
+    }
+
+    .fase {
+        font-size: 1rem;
+        padding: 15px; /* Zorg dat knoppen klikbaar blijven */
+    }
+
+    .dubbel-diamant {
+        width: 90%; /* Beperk de breedte */
     }
 
     .diamant::before {
         display: none; /* Verwijder lijn op mobiel */
     }
+}
 
-    .fase {
-        font-size: 1rem;
-        padding: 10px 15px;
+/* Algemene responsieve aanpassingen */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    .hero {
+        height: 300px; /* Verminder de hoogte voor kleinere schermen */
+    }
+
+    .hero-overlay h1 {
+        font-size: 2rem; /* Kleiner lettertype voor titel */
+    }
+
+    .hero-overlay p {
+        font-size: 1rem; /* Kleiner lettertype voor ondertekst */
+    }
+
+    .cta-button {
+        padding: 10px 20px; /* Compactere knop */
+        font-size: 1rem; /* Kleinere tekst in de knop */
     }
 }
 
