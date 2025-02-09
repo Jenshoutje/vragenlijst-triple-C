@@ -122,20 +122,20 @@ body {
     background-color: #f8f8f8;
 }
 
-/* Onderzoekstools pagina */
+/* Tools-pagina */
 .tools-page {
     text-align: center;
     padding: 50px 20px;
     background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse achtergrond */
 }
 
-/* Header-stijl voor de Tools-pagina */
+/* Header in een witte box */
 .tools-header {
     max-width: 900px; /* Beperk de breedte */
-    margin: 0 auto 40px auto; /* Centreer de box en voeg ruimte onderaan toe */
+    margin: 0 auto 40px auto; /* Centreer de box met ruimte onderaan */
     padding: 20px 30px;
     background: white; /* Witte achtergrond */
-    border-radius: 10px; /* Maak de hoeken afgerond */
+    border-radius: 10px; /* Afgeronde hoeken */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
     text-align: center;
 }
@@ -148,23 +148,23 @@ body {
     font-weight: bold;
 }
 
-/* Ondertekst van de Tools-pagina */
+/* Ondertekst */
 .tools-header p {
     font-size: 1.2rem; /* Formaat van de ondertekst */
     line-height: 1.6;
     color: #555; /* Donkergrijze tekstkleur */
 }
 
-/* Grid layout voor tools */
+/* Flexibele grid-layout */
 .tools-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    margin-top: 20px; /* Ruimte boven de grid */
+    margin-top: 20px;
 }
 
-/* Stijl voor elke tool */
+/* Tool-kaarten */
 .tool-card {
     background: linear-gradient(135deg, #381B85, #A873F7); /* Paarse gradient */
     padding: 20px;
@@ -180,7 +180,7 @@ body {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Iconen binnen de tool-kaarten */
+/* Tool afbeelding */
 .tool-card img {
     max-width: 100px;
     max-height: 100px;
@@ -191,21 +191,21 @@ body {
     margin-right: auto;
 }
 
-/* Tool titel */
+/* Titel van de tool */
 .tool-card h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
     color: white;
 }
 
-/* Tool beschrijving */
+/* Beschrijving van de tool */
 .tool-card p {
     font-size: 1rem;
     color: white;
     margin-bottom: 15px;
 }
 
-/* Tool knoppen */
+/* Knoppen */
 .tool-button {
     display: inline-block;
     padding: 10px 20px;
