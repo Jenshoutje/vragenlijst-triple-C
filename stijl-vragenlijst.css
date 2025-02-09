@@ -274,6 +274,37 @@ footer {
         font-size: 1rem; /* Kleinere tekst in de knop */
     }
 }
+@media (max-width: 768px) {
+    .dubbel-diamant {
+        display: none; /* Verberg het complexe model op mobiel */
+    }
+
+    .mobile-diamant {
+        display: flex;
+        flex-direction: column; /* Stapel de fases onder elkaar */
+        align-items: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .mobile-diamant .fase {
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, #381B85, #A873F7);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 80%; /* Zorg dat knoppen niet te breed zijn */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mobile-diamant .fase:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+}
 
 /* Algemene body-stijl */
 body {
