@@ -1,96 +1,104 @@
-/* ============================= */
-/* HOME PAGINA */
-/* ============================= */
-
-/* Algemene instellingen voor de hero-sectie */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    overflow: hidden;
-}
-
 /* Slideshow container */
 .slideshow-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+    position: relative; /* Maak het relatieve positie voor overlay */
+    width: 100%; /* Zorg dat de slideshow de volledige breedte gebruikt */
+    height: 100%; /* Zorg dat de slideshow volledig de hero-sectie vult */
+    z-index: 1; /* Achtergrond voor de overlay */
+    overflow: hidden; /* Voorkom dat inhoud buiten de container wordt weergegeven */
 }
 
 /* Stijl voor individuele slides */
 .slide {
-    display: none;
+    display: none; /* Verberg alle slides standaard */
     width: 100%;
     height: 100%;
+    position: absolute; /* Zorg ervoor dat slides elkaar overlappen */
+    top: 0;
+    left: 0;
 }
 
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Zorg dat afbeeldingen goed worden geschaald */
 }
 
 /* Overlay tekst boven de slideshow */
 .hero-overlay {
-    position: relative;
-    z-index: 2;
+    position: absolute; /* Plaats de overlay boven de slideshow */
+    top: 50%; /* Plaats in het midden van de container */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centreer de overlay */
+    z-index: 2; /* Zorg dat de overlay boven de slides staat */
     background: rgba(0, 0, 0, 0.5); /* Donkere overlay */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+    padding: 20px 30px; /* Ruimte binnen de overlay */
+    border-radius: 10px; /* Afronden van de hoeken */
+    text-align: center; /* Tekst centreren */
+    color: white;
+    max-width: 80%; /* Beperk de breedte van de overlay */
 }
 
+/* Titel in de overlay */
 .hero-overlay h1 {
-    font-size: 3rem;
+    font-size: 3rem; /* Grote titel */
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
+/* Ondertekst in de overlay */
 .hero-overlay p {
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Grotere ondertekst voor visueel effect */
     margin-bottom: 20px;
 }
 
 /* Call-to-action knop */
 .cta-button {
     display: inline-block;
-    background: #FFA500;
+    background: #FFA500; /* Oranje knop */
     color: white;
     padding: 12px 25px;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .cta-button:hover {
-    background: #cc7400;
+    background: #cc7400; /* Donkerdere oranje tint */
+    transform: scale(1.05); /* Vergrotingseffect */
+}
+
+/* Fade effect voor slides */
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade {
+    animation: fadeEffect 1.5s ease-in-out;
 }
 
 /* Responsieve weergave voor mobiel */
 @media (max-width: 768px) {
     .hero {
-        height: 300px;
+        height: 300px; /* Verminder de hoogte voor kleinere schermen */
     }
 
     .hero-overlay h1 {
-        font-size: 2rem;
+        font-size: 2rem; /* Kleiner lettertype voor titel */
     }
 
     .hero-overlay p {
-        font-size: 1rem;
+        font-size: 1rem; /* Kleiner lettertype voor ondertekst */
     }
 
     .cta-button {
-        padding: 10px 20px;
-        font-size: 1rem;
+        padding: 10px 20px; /* Compactere knop */
+        font-size: 1rem; /* Kleinere tekst in de knop */
     }
 }
 /* ============================= */
