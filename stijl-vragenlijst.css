@@ -9,7 +9,7 @@ body {
 /* Navigatiebalk */
 nav {
     background-color: #6A35C1; /* Effen paarse kleur voor navigatiebalk */
-    padding: 35px 50px;
+    padding: 50px 50px;
     display: flex;
     justify-content: center;
     align-items: center;
