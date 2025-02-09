@@ -186,13 +186,13 @@ body {
 
 /* Tool afbeelding */
 .tool-card img {
-    max-width: 100px; /* Maximale breedte van de afbeelding */
-    max-height: 100px; /* Maximale hoogte van de afbeelding */
-    height: auto; /* Zorg ervoor dat de hoogte proportioneel blijft */
-    margin-bottom: 15px; /* Ruimte onder de afbeelding */
-    display: block; /* Zorg dat de afbeelding gecentreerd wordt */
+    max-width: 100px;
+    max-height: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    display: block;
     margin-left: auto;
-    margin-right: auto; /* Horizontaal centreren *//*    filter: brightness(0) invert(1);    mix-blend-mode: multiply;  /* Verwijdert witte achtergrond en maakt het icoon wit op paars */
+    margin-right: auto;
 }
 
 /* Titel van de tool */
