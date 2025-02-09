@@ -200,11 +200,11 @@ footer {
 /* Dubbel Diamant-model */
 .dubbel-diamant {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Twee kolommen */
     gap: 50px;
     margin: 50px auto;
     max-width: 900px;
-    position: relative;
+    text-align: center;
 }
 
 /* Diamant-structuur */
@@ -225,7 +225,7 @@ footer {
     height: 5px;
     background: #6A35C1; /* Paarse lijn */
     z-index: -1;
-    transform: rotate(45deg);
+    transform: rotate(45deg); /* Voor visuele samenhang */
 }
 
 /* Knoppen (Fases) */
@@ -236,7 +236,7 @@ footer {
     font-weight: bold;
     background: linear-gradient(135deg, #381B85, #A873F7);
     padding: 15px 20px;
-    border-radius: 10px;
+    border-radius: 50%; /* Maak knoppen rond */
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -261,9 +261,7 @@ footer {
     text-align: center;
 }
 
-/* Onderzoekstools pagina */
-/* Algemene stijlen */
-/* Algemene opmaak */
+/* Algemene body-stijl */
 body {
     overflow-x: hidden;
     font-family: 'Nunito', sans-serif;
@@ -271,7 +269,6 @@ body {
     padding: 0;
     background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse achtergrond */
 }
-
 /* Tools-pagina */
 .tools-page {
     text-align: center;
