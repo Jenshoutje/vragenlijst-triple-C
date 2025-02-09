@@ -197,35 +197,46 @@ footer {
     transform: scale(1.05);
 }
 
-/* Nieuwe stijl voor het Dubbel Diamant-model */
+/* Dubbel Diamant-model */
 .dubbel-diamant {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 50px;
-    margin-top: 30px;
+    margin: 50px auto;
+    max-width: 900px;
+    position: relative;
 }
 
-/* Layout voor elke diamant */
+/* Diamant-structuur */
 .diamant {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     position: relative;
-    width: 80%;
-    max-width: 800px;
-    margin: auto;
+    padding: 20px;
 }
 
-/* Fase binnen de diamant */
+.diamant::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 5px;
+    background: #6A35C1; /* Paarse lijn */
+    z-index: -1;
+    transform: rotate(45deg);
+}
+
+/* Knoppen (Fases) */
 .fase {
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
-    background: linear-gradient(135deg, #381B85, #A873F7); /* Paarse gradient */
+    background: linear-gradient(135deg, #381B85, #A873F7);
     padding: 15px 20px;
-    border-radius: 50%; /* Maak de fases rond */
+    border-radius: 10px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -233,49 +244,21 @@ footer {
 .fase:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #5028A1, #6A35C1); /* Hover-kleur */
 }
 
-/* Verbindingslijn tussen fases */
-/* Verbindingslijn tussen fases voor een diamantvorm */
-.diamant::before {
-    content: "";
-    position: absolute;
-    top: 50%; /* Verticaal gecentreerd */
-    left: 10%; /* Start bij 10% van de breedte */
-    right: 10%; /* Eindigt bij 10% van de breedte */
-    height: 4px;
-    background: #6A35C1; /* Paarse verbindingslijn */
-    z-index: -1; /* Achter de fases */
+/* Contextuele informatie */
+.context-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #555;
 }
 
-/* Voeg een overlap tussen de diamanten toe */
-.dubbel-diamant .diamant:first-child {
-    margin-bottom: -30px; /* Laat de diamanten elkaar overlappen */
-}
-
-.dubbel-diamant .diamant:last-child {
-    margin-top: -30px; /* Laat de diamanten elkaar overlappen */
-}
-
-/* Responsieve aanpassingen */
-@media (max-width: 768px) {
-    .dubbel-diamant {
-        gap: 30px;
-    }
-
-    .diamant {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .fase {
-        font-size: 1rem;
-        padding: 10px 15px;
-    }
-
-    .diamant::before {
-        display: none; /* Verwijder lijn op kleinere schermen */
-    }
+.context-info p {
+    max-width: 150px;
+    text-align: center;
 }
 
 /* Onderzoekstools pagina */
