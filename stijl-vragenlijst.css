@@ -199,66 +199,55 @@ footer {
 
 /* Dubbel Diamant-model */
 .dubbel-diamant {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Twee kolommen */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 50px;
     margin: 50px auto;
     max-width: 900px;
-    text-align: center;
 }
 
 /* Diamant-structuur */
 .diamant {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
     position: relative;
-    padding: 20px;
+    gap: 30px;
 }
 
 .diamant::before {
     content: "";
     position: absolute;
     top: 50%;
-    left: 10%;
-    right: 10%;
-    height: 5px;
+    left: 0;
+    right: 0;
+    height: 3px;
     background: #6A35C1; /* Paarse lijn */
     z-index: -1;
-    transform: rotate(45deg); /* Voor visuele samenhang */
 }
 
-/* Knoppen (Fases) */
-.fase {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background: linear-gradient(135deg, #381B85, #A873F7);
-    padding: 15px 20px;
-    border-radius: 50%; /* Maak knoppen rond */
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+/* Responsieve aanpassingen */
+@media (max-width: 768px) {
+    .dubbel-diamant {
+        flex-direction: column;
+        gap: 20px;
+    }
 
-.fase:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #5028A1, #6A35C1); /* Hover-kleur */
-}
+    .diamant {
+        flex-direction: column;
+        align-items: center;
+    }
 
-/* Contextuele informatie */
-.context-info {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    font-size: 1rem;
-    color: #555;
-}
+    .diamant::before {
+        display: none; /* Verwijder lijn op mobiel */
+    }
 
-.context-info p {
-    max-width: 150px;
-    text-align: center;
+    .fase {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
 }
 
 /* Algemene body-stijl */
