@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="stijl-vragenlijst.css">
 </head>
 <body>
+    <!-- Navigatie -->
     <header>
         <nav>
             <ul>
@@ -18,18 +19,28 @@
         </nav>
     </header>
 
+    <!-- Hoofdcontent -->
     <main class="onderzoek-page">
         <h1>Onderzoek</h1>
-        <p>De fases van het ontwerpdossier gevisualiseerd.</p>
+        <p>De fases van het ontwerpdossier gevisualiseerd in het Dubbel Diamant-model.</p>
 
-        <div class="onderzoek-grid">
-            <a href="discover.html" class="onderzoek-item"> Discover-fase</a>
-            <a href="define.html" class="onderzoek-item"> Define-fase</a>
-            <a href="develop.html" class="onderzoek-item"> Develop-fase</a>
-            <a href="deliver.html" class="onderzoek-item"> Deliver-fase</a>
+        <!-- Dubbel Diamant Model -->
+        <div class="dubbel-diamant">
+            <!-- Eerste diamant -->
+            <div class="diamant">
+                <a href="discover.html" class="fase fase-discover">Discover</a>
+                <a href="define.html" class="fase fase-define">Define</a>
+            </div>
+            
+            <!-- Tweede diamant -->
+            <div class="diamant">
+                <a href="develop.html" class="fase fase-develop">Develop</a>
+                <a href="deliver.html" class="fase fase-deliver">Deliver</a>
+            </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
     </footer>
