@@ -280,8 +280,8 @@ footer {
     }
 
     .mobile-diamant {
-        display: flex;
-        flex-direction: column; /* Stapel de fases onder elkaar */
+        display: flex; /* Toon de mobiele versie */
+        flex-direction: column;
         align-items: center;
         gap: 15px;
         margin-top: 20px;
