@@ -1,13 +1,20 @@
 /* Algemene stijlen */
+/* ============================= */
+/* ALGEMENE STIJLEN */
+/* ============================= */
+
 body {
     overflow-x: hidden;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Nunito', sans-serif; /* Consistent lettertype */
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
 }
 
-/* Navigatiebalk - Altijd zichtbaar */
+/* ============================= */
+/* NAVIGATIEBALK */
+/* ============================= */
+
 nav {
     background: linear-gradient(135deg, #b05df5, #f3e5ff);
     padding: 10px 20px;
@@ -44,7 +51,154 @@ nav ul li a {
 }
 
 nav ul li a:hover {
+    color: #FFA500; /* Oranje accent bij hover */
+}
+
+/* ============================= */
+/* HOME PAGINA */
+/* ============================= */
+
+/* Hero sectie */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     color: white;
+    overflow: hidden;
+}
+
+/* Slideshow */
+.slideshow-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Parallax effect */
+.parallax {
+    background: url('images/parallax-bg.jpg') center/cover fixed;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* Alliade vogel */
+.vogel-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.vogel-container img {
+    width: 200px;
+    cursor: pointer;
+}
+
+/* CTA-knoppen */
+.cta-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #6A35C1;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #5028A1;
+}
+
+/* ============================= */
+/* PRODUCT PAGINA */
+/* ============================= */
+
+.product-page {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Product container */
+.product-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Product titel */
+.product-container h1 {
+    font-size: 2.5rem;
+    color: #6A35C1;
+    font-weight: bold;
+}
+
+/* Product beschrijving */
+.product-container p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* ============================= */
+/* RESPONSIVITEIT */
+/* ============================= */
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero {
+        height: 250px;
+    }
+
+    .hero-overlay h1 {
+        font-size: 2rem;
+    }
+
+    .hero-overlay p {
+        font-size: 1rem;
+    }
+
+    .parallax {
+        height: 200px;
+    }
+
+    .product-container {
+        padding: 15px;
+    }
 }
 
 /* Onderzoekspagina */
