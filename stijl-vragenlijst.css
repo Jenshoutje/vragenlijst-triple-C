@@ -621,4 +621,11 @@ footer {
     }
 }
 
+/* Algemene afbeelding restrictie */
+img {
+    max-width: 100%; /* Afbeelding vult maximaal de breedte van de container */
+    height: auto; /* Houd de verhoudingen van de afbeelding intact */
+    display: block; /* Voorkomt extra ruimte onder afbeeldingen */
+    margin: auto; /* Centreert de afbeelding horizontaal */
+}
   
