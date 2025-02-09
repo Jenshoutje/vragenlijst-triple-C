@@ -148,13 +148,14 @@ footer {
 }
 
 /* Onderzoekspagina */
+/* Algemene stijl voor de onderzoekspagina */
 .onderzoek-page {
     text-align: center;
     padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Achtergrond blijft gelijk */
 }
 
-/* Grid layout voor de fases */
+/* Grid layout blijft als fallback */
 .onderzoek-grid {
     display: flex;
     flex-wrap: wrap;
@@ -163,7 +164,7 @@ footer {
     margin-top: 30px;
 }
 
-/* Onderzoek-item container */
+/* Onderzoek-items blijven intact */
 .onderzoek-item {
     display: flex;
     flex-direction: column;
@@ -182,7 +183,7 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Stijl voor de afbeelding */
+/* Stijl voor de afbeeldingen */
 .onderzoek-item img {
     max-width: 100px; /* Stel een vaste maximale breedte in */
     height: auto;
@@ -190,25 +191,80 @@ footer {
     display: block;
 }
 
-/* Hover-effect op de knoppen */
+/* Hover-effect voor de onderzoek-items */
 .onderzoek-item:hover {
     background-color: #5028A1;
     transform: scale(1.05);
 }
 
-/* Responsieve weergave */
+/* Nieuwe stijl voor het Dubbel Diamant-model */
+.dubbel-diamant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+/* Layout voor elke diamant */
+.diamant {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Fase binnen de diamant */
+.fase {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #381B85, #A873F7); /* Paarse gradient */
+    padding: 15px 20px;
+    border-radius: 50%; /* Maak de fases rond */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fase:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Verbindingslijn tussen fases */
+.diamant::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 5px;
+    background: #6A35C1;
+    z-index: -1;
+}
+
+/* Responsieve aanpassingen */
 @media (max-width: 768px) {
-    .onderzoek-grid {
+    .dubbel-diamant {
+        gap: 30px;
+    }
+
+    .diamant {
         flex-direction: column;
+        gap: 20px;
     }
 
-    .onderzoek-item {
-        width: 100%;
-        padding: 15px 20px;
+    .fase {
+        font-size: 1rem;
+        padding: 10px 15px;
     }
 
-    .onderzoek-item img {
-        max-width: 75px; /* Verklein de pictogrammen op kleinere schermen */
+    .diamant::before {
+        display: none; /* Verwijder lijn op kleinere schermen */
     }
 }
 
