@@ -156,6 +156,27 @@ footer {
     padding: 50px;
     background-color: white; /* Witte achtergrond */
 }
+/* Bubbel voor titel en ondertekst */
+.header-bubble {
+    background: linear-gradient(135deg, #6A35C1, #A873F7); /* Paarse gradient */
+    color: white;
+    text-align: center;
+    padding: 20px 30px;
+    border-radius: 15px; /* Zorg voor afgeronde hoeken */
+    max-width: 800px; /* Limiteer de breedte */
+    margin: 0 auto 30px auto; /* Centreer en voeg marge toe */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtiele schaduw */
+}
+
+.header-bubble h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header-bubble p {
+    font-size: 1.2rem;
+    margin: 0;
+}
 .double-diamond-container {
     position: relative;
     max-width: 900px;
