@@ -126,10 +126,9 @@ body {
 .tools-page {
     text-align: center;
     padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse achtergrond */
 }
 
-/* Introductiesectie */
 /* Header-stijl voor de Tools-pagina */
 .tools-header {
     max-width: 900px; /* Beperk de breedte van de box */
@@ -143,7 +142,7 @@ body {
 
 /* Titel van de Tools-pagina */
 .tools-header h1 {
-    font-size: 2.5rem; /* Maak de titel groot en opvallend */
+    font-size: 2.5rem; /* Grote en opvallende titel */
     margin-bottom: 10px;
     color: #6A35C1; /* Paarse tekstkleur */
     font-weight: bold;
@@ -156,6 +155,17 @@ body {
     color: #555; /* Donkergrijze tekstkleur */
 }
 
+/* Decoratieve lijn onder de header */
+.tools-header::after {
+    content: "";
+    display: block;
+    width: 80px; /* Brede lijn */
+    height: 3px;
+    background: #6A35C1; /* Paarse lijn */
+    margin: 15px auto 0; /* Centreer de lijn */
+    border-radius: 2px; /* Lichte afronding */
+}
+
 /* Grid layout voor tools */
 .tools-grid {
     display: flex;
@@ -166,7 +176,7 @@ body {
 
 /* Stijl voor elke tool */
 .tool-card {
-    background: linear-gradient(135deg, #381B85, #A873F7);;
+    background: linear-gradient(135deg, #381B85, #A873F7); /* Paarse gradient */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -176,7 +186,7 @@ body {
 }
 
 .tool-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px); /* Animatie bij hover */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -184,7 +194,7 @@ body {
 .tool-card img {
     max-width: 100px; /* Maximale breedte van de afbeelding */
     max-height: 100px; /* Maximale hoogte van de afbeelding */
-    height: auto; /* Zorg ervoor dat de hoogte proportioneel blijft */
+    height: auto; /* Zorg dat de afbeelding proportioneel blijft */
     margin-bottom: 15px; /* Ruimte onder de afbeelding */
     display: block; /* Zorg dat de afbeelding gecentreerd wordt */
     margin-left: auto;
@@ -223,8 +233,27 @@ body {
 
 /* Responsieve weergave */
 @media (max-width: 768px) {
+    /* Tools-grid aanpassen voor mobiel */
+    .tools-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .tool-card {
         max-width: 100%;
+    }
+
+    /* Header aanpassen voor mobiel */
+    .tools-header {
+        padding: 15px;
+    }
+
+    .tools-header h1 {
+        font-size: 1.8rem; /* Kleiner formaat voor mobiel */
+    }
+
+    .tools-header p {
+        font-size: 1rem; /* Kleiner formaat voor de ondertekst */
     }
 }
 
