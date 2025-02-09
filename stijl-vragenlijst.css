@@ -199,12 +199,12 @@ footer {
 
 /* Dubbel Diamant-model */
 .dubbel-diamant {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Twee gelijke kolommen */
+    gap: 50px; /* Ruimte tussen de diamanten */
     margin: 50px auto;
     max-width: 900px;
+    text-align: center;
 }
 
 /* Diamant-structuur */
@@ -220,38 +220,29 @@ footer {
 .diamant::before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: #6A35C1; /* Paarse lijn */
-    z-index: -1;
+    top: 50%; /* Centreer de lijn verticaal */
+    left: 0; /* Start aan de linkerkant */
+    right: 0; /* Eindig aan de rechterkant */
+    height: 4px; /* Dikte van de lijn */
+    background: white; /* Paarse lijnkleur */
+    z-index: -1; /* Zorg dat de lijn achter de knoppen staat */
 }
 
 /* Responsieve aanpassingen */
 @media (max-width: 768px) {
     .dubbel-diamant {
-        flex-direction: column;
-        gap: 20px;
+        grid-template-columns: 1fr; /* Eén kolom op mobiel */
+        gap: 30px;
     }
 
     .diamant {
-        flex-direction: column; /* Plaats fases onder elkaar */
-        align-items: center;
+        flex-direction: column; /* Plaats knoppen onder elkaar */
         gap: 20px;
-    }
-
-    .fase {
-        font-size: 1rem;
-        padding: 15px; /* Zorg dat knoppen klikbaar blijven */
-    }
-
-    .dubbel-diamant {
-        width: 90%; /* Beperk de breedte */
+        position: relative;
     }
 
     .diamant::before {
-        display: none; /* Verwijder lijn op mobiel */
+        display: none; /* Verberg de lijnen op mobiel */
     }
 }
 
