@@ -6,20 +6,103 @@
     <title>Houtje Inc. - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stijl-vragenlijst.css"> 
-    <script defer src="js/main.js"></script> <!-- JavaScript voor interactieve elementen -->
-</head>
-<body class="home-page">
+<!-- Externe CSS -->
+    <style>
+        /* Algemene stijlen */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F3EFFF;
+        }
 
-    <!-- Navigatiebalk -->
-    <nav class="navbar">
+        /* Navigatie */
+        header nav {
+            background-color: #6A35C1;
+            color: white;
+            padding: 10px 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero-sectie */
+        .hero {
+            background: linear-gradient(135deg, #B05DF5, #6A35C1);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #F3EFFF;
+            color: #6A35C1;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #D9C7F8;
+        }
+
+        /* Alliade-vogel sectie */
+        .vogel-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .vogel-container img {
+            width: 200px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #6A35C1;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigatie -->
+   <header>
+    <nav>
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="onderzoek.html">Onderzoek</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="onderzoek.html">onderzoek</a></li>
+            <li><a href="product.html">Producten</a></li>
             <li><a href="tools.html">Onderzoeksmethode</a></li>
-            <li><a href="product.html">Product</a></li>
         </ul>
     </nav>
-
+</header>
+ 
     <!-- Hero sectie met slideshow -->
     <header class="hero">
         <div class="slideshow-container">
