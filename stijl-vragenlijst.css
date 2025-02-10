@@ -177,6 +177,8 @@ footer {
     font-size: 1.2rem;
     margin: 0;
 }
+
+/* Container voor de dubbel-diamond afbeelding */
 .double-diamond-container {
     position: relative;
     max-width: 900px;
@@ -188,39 +190,12 @@ footer {
 .dubbel-diamant-afbeelding {
     display: block;
     margin: 0 auto;
-    max-width: 100%; /* Vul de volledige breedte van de container */
+    max-width: 100%; /* Past zich aan containerbreedte aan */
     height: auto;
-    position: relative; /* Voor positionering knoppen */
-    padding: 10px; /* Voeg wat ruimte rondom toe, optioneel */
-    box-sizing: border-box; /* Zorg dat padding bij de breedte wordt gerekend */
+    position: relative; /* Voor knoppen positionering */
 }
 
-/* Knoppen op de afbeelding */
-.knop-container {
-    position: absolute;
-    top: 50%; /* Pas de positie aan naar wens */
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centreert de knoppen */
-    display: flex;
-    gap: 20px;
-}
-
-.knop-container .fase-knop {
-    background: #6A35C1;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.knop-container .fase-knop:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Knoppen stijl */
+/* Stijl voor knoppen */
 .fase-button {
     position: absolute;
     color: white;
@@ -240,81 +215,34 @@ footer {
 
 /* Specifieke posities voor knoppen */
 .discover {
-    top: 48%; /* Aanpassen voor precieze positie */
-    left: 4%;
+    top: 48%; /* Positioneer deze knop met percentages */
+    left: 15%;
 }
 
 .define {
-    top: 47%;
-    left: 37%;
+    top: 48%;
+    left: 35%;
 }
 
 .develop {
-    bottom: 47%;
+    top: 48%;
     right: 35%;
 }
 
 .deliver {
-    bottom: 47%;
-    right: 4%;
+    top: 48%;
+    right: 15%;
 }
 
-/* Teksten onder knoppen */
-.fase-desc {
-    position: absolute;
-    color: #555;
-    font-size: 0.9rem;
-    text-align: center;
-    width: 120px;
-}
-
-.discover-desc {
-    top: 50%;
-    left: 10%;
-    transform: translate(-50%, -50%);
-}
-
-.define-desc {
-    top: 50%;
-    left: 27%;
-    transform: translate(50%, -50%);
-}
-
-.develop-desc {
-    bottom: 49%;
-    right: 27%;
-    transform: translate(-50%, 50%);
-}
-
-.deliver-desc {
-    bottom: 49%;
-    right: 7%;
-    transform: translate(50%, 50%);
-}
+/* Responsieve aanpassingen voor mobiele apparaten */
 @media (max-width: 768px) {
     .fase-button {
-        padding: 8px 12px;
         font-size: 0.8rem;
+        padding: 8px 12px;
     }
 
-    .discover {
-        top: 35%;
-        left: 20%;
-    }
-
-    .define {
-        top: 35%;
-        right: 20%;
-    }
-
-    .develop {
-        bottom: 35%;
-        left: 20%;
-    }
-
-    .deliver {
-        bottom: 35%;
-        right: 20%;
+    .dubbel-diamant-afbeelding {
+        max-width: 100%; /* Zorg dat afbeelding netjes in mobiel past */
     }
 }
 
