@@ -190,19 +190,19 @@ footer {
 .dubbel-diamant-afbeelding {
     display: block;
     margin: 0 auto;
-    max-width: 100%; /* Past zich aan containerbreedte aan */
+    max-width: 100%; /* Past zich aan de containerbreedte aan */
     height: auto;
     position: relative; /* Voor knoppen positionering */
 }
 
-.fase-buttons {
-    position: relative; /* Zorg dat het afhankelijk is van de afbeelding */
-}
-
-/* Algemene stijl voor knoppen */
 /* Container voor de knoppen */
 .fase-buttons {
-    position: relative; /* Zorg dat het afhankelijk is van de afbeelding */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Zorg dat de knoppen zich aanpassen aan de breedte van de afbeelding */
+    height: 100%; /* Zorg dat de knoppen zich aanpassen aan de hoogte van de afbeelding */
+    pointer-events: none; /* Voorkomt dat de container de interactie blokkeert */
 }
 
 /* Algemene stijl voor knoppen */
@@ -215,6 +215,7 @@ footer {
     text-decoration: none;
     font-weight: bold;
     text-align: center;
+    pointer-events: auto; /* Zorg dat de knoppen interactief zijn */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -224,27 +225,25 @@ footer {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Specifieke posities per knop */
+/* Specifieke posities voor knoppen (relatief aan de afbeelding) */
 .discover {
-    top: 55%; /* Pas dit percentage aan voor de juiste verticale positie */
-    left: 20%; /* Pas dit percentage aan voor de juiste horizontale positie */
+    top: 20%; /* Pas de verticale positie aan */
+    left: 15%; /* Pas de horizontale positie aan */
 }
 
 .define {
-    top: 55%;
-    left: 50%;
-    transform: translateX(-50%); /* Centraal horizontaal uitlijnen */
+    top: 20%;
+    left: 70%;
 }
 
 .develop {
-    top: 65%;
-    right: 20%;
-    transform: translateX(50%);
+    top: 70%;
+    left: 15%;
 }
 
 .deliver {
-    top: 65%;
-    right: 5%; /* Pas horizontaal aan om goed uit te lijnen */
+    top: 70%;
+    left: 70%;
 }
 
 /* Responsieve aanpassingen voor mobiele apparaten */
