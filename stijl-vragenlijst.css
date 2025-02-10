@@ -158,7 +158,7 @@ footer {
 }
 /* Bubbel voor titel en ondertekst */
 .header-bubble {
-    background: linear-gradient(135deg, #6A35C1, #A873F7); /* Paarse gradient */
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);/* Paarse gradient */
     color: white;
     text-align: center;
     padding: 20px 30px;
