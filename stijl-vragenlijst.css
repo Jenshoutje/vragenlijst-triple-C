@@ -200,6 +200,12 @@ footer {
 }
 
 /* Algemene stijl voor knoppen */
+/* Container voor de knoppen */
+.fase-buttons {
+    position: relative; /* Zorg dat het afhankelijk is van de afbeelding */
+}
+
+/* Algemene stijl voor knoppen */
 .fase-button {
     position: absolute;
     color: white;
@@ -218,25 +224,27 @@ footer {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Specifieke posities voor knoppen */
+/* Specifieke posities per knop */
 .discover {
-    top: 48%; /* Positioneer deze knop met percentages */
-    left: 15%;
+    top: 55%; /* Pas dit percentage aan voor de juiste verticale positie */
+    left: 20%; /* Pas dit percentage aan voor de juiste horizontale positie */
 }
 
 .define {
-    top: 48%;
-    left: 35%;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%); /* Centraal horizontaal uitlijnen */
 }
 
 .develop {
-    top: 48%;
-    right: 35%;
+    top: 65%;
+    right: 20%;
+    transform: translateX(50%);
 }
 
 .deliver {
-    top: 48%;
-    right: 15%;
+    top: 65%;
+    right: 5%; /* Pas horizontaal aan om goed uit te lijnen */
 }
 
 /* Responsieve aanpassingen voor mobiele apparaten */
