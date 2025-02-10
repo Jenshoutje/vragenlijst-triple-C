@@ -77,7 +77,7 @@ footer {
 .hero {
     position: relative;
     width: 100%;
-    height: 300px; /* Hoogte aangepast */
+    height: 200px; /* Hoogte aangepast */
     background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse gradient achtergrond */
     display: flex;
     align-items: center;
