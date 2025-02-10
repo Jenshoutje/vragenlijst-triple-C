@@ -227,23 +227,23 @@ footer {
 
 /* Specifieke posities voor knoppen (relatief aan de afbeelding) */
 .discover {
-    top: 20%; /* Pas de verticale positie aan */
-    left: 15%; /* Pas de horizontale positie aan */
+    top: 47%; /* Pas de verticale positie aan */
+    left: 3.5%; /* Pas de horizontale positie aan */
 }
 
 .define {
-    top: 20%;
-    left: 70%;
+    top: 47%;
+    left: 36%;
 }
 
 .develop {
-    top: 70%;
-    left: 15%;
+    top: 47%;
+    left: 53.5%;
 }
 
 .deliver {
-    top: 70%;
-    left: 70%;
+    top: 47%;
+    left: 85%;
 }
 
 /* Responsieve aanpassingen voor mobiele apparaten */
