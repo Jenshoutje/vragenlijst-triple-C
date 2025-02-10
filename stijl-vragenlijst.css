@@ -154,7 +154,7 @@ footer {
 .onderzoek-page {
     text-align: center;
     padding: 50px;
-    background-color: white; /* Witte achtergrond */
+    background-color: linear-gradient(135deg, #b05df5, #f3e5ff);; /* Witte achtergrond */
 }
 /* Bubbel voor titel en ondertekst */
 .header-bubble {
