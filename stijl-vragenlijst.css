@@ -240,23 +240,23 @@ footer {
 
 /* Specifieke posities voor knoppen */
 .discover {
-    top: 45%; /* Aanpassen voor precieze positie */
-    left: 14%;
+    top: 48%; /* Aanpassen voor precieze positie */
+    left: 4%;
 }
 
 .define {
-    top: 45%;
-    left: 25%;
+    top: 47%;
+    left: 37%;
 }
 
 .develop {
-    bottom: 49%;
-    right: 25%;
+    bottom: 47%;
+    right: 35%;
 }
 
 .deliver {
-    bottom: 49%;
-    right: 14%;
+    bottom: 47%;
+    right: 4%;
 }
 
 /* Teksten onder knoppen */
