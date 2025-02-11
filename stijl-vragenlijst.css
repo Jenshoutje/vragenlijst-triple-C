@@ -246,6 +246,46 @@ footer {
     left: 85%;
 }
 
+/* Header bubbel */
+.header-bubble {
+    background: rgba(255, 255, 255, 0.9); /* Witte bubbel met lichte transparantie */
+    padding: 20px 30px;
+    border-radius: 15px; /* Afgeronde hoeken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+    text-align: center;
+    max-width: 600px; /* Zorg dat de bubbel niet te breed wordt */
+    margin: 30px auto; /* Centreert de bubbel */
+}
+
+/* Titel en tekst in de bubbel */
+.header-bubble h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #6A35C1; /* Paarse kleur */
+    margin-bottom: 10px;
+}
+
+.header-bubble p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Responsieve weergave */
+@media (max-width: 768px) {
+    .header-bubble {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .header-bubble h1 {
+        font-size: 1.8rem;
+    }
+
+    .header-bubble p {
+        font-size: 1rem;
+    }
+}
 /* Container voor faseafbeelding */
 .fase-afbeelding-container {
     background: linear-gradient(135deg, #6A35C1, #A873F7); /* Paarse achtergrond */
@@ -253,8 +293,8 @@ footer {
     border-radius: 10px;
     display: inline-block;
     text-align: center;
-    max-width: 400px; /* Maximale breedte van het venster */
-    margin: 30px auto; /* Centreer het venster */
+    max-width: 150px; /* Maximale breedte van het venster */
+    margin: 130px auto; /* Centreer het venster */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtiele schaduw */
 }
 
