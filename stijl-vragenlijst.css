@@ -210,7 +210,7 @@ footer {
     position: absolute;
     color: white;
     background: linear-gradient(135deg, #381B85, #A873F7);
-    padding: 10px 15px;
+    padding: 13px 15px;
     border-radius: 10px;
     text-decoration: none;
     font-weight: bold;
@@ -296,6 +296,12 @@ footer {
     max-width: 150px; /* Maximale breedte van het venster */
     margin: 130px auto; /* Centreer het venster */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtiele schaduw */
+}
+/* Hover-effect op de fase-container */
+.fase-afbeelding-container:hover {
+    transform: scale(1.05); /* Zorgt voor lichte vergroting */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Extra schaduw bij hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Afbeeldingstijl */
