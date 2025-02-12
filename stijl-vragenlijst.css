@@ -584,11 +584,11 @@ body {
 /* Stijl voor de open vragen container */
 .open-vragen-container {
     margin-top: 20px;
-    padding: 20px;
+    padding: 42px;
     background: #FFFFFF;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    max-width: 900px;
+    max-width: 240px;
     margin: auto;
 }
 
