@@ -581,44 +581,49 @@ body {
 /* STIJL VOOR OPEN VRAGEN */
 /* ============================= */
 
-.open-vragen {
-    background: white;
+/* Stijl voor de open vragen container */
+.open-vragen-container {
+    margin-top: 20px;
     padding: 20px;
+    background: #FFFFFF;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    max-width: 800px;
-    margin: 30px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Stijl voor individuele open vragen */
+.open-vraag {
+    margin-bottom: 20px;
     text-align: left;
 }
 
-/* Stijl voor labels */
-.open-vragen label {
-    display: block;
+/* Stijl voor de labels van de vragen */
+.open-vraag label {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #6A35C1;
+    color: #4A4A4A;
+    display: block;
     margin-bottom: 8px;
 }
 
-/* Stijl voor tekstvelden */
-.open-vragen textarea {
+/* Stijl voor de tekstvakken */
+.open-vraag textarea {
     width: 100%;
-    min-height: 80px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
+    padding: 12px;
     font-size: 1rem;
-    font-family: 'Nunito', sans-serif;
-    resize: vertical;
+    border: 2px solid #6A35C1;
+    border-radius: 8px;
     background: #F9F9F9;
+    resize: vertical;
     transition: border-color 0.3s ease;
 }
 
-/* Interactieve effecten */
-.open-vragen textarea:focus {
-    border-color: #6A35C1;
+/* Hover en focus effect voor de tekstvakken */
+.open-vraag textarea:focus {
+    border-color: #5028A1;
     outline: none;
-    box-shadow: 0 0 8px rgba(106, 53, 193, 0.3);
+    box-shadow: 0 0 10px rgba(106, 53, 193, 0.2);
 }
 
 /* ============================= */
