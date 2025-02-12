@@ -465,10 +465,11 @@ body {
     }
 }
 /* Algemene paginastijl decision-matrix */
+/* Algemene stijl voor de matrixpagina */
 .matrix-page {
     text-align: center;
     padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Zelfde stijl als tools/onderzoek */
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
 }
 
 /* Container voor Decision Matrix */
@@ -476,22 +477,20 @@ body {
     max-width: 900px;
     margin: auto;
     padding: 30px;
-    background: linear-gradient(135deg, #381B85, #A873F7); 
+    background: linear-gradient(135deg, #381B85, #A873F7);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
-/* Koptekst en beschrijving van de pagina */
 /* Header stijl voor Decision Matrix */
-/* Algemene stijl header */
 .matrix-header {
-    background: linear-gradient(135deg, #FFFFFF, #FFFFFF); /* Witte achtergrond */
-    color: #4A4A4A; /* Donkergrijze tekst */
+    background: white;
+    color: #4A4A4A;
     text-align: center;
     padding: 30px;
-    border-radius: 10px; /* Afgeronde hoeken */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     font-family: 'Nunito', sans-serif;
 }
@@ -501,26 +500,15 @@ body {
     font-size: 2.5rem;
     margin: 0;
     font-weight: bold;
-    color: #6A35C1; /* Paarse kleur */
+    color: #6A35C1;
 }
 
 /* Stijl voor de ondertekst */
 .matrix-header p {
     font-size: 1.2rem;
     margin-top: 10px;
-    line-height: 1.6; /* Spatiëring */
-    color: #555555;
-}
-
-/* Decoratieve lijn onder de header */
-.matrix-header::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 3px;
-    background: #6A35C1; /* Paarse lijn */
-    margin: 15px auto 0;
-    border-radius: 2px;
+    line-height: 1.6;
+    color: #555;
 }
 
 /* Tabelstijl */
@@ -528,7 +516,10 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background: #FFFFFF; /* Witte achtergrond voor de matrix */
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Stijl voor tabelkoppen */
@@ -548,143 +539,93 @@ body {
     text-align: center;
 }
 
-/* Afwisselende rijkleur */
+/* Alternatieve rijkleur */
 .matrix-container tr:nth-child(even) {
-    background-color: #f9f9f9; /* Lichtgrijs */
+    background-color: #f9f9f9;
 }
 
-/* Dropdown-stijl */
+/* Stijl voor dropdowns */
 .matrix-container select {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #6A35C1;
     font-size: 1rem;
     cursor: pointer;
-    background: #fff;
+    background: white;
 }
 
 /* Hover-effect voor dropdown */
 .matrix-container select:hover {
-    border-color: #6A35C1;
+    border-color: #5028A1;
 }
 
-/* Navigatieknoppen */
-.button-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
+/* ============================= */
+/* Open vragen stijl */
+/* ============================= */
 
-.back-button {
-    padding: 12px 20px;
-    background-color: #6A35C1;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: #5028A1;
-}
-
-/* Stijl voor de submit-knop */
-.submit-button {
-    padding: 12px 20px;
-    background-color: #6A35C1;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: #5028A1;
-}
-
-/* Footer-stijl */
-footer {
+.open-vragen-container {
     margin-top: 40px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: white;
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Stijl voor vraagtekst */
+.open-vragen-container h2 {
+    font-size: 1.5rem;
+    color: #6A35C1;
+    margin-bottom: 10px;
+}
+
+/* Stijl voor het invoerveld */
+.open-vragen-container textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #6A35C1;
+    border-radius: 5px;
+    resize: vertical;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover en focus effect */
+.open-vragen-container textarea:focus {
+    border-color: #5028A1;
+    box-shadow: 0 4px 10px rgba(106, 53, 193, 0.3);
 }
 
 /* Responsieve weergave */
 @media (max-width: 768px) {
-    /* Compacte header */
-    .matrix-header {
-        padding: 15px;
-        font-size: 1rem;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: linear-gradient(135deg, #FFFFFF, #FFFFFF);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .matrix-header h1 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    .matrix-header p {
-        font-size: 0.9rem;
-        line-height: 1.2;
-    }
-
-    /* Matrix container en inhoud */
     .matrix-container {
         padding: 15px;
     }
 
-    /* Gebruik cards voor gestapelde weergave */
-    .matrix-card {
-        background: white;
-        margin-bottom: 20px;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    .matrix-header h1 {
+        font-size: 2rem;
     }
 
-    .matrix-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        color: #6A35C1;
-    }
-
-    .matrix-card label {
-        display: block;
-        font-size: 0.9rem;
-        margin-bottom: 5px;
-    }
-
-    .matrix-card select {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
+    .matrix-header p {
         font-size: 1rem;
     }
 
-    /* Knoppen onderaan aanpassen */
-    .button-container {
-        flex-direction: column;
-        gap: 10px;
+    .open-vragen-container {
+        padding: 15px;
     }
 
-    .button-container a,
-    .button-container button {
-        width: 100%;
-        text-align: center;
+    .open-vragen-container h2 {
+        font-size: 1.3rem;
+    }
+
+    .open-vragen-container textarea {
+        height: 100px;
     }
 }
 
