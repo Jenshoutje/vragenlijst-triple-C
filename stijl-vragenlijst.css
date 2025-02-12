@@ -585,7 +585,7 @@ body {
 .open-vragen-container {
     margin-top: 20px;
     padding: 42px;
-    background: #FFFFFF;
+    background: #5028a1;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     max-width: 240px;
@@ -602,7 +602,7 @@ body {
 .open-vraag label {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #4A4A4A;
+    color: white;
     display: block;
     margin-bottom: 8px;
 }
