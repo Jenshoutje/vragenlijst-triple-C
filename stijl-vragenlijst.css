@@ -584,15 +584,14 @@ body {
 .open-vragen {
     display: flex;
     flex-wrap: wrap; /* Zorgt ervoor dat de vragen naast elkaar staan en onder elkaar op mobiel */
-    gap: 20px;
+    gap: 31px;
     max-width: 900px; /* Breedte aanpassen aan de matrix */
     margin: 30px auto; /* Centreer de container */
     padding: 20px;
     background: linear-gradient(135deg, #6A35C1, #A873F7); /* Paarse gradient zoals de tabel */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: row-reverse;
 }
 
 /* Stijl voor elke vraag */
