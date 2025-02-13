@@ -305,7 +305,7 @@ footer {
 }
 
 /* Afbeeldingstijl */
-.fase-afbeelding {
+.onderzoek item {
     max-width: 100%; /* Schaal afbeelding tot maximale breedte van container */
     height: auto;
     border-radius: 5px; /* Maak hoeken licht afgerond */
