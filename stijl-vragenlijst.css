@@ -581,20 +581,22 @@ body {
 /* STIJL VOOR OPEN VRAGEN */
 /* ============================= */
 
-/* Stijl voor de open vragen container */
 .open-vragen-container {
-    margin-top: 20px;
-    padding: 42px;
-    background: #5028a1;
+    display: flex;
+    justify-content: space-between; /* Zorgt voor ruimte tussen de vragen */
+    gap: 20px; /* Ruimte tussen de velden */
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: #FFFFFF;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    max-width: 240px;
-    margin: auto;
 }
 
 /* Stijl voor individuele open vragen */
 .open-vraag {
-    margin-bottom: 20px;
+    flex: 1; /* Zorgt ervoor dat beide vragen evenveel ruimte krijgen */
+    min-width: 45%; /* Voorkomt dat ze te smal worden */
     text-align: left;
 }
 
@@ -602,7 +604,7 @@ body {
 .open-vraag label {
     font-size: 1.1rem;
     font-weight: bold;
-    color: white;
+    color: #4A4A4A;
     display: block;
     margin-bottom: 8px;
 }
@@ -624,6 +626,18 @@ body {
     border-color: #5028A1;
     outline: none;
     box-shadow: 0 0 10px rgba(106, 53, 193, 0.2);
+}
+
+/* Responsieve aanpassingen: onder elkaar op kleine schermen */
+@media (max-width: 768px) {
+    .open-vragen-container {
+        flex-direction: column; /* Zet de vragen onder elkaar op mobiel */
+    }
+
+    .open-vraag {
+        min-width: 100%; /* Laat ze de volledige breedte nemen */
+    }
+}
 }
 
 /* ============================= */
