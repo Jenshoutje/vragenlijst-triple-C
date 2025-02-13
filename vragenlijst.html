@@ -1,1 +1,54 @@
 
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Matrix - Triple C Implementatie</title>
+    <link rel="stylesheet" href="stijl-vragenlijst.css">
+</head>
+<body class="matrix-page">
+
+    <!-- Header met titel en uitleg -->
+    <header class="matrix-header">
+        <h1>Vregenlijst - input diverse thema's</h1>
+        <p>
+            Vul de onderste vragen in om er samen achter te komen wat wel kan.
+        </p>
+    </header>
+
+    <!-- Matrix-container -->
+     <div class="open-vragen">
+    <div class="open-vraag">
+        <label for="werkdruk">
+            In hoeverre ervaar je dat werkdruk (personeelstekort) een belemmering vormt in het methodisch toepassen van Triple C?
+        </label>
+        <textarea name="werkdruk" rows="3" placeholder="Jouw antwoord..."></textarea>
+    </div>
+
+    <div class="open-vraag">
+        <label for="doelgroepverschuiving">
+            Wat zijn volgens jou de grootste uitdagingen die de verschuiving van de doelgroep met zich meebrengt?
+        </label>
+        <textarea name="doelgroepverschuiving" rows="3" placeholder="Jouw antwoord..."></textarea>
+    </div>
+</div>
+
+
+            <!-- Knoppen -->
+            <div class="button-container">
+                <a href="index.html" class="back-button">Terug naar Home</a>
+                <a href="tools.html" class="back-button">Terug naar Tools</a>
+                <button type="submit" class="submit-button">Verstuur scores</button>
+            </div>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script type="module" src="js/firebase.js"></script>
+</body>
+</html>
+
