@@ -645,7 +645,7 @@ body {
 
 /* Navigatieknoppen */
 .button-container {
-    margin-top: 20px;
+    margin-top: 80px;
     display: flex;
     justify-content: center;
     gap: 15px;
