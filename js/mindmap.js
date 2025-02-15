@@ -77,22 +77,19 @@ function analyseTekst(text) {
 
 // **Mindmap Genereren met GoJS**
 function generateMindmap(themes) {
-    let mindmapContainer = document.getElementById("mindmap"); // Zorg dat dit correct is
+    let mindmapContainer = document.getElementById("mindmap");
     if (!mindmapContainer) {
         console.error("Mindmap container niet gevonden.");
         return;
     }
 
-    let $ = go.GraphObject.make;
-
-    // **Check of het diagram al bestaat en verwijder het**
+    // **Verwijder bestaand diagram als die al bestaat**
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
         existingDiagram.div = null; // Ontkoppel bestaand diagram
-        existingDiagram.clear(); // Leeg de oude mindmap
     }
 
-    // **Maak een nieuw diagram**
+    let $ = go.GraphObject.make;
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, { angle: 90, layerSpacing: 35 })
@@ -101,7 +98,7 @@ function generateMindmap(themes) {
     let nodeDataArray = [];
     let linkDataArray = [];
 
-    Object.keys(themes).forEach((theme, index) => {
+    Object.keys(themes).forEach((theme) => {
         let color = getColorBySentiment(theme);
         nodeDataArray.push({ key: theme, text: theme, color: color });
 
@@ -112,7 +109,6 @@ function generateMindmap(themes) {
         });
     });
 
-    // **Template voor de knooppunten**
     diagram.nodeTemplate = $(go.Node, "Auto",
         $(go.Shape, "RoundedRectangle",
             { fill: "white", strokeWidth: 0 },
@@ -124,7 +120,6 @@ function generateMindmap(themes) {
         )
     );
 
-    // **Voeg de data toe aan het diagram**
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
     // **Toon de mindmap-container**
