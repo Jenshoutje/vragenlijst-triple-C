@@ -76,23 +76,33 @@ function analyseTekst(text) {
 
 // **Mindmap Genereren met GoJS**
 function generateMindmap(themes) {
+    if (!window.go) {
+        console.error("GoJS library niet geladen. Controleer je HTML-bestand.");
+        return;
+    }
+
     let $ = go.GraphObject.make;
+    
+    // Check of het diagram al bestaat en verwijder het indien nodig
+    let existingDiagram = go.Diagram.fromDiv("mindmap");
+    if (existingDiagram) {
+        existingDiagram.div = null; // Ontkoppel bestaand diagram
+    }
 
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
-        layout: $(go.TreeLayout, { angle: 90, layerSpacing: 35 }),
-        "clickCreatingTool.archetypeNodeData": { text: "Nieuw thema", color: "#ddd" }
+        layout: $(go.TreeLayout, { angle: 90, layerSpacing: 35 })
     });
 
     let nodeDataArray = [];
     let linkDataArray = [];
 
-    Object.keys(themes).forEach((theme) => {
+    Object.keys(themes).forEach((theme, index) => {
         let color = getColorBySentiment(theme);
         nodeDataArray.push({ key: theme, text: theme, color: color });
 
-        themes[theme].forEach((subtheme, index) => {
-            let subKey = `${theme}-${index}`;
+        themes[theme].forEach((subtheme, subIndex) => {
+            let subKey = `${theme}-${subIndex}`;
             nodeDataArray.push({ key: subKey, text: subtheme, color: "#ddd" });
             linkDataArray.push({ from: theme, to: subKey });
         });
@@ -104,7 +114,7 @@ function generateMindmap(themes) {
             new go.Binding("fill", "color")
         ),
         $(go.TextBlock,
-            { margin: 8, font: "bold 12pt sans-serif" },
+            { margin: 8 },
             new go.Binding("text", "text")
         )
     );
