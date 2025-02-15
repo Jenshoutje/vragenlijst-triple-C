@@ -1,12 +1,38 @@
-document.getElementById("analyseButton").addEventListener("click", function() {
-    let inputText = document.getElementById("textInput").value;
-    if (inputText.trim() === "") {
-        alert("Voer eerst tekst in!");
-        return;
+document.addEventListener("DOMContentLoaded", function () {
+    // Check of de knop en de invoervelden bestaan
+    let analyseButton = document.getElementById("analyseButton");
+    let exportButton = document.getElementById("exportButton");
+
+    if (analyseButton) {
+        analyseButton.addEventListener("click", function () {
+            let inputText = document.getElementById("inputText").value;
+            if (inputText.trim() === "") {
+                alert("Voer eerst tekst in!");
+                return;
+            }
+
+            let themes = analyseTekst(inputText);
+            generateMindmap(themes);
+        });
+    } else {
+        console.error("Knop 'analyseButton' niet gevonden.");
     }
 
-    let themes = analyseTekst(inputText);
-    generateMindmap(themes);
+    if (exportButton) {
+        exportButton.addEventListener("click", function () {
+            let diagram = go.Diagram.fromDiv("mindmap");
+            let imgData = diagram.makeImageData({ background: "white" });
+
+            let a = document.createElement("a");
+            a.href = imgData;
+            a.download = "mindmap.png";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    } else {
+        console.error("Knop 'exportButton' niet gevonden.");
+    }
 });
 
 function analyseTekst(text) {
@@ -30,6 +56,11 @@ function analyseTekst(text) {
 }
 
 function generateMindmap(themes) {
+    if (!window.go) {
+        console.error("GoJS library niet geladen. Controleer je HTML-bestand.");
+        return;
+    }
+
     let $ = go.GraphObject.make;
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
@@ -50,7 +81,6 @@ function generateMindmap(themes) {
         });
     });
 
-    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     diagram.nodeTemplate = $(go.Node, "Auto",
         $(go.Shape, "RoundedRectangle",
             { fill: "white", strokeWidth: 0 },
@@ -62,7 +92,14 @@ function generateMindmap(themes) {
         )
     );
 
-    document.getElementById("mindmapContainer").style.display = "block";
+    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+    let mindmapContainer = document.getElementById("mindmap");
+    if (mindmapContainer) {
+        mindmapContainer.style.display = "block";
+    } else {
+        console.error("Mindmap container niet gevonden.");
+    }
 }
 
 function getColorBySentiment(theme) {
@@ -70,15 +107,3 @@ function getColorBySentiment(theme) {
     if (theme.includes("Ondersteuning")) return "#99FF99"; // Groen voor positief
     return "#FFD700"; // Geel voor neutraal
 }
-
-document.getElementById("exportButton").addEventListener("click", function() {
-    let diagram = go.Diagram.fromDiv("mindmap");
-    let imgData = diagram.makeImageData({ background: "white" });
-    
-    let a = document.createElement("a");
-    a.href = imgData;
-    a.download = "mindmap.png";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-});
