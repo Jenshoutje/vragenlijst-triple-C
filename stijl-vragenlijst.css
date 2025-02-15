@@ -736,6 +736,14 @@ body {
 } 
 
 /* THEMATISCHE ANALYSE - Mindmap */
+/* Algemene container voor thematische analyse */
+.mindmap-page {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Zelfde stijl als tools/onderzoek */
+}
+
+/* Container voor analyse-sectie */
 .thema-analyse-container {
     max-width: 900px;
     margin: 50px auto;
@@ -746,14 +754,30 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Titel */
+.thema-analyse-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #6A35C1;
+}
+
+/* Instructietekst */
+.thema-analyse-container p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
 /* Tekstinvoer */
 .analyse-input {
     width: 100%;
     padding: 15px;
-    border: 1px solid #ccc;
+    border: 2px solid #6A35C1;
     border-radius: 5px;
     font-size: 1rem;
     margin-bottom: 15px;
+    resize: vertical; /* Gebruiker kan groter/kleiner maken */
+    background: #f9f9f9;
 }
 
 /* Knop om de analyse te starten */
@@ -765,15 +789,16 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .analyse-button:hover {
     background: #5028A1;
+    transform: scale(1.05);
 }
 
-/* Container voor de mindmap */
-#mindmap-container {
+/* Container voor de gegenereerde mindmap */
+.mindmap-container {
     width: 100%;
     height: 500px;
     border: 2px solid #6A35C1;
@@ -781,25 +806,27 @@ body {
     margin-top: 20px;
     position: relative;
     overflow: hidden;
+    background: white;
 }
 
 /* Hoofdknopen */
 .mindmap-main-node {
     background: #6A35C1;
     color: white;
-    padding: 10px 15px;
+    padding: 12px 18px;
     border-radius: 50px;
     font-weight: bold;
     position: absolute;
+    font-size: 1.2rem;
 }
 
 /* Subthema’s */
 .mindmap-sub-node {
     background: #A873F7;
     color: white;
-    padding: 8px 12px;
+    padding: 10px 15px;
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     position: absolute;
 }
 
@@ -816,7 +843,25 @@ body {
     background: #F44336; /* Rood */
 }
 
-/* Responsieve aanpassing */
+/* Knop voor exporteren */
+.export-button {
+    background: #6A35C1;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+.export-button:hover {
+    background: #5028A1;
+    transform: scale(1.05);
+}
+
+/* Responsieve aanpassingen */
 @media (max-width: 768px) {
     .thema-analyse-container {
         max-width: 100%;
@@ -827,11 +872,13 @@ body {
         font-size: 0.9rem;
     }
 
-    .analyse-button {
+    .analyse-button,
+    .export-button {
         font-size: 0.9rem;
+        padding: 10px 15px;
     }
 
-    #mindmap-container {
+    .mindmap-container {
         height: 350px;
     }
 }
