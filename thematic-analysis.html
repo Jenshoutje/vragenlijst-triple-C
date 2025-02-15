@@ -20,7 +20,18 @@
 
     <!-- Matrix-container -->
    
-          
+          <body>
+    <div class="container">
+        <h1>Thematische Analyse</h1>
+        <p>Voer hieronder tekst in die je wilt analyseren. AI zal automatisch thema’s en subthema’s clusteren.</p>
+        
+        <textarea id="inputText" placeholder="Plak hier je onderzoeksgegevens..."></textarea>
+        <button onclick="analyzeText()">Analyseer</button>
+
+        <h2>Gegenereerde Mindmap</h2>
+        <div id="mindmap"></div>
+        <button onclick="exportMindmap()">Exporteer als afbeelding</button>
+    </div>
 
             <!-- Knoppen -->
             <div class="button-container">
