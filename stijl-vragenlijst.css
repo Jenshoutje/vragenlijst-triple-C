@@ -735,11 +735,103 @@ body {
     }
 } 
 
-Algemene afbeelding restrictie */
-img {
-    max-width: 100%; /* Afbeelding vult maximaal de breedte van de container */
-    height: auto; /* Houd de verhoudingen van de afbeelding intact */
-    display: block; /* Voorkomt extra ruimte onder afbeeldingen */
-    margin: auto; /* Centreert de afbeelding horizontaal */
+/* THEMATISCHE ANALYSE - Mindmap */
+.thema-analyse-container {
+    max-width: 900px;
+    margin: 50px auto;
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-  
+
+/* Tekstinvoer */
+.analyse-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Knop om de analyse te starten */
+.analyse-button {
+    background: #6A35C1;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.analyse-button:hover {
+    background: #5028A1;
+}
+
+/* Container voor de mindmap */
+#mindmap-container {
+    width: 100%;
+    height: 500px;
+    border: 2px solid #6A35C1;
+    border-radius: 10px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hoofdknopen */
+.mindmap-main-node {
+    background: #6A35C1;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    position: absolute;
+}
+
+/* Subthema’s */
+.mindmap-sub-node {
+    background: #A873F7;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    position: absolute;
+}
+
+/* Sentimentkleuren */
+.positief {
+    background: #4CAF50; /* Groen */
+}
+
+.neutraal {
+    background: #FFEB3B; /* Geel */
+}
+
+.negatief {
+    background: #F44336; /* Rood */
+}
+
+/* Responsieve aanpassing */
+@media (max-width: 768px) {
+    .thema-analyse-container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .analyse-input {
+        font-size: 0.9rem;
+    }
+
+    .analyse-button {
+        font-size: 0.9rem;
+    }
+
+    #mindmap-container {
+        height: 350px;
+    }
+}
