@@ -1,12 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Controleer of GoJS correct is geladen
+document.addEventListener("DOMContentLoaded", async function () {
+    // **Controleer of GoJS correct is geladen**
     if (typeof go === "undefined") {
         console.error("GoJS library niet geladen. Controleer je HTML-bestand.");
         alert("Er is een fout opgetreden bij het laden van de mindmap. Controleer je verbinding.");
         return;
     }
 
-    // Zoek knoppen en tekstvelden
+    // **Zoek knoppen en tekstvelden**
     let analyseButton = document.getElementById("analyseButton");
     let exportButton = document.getElementById("exportButton");
     let inputText = document.getElementById("inputText");
@@ -17,6 +17,45 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    // **Globale opslag voor stopwoorden en thematische data**
+    let stopwoorden = [];
+    let thematischeData = {};
+
+    // **Laad het CSV-bestand**
+    async function loadCSV() {
+        try {
+            const response = await fetch("data/thematische_analyse.csv");
+            const text = await response.text();
+            const rows = text.split("\n").slice(1); // Headers overslaan
+
+            rows.forEach(row => {
+                const columns = row.split(",");
+                if (columns.length >= 3) {
+                    const categorie = columns[0].trim();
+                    const kernwoord = columns[1].trim();
+                    const synoniemen = columns[2].split(";").map(word => word.trim());
+
+                    if (categorie === "STOPWOORDEN") {
+                        stopwoorden.push(kernwoord, ...synoniemen);
+                    } else {
+                        if (!thematischeData[categorie]) {
+                            thematischeData[categorie] = [];
+                        }
+                        thematischeData[categorie].push(kernwoord, ...synoniemen);
+                    }
+                }
+            });
+
+            console.log("✅ Stopwoorden geladen:", stopwoorden);
+            console.log("✅ Thematische data geladen:", thematischeData);
+        } catch (error) {
+            console.error("❌ Fout bij het laden van CSV:", error);
+        }
+    }
+
+    // **Start CSV-inladen**
+    await loadCSV();
+
     // **Klik event voor de analyse-knop**
     analyseButton.addEventListener("click", function () {
         let text = inputText.value.trim();
@@ -25,7 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        let themes = analyseTekst(text);
+        let filteredText = filterStopwoorden(text);
+        let themes = analyseTekst(filteredText);
         generateMindmap(themes);
     });
 
@@ -33,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     exportButton.addEventListener("click", function () {
         let diagram = go.Diagram.fromDiv("mindmap");
         if (!diagram) {
-            console.error("Mindmap diagram niet gevonden.");
+            console.error("❌ Mindmap diagram niet gevonden.");
             return;
         }
 
@@ -47,45 +87,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// **Thematische Analyse Functie**
-function analyseTekst(text) {
+// **Stopwoorden filteren uit tekst**
+function filterStopwoorden(text) {
     let woorden = text.toLowerCase().split(/\s+/);
-    let clusters = {
-        "Ondersteuning & Training": [],
-        "Werkdruk & Bezetting": [],
-        "Methodische Uitvoering": [],
-        "Cliëntgericht Werken": [],
-        "Teamdynamiek & Samenwerking": [],  
-        "Emotionele Belastbaarheid": [],  
-        "Overig": []
-    };
-
-woorden.forEach(word => {
-    if (word.includes("training") || word.includes("ondersteuning") || word.includes("scholing") || word.includes("coaching")) {
-        clusters["Ondersteuning & Training"].push(word);
-    } else if (word.includes("werkdruk") || word.includes("personeel") || word.includes("tekort") || word.includes("stress")) {
-        clusters["Werkdruk & Bezetting"].push(word);
-    } else if (word.includes("methode") || word.includes("werkwijze") || word.includes("structuur") || word.includes("protocol")) {
-        clusters["Methodische Uitvoering"].push(word);
-    } else if (word.includes("cliënt") || word.includes("zorg") || word.includes("begeleiding") || word.includes("autonomie")) {
-        clusters["Cliëntgericht Werken"].push(word);
-    } else if (word.includes("team") || word.includes("samenwerking") || word.includes("communicatie") || word.includes("conflict")) {
-        clusters["Teamdynamiek & Samenwerking"].push(word);
-    } else if (word.includes("burn-out") || word.includes("overbelasting") || word.includes("mentale gezondheid")) { 
-        clusters["Emotionele Belastbaarheid"].push(word);
-    } else {
-        clusters["Overig"].push(word);
-    }
-});
-
-return clusters;
+    let gefilterdeWoorden = woorden.filter(word => !stopwoorden.includes(word));
+    return gefilterdeWoorden.join(" ");
 }
 
-// **Mindmap Genereren met GoJS**
+// **Thematische clustering met CSV-data**
+function analyseTekst(text) {
+    let woorden = text.toLowerCase().split(/\s+/);
+    let clusters = {};
+
+    Object.keys(thematischeData).forEach(categorie => {
+        clusters[categorie] = [];
+    });
+
+    woorden.forEach(word => {
+        Object.keys(thematischeData).forEach(categorie => {
+            if (thematischeData[categorie].includes(word)) {
+                clusters[categorie].push(word);
+            }
+        });
+    });
+
+    return clusters;
+}
+
+// **Mindmap genereren met GoJS**
 function generateMindmap(themes) {
     let mindmapContainer = document.getElementById("mindmap");
     if (!mindmapContainer) {
-        console.error("Mindmap container niet gevonden.");
+        console.error("❌ Mindmap container niet gevonden.");
         return;
     }
 
