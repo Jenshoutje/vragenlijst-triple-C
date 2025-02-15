@@ -1,96 +1,134 @@
-Skip to content
-Navigation Menu
-Jenshoutje
-vragenlijst-triple-C
+document.addEventListener("DOMContentLoaded", async function () {
+    // **Controleer of GoJS correct is geladen**
+    if (typeof go === "undefined") {
+        console.error("❌ GoJS library niet geladen. Controleer je HTML-bestand.");
+        alert("Er is een fout opgetreden bij het laden van de mindmap. Controleer je verbinding.");
+        return;
+    }
 
-Type / to search
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-1
-Insights
-Settings
-vragenlijst-triple-C/js
-/
-mindmap.js
-in
-main
+    // **Zoek knoppen en tekstvelden**
+    let analyseButton = document.getElementById("analyseButton");
+    let exportButton = document.getElementById("exportButton");
+    let inputText = document.getElementById("inputText");
+    let mindmapContainer = document.getElementById("mindmap");
 
-Edit
+    if (!analyseButton || !exportButton || !inputText || !mindmapContainer) {
+        console.error("❌ Belangrijke HTML-elementen ontbreken. Controleer je HTML-structuur.");
+        return;
+    }
 
-Preview
-Indent mode
+    // **Globale opslag voor stopwoorden en thematische data**
+    let stopwoorden = new Set();
+    let thematischeData = {};
 
-Spaces
-Indent size
+    // **Laad het CSV-bestand**
+    async function loadCSV() {
+        try {
+            const response = await fetch("data/thematische_analyse.csv");
+            const text = await response.text();
+            const rows = text.split("\n").slice(1); // Headers overslaan
 
-4
-Line wrap mode
+            rows.forEach(row => {
+                const columns = row.split(",");
+                if (columns.length >= 3) {
+                    const categorie = columns[0].trim();
+                    const kernwoord = columns[1].trim();
+                    const synoniemen = columns[2].split(";").map(word => word.trim());
 
-No wrap
-Editing mindmap.js file contents
-Selection deleted
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
+                    if (categorie.toLowerCase() === "stopwoorden") {
+                        stopwoorden.add(kernwoord);
+                        synoniemen.forEach(word => stopwoorden.add(word));
+                    } else {
+                        if (!thematischeData[categorie]) {
+                            thematischeData[categorie] = new Set();
+                        }
+                        thematischeData[categorie].add(kernwoord);
+                        synoniemen.forEach(word => thematischeData[categorie].add(word));
+                    }
+                }
+            });
+
+            console.log("✅ Stopwoorden geladen:", [...stopwoorden]);
+            console.log("✅ Thematische data geladen:", thematischeData);
+        } catch (error) {
+            console.error("❌ Fout bij het laden van CSV:", error);
+        }
+    }
+
+    // **Start CSV-inladen vóórdat de analyse start**
+    await loadCSV();
+
+    // **Klik event voor de analyse-knop**
+    analyseButton.addEventListener("click", function () {
+        if (stopwoorden.size === 0) {
+            alert("⚠ Stopwoorden zijn nog niet geladen, probeer het opnieuw.");
+            return;
+        }
+
+        let text = inputText.value.trim();
+        if (text === "") {
+            alert("Voer eerst tekst in!");
+            return;
+        }
+
+        let filteredText = filterStopwoorden(text);
+        let themes = analyseTekst(filteredText);
+        generateMindmap(themes);
+    });
+
+    // **Klik event voor de export-knop**
+    exportButton.addEventListener("click", function () {
+        let diagram = go.Diagram.fromDiv("mindmap");
+        if (!diagram) {
+            console.error("❌ Mindmap diagram niet gevonden.");
+            return;
+        }
+
+        let imgData = diagram.makeImageData({ background: "white" });
+        let a = document.createElement("a");
+        a.href = imgData;
+        a.download = "mindmap.png";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+});
+
+// **Stopwoorden filteren uit tekst**
+function filterStopwoorden(text) {
+    if (!stopwoorden || stopwoorden.size === 0) {
+        console.warn("⚠ Stopwoorden zijn nog niet geladen, tekst wordt onbewerkt verwerkt.");
+        return text; 
+    }
+
+    let woorden = text.toLowerCase().split(/\s+/);
+    let gefilterdeWoorden = woorden.filter(word => !stopwoorden.has(word));
+    return gefilterdeWoorden.join(" ");
+}
+
+// **Thematische clustering met CSV-data**
+function analyseTekst(text) {
+    let woorden = text.toLowerCase().split(/\s+/);
+    let clusters = {};
+
+    Object.keys(thematischeData).forEach(categorie => {
+        clusters[categorie] = [];
+    });
+
+    woorden.forEach(word => {
+        Object.keys(thematischeData).forEach(categorie => {
+            if (thematischeData[categorie].has(word)) {
+                clusters[categorie].push(word);
+            }
+        });
+    });
+
+    return clusters;
+}
+
+// **Mindmap genereren met GoJS**
+function generateMindmap(themes) {
+    let mindmapContainer = document.getElementById("mindmap");
     if (!mindmapContainer) {
         console.error("❌ Mindmap container niet gevonden.");
         return;
@@ -148,5 +186,3 @@ function getColorBySentiment(theme) {
     if (theme.includes("Cliënt")) return "#66B2FF"; // Blauw voor zorg-gerelateerd
     return "#FFD700"; // Geel voor neutraal
 }
-Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
-Editing vragenlijst-triple-C/js/mindmap.js at main · Jenshoutje/vragenlijst-triple-C
