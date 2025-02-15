@@ -271,22 +271,6 @@ footer {
     margin-bottom: 10px;
 }
 
-/* Responsieve weergave */
-@media (max-width: 768px) {
-    .header-bubble {
-        max-width: 90%;
-        padding: 15px;
-    }
-
-    .header-bubble h1 {
-        font-size: 1.8rem;
-    }
-
-    .header-bubble p {
-        font-size: 1rem;
-    }
-}
-/* Container voor faseafbeelding */
 .fase-afbeelding-container {
     background: linear-gradient(135deg, #6A35C1, #A873F7); /* Paarse achtergrond */
     padding: 20px;
@@ -305,7 +289,7 @@ footer {
 }
 
 /* Afbeeldingstijl */
-.onderzoek item {
+.fase-afbeelding-container img {
     max-width: 100%; /* Schaal afbeelding tot maximale breedte van container */
     height: auto;
     border-radius: 5px; /* Maak hoeken licht afgerond */
@@ -318,6 +302,24 @@ footer {
     font-size: 1rem;
     text-align: center;
 }
+
+/* Responsieve weergave */
+@media (max-width: 768px) {
+    .header-bubble {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .header-bubble h1 {
+        font-size: 1.8rem;
+    }
+
+    .header-bubble p {
+        font-size: 1rem;
+    }
+}
+/* Container voor faseafbeelding */
+
 
 /* Responsieve aanpassingen voor mobiele apparaten */
 @media (max-width: 768px) {
@@ -645,7 +647,7 @@ body {
 
 /* Navigatieknoppen */
 .button-container {
-    margin-top: 80px;
+    margin-top: 52px;
     display: flex;
     justify-content: center;
     gap: 15px;
