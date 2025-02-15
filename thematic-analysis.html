@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -7,46 +6,43 @@
     <title>Thematische analyse - Triple C Implementatie</title>
     <link rel="stylesheet" href="stijl-vragenlijst.css">
 </head>
-<body class="matrix-page">
+<body class="mindmap-page"> <!-- Nieuwe class toegevoegd voor mogelijke CSS-aanpassingen -->
 
     <!-- Header met titel en uitleg -->
     <header class="matrix-header">
-        <h1>Thematische analtse - Implementatie Triple C</h1>
+        <h1>Thematische analyse - Implementatie Triple C</h1>
         <p>
             Visualisatie thematische analyse.<br>
             Innovatieve automatisering van een oud principe.
         </p>
     </header>
 
-    <!-- Matrix-container -->
-   
-          <body>
+    <!-- Container voor de thematische analyse -->
     <div class="container">
-        <h1>Thematische Analyse</h1>
+        <h2>Thematische Analyse</h2>
         <p>Voer hieronder tekst in die je wilt analyseren. AI zal automatisch thema’s en subthema’s clusteren.</p>
         
         <textarea id="inputText" placeholder="Plak hier je onderzoeksgegevens..."></textarea>
-        <button onclick="analyzeText()">Analyseer</button>
+        <button id="analyzeButton">Analyseer</button>
 
         <h2>Gegenereerde Mindmap</h2>
         <div id="mindmap"></div>
-        <button onclick="exportMindmap()">Exporteer als afbeelding</button>
+        <button id="exportButton">Exporteer als afbeelding</button>
     </div>
 
-            <!-- Knoppen -->
-            <div class="button-container">
-                <a href="index.html" class="back-button">Terug naar Home</a>
-                <a href="tools.html" class="back-button">Terug naar Tools</a>
-                <button type="submit" class="submit-button">Verstuur scores</button>
-            </div>
-        </form>
-    </section>
+    <!-- Knoppen -->
+    <div class="button-container">
+        <a href="index.html" class="back-button">Terug naar Home</a>
+        <a href="tools.html" class="back-button">Terug naar Tools</a>
+        <button type="submit" class="submit-button">Verstuur scores</button>
+    </div>
+
+    <!-- Scripts correct geplaatst -->
+    <script src="js/mindmap.js"></script>
+    <script type="module" src="js/firebase.js"></script>
 
     <footer>
         <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
     </footer>
-
-    <script type="module" src="js/firebase.js"></script>
-              <script src="js/mindmap.js"></script>
 </body>
 </html>
