@@ -1,67 +1,25 @@
-import pandas as pd
-
-# Thematische categorieën en kernwoorden
-data_thematiek = {
-    "Categorie": [
-        "Ondersteuning & Training", "Ondersteuning & Training", "Ondersteuning & Training", "Ondersteuning & Training",
-        "Werkdruk & Bezetting", "Werkdruk & Bezetting", "Werkdruk & Bezetting", "Werkdruk & Bezetting",
-        "Methodische Uitvoering", "Methodische Uitvoering", "Methodische Uitvoering", "Methodische Uitvoering",
-        "Cliëntgericht Werken", "Cliëntgericht Werken", "Cliëntgericht Werken", "Cliëntgericht Werken",
-        "Teamdynamiek & Samenwerking", "Teamdynamiek & Samenwerking", "Teamdynamiek & Samenwerking", "Teamdynamiek & Samenwerking",
-        "Emotionele Belastbaarheid", "Emotionele Belastbaarheid", "Emotionele Belastbaarheid"
-    ],
-    "Kernwoord": [
-        "training", "ondersteunen", "scholing", "coaching",
-        "werkdruk", "personeel", "tekort", "stress",
-        "methode", "werkwijze", "structuur", "protocol",
-        "cliënt", "zorg", "begeleiding", "autonomie",
-        "team", "samenwerking", "communicatie", "conflict",
-        "burn-out", "werkdruk", "mentale gezondheid"
-    ],
-    "Synoniemen": [
-        "coaching; bijscholing; leertraject; cursus; instructie",
-        "hulp; begeleiding; assistentie; advisering",
-        "educatie; training; opleiding; kennisontwikkeling",
-        "mentoring; begeleiding; supervisie",
-        "stress; overbelasting; werklast; druk",
-        "medewerkers; team; personeelstekort; collega's",
-        "onderbezetting; schaarste; gebrek",
-        "overbelasting; spanning; mentale druk",
-        "werkwijze; aanpak; procedure; systematiek",
-        "manier; methodiek; strategie",
-        "opbouw; kader; indeling; systeem",
-        "regelgeving; richtlijn; procedure",
-        "patiënt; zorgvrager; bewoner; deelnemer",
-        "ondersteuning; hulpverlening; welzijn; behandeling",
-        "coaching; ondersteuning; zorgverlening",
-        "zelfstandigheid; zelfredzaamheid; eigen regie",
-        "samenwerking; groep; afstemming",
-        "overleg; interactie; coördinatie",
-        "bespreking; informatieoverdracht; dialoog",
-        "meningsverschil; spanning; discussie; misverstand",
-        "uitputting; overspannenheid; mentale vermoeidheid",
-        "stress; belasting; werklast",
-        "psychisch welzijn; emotioneel evenwicht"
-    ]
-}
-
-# Stopwoordenlijst als aparte rij
-data_stopwoorden = {
-    "Categorie": ["stopwoorden"],
-    "Kernwoord": ["de; het; een; in; van; op; te; is; dat; die; met; als; voor; door; om; tot; uit; bij; naar; tegen; over; aan; maar; of; ook; want; dan; dus; zo; nog; al; meer; minder"],
-    "Synoniemen": [""]
-}
-
-# Dataframes aanmaken
-df_thematiek = pd.DataFrame(data_thematiek)
-df_stopwoorden = pd.DataFrame(data_stopwoorden)
-
-# Data samenvoegen: eerst de thematische data, dan de stopwoorden apart
-df_final = pd.concat([df_thematiek, df_stopwoorden], ignore_index=True)
-
-# CSV-bestand opslaan
-csv_file_path = "/mnt/data/thematische_analyse_data.csv"
-df_final.to_csv(csv_file_path, index=False, encoding="utf-8")
-
-# Bestandslocatie teruggeven
-csv_file_path
+Categorie,Kernwoord,Synoniemen
+Ondersteuning & Training,training,coaching;bijscholing;leertraject;cursus;instructie
+Ondersteuning & Training,ondersteunen,hulp;begeleiding;assistentie;advisering
+Ondersteuning & Training,scholing,educatie;training;opleiding;kennisontwikkeling
+Ondersteuning & Training,coaching,mentoring;begeleiding;supervisie
+Werkdruk & Bezetting,werkdruk,stress;overbelasting;werklast;druk
+Werkdruk & Bezetting,personeel,medewerkers;team;personeelstekort;collega’s
+Werkdruk & Bezetting,tekort,onderbezetting;schaarste;gebrek
+Werkdruk & Bezetting,stress,overbelasting;spanning;mentale druk
+Methodische Uitvoering,methode,werkwijze;aanpak;procedure;systematiek
+Methodische Uitvoering,werkwijze,manier;methodiek;strategie
+Methodische Uitvoering,structuur,opbouw;kader;indeling;systeem
+Methodische Uitvoering,protocol,regelgeving;richtlijn;procedure
+Cliëntgericht Werken,cliënt,patiënt;zorgvrager;bewoner;deelnemer
+Cliëntgericht Werken,zorg,ondersteuning;hulpverlening;welzijn;behandeling
+Cliëntgericht Werken,begeleiding,coaching;ondersteuning;zorgverlening
+Cliëntgericht Werken,autonomie,zelfstandigheid;zelfredzaamheid;eigen regie
+Teamdynamiek & Samenwerking,team,samenwerking;groep;afstemming
+Teamdynamiek & Samenwerking,samenwerking,overleg;interactie;coördinatie
+Teamdynamiek & Samenwerking,communicatie,bespreking;informatieoverdracht;dialoog
+Teamdynamiek & Samenwerking,conflict,meningsverschil;spanning;discussie;misverstand
+Emotionele Belastbaarheid,burn-out,uitputting;overspannenheid;mentale vermoeidheid
+Emotionele Belastbaarheid,werkdruk,stress;belasting;werklast
+Emotionele Belastbaarheid,mentale gezondheid,psychisch welzijn;emotioneel evenwicht
+stopwoorden,stopwoorden,de;het;een;in;van;op;te;is;dat;die;met;als;voor;door;om;tot;uit;bij;naar;tegen;over;aan;maar;of;ook;want;dan;dus;zo;nog;al;meer;minder
