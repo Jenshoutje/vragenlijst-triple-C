@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
     // **Controleer of GoJS correct is geladen**
     if (typeof go === "undefined") {
-        console.error("GoJS library niet geladen. Controleer je HTML-bestand.");
+        console.error("❌ GoJS library niet geladen. Controleer je HTML-bestand.");
         alert("Er is een fout opgetreden bij het laden van de mindmap. Controleer je verbinding.");
         return;
     }
@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     let mindmapContainer = document.getElementById("mindmap");
 
     if (!analyseButton || !exportButton || !inputText || !mindmapContainer) {
-        console.error("Belangrijke HTML-elementen ontbreken. Controleer je HTML-structuur.");
+        console.error("❌ Belangrijke HTML-elementen ontbreken. Controleer je HTML-structuur.");
         return;
     }
 
     // **Globale opslag voor stopwoorden en thematische data**
-    let stopwoorden = [];
+    let stopwoorden = new Set();
     let thematischeData = {};
 
     // **Laad het CSV-bestand**
@@ -35,18 +35,20 @@ document.addEventListener("DOMContentLoaded", async function () {
                     const kernwoord = columns[1].trim();
                     const synoniemen = columns[2].split(";").map(word => word.trim());
 
-                    if (categorie === "STOPWOORDEN") {
-                        stopwoorden.push(kernwoord, ...synoniemen);
+                    if (categorie.toUpperCase() === "STOPWOORDEN") {
+                        stopwoorden.add(kernwoord);
+                        synoniemen.forEach(word => stopwoorden.add(word));
                     } else {
                         if (!thematischeData[categorie]) {
-                            thematischeData[categorie] = [];
+                            thematischeData[categorie] = new Set();
                         }
-                        thematischeData[categorie].push(kernwoord, ...synoniemen);
+                        thematischeData[categorie].add(kernwoord);
+                        synoniemen.forEach(word => thematischeData[categorie].add(word));
                     }
                 }
             });
 
-            console.log("✅ Stopwoorden geladen:", stopwoorden);
+            console.log("✅ Stopwoorden geladen:", [...stopwoorden]);
             console.log("✅ Thematische data geladen:", thematischeData);
         } catch (error) {
             console.error("❌ Fout bij het laden van CSV:", error);
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 // **Stopwoorden filteren uit tekst**
 function filterStopwoorden(text) {
     let woorden = text.toLowerCase().split(/\s+/);
-    let gefilterdeWoorden = woorden.filter(word => !stopwoorden.includes(word));
+    let gefilterdeWoorden = woorden.filter(word => !stopwoorden.has(word));
     return gefilterdeWoorden.join(" ");
 }
 
@@ -105,7 +107,7 @@ function analyseTekst(text) {
 
     woorden.forEach(word => {
         Object.keys(thematischeData).forEach(categorie => {
-            if (thematischeData[categorie].includes(word)) {
+            if (thematischeData[categorie].has(word)) {
                 clusters[categorie].push(word);
             }
         });
@@ -138,14 +140,16 @@ function generateMindmap(themes) {
     let linkDataArray = [];
 
     Object.keys(themes).forEach((theme) => {
-        let color = getColorBySentiment(theme);
-        nodeDataArray.push({ key: theme, text: theme, color: color });
+        if (themes[theme].length > 0) {
+            let color = getColorBySentiment(theme);
+            nodeDataArray.push({ key: theme, text: theme, color: color });
 
-        themes[theme].forEach((subtheme, subIndex) => {
-            let subKey = `${theme}-${subIndex}`;
-            nodeDataArray.push({ key: subKey, text: subtheme, color: "#ddd" });
-            linkDataArray.push({ from: theme, to: subKey });
-        });
+            themes[theme].forEach((subtheme, subIndex) => {
+                let subKey = `${theme}-${subIndex}`;
+                nodeDataArray.push({ key: subKey, text: subtheme, color: "#ddd" });
+                linkDataArray.push({ from: theme, to: subKey });
+            });
+        }
     });
 
     diagram.nodeTemplate = $(go.Node, "Auto",
