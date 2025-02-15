@@ -1,7 +1,7 @@
 import pandas as pd
 
-# Data uit de afbeelding reconstrueren
-data = {
+# Thematische categorieën en kernwoorden
+data_thematiek = {
     "Categorie": [
         "Ondersteuning & Training", "Ondersteuning & Training", "Ondersteuning & Training", "Ondersteuning & Training",
         "Werkdruk & Bezetting", "Werkdruk & Bezetting", "Werkdruk & Bezetting", "Werkdruk & Bezetting",
@@ -19,41 +19,49 @@ data = {
         "burn-out", "werkdruk", "mentale gezondheid"
     ],
     "Synoniemen": [
-        "coaching, bijscholing, leertraject, cursus, instructie",
-        "hulp, begeleiding, assistentie, advisering",
-        "educatie, training, opleiding, kennisontwikkeling",
-        "mentoring, begeleiding, supervisie",
-        "stress, overbelasting, werklast, druk",
-        "medewerkers, team, personeelstekort, collega’s",
-        "onderbezetting, schaarste, gebrek",
-        "overbelasting, spanning, mentale druk",
-        "werkwijze, aanpak, procedure, systematiek",
-        "manier, methodiek, strategie",
-        "opbouw, kader, indeling, systeem",
-        "regelgeving, richtlijn, procedure",
-        "patiënt, zorgvrager, bewoner, deelnemer",
-        "ondersteuning, hulpverlening, welzijn, behandeling",
-        "coaching, ondersteuning, zorgverlening",
-        "zelfstandigheid, zelfredzaamheid, eigen regie",
-        "samenwerking, groep, afstemming",
-        "overleg, interactie, coördinatie",
-        "bespreking, informatieoverdracht, dialoog",
-        "meningsverschil, spanning, discussie, misverstand",
-        "uitputting, overspannenheid, mentale vermoeidheid",
-        "stress, belasting, werklast",
-        "psychisch welzijn, emotioneel evenwicht"
-    ],
-    "Stopwoorden": [
-        "de, het, een, in, van, op, te, is, dat, die, met, als, voor, door, om, tot, uit, bij, naar, tegen, over, aan, maar, of, ook, want, dan, dus, zo, nog, al, meer, minder"
-    ] * 23  # Zelfde stopwoorden voor alle rijen
+        "coaching; bijscholing; leertraject; cursus; instructie",
+        "hulp; begeleiding; assistentie; advisering",
+        "educatie; training; opleiding; kennisontwikkeling",
+        "mentoring; begeleiding; supervisie",
+        "stress; overbelasting; werklast; druk",
+        "medewerkers; team; personeelstekort; collega's",
+        "onderbezetting; schaarste; gebrek",
+        "overbelasting; spanning; mentale druk",
+        "werkwijze; aanpak; procedure; systematiek",
+        "manier; methodiek; strategie",
+        "opbouw; kader; indeling; systeem",
+        "regelgeving; richtlijn; procedure",
+        "patiënt; zorgvrager; bewoner; deelnemer",
+        "ondersteuning; hulpverlening; welzijn; behandeling",
+        "coaching; ondersteuning; zorgverlening",
+        "zelfstandigheid; zelfredzaamheid; eigen regie",
+        "samenwerking; groep; afstemming",
+        "overleg; interactie; coördinatie",
+        "bespreking; informatieoverdracht; dialoog",
+        "meningsverschil; spanning; discussie; misverstand",
+        "uitputting; overspannenheid; mentale vermoeidheid",
+        "stress; belasting; werklast",
+        "psychisch welzijn; emotioneel evenwicht"
+    ]
 }
 
-# Dataframe aanmaken
-df = pd.DataFrame(data)
+# Stopwoordenlijst als aparte rij
+data_stopwoorden = {
+    "Categorie": ["stopwoorden"],
+    "Kernwoord": ["de; het; een; in; van; op; te; is; dat; die; met; als; voor; door; om; tot; uit; bij; naar; tegen; over; aan; maar; of; ook; want; dan; dus; zo; nog; al; meer; minder"],
+    "Synoniemen": [""]
+}
+
+# Dataframes aanmaken
+df_thematiek = pd.DataFrame(data_thematiek)
+df_stopwoorden = pd.DataFrame(data_stopwoorden)
+
+# Data samenvoegen: eerst de thematische data, dan de stopwoorden apart
+df_final = pd.concat([df_thematiek, df_stopwoorden], ignore_index=True)
 
 # CSV-bestand opslaan
 csv_file_path = "/mnt/data/thematische_analyse_data.csv"
-df.to_csv(csv_file_path, index=False, encoding="utf-8")
+df_final.to_csv(csv_file_path, index=False, encoding="utf-8")
 
 # Bestandslocatie teruggeven
 csv_file_path
