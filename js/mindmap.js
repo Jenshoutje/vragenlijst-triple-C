@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
+    console.log("✅ GoJS is geladen!");
+
     // **Zoek knoppen en tekstvelden**
     let analyseButton = document.getElementById("analyseButton");
     let exportButton = document.getElementById("exportButton");
@@ -17,6 +19,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
+    console.log("✅ Alle HTML-elementen correct gevonden.");
+
     // **Globale opslag voor stopwoorden en thematische data**
     let stopwoorden = new Set();
     let thematischeData = {};
@@ -25,8 +29,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function loadCSV() {
         try {
             const response = await fetch("data/thematische_analyse.csv");
+            if (!response.ok) throw new Error("CSV-bestand niet gevonden!");
+            
             const text = await response.text();
             const rows = text.split("\n").slice(1); // Headers overslaan
+
+            console.log("📌 CSV-bestand geladen. Aantal rijen:", rows.length);
 
             rows.forEach(row => {
                 const columns = row.split(",");
@@ -66,8 +74,14 @@ document.addEventListener("DOMContentLoaded", async function () {
             return;
         }
 
+        console.log("📌 Originele tekst ingevoerd:", text);
+
         let filteredText = filterStopwoorden(text);
+        console.log("✅ Gefilterde tekst zonder stopwoorden:", filteredText);
+
         let themes = analyseTekst(filteredText);
+        console.log("✅ Gekoppelde thema’s:", themes);
+
         generateMindmap(themes);
     });
 
