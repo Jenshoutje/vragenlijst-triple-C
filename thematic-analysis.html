@@ -3,52 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thematische analyse - Triple C Implementatie</title>
+    <title>Thematische Analyse - Triple C Implementatie</title>
     <link rel="stylesheet" href="stijl-vragenlijst.css">
-    
-    <!-- GoJS Library eerst laden -->
+    <!-- GoJS Library voor mindmap-functionaliteit -->
     <script src="https://unpkg.com/gojs/release/go.js"></script>
 </head>
-<body class="mindmap-page">
+<body class="mindmap-page"> <!-- CSS-class toegevoegd voor thematische analyse -->
 
     <!-- Header met titel en uitleg -->
     <header class="matrix-header">
-        <h1>Thematische analyse - Implementatie Triple C</h1>
+        <h1>Thematische Analyse - Implementatie Triple C</h1>
         <p>
-            Visualisatie thematische analyse.<br>
-            Innovatieve automatisering van een oud principe.
+            Visualisatie van thematische analyse.<br>
+            AI zal automatisch thema’s en subthema’s clusteren.
         </p>
     </header>
 
     <!-- Container voor de thematische analyse -->
-    <div class="container">
-        <h2>Thematische Analyse</h2>
-        <p>Voer hieronder tekst in die je wilt analyseren. AI zal automatisch thema’s en subthema’s clusteren.</p>
+    <div class="thema-analyse-container">
+        <h2>Voer je tekst in</h2>
+        <p>Plak hieronder je tekst en klik op "Analyseer" om een mindmap te genereren.</p>
         
-        <textarea id="inputText" placeholder="Plak hier je onderzoeksgegevens..."></textarea>
-        <button id="analyseButton">Analyseer</button>
+        <textarea id="inputText" class="analyse-input" placeholder="Plak hier je onderzoeksgegevens..."></textarea>
+        <button id="analyseButton" class="analyse-button">Analyseer</button>
 
+        <!-- Mindmap wordt hier weergegeven -->
         <h2>Gegenereerde Mindmap</h2>
-        <!-- 📌 Mindmap-container correct definiëren -->
-        <div id="mindmap-container" style="width: 100%; height: 500px; border: 1px solid #ddd;">
-            <div id="mindmap"></div>
+        <div id="mindmap-container">
+            <div id="mindmap" style="width: 100%; height: 500px; border: 1px solid #ddd;"></div>
         </div>
-
-        <button id="exportButton">Exporteer als afbeelding</button>
+        <button id="exportButton" class="analyse-button">Exporteer als afbeelding</button>
     </div>
 
-    <!-- Knoppen -->
+    <!-- Knoppen voor navigatie -->
     <div class="button-container">
         <a href="index.html" class="back-button">Terug naar Home</a>
         <a href="tools.html" class="back-button">Terug naar Tools</a>
-        <button type="submit" class="submit-button">Verstuur scores</button>
     </div>
 
-    <!-- Scripts correct geplaatst -->
+    <!-- Jouw scripts -->
     <script src="js/mindmap.js"></script>
     <script type="module" src="js/firebase.js"></script>
 
-    <!-- 📌 Verplaats de footer naar de juiste plek binnen <body> -->
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
     </footer>
