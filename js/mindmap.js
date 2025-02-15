@@ -77,8 +77,9 @@ function analyseTekst(text) {
 
 // **Mindmap Genereren met GoJS**
 function generateMindmap(themes) {
-    if (!window.go) {
-        console.error("GoJS library niet geladen. Controleer je HTML-bestand.");
+    let mindmapContainer = document.getElementById("mindmap"); // Zorg dat dit correct is
+    if (!mindmapContainer) {
+        console.error("Mindmap container niet gevonden.");
         return;
     }
 
