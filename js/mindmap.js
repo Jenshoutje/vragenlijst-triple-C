@@ -55,24 +55,30 @@ function analyseTekst(text) {
         "Werkdruk & Bezetting": [],
         "Methodische Uitvoering": [],
         "Cliëntgericht Werken": [],
+        "Teamdynamiek & Samenwerking": [],  
+        "Emotionele Belastbaarheid": [],  
         "Overig": []
     };
 
-    woorden.forEach(word => {
-        if (word.includes("training") || word.includes("ondersteuning") || word.includes("scholing")) {
-            clusters["Ondersteuning & Training"].push(word);
-        } else if (word.includes("werkdruk") || word.includes("personeel") || word.includes("tekort")) {
-            clusters["Werkdruk & Bezetting"].push(word);
-        } else if (word.includes("methode") || word.includes("werkwijze") || word.includes("structuur")) {
-            clusters["Methodische Uitvoering"].push(word);
-        } else if (word.includes("cliënt") || word.includes("zorg") || word.includes("begeleiding")) {
-            clusters["Cliëntgericht Werken"].push(word);
-        } else {
-            clusters["Overig"].push(word);
-        }
-    });
+woorden.forEach(word => {
+    if (word.includes("training") || word.includes("ondersteuning") || word.includes("scholing") || word.includes("coaching")) {
+        clusters["Ondersteuning & Training"].push(word);
+    } else if (word.includes("werkdruk") || word.includes("personeel") || word.includes("tekort") || word.includes("stress")) {
+        clusters["Werkdruk & Bezetting"].push(word);
+    } else if (word.includes("methode") || word.includes("werkwijze") || word.includes("structuur") || word.includes("protocol")) {
+        clusters["Methodische Uitvoering"].push(word);
+    } else if (word.includes("cliënt") || word.includes("zorg") || word.includes("begeleiding") || word.includes("autonomie")) {
+        clusters["Cliëntgericht Werken"].push(word);
+    } else if (word.includes("team") || word.includes("samenwerking") || word.includes("communicatie") || word.includes("conflict")) {
+        clusters["Teamdynamiek & Samenwerking"].push(word);
+    } else if (word.includes("burn-out") || word.includes("overbelasting") || word.includes("mentale gezondheid")) { 
+        clusters["Emotionele Belastbaarheid"].push(word);
+    } else {
+        clusters["Overig"].push(word);
+    }
+});
 
-    return clusters;
+return clusters;
 }
 
 // **Mindmap Genereren met GoJS**
