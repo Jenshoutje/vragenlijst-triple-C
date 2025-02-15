@@ -97,12 +97,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 // **Stopwoorden filteren uit tekst**
 function filterStopwoorden(text) {
     if (!stopwoorden || stopwoorden.size === 0) {
-        console.warn("⚠ Stopwoorden zijn nog niet geladen, tekst wordt onbewerkt verwerkt.");
-        return text; 
+        console.warn("⚠️ Stopwoorden zijn nog niet geladen, tekst wordt onbewerkt teruggegeven.");
+        return text;
     }
 
     let woorden = text.toLowerCase().split(/\s+/);
-    let gefilterdeWoorden = woorden.filter(word => !stopwoorden.has(word));
+    
+    console.log("Originele woorden:", woorden);
+    
+    let gefilterdeWoorden = woorden.filter(word => {
+        if (stopwoorden.has(word)) {
+            console.log(`🚫 Verwijderd: ${word}`);
+            return false;
+        }
+        return true;
+    });
+
+    console.log("Gefilterde woorden:", gefilterdeWoorden);
+
     return gefilterdeWoorden.join(" ");
 }
 
