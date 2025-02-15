@@ -1,0 +1,59 @@
+import pandas as pd
+
+# Data uit de afbeelding reconstrueren
+data = {
+    "Categorie": [
+        "Ondersteuning & Training", "Ondersteuning & Training", "Ondersteuning & Training", "Ondersteuning & Training",
+        "Werkdruk & Bezetting", "Werkdruk & Bezetting", "Werkdruk & Bezetting", "Werkdruk & Bezetting",
+        "Methodische Uitvoering", "Methodische Uitvoering", "Methodische Uitvoering", "Methodische Uitvoering",
+        "Cliëntgericht Werken", "Cliëntgericht Werken", "Cliëntgericht Werken", "Cliëntgericht Werken",
+        "Teamdynamiek & Samenwerking", "Teamdynamiek & Samenwerking", "Teamdynamiek & Samenwerking", "Teamdynamiek & Samenwerking",
+        "Emotionele Belastbaarheid", "Emotionele Belastbaarheid", "Emotionele Belastbaarheid"
+    ],
+    "Kernwoord": [
+        "training", "ondersteunen", "scholing", "coaching",
+        "werkdruk", "personeel", "tekort", "stress",
+        "methode", "werkwijze", "structuur", "protocol",
+        "cliënt", "zorg", "begeleiding", "autonomie",
+        "team", "samenwerking", "communicatie", "conflict",
+        "burn-out", "werkdruk", "mentale gezondheid"
+    ],
+    "Synoniemen": [
+        "coaching, bijscholing, leertraject, cursus, instructie",
+        "hulp, begeleiding, assistentie, advisering",
+        "educatie, training, opleiding, kennisontwikkeling",
+        "mentoring, begeleiding, supervisie",
+        "stress, overbelasting, werklast, druk",
+        "medewerkers, team, personeelstekort, collega’s",
+        "onderbezetting, schaarste, gebrek",
+        "overbelasting, spanning, mentale druk",
+        "werkwijze, aanpak, procedure, systematiek",
+        "manier, methodiek, strategie",
+        "opbouw, kader, indeling, systeem",
+        "regelgeving, richtlijn, procedure",
+        "patiënt, zorgvrager, bewoner, deelnemer",
+        "ondersteuning, hulpverlening, welzijn, behandeling",
+        "coaching, ondersteuning, zorgverlening",
+        "zelfstandigheid, zelfredzaamheid, eigen regie",
+        "samenwerking, groep, afstemming",
+        "overleg, interactie, coördinatie",
+        "bespreking, informatieoverdracht, dialoog",
+        "meningsverschil, spanning, discussie, misverstand",
+        "uitputting, overspannenheid, mentale vermoeidheid",
+        "stress, belasting, werklast",
+        "psychisch welzijn, emotioneel evenwicht"
+    ],
+    "Stopwoorden": [
+        "de, het, een, in, van, op, te, is, dat, die, met, als, voor, door, om, tot, uit, bij, naar, tegen, over, aan, maar, of, ook, want, dan, dus, zo, nog, al, meer, minder"
+    ] * 23  # Zelfde stopwoorden voor alle rijen
+}
+
+# Dataframe aanmaken
+df = pd.DataFrame(data)
+
+# CSV-bestand opslaan
+csv_file_path = "/mnt/data/thematische_analyse_data.csv"
+df.to_csv(csv_file_path, index=False, encoding="utf-8")
+
+# Bestandslocatie teruggeven
+csv_file_path
