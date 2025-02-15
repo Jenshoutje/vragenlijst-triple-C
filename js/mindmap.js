@@ -7,16 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Zoek knoppen en tekstvelden
-    let analyseButton = document.getElementById("analyzeButton");
+    let analyseButton = document.getElementById("analyseButton");
     let exportButton = document.getElementById("exportButton");
     let inputText = document.getElementById("inputText");
+    let mindmapContainer = document.getElementById("mindmap");
 
-    if (!analyseButton || !exportButton || !inputText) {
+    if (!analyseButton || !exportButton || !inputText || !mindmapContainer) {
         console.error("Belangrijke HTML-elementen ontbreken. Controleer je HTML-structuur.");
         return;
     }
 
-    // Klik event voor de analyse-knop
+    // **Klik event voor de analyse-knop**
     analyseButton.addEventListener("click", function () {
         let text = inputText.value.trim();
         if (text === "") {
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         generateMindmap(themes);
     });
 
-    // Klik event voor de export-knop
+    // **Klik event voor de export-knop**
     exportButton.addEventListener("click", function () {
         let diagram = go.Diagram.fromDiv("mindmap");
         if (!diagram) {
@@ -82,13 +83,15 @@ function generateMindmap(themes) {
     }
 
     let $ = go.GraphObject.make;
-    
-    // Check of het diagram al bestaat en verwijder het indien nodig
+
+    // **Check of het diagram al bestaat en verwijder het**
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
         existingDiagram.div = null; // Ontkoppel bestaand diagram
+        existingDiagram.clear(); // Leeg de oude mindmap
     }
 
+    // **Maak een nieuw diagram**
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, { angle: 90, layerSpacing: 35 })
@@ -108,6 +111,7 @@ function generateMindmap(themes) {
         });
     });
 
+    // **Template voor de knooppunten**
     diagram.nodeTemplate = $(go.Node, "Auto",
         $(go.Shape, "RoundedRectangle",
             { fill: "white", strokeWidth: 0 },
@@ -119,14 +123,11 @@ function generateMindmap(themes) {
         )
     );
 
+    // **Voeg de data toe aan het diagram**
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
-    let mindmapContainer = document.getElementById("mindmap");
-    if (mindmapContainer) {
-        mindmapContainer.style.display = "block";
-    } else {
-        console.error("Mindmap container niet gevonden.");
-    }
+    // **Toon de mindmap-container**
+    mindmapContainer.style.display = "block";
 }
 
 // **Kleur bepalen op basis van sentiment**
