@@ -22,41 +22,46 @@ document.addEventListener("DOMContentLoaded", async function () {
     let thematischeData = {};
 
     // **Laad het CSV-bestand**
-    async function loadCSV() {
-        try {
-            const response = await fetch("data/thematische_analyse.csv");
-            const text = await response.text();
-            const rows = text.split("\n").slice(1); // Headers overslaan
+let stopwoorden = new Set();  // **❗️ Correct initialiseren**
+let thematischeData = {};      // **❗️ Zorg dat dit object correct gevuld wordt**
 
-            rows.forEach(row => {
-                const columns = row.split(",");
-                if (columns.length >= 3) {
-                    const categorie = columns[0].trim();
-                    const kernwoord = columns[1].trim();
-                    const synoniemen = columns[2].split(";").map(word => word.trim());
+async function loadCSV() {
+    try {
+        const response = await fetch("data/thematische_analyse.csv");
+        const text = await response.text();
+        const rows = text.split("\n").slice(1); // Headers overslaan
 
-                    if (categorie.toUpperCase() === "STOPWOORDEN") {
-                        stopwoorden.add(kernwoord);
-                        synoniemen.forEach(word => stopwoorden.add(word));
-                    } else {
-                        if (!thematischeData[categorie]) {
-                            thematischeData[categorie] = new Set();
-                        }
-                        thematischeData[categorie].add(kernwoord);
-                        synoniemen.forEach(word => thematischeData[categorie].add(word));
+        rows.forEach(row => {
+            const columns = row.split(",");
+            if (columns.length >= 3) {
+                const categorie = columns[0].trim();
+                const kernwoord = columns[1].trim();
+                const synoniemen = columns[2].split(";").map(word => word.trim());
+
+                if (categorie.toLowerCase() === "stopwoorden") {
+                    stopwoorden.add(kernwoord);
+                    synoniemen.forEach(word => stopwoorden.add(word));
+                } else {
+                    if (!thematischeData[categorie]) {
+                        thematischeData[categorie] = new Set();
                     }
+                    thematischeData[categorie].add(kernwoord);
+                    synoniemen.forEach(word => thematischeData[categorie].add(word));
                 }
-            });
+            }
+        });
 
-            console.log("✅ Stopwoorden geladen:", [...stopwoorden]);
-            console.log("✅ Thematische data geladen:", thematischeData);
-        } catch (error) {
-            console.error("❌ Fout bij het laden van CSV:", error);
-        }
+        console.log("✅ Stopwoorden geladen:", [...stopwoorden]);
+        console.log("✅ Thematische data geladen:", thematischeData);
+    } catch (error) {
+        console.error("❌ Fout bij het laden van CSV:", error);
     }
+}
 
-    // **Start CSV-inladen**
+// **Zorg dat de functie correct wordt uitgevoerd**
+(async function() {
     await loadCSV();
+})();
 
     // **Klik event voor de analyse-knop**
     analyseButton.addEventListener("click", function () {
