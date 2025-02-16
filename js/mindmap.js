@@ -129,8 +129,7 @@ function filterStopwoorden(text) {
 
     console.log("Gefilterde woorden:", gefilterdeWoorden);
 
-    return gefilterdeWoorden.join(" ");
-}
+
 
 // **Thematische clustering met CSV-data**
 function analyseTekst(text) {
