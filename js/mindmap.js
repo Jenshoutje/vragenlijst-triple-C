@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     let analyseButton = document.getElementById("analyseButton");
     let exportButton = document.getElementById("exportButton");
     let inputText = document.getElementById("inputText");
-    let mindmapContainer = document.getElementById("mindmap");
+    let mindmapContainer = document.getElementById("mindmap-container");
 
     if (!analyseButton || !exportButton || !inputText || !mindmapContainer) {
         console.error("❌ Belangrijke HTML-elementen ontbreken. Controleer je HTML-structuur.");
