@@ -140,6 +140,7 @@ function generateMindmap(themes) {
         return;
     }
 
+    // Verwijder bestaand diagram als die al bestaat
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
         existingDiagram.div = null;
@@ -167,6 +168,7 @@ function generateMindmap(themes) {
         }
     });
 
+    // **Mindmap-visuele structuur**
     diagram.nodeTemplate = $(go.Node, "Auto",
         $(go.Shape, "RoundedRectangle",
             { fill: "white", strokeWidth: 0 },
@@ -179,7 +181,7 @@ function generateMindmap(themes) {
     );
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-
     mindmapContainer.style.display = "block";
-    console.log("✅ Mindmap succesvol gegenereerd.");
+
+    console.log("✅ NLP-gebaseerde mindmap succesvol gegenereerd.");
 }
