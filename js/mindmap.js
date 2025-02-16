@@ -1,4 +1,10 @@
+// **Globale opslag voor stopwoorden en thematische data**
+let stopwoorden = new Set();  // ✅ Correct globaal
+let thematischeData = {};     // ✅ Correct globaal
+
 document.addEventListener("DOMContentLoaded", async function () {
+    console.log("📌 JavaScript geladen: Start Mindmap-setup...");
+
     // **Controleer of GoJS correct is geladen**
     if (typeof go === "undefined") {
         console.error("❌ GoJS library niet geladen. Controleer je HTML-bestand.");
@@ -17,11 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    // **Globale opslag voor stopwoorden en thematische data**
-    let stopwoorden = new Set();
-    let thematischeData = {};
-
-    // **Laad het CSV-bestand**
+    // **Laad CSV-bestand**
     async function loadCSV() {
         try {
             const response = await fetch("data/thematische_analyse.csv");
@@ -29,7 +31,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             const rows = text.split("\n").slice(1); // Headers overslaan
 
             rows.forEach(row => {
-                const columns = row.split(",");
+                const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // ✅ Fix voor komma's in CSV
+
                 if (columns.length >= 3) {
                     const categorie = columns[0].trim();
                     const kernwoord = columns[1].trim();
@@ -55,11 +58,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // **Start CSV-inladen vóórdat de analyse start**
     await loadCSV();
 
-    // **Klik event voor de analyse-knop**
     analyseButton.addEventListener("click", function () {
+        console.log("📌 Stopwoorden status:", stopwoorden);
+
         if (stopwoorden.size === 0) {
             alert("⚠ Stopwoorden zijn nog niet geladen, probeer het opnieuw.");
             return;
@@ -76,7 +79,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         generateMindmap(themes);
     });
 
-    // **Klik event voor de export-knop**
     exportButton.addEventListener("click", function () {
         let diagram = go.Diagram.fromDiv("mindmap");
         if (!diagram) {
@@ -95,15 +97,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 // **Stopwoorden filteren uit tekst**
-// **Stopwoorden filteren uit tekst**
 function filterStopwoorden(text) {
-    console.log("🛠️ Debug: Stopwoorden Set geladen?", stopwoorden);
-    console.log("🛠️ Type van stopwoorden:", typeof stopwoorden);
-    console.log("🛠️ Is stopwoorden een Set?", stopwoorden instanceof Set);
-    console.log("🛠️ Grootte van stopwoorden:", stopwoorden ? stopwoorden.size : "undefined");
-
-    // **Controleer of `stopwoorden` correct is ingeladen**
-    if (!stopwoorden || !(stopwoorden instanceof Set) || stopwoorden.size === 0) {
+    if (!stopwoorden || stopwoorden.size === 0) {
         console.warn("⚠️ Stopwoorden zijn nog niet volledig geladen, tekst wordt onbewerkt teruggegeven.");
         return text;
     }
@@ -111,25 +106,9 @@ function filterStopwoorden(text) {
     let woorden = text.toLowerCase().split(/\s+/);
     let gefilterdeWoorden = woorden.filter(word => !stopwoorden.has(word));
 
-    console.log("✅ Gefilterde woorden:", gefilterdeWoorden);  // Debugging voor controle
+    console.log("✅ Gefilterde woorden:", gefilterdeWoorden);
     return gefilterdeWoorden.join(" ");
 }
-
-    let woorden = text.toLowerCase().split(/\s+/);
-    
-    console.log("Originele woorden:", woorden);
-    
-    let gefilterdeWoorden = woorden.filter(word => {
-        if (stopwoorden.has(word)) {
-            console.log(`🚫 Verwijderd: ${word}`);
-            return false;
-        }
-        return true;
-    });
-
-    console.log("Gefilterde woorden:", gefilterdeWoorden);
-
-
 
 // **Thematische clustering met CSV-data**
 function analyseTekst(text) {
@@ -148,6 +127,7 @@ function analyseTekst(text) {
         });
     });
 
+    console.log("✅ Thematische clustering uitgevoerd:", clusters);
     return clusters;
 }
 
@@ -202,6 +182,8 @@ function generateMindmap(themes) {
 
     // **Toon de mindmap-container**
     mindmapContainer.style.display = "block";
+
+    console.log("✅ Mindmap succesvol gegenereerd.");
 }
 
 // **Kleur bepalen op basis van sentiment**
