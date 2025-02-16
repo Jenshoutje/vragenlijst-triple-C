@@ -95,11 +95,25 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 // **Stopwoorden filteren uit tekst**
+// **Stopwoorden filteren uit tekst**
 function filterStopwoorden(text) {
-    if (!stopwoorden || stopwoorden.size === 0) {
-        console.warn("⚠️ Stopwoorden zijn nog niet geladen, tekst wordt onbewerkt teruggegeven.");
+    console.log("🛠️ Debug: Stopwoorden Set geladen?", stopwoorden);
+    console.log("🛠️ Type van stopwoorden:", typeof stopwoorden);
+    console.log("🛠️ Is stopwoorden een Set?", stopwoorden instanceof Set);
+    console.log("🛠️ Grootte van stopwoorden:", stopwoorden ? stopwoorden.size : "undefined");
+
+    // **Controleer of `stopwoorden` correct is ingeladen**
+    if (!stopwoorden || !(stopwoorden instanceof Set) || stopwoorden.size === 0) {
+        console.warn("⚠️ Stopwoorden zijn nog niet volledig geladen, tekst wordt onbewerkt teruggegeven.");
         return text;
     }
+
+    let woorden = text.toLowerCase().split(/\s+/);
+    let gefilterdeWoorden = woorden.filter(word => !stopwoorden.has(word));
+
+    console.log("✅ Gefilterde woorden:", gefilterdeWoorden);  // Debugging voor controle
+    return gefilterdeWoorden.join(" ");
+}
 
     let woorden = text.toLowerCase().split(/\s+/);
     
