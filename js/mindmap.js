@@ -1,11 +1,11 @@
 // **Globale opslag voor stopwoorden en thematische data**
-let stopwoorden = new Set();  // ✅ Correct globaal
-let thematischeData = {};     // ✅ Correct globaal
+let stopwoorden = new Set();  
+let thematischeData = {};  
+let isCsvLoaded = false; // ✅ Check of CSV volledig is geladen
 
 document.addEventListener("DOMContentLoaded", async function () {
     console.log("📌 JavaScript geladen: Start Mindmap-setup...");
 
-    // **Controleer of GoJS correct is geladen**
     if (typeof go === "undefined") {
         console.error("❌ GoJS library niet geladen. Controleer je HTML-bestand.");
         alert("Er is een fout opgetreden bij het laden van de mindmap. Controleer je verbinding.");
@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         try {
             const response = await fetch("data/thematische_analyse.csv");
             const text = await response.text();
-            const rows = text.split("\n").slice(1); // Headers overslaan
+            const rows = text.split("\n").slice(1);
 
             rows.forEach(row => {
-                const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // ✅ Fix voor komma's in CSV
+                const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
                 if (columns.length >= 3) {
                     const categorie = columns[0].trim();
@@ -51,20 +51,19 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
             });
 
-            console.log("✅ Stopwoorden geladen:", [...stopwoorden]);
-            console.log("✅ Thematische data geladen:", thematischeData);
+            isCsvLoaded = true; // ✅ CSV is correct geladen
+            console.log("✅ CSV succesvol geladen:", thematischeData);
+
         } catch (error) {
             console.error("❌ Fout bij het laden van CSV:", error);
         }
     }
 
-    await loadCSV();
+    await loadCSV(); // Wacht tot CSV is geladen voordat analyse start
 
     analyseButton.addEventListener("click", function () {
-        console.log("📌 Stopwoorden status:", stopwoorden);
-
-        if (stopwoorden.size === 0) {
-            alert("⚠ Stopwoorden zijn nog niet geladen, probeer het opnieuw.");
+        if (!isCsvLoaded) {
+            alert("⚠ CSV is nog niet volledig geladen, probeer het opnieuw.");
             return;
         }
 
@@ -75,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         let filteredText = filterStopwoorden(text);
-        let themes = analyseTekst(filteredText);
+        let themes = analyseZinnen(filteredText);
         generateMindmap(themes);
     });
 
@@ -99,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 // **Stopwoorden filteren uit tekst**
 function filterStopwoorden(text) {
     if (!stopwoorden || stopwoorden.size === 0) {
-        console.warn("⚠️ Stopwoorden zijn nog niet volledig geladen, tekst wordt onbewerkt teruggegeven.");
+        console.warn("⚠️ Stopwoorden zijn nog niet volledig geladen.");
         return text;
     }
 
@@ -110,24 +109,26 @@ function filterStopwoorden(text) {
     return gefilterdeWoorden.join(" ");
 }
 
-// **Thematische clustering met CSV-data**
-function analyseTekst(text) {
-    let woorden = text.toLowerCase().split(/\s+/);
+// **Nieuwe AI-functie: Thematische clustering op zinsniveau**
+function analyseZinnen(text) {
+    let zinnen = text.toLowerCase().split(/[.!?]+/);
     let clusters = {};
 
     Object.keys(thematischeData).forEach(categorie => {
         clusters[categorie] = [];
     });
 
-    woorden.forEach(word => {
+    zinnen.forEach(zin => {
         Object.keys(thematischeData).forEach(categorie => {
-            if (thematischeData[categorie].has(word)) {
-                clusters[categorie].push(word);
-            }
+            thematischeData[categorie].forEach(keyword => {
+                if (zin.includes(keyword)) {
+                    clusters[categorie].push(zin);
+                }
+            });
         });
     });
 
-    console.log("✅ Thematische clustering uitgevoerd:", clusters);
+    console.log("✅ AI-clustering uitgevoerd:", clusters);
     return clusters;
 }
 
@@ -139,7 +140,6 @@ function generateMindmap(themes) {
         return;
     }
 
-    // **Verwijder bestaand diagram als die al bestaat**
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
         existingDiagram.div = null;
@@ -180,16 +180,6 @@ function generateMindmap(themes) {
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
-    // **Toon de mindmap-container**
     mindmapContainer.style.display = "block";
-
     console.log("✅ Mindmap succesvol gegenereerd.");
-}
-
-// **Kleur bepalen op basis van sentiment**
-function getColorBySentiment(theme) {
-    if (theme.includes("Werkdruk")) return "#FF9999"; // Rood voor negatief
-    if (theme.includes("Ondersteuning")) return "#99FF99"; // Groen voor positief
-    if (theme.includes("Cliënt")) return "#66B2FF"; // Blauw voor zorg-gerelateerd
-    return "#FFD700"; // Geel voor neutraal
 }
