@@ -73,9 +73,17 @@ document.addEventListener("DOMContentLoaded", async function () {
             return;
         }
 
-        let filteredText = filterStopwoorden(text);
-        let themes = analyseZinnen(filteredText);
-        generateMindmap(themes);
+let filteredText = filterStopwoorden(text);
+console.log("✅ Gefilterde tekst na stopwoorden:", filteredText);
+
+let themes = analyseZinnen(filteredText);
+if (!themes || !themes.clusters) {
+    console.error("❌ Fout: `analyseZinnen()` retourneert een ongeldige waarde:", themes);
+    return;
+}
+
+console.log("✅ Thema’s na analyse:", themes);
+generateMindmap(themes);
     });
 
     exportButton.addEventListener("click", function () {
