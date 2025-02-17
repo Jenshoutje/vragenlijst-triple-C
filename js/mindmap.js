@@ -194,23 +194,25 @@ Object.keys(clusters).forEach((theme) => {
 
         let uniqueWords = new Set(clusters[theme]);  // ✅ Voorkom dubbele woorden
 
-uniqueWords.forEach((word, wordIndex) => {
-    let groupIndex = Math.floor(wordIndex / 5); // Maak clusters van 5 woorden
-    let groupKey = `${theme}-group-${groupIndex}`;
+        uniqueWords.forEach((word, wordIndex) => {
+            let groupIndex = Math.floor(wordIndex / 5); // Maak clusters van 5 woorden
+            let groupKey = `${theme}-group-${groupIndex}`;
 
-    // Voeg groep toe als die nog niet bestaat
-    if (!nodeDataArray.some(node => node.key === groupKey)) {
-        nodeDataArray.push({ key: groupKey, text: `Cluster ${groupIndex + 1}`, color: "#bbb" });
-        linkDataArray.push({ from: theme, to: groupKey });
+            // Voeg groep toe als die nog niet bestaat
+            if (!nodeDataArray.some(node => node.key === groupKey)) {
+                nodeDataArray.push({ key: groupKey, text: `Cluster ${groupIndex + 1}`, color: "#bbb" });
+                linkDataArray.push({ from: theme, to: groupKey });
+            }
+
+            // Voeg het woord toe onder de groep
+            let wordKey = `${theme}-${wordIndex}`;
+            nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
+            linkDataArray.push({ from: groupKey, to: wordKey });
+        });  // ✅ Correct sluitend haakje voor `.forEach()`
     }
+});  // ✅ Correct sluitend haakje voor `.forEach()` van `Object.keys(clusters)`
 
-    // Voeg het woord toe onder de groep
-    let wordKey = `${theme}-${wordIndex}`;
-    nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
-    linkDataArray.push({ from: groupKey, to: wordKey });
-    });
-    
-
+// **Mindmap-template met klikbare knoppen**
 diagram.nodeTemplate = $(go.Node, "Auto",
     { 
         click: function (event, obj) {  // ✅ Event-handler op Node in plaats van TextBlock
@@ -236,6 +238,8 @@ diagram.nodeTemplate = $(go.Node, "Auto",
         new go.Binding("text", "text")
     )
 );
+
+// **Mindmap toepassen**
 diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 mindmapContainer.style.display = "block";
 
