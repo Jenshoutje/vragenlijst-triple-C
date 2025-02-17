@@ -109,11 +109,10 @@ function filterStopwoorden(text) {
     return gefilterdeWoorden.join(" ");
 }
 
-// **Nieuwe AI-functie: Thematische clustering op zinsniveau**
-function analyseTekst(text) {
+function analyseZinnen(text) {
     let zinnen = text.toLowerCase().split(/[.!?]+/).map(zin => zin.trim()).filter(zin => zin.length > 0);
     let clusters = {};
-    let woordContext = {};  // ✅ Hier slaan we de originele zinnen per woord op
+    let woordContext = {};  // ✅ Context per woord opslaan
 
     Object.keys(thematischeData).forEach(categorie => {
         clusters[categorie] = [];
@@ -136,7 +135,7 @@ function analyseTekst(text) {
         });
     });
 
-    console.log("✅ Thematische clustering uitgevoerd:", clusters);
+    console.log("✅ AI-clustering uitgevoerd:", clusters);
     console.log("📌 Woord-context mapping:", woordContext);
     return { clusters, woordContext };  // ✅ Retourneert clusters en context voor woorden
 }
