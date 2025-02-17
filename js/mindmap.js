@@ -209,6 +209,7 @@ Object.keys(clusters).forEach((theme) => {
             nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
             linkDataArray.push({ from: groupKey, to: wordKey });
         });  // ✅ Correct sluitend haakje voor `.forEach()`
+    }
          });  // ✅ Correct sluitend haakje voor `.forEach()` van `Object.keys(clusters)`
 
 // **Mindmap-template met klikbare knoppen**
