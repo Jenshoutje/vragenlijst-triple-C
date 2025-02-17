@@ -79,6 +79,8 @@ console.log("✅ Gefilterde tekst na stopwoorden:", filteredText);
 let themes = analyseZinnen(filteredText);
 if (!themes || !themes.clusters) {
     console.error("❌ Fout: `analyseZinnen()` retourneert een ongeldige waarde:", themes);
+    console.log("✅ Debug analyseZinnen - clusters:", clusters);
+console.log("✅ Debug analyseZinnen - woordContext:", woordContext);
     return;
 }
 
@@ -199,7 +201,7 @@ function generateMindmap(themesData) {
         nodeSpacing: 100,
         angle: 360,
         rotate: true,
-        sorting: go.RadialLayout.SortingClockwise
+        sorting: go.RadialLayout.Ascending // Of gebruik Descending indien gewenst
     });
 
     // **Mindmap-template met klikbare knoppen**
