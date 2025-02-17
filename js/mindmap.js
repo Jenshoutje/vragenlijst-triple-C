@@ -173,12 +173,12 @@ function generateMindmap(themesData) {
     let $ = go.GraphObject.make;
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
-        layout: $(go.TreeLayout, { 
+layout: $(go.TreeLayout, { 
     angle: 90, 
-    layerSpacing: 60,  // Vergroot de afstand tussen lagen voor meer overzicht
-    nodeSpacing: 50,    // Ruimte tussen de nodes voor meer leesbaarheid
-    breadthLimit: 600,  // Zorgt ervoor dat nodes logischer verdeeld worden
-    alignment: go.TreeLayout.AlignmentStart  // Zorgt voor strakkere ordening
+    layerSpacing: 80,  // Grotere afstand tussen lagen
+    nodeSpacing: 120,  // Grotere afstand tussen nodes voor betere spreiding
+    breadthLimit: 1200,  // Verhoog dit om nodes beter over het canvas te verspreiden
+    alignment: go.TreeLayout.AlignmentStart // Strakkere ordening zonder overlap
 })
     });
 
@@ -204,6 +204,7 @@ Object.keys(clusters).forEach((theme) => {
 // **Mindmap-template met klikbare knoppen**
 diagram.nodeTemplate = $(go.Node, "Auto",
     { 
+        locationSpot: go.Spot.Center,
         click: function (event, obj) {  // ✅ Event-handler op Node in plaats van TextBlock
             let woord = obj.part.data.text;
             let detailsDiv = document.getElementById("contextDetails");
@@ -227,6 +228,15 @@ diagram.nodeTemplate = $(go.Node, "Auto",
         new go.Binding("text", "text")
     )
 );
+
+// **Lay-out met verbeterde spreiding**
+diagram.layout = $(go.TreeLayout, { 
+    angle: 90, 
+    layerSpacing: 100,  // Grotere afstand tussen lagen
+    nodeSpacing: 150,   // Extra ruimte tussen nodes
+    breadthLimit: 1600,  // Spreid de boom horizontaal
+    alignment: go.TreeLayout.AlignmentStart // Voorkomt overlap van nodes
+});
 
 // **Mindmap toepassen**
 // **Einde van de functie**
