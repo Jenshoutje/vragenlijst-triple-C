@@ -200,10 +200,23 @@ Object.keys(clusters).forEach((theme) => {
             { fill: "white", strokeWidth: 0 },
             new go.Binding("fill", "color")
         ),
-        $(go.TextBlock,
-            { margin: 8 },
-            new go.Binding("text", "text")
-        ).bind("click", function (event, obj) {  
+  $(go.TextBlock,
+    { margin: 8 },
+    new go.Binding("text", "text"),
+    {
+        click: function (event, obj) {  
+            let woord = obj.part.data.text;
+            let detailsDiv = document.getElementById("contextDetails");
+            if (woordContext[woord]) {
+                detailsDiv.style.display = "block";
+                detailsDiv.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
+            } else {
+                detailsDiv.style.display = "block";
+                detailsDiv.innerHTML = `<strong>Context van "${woord}":</strong><br>Geen extra context beschikbaar.`;
+            }
+        }
+    }
+).bind("click", function (event, obj) {  
             let woord = obj.part.data.text;
             if (woordContext[woord]) {
                 alert(`Context van "${woord}":\n\n` + [...woordContext[woord]].join("\n"));  
