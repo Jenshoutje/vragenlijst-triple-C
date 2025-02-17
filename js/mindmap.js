@@ -171,18 +171,21 @@ function generateMindmap(themesData) {
     let nodeDataArray = [];
     let linkDataArray = [];
 
-    Object.keys(clusters).forEach((theme) => {
-        if (clusters[theme].length > 0) {
-            let color = getColorBySentiment(theme);
-            nodeDataArray.push({ key: theme, text: theme, color: color });
+    
+Object.keys(clusters).forEach((theme) => {
+    if (clusters[theme].length > 0) {
+        let color = getColorBySentiment(theme);
+        nodeDataArray.push({ key: theme, text: theme, color: color });
 
-            clusters[theme].forEach((word, wordIndex) => {
-                let wordKey = `${theme}-${wordIndex}`;
-                nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
-                linkDataArray.push({ from: theme, to: wordKey });
-            });
-        }
-    });
+        let uniqueWords = new Set(clusters[theme]);  // ✅ Voorkom dubbele woorden
+
+        uniqueWords.forEach((word, wordIndex) => {
+            let wordKey = `${theme}-${wordIndex}`;
+            nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
+            linkDataArray.push({ from: theme, to: wordKey });
+        });
+    }
+});
 
     diagram.nodeTemplate = $(go.Node, "Auto",
         $(go.Shape, "RoundedRectangle",
