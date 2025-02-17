@@ -244,3 +244,6 @@ diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 mindmapContainer.style.display = "block";
 
 console.log("✅ Mindmap met interactie gegenereerd.");
+    console.log("🔍 Geregistreerde nodes:", nodeDataArray);
+console.log("🔗 Geregistreerde links:", linkDataArray);
+console.log("✅ Mindmap met interactie gegenereerd.");
