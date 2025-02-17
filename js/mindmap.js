@@ -162,9 +162,8 @@ function generateMindmap(themesData) {
         return;
     }
 
-    let { clusters, woordContext } = themesData;  // ✅ Clusters en context ophalen
+    let { clusters, woordContext } = themesData;  
 
-    // Verwijder bestaand diagram als die al bestaat
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
         existingDiagram.div = null;
@@ -172,78 +171,69 @@ function generateMindmap(themesData) {
 
     let $ = go.GraphObject.make;
     let diagram = $(go.Diagram, "mindmap", {
-        "undoManager.isEnabled": true,
-layout: $(go.TreeLayout, { 
-    angle: 90, 
-    layerSpacing: 80,  // Grotere afstand tussen lagen
-    nodeSpacing: 120,  // Grotere afstand tussen nodes voor betere spreiding
-    breadthLimit: 1200,  // Verhoog dit om nodes beter over het canvas te verspreiden
-    alignment: go.TreeLayout.AlignmentStart // Strakkere ordening zonder overlap
-})
+        "undoManager.isEnabled": true
     });
 
     let nodeDataArray = [];
     let linkDataArray = [];
 
-    
-Object.keys(clusters).forEach((theme) => {
-    if (clusters[theme].length > 0) {
-        let color = getColorBySentiment(theme);
-        nodeDataArray.push({ key: theme, text: theme, color: color });
+    Object.keys(clusters).forEach((theme) => {
+        if (clusters[theme].length > 0) {
+            let color = getColorBySentiment(theme);
+            nodeDataArray.push({ key: theme, text: theme, color: color });
 
-        let uniqueWords = new Set(clusters[theme]);  // ✅ Voorkom dubbele woorden
+            let uniqueWords = new Set(clusters[theme]);  
 
-        uniqueWords.forEach((word, wordIndex) => {
-            let wordKey = `${theme}-${wordIndex}`;
-            nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
-            linkDataArray.push({ from: theme, to: wordKey });
-        });  // ✅ Correct sluitend haakje voor `.forEach()`
-    }
-});
-
-// **Mindmap-template met klikbare knoppen**
-diagram.nodeTemplate = $(go.Node, "Auto",
-    { 
-        locationSpot: go.Spot.Center,
-        click: function (event, obj) {  // ✅ Event-handler op Node in plaats van TextBlock
-            let woord = obj.part.data.text;
-            let detailsDiv = document.getElementById("contextDetails");
-            let contextText = document.getElementById("contextText");
-
-            if (woordContext && woordContext[woord]) {  // ✅ Controleer of woordContext bestaat
-                detailsDiv.style.display = "block";
-                contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
-            } else {
-                detailsDiv.style.display = "block";
-                contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>Geen extra context beschikbaar.`;
-            }
+            uniqueWords.forEach((word, wordIndex) => {
+                let wordKey = `${theme}-${wordIndex}`;
+                nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
+                linkDataArray.push({ from: theme, to: wordKey });
+            });  
         }
-    },
-    $(go.Shape, "RoundedRectangle",
-        { fill: "white", strokeWidth: 0 },
-        new go.Binding("fill", "color")
-    ),
-    $(go.TextBlock,
-        { margin: 8 },
-        new go.Binding("text", "text")
-    )
-);
+    });
 
-// **Lay-out met verbeterde spreiding**
-diagram.layout = $(go.TreeLayout, { 
-    angle: 90, 
-    layerSpacing: 100,  // Grotere afstand tussen lagen
-    nodeSpacing: 150,   // Extra ruimte tussen nodes
-    breadthLimit: 1600,  // Spreid de boom horizontaal
-    alignment: go.TreeLayout.AlignmentStart // Voorkomt overlap van nodes
-});
+    // **Radiale lay-out instellen VOORDAT het model wordt geladen**
+    diagram.layout = $(go.RadialLayout, {
+        maxLayers: Infinity,  // Geen limiet op lagen
+        layerSpacing: 120,
+        nodeSpacing: 100,
+        angle: 360,
+        rotate: true,
+        sorting: go.RadialLayout.SortingClockwise
+    });
 
-// **Mindmap toepassen**
-// **Einde van de functie**
-diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-mindmapContainer.style.display = "block";
+    // **Mindmap-template met klikbare knoppen**
+    diagram.nodeTemplate = $(go.Node, "Auto",
+        { 
+            click: function (event, obj) {  
+                let woord = obj.part.data.text;
+                let detailsDiv = document.getElementById("contextDetails");
+                let contextText = document.getElementById("contextText");
 
-console.log("✅ Mindmap met interactie gegenereerd.");
-console.log("🔍 Geregistreerde nodes:", nodeDataArray);
-console.log("🔗 Geregistreerde links:", linkDataArray);
+                if (woordContext && woordContext[woord]) {  
+                    detailsDiv.style.display = "block";
+                    contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
+                } else {
+                    detailsDiv.style.display = "block";
+                    contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>Geen extra context beschikbaar.`;
+                }
+            }
+        },
+        $(go.Shape, "RoundedRectangle",
+            { fill: "white", strokeWidth: 0 },
+            new go.Binding("fill", "color")
+        ),
+        $(go.TextBlock,
+            { margin: 8 },
+            new go.Binding("text", "text")
+        )
+    );
+
+    // **Model instellen na de layout**
+    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+    mindmapContainer.style.display = "block";
+
+    console.log("✅ Mindmap met RadialLayout gegenereerd.");
+    console.log("🔍 Geregistreerde nodes:", nodeDataArray);
+    console.log("🔗 Geregistreerde links:", linkDataArray);
 }
