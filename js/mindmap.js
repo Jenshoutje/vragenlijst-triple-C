@@ -138,22 +138,32 @@ function analyseZinnen(text) {
     return { clusters, woordContext };
 }
 
+function getColorBySentiment(theme) {
+    if (theme.includes("Werkdruk")) return "#FF9999"; // Rood voor negatieve thema's
+    if (theme.includes("Ondersteuning")) return "#99FF99"; // Groen voor positieve thema's
+    if (theme.includes("Cliënt")) return "#66B2FF"; // Blauw voor zorg-gerelateerde thema's
+    return "#FFD700"; // Geel als standaardkleur
+}
+
 // **Mindmap genereren met Radiale lay-out**
-function generateMindmap(themesData) {
+ function generateMindmap(themesData) {
     let mindmapContainer = document.getElementById("mindmap");
     if (!mindmapContainer) return;
 
-    let { clusters, woordContext } = themesData;
+    let clusters = themesData?.clusters || {};
+    let woordContext = themesData?.woordContext || {};
 
     let existingDiagram = go.Diagram.fromDiv("mindmap");
-    if (existingDiagram) existingDiagram.div = null;
+    if (existingDiagram) {
+        existingDiagram.clear();  // Correct verwijderen
+        existingDiagram.div = null;
+    }
 
     let $ = go.GraphObject.make;
     let diagram = $(go.Diagram, "mindmap", { "undoManager.isEnabled": true });
 
-    let nodeDataArray = [];
-    let linkDataArray = [];
-
+    let nodeDataArray = diagram.model?.nodeDataArray || [];
+    let linkDataArray = diagram.model?.linkDataArray || [];
     Object.keys(clusters).forEach((theme, index) => {
         let color = getColorBySentiment(theme);
         nodeDataArray.push({ key: theme, text: theme, color: color });
