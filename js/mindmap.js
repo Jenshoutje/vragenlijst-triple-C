@@ -214,6 +214,21 @@ uniqueWords.forEach((word, wordIndex) => {
     
 
 diagram.nodeTemplate = $(go.Node, "Auto",
+    { 
+        click: function (event, obj) {  // ✅ Event-handler op Node in plaats van TextBlock
+            let woord = obj.part.data.text;
+            let detailsDiv = document.getElementById("contextDetails");
+            let contextText = document.getElementById("contextText");
+
+            if (woordContext && woordContext[woord]) {  // ✅ Controleer of woordContext bestaat
+                detailsDiv.style.display = "block";
+                contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
+            } else {
+                detailsDiv.style.display = "block";
+                contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>Geen extra context beschikbaar.`;
+            }
+        }
+    },
     $(go.Shape, "RoundedRectangle",
         { fill: "white", strokeWidth: 0 },
         new go.Binding("fill", "color")
@@ -221,21 +236,8 @@ diagram.nodeTemplate = $(go.Node, "Auto",
     $(go.TextBlock,
         { margin: 8 },
         new go.Binding("text", "text")
-    ).click(function (event, obj) {  
-        let woord = obj.part.data.text;
-        let detailsDiv = document.getElementById("contextDetails");
-        let contextText = document.getElementById("contextText");
-
-        if (woordContext[woord]) {
-            detailsDiv.style.display = "block";  
-            contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
-        } else {
-            detailsDiv.style.display = "block";
-            contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>Geen extra context beschikbaar.`;
-        }
-    })
+    )
 );
-
 diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 mindmapContainer.style.display = "block";
 
