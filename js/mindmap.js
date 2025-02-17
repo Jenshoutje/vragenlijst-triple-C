@@ -132,6 +132,12 @@ function analyseZinnen(text) {
     return clusters;
 }
 
+function getColorBySentiment(theme) {
+    if (theme.includes("Werkdruk")) return "#FF9999"; // Rood voor negatief
+    if (theme.includes("Ondersteuning")) return "#99FF99"; // Groen voor positief
+    if (theme.includes("Cliënt")) return "#66B2FF"; // Blauw voor zorg-gerelateerd
+    return "#FFD700"; // Geel voor neutraal
+}
 // **Mindmap genereren met GoJS**
 function generateMindmap(themes) {
     let mindmapContainer = document.getElementById("mindmap");
