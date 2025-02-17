@@ -208,8 +208,6 @@ uniqueWords.forEach((word, wordIndex) => {
     let wordKey = `${theme}-${wordIndex}`;
     nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
     linkDataArray.push({ from: groupKey, to: wordKey });
-}
-
     });
     
 
