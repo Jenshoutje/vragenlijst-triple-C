@@ -110,26 +110,35 @@ function filterStopwoorden(text) {
 }
 
 // **Nieuwe AI-functie: Thematische clustering op zinsniveau**
-function analyseZinnen(text) {
-    let zinnen = text.toLowerCase().split(/[.!?]+/);
+function analyseTekst(text) {
+    let zinnen = text.toLowerCase().split(/[.!?]+/).map(zin => zin.trim()).filter(zin => zin.length > 0);
     let clusters = {};
+    let woordContext = {};  // ✅ Hier slaan we de originele zinnen per woord op
 
     Object.keys(thematischeData).forEach(categorie => {
         clusters[categorie] = [];
     });
 
     zinnen.forEach(zin => {
-        Object.keys(thematischeData).forEach(categorie => {
-            thematischeData[categorie].forEach(keyword => {
-                if (zin.includes(keyword)) {
-                    clusters[categorie].push(zin);
+        let woorden = zin.split(/\s+/);  // ✅ Splits zin in losse woorden
+
+        woorden.forEach(word => {
+            Object.keys(thematischeData).forEach(categorie => {
+                if (thematischeData[categorie].has(word)) {
+                    clusters[categorie].push(word);
+
+                    if (!woordContext[word]) {
+                        woordContext[word] = new Set();  // ✅ Gebruik een Set om dubbele zinnen te vermijden
+                    }
+                    woordContext[word].add(zin);
                 }
             });
         });
     });
 
-    console.log("✅ AI-clustering uitgevoerd:", clusters);
-    return clusters;
+    console.log("✅ Thematische clustering uitgevoerd:", clusters);
+    console.log("📌 Woord-context mapping:", woordContext);
+    return { clusters, woordContext };  // ✅ Retourneert clusters en context voor woorden
 }
 
 function getColorBySentiment(theme) {
@@ -139,12 +148,14 @@ function getColorBySentiment(theme) {
     return "#FFD700"; // Geel voor neutraal
 }
 // **Mindmap genereren met GoJS**
-function generateMindmap(themes) {
+function generateMindmap(themesData) {
     let mindmapContainer = document.getElementById("mindmap");
     if (!mindmapContainer) {
         console.error("❌ Mindmap container niet gevonden.");
         return;
     }
+
+    let { clusters, woordContext } = themesData;  // ✅ Clusters en context ophalen
 
     // Verwijder bestaand diagram als die al bestaat
     let existingDiagram = go.Diagram.fromDiv("mindmap");
@@ -161,20 +172,19 @@ function generateMindmap(themes) {
     let nodeDataArray = [];
     let linkDataArray = [];
 
-    Object.keys(themes).forEach((theme) => {
-        if (themes[theme].length > 0) {
+    Object.keys(clusters).forEach((theme) => {
+        if (clusters[theme].length > 0) {
             let color = getColorBySentiment(theme);
             nodeDataArray.push({ key: theme, text: theme, color: color });
 
-            themes[theme].forEach((subtheme, subIndex) => {
-                let subKey = `${theme}-${subIndex}`;
-                nodeDataArray.push({ key: subKey, text: subtheme, color: "#ddd" });
-                linkDataArray.push({ from: theme, to: subKey });
+            clusters[theme].forEach((word, wordIndex) => {
+                let wordKey = `${theme}-${wordIndex}`;
+                nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
+                linkDataArray.push({ from: theme, to: wordKey });
             });
         }
     });
 
-    // **Mindmap-visuele structuur**
     diagram.nodeTemplate = $(go.Node, "Auto",
         $(go.Shape, "RoundedRectangle",
             { fill: "white", strokeWidth: 0 },
@@ -183,11 +193,16 @@ function generateMindmap(themes) {
         $(go.TextBlock,
             { margin: 8 },
             new go.Binding("text", "text")
-        )
+        ).bind("click", function (event, obj) {  
+            let woord = obj.part.data.text;
+            if (woordContext[woord]) {
+                alert(`Context van "${woord}":\n\n` + [...woordContext[woord]].join("\n"));  
+            }
+        })
     );
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     mindmapContainer.style.display = "block";
 
-    console.log("✅ NLP-gebaseerde mindmap succesvol gegenereerd.");
+    console.log("✅ Mindmap met interactie gegenereerd.");
 }
