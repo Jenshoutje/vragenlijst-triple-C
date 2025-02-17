@@ -195,37 +195,29 @@ Object.keys(clusters).forEach((theme) => {
     }
 });
 
-    diagram.nodeTemplate = $(go.Node, "Auto",
-        $(go.Shape, "RoundedRectangle",
-            { fill: "white", strokeWidth: 0 },
-            new go.Binding("fill", "color")
-        ),
-  $(go.TextBlock,
-    { margin: 8 },
-    new go.Binding("text", "text"),
-    {
-        click: function (event, obj) {  
-            let woord = obj.part.data.text;
-            let detailsDiv = document.getElementById("contextDetails");
-            if (woordContext[woord]) {
-                detailsDiv.style.display = "block";
-                detailsDiv.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
-            } else {
-                detailsDiv.style.display = "block";
-                detailsDiv.innerHTML = `<strong>Context van "${woord}":</strong><br>Geen extra context beschikbaar.`;
-            }
+diagram.nodeTemplate = $(go.Node, "Auto",
+    $(go.Shape, "RoundedRectangle",
+        { fill: "white", strokeWidth: 0 },
+        new go.Binding("fill", "color")
+    ),
+    $(go.TextBlock,
+        { margin: 8 },
+        new go.Binding("text", "text")
+    ).click(function (event, obj) {  
+        let woord = obj.part.data.text;
+        let detailsDiv = document.getElementById("contextDetails");
+        
+        if (woordContext[woord]) {
+            detailsDiv.style.display = "block";
+            detailsDiv.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
+        } else {
+            detailsDiv.style.display = "block";
+            detailsDiv.innerHTML = `<strong>Context van "${woord}":</strong><br>Geen extra context beschikbaar.`;
         }
-    }
-).bind("click", function (event, obj) {  
-            let woord = obj.part.data.text;
-            if (woordContext[woord]) {
-                alert(`Context van "${woord}":\n\n` + [...woordContext[woord]].join("\n"));  
-            }
-        })
-    );
+    })
+);
 
-    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-    mindmapContainer.style.display = "block";
+diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+mindmapContainer.style.display = "block";
 
-    console.log("✅ Mindmap met interactie gegenereerd.");
-}
+console.log("✅ Mindmap met interactie gegenereerd.");
