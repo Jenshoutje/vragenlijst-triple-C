@@ -201,7 +201,6 @@ function generateMindmap(themesData) {
         nodeSpacing: 100,
         angle: 360,
         rotate: true,
-        sorting: go.RadialLayout.Ascending // Of gebruik Descending indien gewenst
     });
 
     // **Mindmap-template met klikbare knoppen**
