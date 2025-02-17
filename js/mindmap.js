@@ -1,7 +1,7 @@
 // **Globale opslag voor stopwoorden en thematische data**
-let stopwoorden = new Set();  
-let thematischeData = {};  
-let isCsvLoaded = false; // ✅ Check of CSV volledig is geladen
+let stopwoorden = new Set();
+let thematischeData = {};
+let isCsvLoaded = false; // ✅ Controle of CSV is geladen
 
 document.addEventListener("DOMContentLoaded", async function () {
     console.log("📌 JavaScript geladen: Start Mindmap-setup...");
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
             });
 
-            isCsvLoaded = true; // ✅ CSV is correct geladen
+            isCsvLoaded = true;
             console.log("✅ CSV succesvol geladen:", thematischeData);
 
         } catch (error) {
@@ -73,19 +73,17 @@ document.addEventListener("DOMContentLoaded", async function () {
             return;
         }
 
-let filteredText = filterStopwoorden(text);
-console.log("✅ Gefilterde tekst na stopwoorden:", filteredText);
+        let filteredText = filterStopwoorden(text);
+        console.log("✅ Gefilterde tekst na stopwoorden:", filteredText);
 
-let themes = analyseZinnen(filteredText);
-if (!themes || !themes.clusters) {
-    console.error("❌ Fout: `analyseZinnen()` retourneert een ongeldige waarde:", themes);
-    console.log("✅ Debug analyseZinnen - clusters:", clusters);
-console.log("✅ Debug analyseZinnen - woordContext:", woordContext);
-    return;
-}
+        let themes = analyseZinnen(filteredText);
+        if (!themes || !themes.clusters || Object.keys(themes.clusters).length === 0) {
+            console.error("❌ Fout: `analyseZinnen()` retourneert een ongeldige of lege waarde:", themes);
+            return;
+        }
 
-console.log("✅ Thema’s na analyse:", themes);
-generateMindmap(themes);
+        console.log("✅ Thema’s na analyse:", themes);
+        generateMindmap(themes);
     });
 
     exportButton.addEventListener("click", function () {
@@ -107,37 +105,29 @@ generateMindmap(themes);
 
 // **Stopwoorden filteren uit tekst**
 function filterStopwoorden(text) {
-    if (!stopwoorden || stopwoorden.size === 0) {
-        console.warn("⚠️ Stopwoorden zijn nog niet volledig geladen.");
-        return text;
-    }
-
     let woorden = text.toLowerCase().split(/\s+/);
     let gefilterdeWoorden = woorden.filter(word => !stopwoorden.has(word));
-
-    console.log("✅ Gefilterde woorden:", gefilterdeWoorden);
     return gefilterdeWoorden.join(" ");
 }
 
+// **Thematische analyse uitvoeren**
 function analyseZinnen(text) {
     let zinnen = text.toLowerCase().split(/[.!?]+/).map(zin => zin.trim()).filter(zin => zin.length > 0);
     let clusters = {};
-    let woordContext = {};  // ✅ Context per woord opslaan
+    let woordContext = {};
 
     Object.keys(thematischeData).forEach(categorie => {
         clusters[categorie] = [];
     });
 
     zinnen.forEach(zin => {
-        let woorden = zin.split(/\s+/);  // ✅ Splits zin in losse woorden
-
+        let woorden = zin.split(/\s+/);
         woorden.forEach(word => {
             Object.keys(thematischeData).forEach(categorie => {
                 if (thematischeData[categorie].has(word)) {
                     clusters[categorie].push(word);
-
                     if (!woordContext[word]) {
-                        woordContext[word] = new Set();  // ✅ Gebruik een Set om dubbele zinnen te vermijden
+                        woordContext[word] = new Set();
                     }
                     woordContext[word].add(zin);
                 }
@@ -145,73 +135,52 @@ function analyseZinnen(text) {
         });
     });
 
-    console.log("✅ AI-clustering uitgevoerd:", clusters);
-    console.log("📌 Woord-context mapping:", woordContext);
-    return { clusters, woordContext };  // ✅ Retourneert clusters en context voor woorden
+    return { clusters, woordContext };
 }
 
-function getColorBySentiment(theme) {
-    if (theme.includes("Werkdruk")) return "#FF9999"; // Rood voor negatief
-    if (theme.includes("Ondersteuning")) return "#99FF99"; // Groen voor positief
-    if (theme.includes("Cliënt")) return "#66B2FF"; // Blauw voor zorg-gerelateerd
-    return "#FFD700"; // Geel voor neutraal
-}
-// **Mindmap genereren met GoJS**
+// **Mindmap genereren met Radiale lay-out**
 function generateMindmap(themesData) {
     let mindmapContainer = document.getElementById("mindmap");
-    if (!mindmapContainer) {
-        console.error("❌ Mindmap container niet gevonden.");
-        return;
-    }
+    if (!mindmapContainer) return;
 
-    let { clusters, woordContext } = themesData;  
+    let { clusters, woordContext } = themesData;
 
     let existingDiagram = go.Diagram.fromDiv("mindmap");
-    if (existingDiagram) {
-        existingDiagram.div = null;
-    }
+    if (existingDiagram) existingDiagram.div = null;
 
     let $ = go.GraphObject.make;
-    let diagram = $(go.Diagram, "mindmap", {
-        "undoManager.isEnabled": true
-    });
+    let diagram = $(go.Diagram, "mindmap", { "undoManager.isEnabled": true });
 
     let nodeDataArray = [];
     let linkDataArray = [];
 
-    Object.keys(clusters).forEach((theme) => {
-        if (clusters[theme].length > 0) {
-            let color = getColorBySentiment(theme);
-            nodeDataArray.push({ key: theme, text: theme, color: color });
+    Object.keys(clusters).forEach((theme, index) => {
+        let color = getColorBySentiment(theme);
+        nodeDataArray.push({ key: theme, text: theme, color: color });
 
-            let uniqueWords = new Set(clusters[theme]);  
-
-            uniqueWords.forEach((word, wordIndex) => {
-                let wordKey = `${theme}-${wordIndex}`;
-                nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
-                linkDataArray.push({ from: theme, to: wordKey });
-            });  
-        }
+        clusters[theme].forEach((word, wordIndex) => {
+            let wordKey = `${theme}-${wordIndex}`;
+            nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
+            linkDataArray.push({ from: theme, to: wordKey });
+        });
     });
 
-    // **Radiale lay-out instellen VOORDAT het model wordt geladen**
-    diagram.layout = $(go.RadialLayout, {
-        maxLayers: Infinity,  // Geen limiet op lagen
-        layerSpacing: 120,
-        nodeSpacing: 100,
-        angle: 360,
-        rotate: true,
+    // **Radiale lay-out**
+    diagram.layout = $(go.ForceDirectedLayout, {
+        defaultSpringLength: 150,  
+        defaultElectricalCharge: 200,  
+        maxIterations: 500,  
     });
 
     // **Mindmap-template met klikbare knoppen**
     diagram.nodeTemplate = $(go.Node, "Auto",
         { 
-            click: function (event, obj) {  
+            click: function (event, obj) {
                 let woord = obj.part.data.text;
                 let detailsDiv = document.getElementById("contextDetails");
                 let contextText = document.getElementById("contextText");
 
-                if (woordContext && woordContext[woord]) {  
+                if (woordContext && woordContext[woord]) {
                     detailsDiv.style.display = "block";
                     contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
                 } else {
@@ -220,21 +189,13 @@ function generateMindmap(themesData) {
                 }
             }
         },
-        $(go.Shape, "RoundedRectangle",
-            { fill: "white", strokeWidth: 0 },
-            new go.Binding("fill", "color")
-        ),
-        $(go.TextBlock,
-            { margin: 8 },
-            new go.Binding("text", "text")
-        )
+        $(go.Shape, "RoundedRectangle", { fill: "white", strokeWidth: 0 }, new go.Binding("fill", "color")),
+        $(go.TextBlock, { margin: 8 }, new go.Binding("text", "text"))
     );
 
     // **Model instellen na de layout**
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     mindmapContainer.style.display = "block";
 
-    console.log("✅ Mindmap met RadialLayout gegenereerd.");
-    console.log("🔍 Geregistreerde nodes:", nodeDataArray);
-    console.log("🔗 Geregistreerde links:", linkDataArray);
+    console.log("✅ Mindmap met Force-Directed Layout gegenereerd.");
 }
