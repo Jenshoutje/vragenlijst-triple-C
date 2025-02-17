@@ -173,7 +173,13 @@ function generateMindmap(themesData) {
     let $ = go.GraphObject.make;
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
-        layout: $(go.TreeLayout, { angle: 90, layerSpacing: 35 })
+    layout: $(go.TreeLayout, { 
+    angle: 90, 
+    layerSpacing: 60,  // Vergroot de afstand tussen lagen voor meer overzicht
+    nodeSpacing: 50,    // Ruimte tussen de nodes voor meer leesbaarheid
+    breadthLimit: 600,  // Zorgt ervoor dat nodes logischer verdeeld worden
+    alignment: go.TreeLayout.AlignmentStart  // Zorgt voor strakkere ordening
+})
     });
 
     let nodeDataArray = [];
