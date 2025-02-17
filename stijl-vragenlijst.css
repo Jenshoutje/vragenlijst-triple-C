@@ -743,6 +743,30 @@ body {
     background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Zelfde stijl als tools/onderzoek */
 }
 
+/* Stijl voor de context-container */
+.thematischcontext-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
+}
+
+.thematischcontext-container h2, 
+.thematischcontext-container h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.thematischcontext-container p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
 /* Container voor analyse-sectie */
 .thema-analyse-container {
     max-width: 900px;
