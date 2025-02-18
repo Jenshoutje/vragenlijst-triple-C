@@ -115,6 +115,9 @@ function analyseZinnen(text) {
     let zinnen = text.toLowerCase().split(/[.!?]+/).map(zin => zin.trim()).filter(zin => zin.length > 0);
     let clusters = {};
     let woordContext = {};
+    let frequentie = {};  // ✅ Houd bij hoe vaak elk woord voorkomt
+
+    const MIN_FREQ = 2; // 🔥 Pas deze waarde aan om te bepalen vanaf welke frequentie een woord meetelt
 
     Object.keys(thematischeData).forEach(categorie => {
         clusters[categorie] = [];
@@ -123,18 +126,30 @@ function analyseZinnen(text) {
     zinnen.forEach(zin => {
         let woorden = zin.split(/\s+/);
         woorden.forEach(word => {
+            if (!frequentie[word]) {
+                frequentie[word] = 0;
+            }
+            frequentie[word]++;  // ✅ Tel hoe vaak een woord voorkomt
+
             Object.keys(thematischeData).forEach(categorie => {
                 if (thematischeData[categorie].has(word)) {
-                    clusters[categorie].push(word);
-                    if (!woordContext[word]) {
-                        woordContext[word] = new Set();
+                    if (frequentie[word] >= MIN_FREQ) {  // ✅ Filter woorden die te weinig voorkomen
+                        if (!clusters[categorie].includes(word)) {  // ✅ Voorkom dubbele woorden per categorie
+                            clusters[categorie].push(word);
+                        }
+
+                        if (!woordContext[word]) {
+                            woordContext[word] = new Set();
+                        }
+                        woordContext[word].add(zin);
                     }
-                    woordContext[word].add(zin);
                 }
             });
         });
     });
 
+    console.log("✅ AI-clustering uitgevoerd:", clusters);
+    console.log("📌 Woord-context mapping:", woordContext);
     return { clusters, woordContext };
 }
 
