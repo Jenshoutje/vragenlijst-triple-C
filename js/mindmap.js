@@ -115,9 +115,9 @@ function analyseZinnen(text) {
     let zinnen = text.toLowerCase().split(/[.!?]+/).map(zin => zin.trim()).filter(zin => zin.length > 0);
     let clusters = {};
     let woordContext = {};
-    let frequentie = {};  // ✅ Houd bij hoe vaak elk woord voorkomt
+    let frequentie = {};  
 
-    const MIN_FREQ = 2; // 🔥 Pas deze waarde aan om te bepalen vanaf welke frequentie een woord meetelt
+    const MIN_FREQ = 2; 
 
     Object.keys(thematischeData).forEach(categorie => {
         clusters[categorie] = [];
@@ -126,23 +126,18 @@ function analyseZinnen(text) {
     zinnen.forEach(zin => {
         let woorden = zin.split(/\s+/);
         woorden.forEach(word => {
-            if (!frequentie[word]) {
-                frequentie[word] = 0;
-            }
-            frequentie[word]++;  // ✅ Tel hoe vaak een woord voorkomt
+            frequentie[word] = (frequentie[word] || 0) + 1;
 
             Object.keys(thematischeData).forEach(categorie => {
-                if (thematischeData[categorie].has(word)) {
-                    if (frequentie[word] >= MIN_FREQ) {  // ✅ Filter woorden die te weinig voorkomen
-                        if (!clusters[categorie].includes(word)) {  // ✅ Voorkom dubbele woorden per categorie
-                            clusters[categorie].push(word);
-                        }
-
-                        if (!woordContext[word]) {
-                            woordContext[word] = new Set();
-                        }
-                        woordContext[word].add(zin);
+                if (thematischeData[categorie].has(word) && frequentie[word] >= MIN_FREQ) {  
+                    if (!clusters[categorie].includes(word)) {
+                        clusters[categorie].push(word);
                     }
+
+                    if (!woordContext[word]) {
+                        woordContext[word] = new Set();
+                    }
+                    woordContext[word].add(zin);
                 }
             });
         });
@@ -153,14 +148,15 @@ function analyseZinnen(text) {
     return { clusters, woordContext };
 }
 
+// **Kleuren toewijzen aan thema's**
 function getColorBySentiment(theme) {
-    if (theme.includes("Werkdruk")) return "#FF9999"; // Rood voor negatieve thema's
-    if (theme.includes("Ondersteuning")) return "#99FF99"; // Groen voor positieve thema's
-    if (theme.includes("Cliënt")) return "#66B2FF"; // Blauw voor zorg-gerelateerde thema's
-    return "#FFD700"; // Geel als standaardkleur
+    if (theme.includes("Werkdruk")) return "#FF9999"; 
+    if (theme.includes("Ondersteuning")) return "#99FF99"; 
+    if (theme.includes("Cliënt")) return "#66B2FF"; 
+    return "#FFD700"; 
 }
 
-// **Mindmap genereren met Radiale lay-out**
+// **Mindmap genereren met TreeLayout**
 function generateMindmap(themesData) {
     let mindmapContainer = document.getElementById("mindmap");
     if (!mindmapContainer) return;
@@ -168,18 +164,19 @@ function generateMindmap(themesData) {
     let clusters = themesData?.clusters || {};
     let woordContext = themesData?.woordContext || {};
 
-    // ✅ Verwijder bestaande mindmap correct
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
-        existingDiagram.clear();  // Verwijder alle nodes en links
+        existingDiagram.clear();
     }
 
     let $ = go.GraphObject.make;
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
-        contentAlignment: go.Spot.Center,  // Zorgt ervoor dat de mindmap in het midden staat
-        initialScale: 1.2,  // Zorgt ervoor dat de mindmap direct goed zichtbaar is
-        autoScale: go.Diagram.Uniform,  // Past de grootte automatisch aan
+        layout: $(go.TreeLayout, { 
+            angle: 90, 
+            layerSpacing: 100, 
+            nodeSpacing: 50 
+        })
     });
 
     let nodeDataArray = [];
@@ -189,51 +186,37 @@ function generateMindmap(themesData) {
         let color = getColorBySentiment(theme);
         nodeDataArray.push({ key: theme, text: theme, color: color });
 
-        clusters[theme].forEach((word, wordIndex) => {
-            let wordKey = `${theme}-${wordIndex}`;
-            nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
-            linkDataArray.push({ from: theme, to: wordKey });
+        clusters[theme].forEach((word) => {
+            nodeDataArray.push({ key: word, text: word, color: "#ddd" });
+            linkDataArray.push({ from: theme, to: word });
         });
     });
 
-    // **Force-Directed Lay-out voor betere spreiding**
-    diagram.layout = $(go.ForceDirectedLayout, {
-        defaultSpringLength: 200,  // Vergroot de afstand tussen knooppunten
-        defaultElectricalCharge: 300,  // Zorgt voor een natuurlijke spreiding
-        maxIterations: 1000,  // Zorgt voor stabiele plaatsing
-        isOngoing: false  // Voorkomt dat de mindmap blijft bewegen
-    });
-
-    // **Mindmap-template met klikbare knoppen**
     diagram.nodeTemplate = $(go.Node, "Auto",
-        { 
-            click: function (event, obj) {
-                let woord = obj.part.data.text;
-                let detailsDiv = document.getElementById("contextDetails");
-                let contextText = document.getElementById("contextText");
-
-                if (woordContext && woordContext[woord]) {
-                    detailsDiv.style.display = "block";
-                    contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
-                } else {
-                    detailsDiv.style.display = "block";
-                    contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>Geen extra context beschikbaar.`;
-                }
-            }
-        },
+        { click: showContext },
         $(go.Shape, "RoundedRectangle", 
-            { fill: "white", strokeWidth: 0, minSize: new go.Size(100, 40) },  // ✅ Grotere nodes voor leesbaarheid
+            { fill: "white", strokeWidth: 0, minSize: new go.Size(100, 40) },
             new go.Binding("fill", "color")
         ),
         $(go.TextBlock,
-            { margin: 12, font: "bold 14px Arial", textAlign: "center" },  // ✅ Grotere tekst voor betere zichtbaarheid
+            { margin: 12, font: "bold 14px Arial", textAlign: "center" },
             new go.Binding("text", "text")
         )
     );
 
-    // **Model instellen na de layout**
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     mindmapContainer.style.display = "block";
 
-    console.log("✅ Mindmap met Force-Directed Layout gegenereerd.");
+    console.log("✅ Mindmap met TreeLayout gegenereerd.");
+}
+
+function showContext(event, obj) {
+    let woord = obj.part.data.text;
+    let detailsDiv = document.getElementById("contextDetails");
+    let contextText = document.getElementById("contextText");
+
+    if (woordContext && woordContext[woord]) {
+        detailsDiv.style.display = "block";
+        contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
+    }
 }
