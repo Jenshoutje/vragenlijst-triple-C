@@ -146,25 +146,31 @@ function getColorBySentiment(theme) {
 }
 
 // **Mindmap genereren met Radiale lay-out**
- function generateMindmap(themesData) {
+function generateMindmap(themesData) {
     let mindmapContainer = document.getElementById("mindmap");
     if (!mindmapContainer) return;
 
     let clusters = themesData?.clusters || {};
     let woordContext = themesData?.woordContext || {};
 
+    // ✅ Verwijder bestaande mindmap correct
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
-        existingDiagram.clear();  // Correct verwijderen
-        existingDiagram.div = null;
+        existingDiagram.clear();  // Verwijder alle nodes en links
     }
 
     let $ = go.GraphObject.make;
-    let diagram = $(go.Diagram, "mindmap", { "undoManager.isEnabled": true });
+    let diagram = $(go.Diagram, "mindmap", {
+        "undoManager.isEnabled": true,
+        contentAlignment: go.Spot.Center,  // Zorgt ervoor dat de mindmap in het midden staat
+        initialScale: 1.2,  // Zorgt ervoor dat de mindmap direct goed zichtbaar is
+        autoScale: go.Diagram.Uniform,  // Past de grootte automatisch aan
+    });
 
-    let nodeDataArray = diagram.model?.nodeDataArray || [];
-    let linkDataArray = diagram.model?.linkDataArray || [];
-    Object.keys(clusters).forEach((theme, index) => {
+    let nodeDataArray = [];
+    let linkDataArray = [];
+
+    Object.keys(clusters).forEach((theme) => {
         let color = getColorBySentiment(theme);
         nodeDataArray.push({ key: theme, text: theme, color: color });
 
@@ -175,11 +181,12 @@ function getColorBySentiment(theme) {
         });
     });
 
-    // **Radiale lay-out**
+    // **Force-Directed Lay-out voor betere spreiding**
     diagram.layout = $(go.ForceDirectedLayout, {
-        defaultSpringLength: 150,  
-        defaultElectricalCharge: 200,  
-        maxIterations: 500,  
+        defaultSpringLength: 200,  // Vergroot de afstand tussen knooppunten
+        defaultElectricalCharge: 300,  // Zorgt voor een natuurlijke spreiding
+        maxIterations: 1000,  // Zorgt voor stabiele plaatsing
+        isOngoing: false  // Voorkomt dat de mindmap blijft bewegen
     });
 
     // **Mindmap-template met klikbare knoppen**
@@ -199,13 +206,14 @@ function getColorBySentiment(theme) {
                 }
             }
         },
-        $(go.Shape, "RoundedRectangle", { fill: "white", strokeWidth: 0, minSize: new go.Size(80, 30) }, new go.Binding("fill", "color") 
-         ),
-           $(go.TextBlock,
-        { margin: 10, font: "bold 14px Arial", textAlign: "center" }, // Grotere tekst
-        new go.Binding("text", "text")
-             )
-
+        $(go.Shape, "RoundedRectangle", 
+            { fill: "white", strokeWidth: 0, minSize: new go.Size(100, 40) },  // ✅ Grotere nodes voor leesbaarheid
+            new go.Binding("fill", "color")
+        ),
+        $(go.TextBlock,
+            { margin: 12, font: "bold 14px Arial", textAlign: "center" },  // ✅ Grotere tekst voor betere zichtbaarheid
+            new go.Binding("text", "text")
+        )
     );
 
     // **Model instellen na de layout**
