@@ -164,6 +164,7 @@ function generateMindmap(themesData) {
     let clusters = themesData?.clusters || {};
     let woordContext = themesData?.woordContext || {};
 
+    // ✅ Verwijder bestaande mindmap correct
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
         existingDiagram.clear();
@@ -173,10 +174,13 @@ function generateMindmap(themesData) {
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, { 
-            angle: 90, 
-            layerSpacing: 100, 
-            nodeSpacing: 50 
-        })
+            angle: 0, // 🔄 Zorgt voor horizontale spreiding
+            layerSpacing: 150, // 🔄 Grotere afstand tussen lagen
+            nodeSpacing: 80, // 🔄 Meer ruimte tussen knooppunten
+            alignment: go.TreeLayout.AlignmentStart, // 🔄 Zorgt voor nettere uitlijning
+        }),
+        initialContentAlignment: go.Spot.Center,
+        autoScale: go.Diagram.Uniform,
     });
 
     let nodeDataArray = [];
@@ -186,20 +190,23 @@ function generateMindmap(themesData) {
         let color = getColorBySentiment(theme);
         nodeDataArray.push({ key: theme, text: theme, color: color });
 
-        clusters[theme].forEach((word) => {
+        let uniqueWords = new Set(clusters[theme]);  // ✅ Voorkom herhaling van woorden
+
+        uniqueWords.forEach((word) => {
             nodeDataArray.push({ key: word, text: word, color: "#ddd" });
             linkDataArray.push({ from: theme, to: word });
         });
     });
 
+    // **Mindmap-template met klikbare knoppen**
     diagram.nodeTemplate = $(go.Node, "Auto",
         { click: showContext },
         $(go.Shape, "RoundedRectangle", 
-            { fill: "white", strokeWidth: 0, minSize: new go.Size(100, 40) },
+            { fill: "white", strokeWidth: 1, minSize: new go.Size(120, 50) }, // ✅ Grotere en nettere knooppunten
             new go.Binding("fill", "color")
         ),
         $(go.TextBlock,
-            { margin: 12, font: "bold 14px Arial", textAlign: "center" },
+            { margin: 12, font: "bold 14px Arial", textAlign: "center", wrap: go.TextBlock.WrapFit, width: 120 }, // ✅ Betere leesbaarheid
             new go.Binding("text", "text")
         )
     );
@@ -207,9 +214,10 @@ function generateMindmap(themesData) {
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     mindmapContainer.style.display = "block";
 
-    console.log("✅ Mindmap met TreeLayout gegenereerd.");
+    console.log("✅ Mindmap met verbeterde TreeLayout gegenereerd.");
 }
 
+// **Functie voor contextweergave**
 function showContext(event, obj) {
     let woord = obj.part.data.text;
     let detailsDiv = document.getElementById("contextDetails");
