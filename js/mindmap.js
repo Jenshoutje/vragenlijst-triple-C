@@ -199,8 +199,13 @@ function getColorBySentiment(theme) {
                 }
             }
         },
-        $(go.Shape, "RoundedRectangle", { fill: "white", strokeWidth: 0 }, new go.Binding("fill", "color")),
-        $(go.TextBlock, { margin: 8 }, new go.Binding("text", "text"))
+        $(go.Shape, "RoundedRectangle", { fill: "white", strokeWidth: 0, minSize: new go.Size(80, 30) }, new go.Binding("fill", "color") 
+         ),
+           $(go.TextBlock,
+        { margin: 10, font: "bold 14px Arial", textAlign: "center" }, // Grotere tekst
+        new go.Binding("text", "text")
+             )
+
     );
 
     // **Model instellen na de layout**
