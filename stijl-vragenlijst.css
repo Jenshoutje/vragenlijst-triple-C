@@ -826,23 +826,31 @@ body {
     margin-bottom: 15px;
     resize: vertical; /* Gebruiker kan groter/kleiner maken */
     background: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.analyse-input:focus {
+    border-color: #5028A1;
+    box-shadow: 0 0 5px rgba(80, 40, 161, 0.5);
 }
 
 /* Knop om de analyse te starten */
 .analyse-button {
-    background: #6A35C1;
+    background: linear-gradient(135deg, #6A35C1, #5028A1);
     color: white;
     padding: 12px 20px;
     font-size: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .analyse-button:hover {
-    background: #5028A1;
+    background: linear-gradient(135deg, #5028A1, #6A35C1);
     transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Container voor de gegenereerde mindmap */
@@ -893,20 +901,21 @@ body {
 
 /* Knop voor exporteren */
 .export-button {
-    background: #6A35C1;
+    background: linear-gradient(135deg, #6A35C1, #5028A1);
     color: white;
     padding: 10px 15px;
     font-size: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     margin-top: 15px;
 }
 
 .export-button:hover {
-    background: #5028A1;
+    background: linear-gradient(135deg, #5028A1, #6A35C1);
     transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Contextweergave onder mindmap */
@@ -921,6 +930,7 @@ body {
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .context-box h3 {
@@ -935,6 +945,7 @@ body {
     color: #555;
     line-height: 1.5;
 }
+
 /* Responsieve aanpassingen */
 @media (max-width: 768px) {
     .thema-analyse-container {
