@@ -184,7 +184,7 @@ function generateMindmap(themesData) {
         }),
         initialContentAlignment: go.Spot.Center,
         autoScale: go.Diagram.Uniform,
-        background: "lightblue"  // Stel de achtergrond in
+        //background: "lightblue"  // Stel de achtergrond in
     });
 
     let nodeDataArray = [];
