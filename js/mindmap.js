@@ -1,4 +1,3 @@
-
 // **Globale opslag voor stopwoorden en thematische data**\\
 let stopwoorden = new Set();
 let thematischeData = {};
@@ -83,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             return;
         }
 
-        console.log("✅ Thema’s na analyse:", themes);
+        console.log("✅ Thema's na analyse:", themes);
         generateMindmap(themes);
     });
 
@@ -221,6 +220,11 @@ function generateMindmap(themesData) {
 
 // **Functie voor contextweergave**
 function showContext(event, obj) {
+    if (!obj || !obj.part || !obj.part.data) {
+        console.error("❌ Ongeldige objectgegevens:", obj);
+        return; // Voorkom fouten als obj niet geldig is
+    }
+
     let woord = obj.part.data.text;
     let detailsDiv = document.getElementById("contextDetails");
     let contextText = document.getElementById("contextText");
@@ -228,6 +232,8 @@ function showContext(event, obj) {
     if (woordContext && woordContext[woord]) {
         detailsDiv.style.display = "block";
         contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
+    } else {
+        console.warn("⚠️ Geen context gevonden voor het woord:", woord);
+        contextText.innerHTML = `<strong>Geen context beschikbaar voor "${woord}".</strong>`;
     }
 }
-
