@@ -173,7 +173,7 @@ function generateMindmap(themesData) {
         existingDiagram.div = null; // Voorkomt geheugenlekken
     }
 
-    var $ = go.GraphObject.make;
+    let $ = go.GraphObject.make;
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, { 
@@ -184,8 +184,10 @@ function generateMindmap(themesData) {
         }),
         initialContentAlignment: go.Spot.Center,
         autoScale: go.Diagram.Uniform,
-        //background: "lightblue"  // Stel de achtergrond in
+        "background": "lightblue", // ✅ Achtergrondkleur voor de mindmap
     });
+
+    console.log(diagram); // Controleer of het diagramobject correct is
 
     let nodeDataArray = [];
     let linkDataArray = [];
