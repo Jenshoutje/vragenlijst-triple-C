@@ -107,8 +107,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 // **Stopwoorden filteren uit tekst**
 function filterStopwoorden(text) {
+    // Log de originele tekst
+    console.log("Originele tekst:", text);
+    
     let regex = new RegExp("\\b(" + [...stopwoorden].join("|") + ")\\b", "gi");
     let gefilterdeTekst = text.replace(regex, "").trim();
+    
+    // Log de gefilterde tekst
+    console.log("Gefilterde tekst:", gefilterdeTekst);
+    
     return gefilterdeTekst;
 }
 
@@ -119,7 +126,7 @@ function analyseZinnen(text) {
     let woordContext = {};
     let frequentie = {};  
 
-    const MIN_FREQ = 2; 
+    const MIN_FREQ = 1; // Verlaag de frequentie-check voor testen
 
     Object.keys(thematischeData).forEach(categorie => {
         clusters[categorie] = [];
@@ -130,6 +137,9 @@ function analyseZinnen(text) {
         woorden.forEach(word => {
             console.log("Analyseren woord:", word); // Log elk woord
             frequentie[word] = (frequentie[word] || 0) + 1;
+
+            // Log de frequentie van het woord
+            console.log(`Frequentie van "${word}":`, frequentie[word]);
 
             Object.keys(thematischeData).forEach(categorie => {
                 if (thematischeData[categorie].has(word) && frequentie[word] >= MIN_FREQ) {  
