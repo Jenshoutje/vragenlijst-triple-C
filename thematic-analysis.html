@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="stijl-vragenlijst.css">
     <!-- GoJS Library voor mindmap-functionaliteit -->
     <script src="https://unpkg.com/gojs/release/go.js"></script>
-    
     <script src="https://unpkg.com/compromise"></script>
 </head>
 <body class="mindmap-page"> <!-- CSS-class toegevoegd voor thematische analyse -->
@@ -22,28 +21,29 @@
     </header>
 
     <!-- Contextuele informatie sectie -->
-<div class="thematischcontext-container">
-    <h2>Doel thematische analyse</h2>
-    <p>
-        Deze thematische analyse-tool wordt ingezet om ruwe data automatisch te clusteren 
-        op basis van vooraf bepaalde thema’s. De mindmap biedt een visuele weergave van 
-        de belangrijkste woorden en begrippen die in de tekst voorkomen.
-    </p>
-    
-    <h3>Waarom deze tool?</h3>
-    <p>
-        De tool is ontwikkeld om patronen en trends uit kwalitatieve data efficient en 
-        gestructureerd inzichtelijk te maken. Hierbij is het waarborgen van wtransparantie en validiteit van groot belang. Hierover leest u meer in het Develop hoofdstuk ontwerpgerichtonderzoek. 
-    </p>
+    <div class="thematischcontext-container">
+        <h2>Doel thematische analyse</h2>
+        <p>
+            Deze thematische analyse-tool wordt ingezet om ruwe data automatisch te clusteren 
+            op basis van vooraf bepaalde thema’s. De mindmap biedt een visuele weergave van 
+            de belangrijkste woorden en begrippen die in de tekst voorkomen.
+        </p>
+        
+        <h3>Waarom deze tool?</h3>
+        <p>
+            De tool is ontwikkeld om patronen en trends uit kwalitatieve data efficiënt en 
+            gestructureerd inzichtelijk te maken. Hierbij is het waarborgen van transparantie en validiteit van groot belang. Hierover leest u meer in het Develop hoofdstuk ontwerpgericht onderzoek. 
+        </p>
 
-    <h3>Hoe werkt het?</h3>
-    <p>
-        1. Plak ruwe tekst in het invoerveld. <br>
-        2. Klik op "Analyseer". <br>
-        3. De tool verwijdert stopwoorden en groepeert relevante termen in thema’s. <br>
-        4. Klik op een woord in de mindmap om de originele context te zien. <br>
-    </p>
-</div>
+        <h3>Hoe werkt het?</h3>
+        <p>
+            1. Plak ruwe tekst in het invoerveld. <br>
+            2. Klik op "Analyseer". <br>
+            3. De tool verwijdert stopwoorden en groepeert relevante termen in thema’s. <br>
+            4. Klik op een woord in de mindmap om de originele context te zien. <br>
+        </p>
+    </div>
+
     <!-- Container voor de thematische analyse -->
     <div class="thema-analyse-container">
         <h2>Voer je ruwe data in.</h2>
@@ -53,16 +53,17 @@
 
         <!-- Mindmap wordt hier weergegeven -->
         <h2>Gegenereerde Mindmap</h2>
-        <div id="mindmap-container">
+        <div id="mindmap-container" class="mindmap-container">
             <div id="mindmap" style="width: 100%; height: 500px; border: 1px solid #ddd;"></div>
         </div>
-        <button id="exportButton" class="analyse-button">Exporteer als afbeelding</button>
+        <button id="exportButton" class="export-button">Exporteer als afbeelding</button>
     </div>
-   
-<div id="contextDetails" class="cdetail-box">
-    <h3>Context details</h3>
-    <p id="contextText">Klik op een woord in de mindmap om de originele context te bekijken.</p>
-</div>
+
+    <!-- Contextweergave onder mindmap -->
+    <div id="contextDetails" class="context-box" style="display: none;">
+        <h3>Contextdetails</h3>
+        <p id="contextText">Klik op een woord in de mindmap om de originele context te bekijken.</p>
+    </div>
 
     <!-- Knoppen voor navigatie -->
     <div class="button-container">
