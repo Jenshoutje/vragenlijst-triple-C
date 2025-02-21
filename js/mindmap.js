@@ -78,8 +78,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         let themes = analyseZinnen(filteredText);
         if (!themes || !themes.clusters || Object.keys(themes.clusters).length === 0) {
-            console.error("❌ Fout: `analyseZinnen()` retourneert een ongeldige of lege waarde:", themes);
-            return;
+            alert("⚠️ Er zijn geen thema's gevonden in de tekst. Probeer een andere invoer.");
+            return; // Fallback als er geen thema's zijn
         }
 
         console.log("✅ Thema's na analyse:", themes);
@@ -105,14 +105,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 // **Stopwoorden filteren uit tekst**
 function filterStopwoorden(text) {
-    let woorden = text.toLowerCase().split(/\s+/);
-    let gefilterdeWoorden = woorden.filter(word => !stopwoorden.has(word));
-    return gefilterdeWoorden.join(" ");
+    let regex = new RegExp("\\b(" + [...stopwoorden].join("|") + ")\\b", "gi");
+    let gefilterdeTekst = text.replace(regex, "").trim();
+    return gefilterdeTekst;
 }
 
 // **Thematische analyse uitvoeren**
 function analyseZinnen(text) {
-    let zinnen = text.toLowerCase().split(/[.!?]+/).map(zin => zin.trim()).filter(zin => zin.length > 0);
+    let zinnen = text.match(/[^.!?]+[.!?]+/g) || []; // Verbeterde zinsdetectie
     let clusters = {};
     let woordContext = {};
     let frequentie = {};  
@@ -149,11 +149,10 @@ function analyseZinnen(text) {
 }
 
 // **Kleuren toewijzen aan thema's**
+const kleuren = ["#FF9999", "#99FF99", "#66B2FF", "#FFD700", "#FFA07A"];
 function getColorBySentiment(theme) {
-    if (theme.includes("Werkdruk")) return "#FF9999"; 
-    if (theme.includes("Ondersteuning")) return "#99FF99"; 
-    if (theme.includes("Cliënt")) return "#66B2FF"; 
-    return "#FFD700"; 
+    let index = Object.keys(thematischeData).indexOf(theme) % kleuren.length;
+    return kleuren[index] || "#D3D3D3"; // Grijs als fallback
 }
 
 // **Mindmap genereren met TreeLayout**
@@ -168,6 +167,7 @@ function generateMindmap(themesData) {
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
         existingDiagram.clear();
+        existingDiagram.div = null; // Voorkomt geheugenlekken
     }
 
     let $ = go.GraphObject.make;
