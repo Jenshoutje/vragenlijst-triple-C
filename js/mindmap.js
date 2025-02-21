@@ -1,3 +1,7 @@
+
+### Hier is een herziening van de relevante delen van `mindmap.js`:
+
+```javascript
 // **Globale opslag voor stopwoorden en thematische data**
 let stopwoorden = new Set();
 let thematischeData = {};
@@ -229,3 +233,4 @@ function showContext(event, obj) {
         contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
     }
 }
+
