@@ -2,6 +2,7 @@
 let stopwoorden = new Set();
 let thematischeData = {};
 let isCsvLoaded = false; // ✅ Controle of CSV is geladen
+let woordContext = {}; // Zorg ervoor dat deze variabele is gedefinieerd
 
 document.addEventListener("DOMContentLoaded", async function () {
     console.log("📌 JavaScript geladen: Start Mindmap-setup...");
@@ -116,7 +117,6 @@ function filterStopwoorden(text) {
 function analyseZinnen(text) {
     let zinnen = text.match(/[^.!?]+[.!?]+/g) || []; // Verbeterde zinsdetectie
     let clusters = {};
-    let woordContext = {};
     let frequentie = {};  
 
     const MIN_FREQ = 2; 
