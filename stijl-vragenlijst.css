@@ -920,7 +920,7 @@ body {
 
 /* Contextweergave onder mindmap */
 .context-box {
-    display: none;
+    display: flex;
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #ccc;
