@@ -1,8 +1,5 @@
 
-### Hier is een herziening van de relevante delen van `mindmap.js`:
-
-```javascript
-// **Globale opslag voor stopwoorden en thematische data**
+// **Globale opslag voor stopwoorden en thematische data**\\
 let stopwoorden = new Set();
 let thematischeData = {};
 let isCsvLoaded = false; // ✅ Controle of CSV is geladen
