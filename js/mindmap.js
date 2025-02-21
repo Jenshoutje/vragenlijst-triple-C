@@ -181,6 +181,7 @@ function generateMindmap(themesData) {
         }),
         initialContentAlignment: go.Spot.Center,
         autoScale: go.Diagram.Uniform,
+        background: "#f0f0f0", // ✅ Achtergrondkleur voor de mindmap
     });
 
     let nodeDataArray = [];
