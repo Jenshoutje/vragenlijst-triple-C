@@ -128,6 +128,7 @@ function analyseZinnen(text) {
     zinnen.forEach(zin => {
         let woorden = zin.split(/\s+/);
         woorden.forEach(word => {
+            console.log("Analyseren woord:", word); // Log elk woord
             frequentie[word] = (frequentie[word] || 0) + 1;
 
             Object.keys(thematischeData).forEach(categorie => {
