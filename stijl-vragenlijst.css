@@ -894,48 +894,67 @@ body {
 .export-button {
     background: linear-gradient(135deg, #6A35C1, #5028A1);
     color: white;
-    padding: 10px 15px;
-    font-size: 1rem;
+    padding: 12px 24px;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    margin-top: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    display: block; /* Zorgt voor centrering */
 }
 
 .export-button:hover {
     background: linear-gradient(135deg, #5028A1, #6A35C1);
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Contextweergave onder mindmap */
-.context-box {
-    background-color: #f9f9f9; /* Lichte achtergrondkleur */
-    border: 1px solid #ccc; /* Randkleur */
-    border-radius: 5px; /* Ronde hoeken */
-    padding: 15px; /* Ruimte binnen de box */
-    margin-top: 20px; /* Ruimte boven de box */
-    display: none; /* Standaard verborgen */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Schaduw voor diepte */
-    transition: all 0.3s ease; /* Zachte overgang bij tonen */
+/* Context details styling */
+.context-details {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.context-box h3 {
-    margin: 0 0 10px; /* Ruimte onder de titel */
-    font-size: 18px; /* Grotere lettergrootte voor de titel */
-    color: #333; /* Kleur van de titel */
+.context-details h2 {
+    color: #6A35C1;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
-.context-box p {
-    margin: 0; /* Geen marge voor de paragraaf */
-    font-size: 14px; /* Standaard lettergrootte voor de tekst */
-    color: #555; /* Kleur van de tekst */
+.context-details p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-size: 1rem;
 }
 
-/* Optioneel: Hover-effect voor de contextbox */
-.context-box:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Versterkte schaduw bij hover */
+/* Bullet points in context */
+.context-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.context-details li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.context-details li:before {
+    content: "•";
+    color: #6A35C1;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
 }
 
 /* Responsieve aanpassingen */
