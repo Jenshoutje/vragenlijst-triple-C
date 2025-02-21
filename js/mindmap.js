@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     const kernwoord = columns[1].trim();
                     const synoniemen = columns[2].split(";").map(word => word.trim());
 
+                    console.log("Categorie:", categorie, "Kernwoord:", kernwoord, "Synoniemen:", synoniemen); // Debugging
+
                     if (categorie.toLowerCase() === "stopwoorden") {
                         stopwoorden.add(kernwoord);
                         synoniemen.forEach(word => stopwoorden.add(word));
