@@ -995,6 +995,8 @@ body {
     text-align: center;
     padding: 50px;
     background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Consistente gradient */
+    min-height: 100vh; /* Zorgt dat de pagina minimaal volledige hoogte heeft */
+    box-sizing: border-box;
 }
 
 /* Header voor FFF-bijeenkomst */
