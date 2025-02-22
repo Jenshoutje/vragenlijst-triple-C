@@ -1209,7 +1209,7 @@ body {
     }
 }
 /* Verbeterde image container styling */
-.image-container {
+.fff-container {
     width: 100%;
     height: 300px; /* Vaste hoogte voor alle afbeeldingen */
     border-radius: 8px;
@@ -1219,7 +1219,7 @@ body {
     position: relative; /* Voor positionering van de afbeelding */
 }
 
-.image-container img {
+.fff-container img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Zorgt voor consistente vulling zonder vervorming */
@@ -1228,7 +1228,7 @@ body {
 }
 
 /* Hover effect op de afbeeldingen */
-.option-card:hover .image-container img {
+.option-card:hover .fff-container img {
     transform: scale(1.05); /* Subtiel zoom effect */
 }
 
