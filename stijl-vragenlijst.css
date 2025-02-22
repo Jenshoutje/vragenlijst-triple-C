@@ -1101,3 +1101,94 @@ body {
         text-align: center;
     }
 }
+
+    /* Vragenlijst styling */
+.question-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.question-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.question-number {
+    color: #6A35C1;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.options-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.option-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.option-content {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.option-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.option-quote {
+    color: #555;
+    font-style: italic;
+    margin: 15px 0;
+}
+
+.select-button {
+    background: #6A35C1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.select-button:hover {
+    background: #5028A1;
+}
+
+.select-button.selected {
+    background: #4CAF50;
+}
+
+/* Responsieve aanpassingen */
+@media (max-width: 768px) {
+    .options-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .option-card {
+        width: 100%;
+    }
+}
