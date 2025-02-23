@@ -247,25 +247,25 @@ footer {
 }
 
 /* Header bubbel */
-.fff-bijeenkomst-header {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    margin: 0 auto 40px auto;
+.header-bubble {
+    background: rgba(255, 255, 255, 0.9); /* Witte bubbel met lichte transparantie */
+    padding: 20px 30px;
+    border-radius: 15px; /* Afgeronde hoeken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
     text-align: center;
+    max-width: 600px; /* Zorg dat de bubbel niet te breed wordt */
+    margin: 30px auto; /* Centreert de bubbel */
 }
 
 /* Titel en tekst in de bubbel */
-.fff-bijeenkomst-header h1 {
+.header-bubble h1 {
     font-size: 2.2rem;
     font-weight: bold;
     color: #6A35C1; /* Paarse kleur */
     margin-bottom: 10px;
 }
 
-.fff-bijeenkomst-header p {
+.header-bubble p {
     font-size: 1.2rem;
     color: #555;
     margin-bottom: 10px;
@@ -990,18 +990,41 @@ body {
     fill: #e0e0e0; /* Kleurverandering bij hover */
 }
 
-/* FFF-bijeenkomst Pagina */
+/* FFF-bijeenkomst pagina specifieke stijlen */
 .fff-bijeenkomst-page {
     text-align: center;
     padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Consistente gradient */
-    min-height: 100vh; /* Zorgt dat de pagina minimaal volledige hoogte heeft */
-    box-sizing: border-box;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+    min-height: 100vh;
 }
 
-/* Container voor FFF context */
+/* Header bubbel */
+.fff-bijeenkomst-header {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+.fff-bijeenkomst-header h1 {
+    color: #6A35C1;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.fff-bijeenkomst-header p {
+    color: #555;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Context container */
 .fff-bijeenkomstcontext-container {
-    background-color: white;
+    background: white;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1010,86 +1033,14 @@ body {
     text-align: left;
 }
 
-.fff-bijeenkomstcontext-container h2 {
-    color: #6A35C1;
-    margin-bottom: 15px;
-}
-
-.fff-bijeenkomstcontext-container h3 {
-    color: #555;
-    font-size: 1.1rem;
-    margin: 15px 0;
-    line-height: 1.4;
-}
-
-.fff-bijeenkomstcontext-container p {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-/* Knoppen container */
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-/* Navigatie knoppen */
-.back-button {
-    padding: 12px 20px;
-    background-color: #6A35C1;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.back-button:hover {
-    background-color: #5028A1;
-    transform: translateY(-2px);
-}
-
-/* Responsiviteit */
-@media (max-width: 768px) {
-    .fff-bijeenkomst-page {
-        padding: 20px;
-    }
-
-    .fff-bijeenkomst-header {
-        padding: 20px;
-    }
-
-    .fff-bijeenkomst-header h1 {
-        font-size: 1.8rem;
-    }
-
-    .fff-bijeenkomstcontext-container {
-        padding: 15px;
-        margin: 15px auto;
-    }
-
-    .button-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .back-button {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-/* Vragenlijst styling */
-.question-container {
+/* Vragenlijst sectie */
+.questionfff-container {
     max-width: 1000px;
     margin: 30px auto;
     padding: 20px;
 }
 
-.question-card {
+.questionfff-card {
     background: white;
     border-radius: 15px;
     padding: 25px;
@@ -1097,82 +1048,33 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.question-number {
+.questionfff-number {
     color: #6A35C1;
     font-size: 1.3rem;
     margin-bottom: 20px;
     text-align: left;
 }
 
-.options-container {
+/* Optie kaarten container */
+.optionsfff-container {
     display: flex;
-    gap: 30px;
     justify-content: center;
-    padding: 20px;
+    gap: 30px;
+    margin: 20px 0;
 }
 
-.option-card {
-    width: 350px; /* Iets breder voor betere proporties */
-    padding: 15px;
+/* Optie kaart */
+.optionfff-card {
     background: white;
+    padding: 20px;
     border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
     cursor: pointer;
+    max-width: 300px;
 }
 
-.option-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.option-content {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.option-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 15px;
-}
-
-.option-quote {
-    color: #555;
-    font-style: italic;
-    margin: 15px 0;
-}
-
-.select-button {
-    background: #6A35C1;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    width: 100%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.select-button:hover {
-    background: #5028A1;
-}
-
-.select-button.selected {
-    background: #4CAF50;
-}
-
-/* Responsieve aanpassingen */
-@media (max-width: 768px) {
-    .options-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .option-card {
-        width: 100%;
-    }
-}
-/* Verbeterde image container styling */
+/* Afbeelding container */
 .imagefff-container {
     background: linear-gradient(135deg, #6A35C1, #A873F7);
     padding: 20px;
@@ -1192,8 +1094,80 @@ body {
     display: block;
 }
 
-/* Hover effect op de afbeeldingen */
-.option-card:hover .imagefff-container img {
-    transform: scale(1.05); /* Subtiel zoom effect */
+/* Quote styling */
+.optionfff-quote {
+    color: #555;
+    font-style: italic;
+    margin: 15px 0;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Hover effecten */
+.optionfff-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Navigatie knoppen */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.back-button {
+    padding: 12px 20px;
+    background-color: #6A35C1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #5028A1;
+    transform: translateY(-2px);
+}
+
+.submit-button {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #6A35C1, #5028A1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:hover {
+    background: linear-gradient(135deg, #5028A1, #6A35C1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsieve aanpassingen */
+@media (max-width: 768px) {
+    .fff-bijeenkomst-page {
+        padding: 20px;
+    }
+
+    .fff-bijeenkomst-header {
+        padding: 20px;
+    }
+
+    .optionsfff-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .optionfff-card {
+        width: 100%;
+        max-width: none;
+    }
 }
 
