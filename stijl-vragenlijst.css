@@ -991,7 +991,7 @@ body {
 }
 
 /* FFF-bijeenkomst pagina specifieke stijlen */
-.fff-bijeenkomst-page {
+body.fff-bijeenkomst-page {
     text-align: center;
     padding: 50px;
     background: linear-gradient(135deg, #b05df5, #f3e5ff);
@@ -999,47 +999,31 @@ body {
 }
 
 /* Header bubbel */
-
-.matrix-header {
-    background: white; /* Witte achtergrond */
-    color: #4A4A4A; /* Donkergrijze tekst */
-    text-align: center;
+body.fff-bijeenkomst-page .fff-bijeenkomst-header {
+    background: white;
     padding: 30px;
-    border-radius: 10px; /* Afgeronde hoeken */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
-    margin-bottom: 30px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    text-align: center;
 }
 
-/* Stijl voor titel en beschrijving */
-.fff-bijeenkomst-header h1 {
+body.fff-bijeenkomst-page .fff-bijeenkomst-header h1 {
+    color: #6A35C1;
     font-size: 2.5rem;
-    font-weight: bold;
-    color: #6A35C1; /* Paarse tekst */
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.fff-bijeenkomst-header p {
-    font-size: 1.2rem;
+body.fff-bijeenkomst-page .fff-bijeenkomst-header p {
     color: #555;
+    font-size: 1.2rem;
     line-height: 1.6;
-}
-
-/* Decoratieve lijn onder de header */
-.fff-bijeenkomst-header::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 3px;
-    background: #6A35C1; /* Paarse lijn */
-    margin: 15px auto 0;
-    border-radius: 2px;
+    margin: 0;
 }
 
 /* Context container */
-.fff-bijeenkomstcontext-container {
+body.fff-bijeenkomst-page .fff-bijeenkomstcontext-container {
     background: white;
     padding: 25px;
     border-radius: 10px;
@@ -1050,13 +1034,13 @@ body {
 }
 
 /* Vragenlijst sectie */
-.fff-question-container {
+body.fff-bijeenkomst-page .fff-question-container {
     max-width: 1000px;
     margin: 30px auto;
     padding: 20px;
 }
 
-.fff-question-card {
+body.fff-bijeenkomst-page .fff-question-card {
     background: white;
     border-radius: 15px;
     padding: 25px;
@@ -1064,7 +1048,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.fff-question-number {
+body.fff-bijeenkomst-page .fff-question-number {
     color: #6A35C1;
     font-size: 1.3rem;
     margin-bottom: 20px;
@@ -1072,7 +1056,7 @@ body {
 }
 
 /* Optie kaarten container */
-.fff-options-container {
+body.fff-bijeenkomst-page .fff-options-container {
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -1080,7 +1064,7 @@ body {
 }
 
 /* Optie kaart */
-.fff-option-card {
+body.fff-bijeenkomst-page .fff-option-card {
     background: white;
     padding: 20px;
     border-radius: 12px;
@@ -1091,7 +1075,7 @@ body {
 }
 
 /* Afbeelding container */
-.fff-image-container {
+body.fff-bijeenkomst-page .fff-image-container {
     background: linear-gradient(135deg, #6A35C1, #A873F7);
     padding: 20px;
     border-radius: 10px;
@@ -1103,7 +1087,7 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.fff-image-container img {
+body.fff-bijeenkomst-page .fff-image-container img {
     width: 100%;
     height: auto;
     border-radius: 5px;
@@ -1111,7 +1095,7 @@ body {
 }
 
 /* Quote styling */
-.fff-option-quote {
+body.fff-bijeenkomst-page .fff-option-quote {
     color: #555;
     font-style: italic;
     margin: 15px 0;
@@ -1120,19 +1104,19 @@ body {
 }
 
 /* Hover effecten */
-.fff-option-card:hover {
+body.fff-bijeenkomst-page .fff-option-card:hover {
     transform: translateY(-5px);
 }
 
 /* Navigatie knoppen */
-.button-container {
+body.fff-bijeenkomst-page .button-container {
     display: flex;
     justify-content: center;
     gap: 20px;
     margin-top: 30px;
 }
 
-.back-button {
+body.fff-bijeenkomst-page .back-button {
     padding: 12px 20px;
     background-color: #6A35C1;
     color: white;
@@ -1142,12 +1126,12 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.back-button:hover {
+body.fff-bijeenkomst-page .back-button:hover {
     background-color: #5028A1;
     transform: translateY(-2px);
 }
 
-.submit-button {
+body.fff-bijeenkomst-page .submit-button {
     padding: 12px 20px;
     background: linear-gradient(135deg, #6A35C1, #5028A1);
     color: white;
@@ -1160,7 +1144,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.submit-button:hover {
+body.fff-bijeenkomst-page .submit-button:hover {
     background: linear-gradient(135deg, #5028A1, #6A35C1);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -1168,22 +1152,21 @@ body {
 
 /* Responsieve aanpassingen */
 @media (max-width: 768px) {
-    .fff-bijeenkomst-page {
+    body.fff-bijeenkomst-page {
         padding: 20px;
     }
 
-    .fff-bijeenkomst-header {
+    body.fff-bijeenkomst-page .fff-bijeenkomst-header {
         padding: 20px;
     }
 
-    .fff-options-container {
+    body.fff-bijeenkomst-page .fff-options-container {
         flex-direction: column;
         align-items: center;
     }
 
-    .fff-option-card {
+    body.fff-bijeenkomst-page .fff-option-card {
         width: 100%;
         max-width: none;
     }
 }
-
