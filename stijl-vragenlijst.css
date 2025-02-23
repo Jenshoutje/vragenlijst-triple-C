@@ -1001,38 +1001,24 @@ body {
 
 /* Header voor FFF-bijeenkomst */
 .fff-bijeenkomst-header {
-    background: white;
+    background-color: white;
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    margin: 0 auto 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto 30px;
     max-width: 900px;
-    text-align: center;
 }
 
 .fff-bijeenkomst-header h1 {
-    font-size: 2.5rem;
     color: #6A35C1;
+    font-size: 2rem;
     margin-bottom: 15px;
-    font-weight: bold;
 }
 
 .fff-bijeenkomst-header p {
-    font-size: 1.2rem;
     color: #555;
+    font-size: 1.1rem;
     line-height: 1.6;
-    margin: 0;
-}
-
-/* Decoratieve lijn onder de header */
-.fff-bijeenkomst-header::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 3px;
-    background: #6A35C1;
-    margin: 20px auto 0;
-    border-radius: 2px;
 }
 
 /* Container voor FFF context */
@@ -1119,13 +1105,13 @@ body {
 }
 
 /* Vragenlijst styling */
-.question-container {
+.questionfff-container {
     max-width: 1000px;
     margin: 30px auto;
     padding: 20px;
 }
 
-.question-card {
+.questionfff-card {
     background: white;
     border-radius: 15px;
     padding: 25px;
@@ -1133,21 +1119,21 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.question-number {
+.questionfff-number {
     color: #6A35C1;
     font-size: 1.3rem;
     margin-bottom: 20px;
     text-align: left;
 }
 
-.options-container {
+.optionsfff-container {
     display: flex;
     gap: 30px;
     justify-content: center;
     padding: 20px;
 }
 
-.option-card {
+.optionfff-card {
     width: 350px; /* Iets breder voor betere proporties */
     padding: 15px;
     background: white;
@@ -1156,23 +1142,23 @@ body {
     cursor: pointer;
 }
 
-.option-card:hover {
+.optionfff-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.option-content {
+.optionfff-content {
     text-align: center;
     margin-bottom: 15px;
 }
 
-.option-icon {
+.optionfff-icon {
     width: 80px;
     height: 80px;
     margin-bottom: 15px;
 }
 
-.option-quote {
+.optionfff-quote {
     color: #555;
     font-style: italic;
     margin: 15px 0;
@@ -1199,17 +1185,17 @@ body {
 
 /* Responsieve aanpassingen */
 @media (max-width: 768px) {
-    .options-container {
+    .optionsfff-container {
         flex-direction: column;
         gap: 20px;
     }
 
-    .option-card {
+    .optionfff-card {
         width: 100%;
     }
 }
 /* Verbeterde image container styling */
-.fff-container {
+.imagefff-container {
     width: 100%;
     height: 300px; /* Vaste hoogte voor alle afbeeldingen */
     border-radius: 8px;
@@ -1219,7 +1205,7 @@ body {
     position: relative; /* Voor positionering van de afbeelding */
 }
 
-.fff-container img {
+.imagefff-container img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Zorgt voor consistente vulling zonder vervorming */
@@ -1228,7 +1214,7 @@ body {
 }
 
 /* Hover effect op de afbeeldingen */
-.option-card:hover .fff-container img {
+.optionfff-card:hover .imagefff-container img {
     transform: scale(1.05); /* Subtiel zoom effect */
 }
 
