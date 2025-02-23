@@ -999,27 +999,43 @@ body {
 }
 
 /* Header bubbel */
-.fff-bijeenkomst-header {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    margin: 0 auto 40px auto;
+
+.matrix-header {
+    background: white; /* Witte achtergrond */
+    color: #4A4A4A; /* Donkergrijze tekst */
     text-align: center;
+    padding: 30px;
+    border-radius: 10px; /* Afgeronde hoeken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* Stijl voor titel en beschrijving */
 .fff-bijeenkomst-header h1 {
-    color: #6A35C1;
     font-size: 2.5rem;
-    margin-bottom: 15px;
+    font-weight: bold;
+    color: #6A35C1; /* Paarse tekst */
+    margin-bottom: 10px;
 }
 
 .fff-bijeenkomst-header p {
-    color: #555;
     font-size: 1.2rem;
+    color: #555;
     line-height: 1.6;
-    margin: 0;
+}
+
+/* Decoratieve lijn onder de header */
+.fff-bijeenkomst-header::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #6A35C1; /* Paarse lijn */
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
 /* Context container */
@@ -1034,13 +1050,13 @@ body {
 }
 
 /* Vragenlijst sectie */
-.questionfff-container {
+.fff-question-container {
     max-width: 1000px;
     margin: 30px auto;
     padding: 20px;
 }
 
-.questionfff-card {
+.fff-question-card {
     background: white;
     border-radius: 15px;
     padding: 25px;
@@ -1048,7 +1064,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.questionfff-number {
+.fff-question-number {
     color: #6A35C1;
     font-size: 1.3rem;
     margin-bottom: 20px;
@@ -1056,7 +1072,7 @@ body {
 }
 
 /* Optie kaarten container */
-.optionsfff-container {
+.fff-options-container {
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -1064,7 +1080,7 @@ body {
 }
 
 /* Optie kaart */
-.optionfff-card {
+.fff-option-card {
     background: white;
     padding: 20px;
     border-radius: 12px;
@@ -1075,7 +1091,7 @@ body {
 }
 
 /* Afbeelding container */
-.imagefff-container {
+.fff-image-container {
     background: linear-gradient(135deg, #6A35C1, #A873F7);
     padding: 20px;
     border-radius: 10px;
@@ -1087,7 +1103,7 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.imagefff-container img {
+.fff-image-container img {
     width: 100%;
     height: auto;
     border-radius: 5px;
@@ -1095,7 +1111,7 @@ body {
 }
 
 /* Quote styling */
-.optionfff-quote {
+.fff-option-quote {
     color: #555;
     font-style: italic;
     margin: 15px 0;
@@ -1104,7 +1120,7 @@ body {
 }
 
 /* Hover effecten */
-.optionfff-card:hover {
+.fff-option-card:hover {
     transform: translateY(-5px);
 }
 
@@ -1160,12 +1176,12 @@ body {
         padding: 20px;
     }
 
-    .optionsfff-container {
+    .fff-options-container {
         flex-direction: column;
         align-items: center;
     }
 
-    .optionfff-card {
+    .fff-option-card {
         width: 100%;
         max-width: none;
     }
