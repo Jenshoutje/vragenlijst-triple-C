@@ -1000,8 +1000,8 @@ body.fff-bijeenkomst-page {
 
 /* Header bubbel */
 body.fff-bijeenkomst-page .fff-bijeenkomst-header {
-    background: white;
-    padding: 30px;
+    background: white !important;
+    padding: 30px !important;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     max-width: 800px;
