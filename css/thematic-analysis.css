@@ -1,3 +1,9 @@
+.matrix-page {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse gradient zoals bij onderzoek */
+}
+
 .mindmap-page {
     text-align: center;
     padding: 50px;
