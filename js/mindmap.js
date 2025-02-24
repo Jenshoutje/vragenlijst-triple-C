@@ -115,40 +115,64 @@ function filterStopwoorden(text) {
 
 // **Thematische analyse uitvoeren**
 function analyseZinnen(text) {
-    let zinnen = text.match(/[^.!?]+[.!?]+/g) || []; // Verbeterde zinsdetectie
+    console.log("Start analyse met tekst:", text);
+    
+    let zinnen = text.match(/[^.!?]+[.!?]+/g) || [text]; // Fallback naar hele tekst als geen zinnen gevonden
     let clusters = {};
     let frequentie = {};  
 
-    const MIN_FREQ = 2; 
-
+    // Debug: Toon alle beschikbare woorden per categorie
     Object.keys(thematischeData).forEach(categorie => {
-        clusters[categorie] = [];
+        if (categorie !== 'stopwoorden') {
+            clusters[categorie] = [];
+            console.log(`Categorie ${categorie} bevat:`, [...thematischeData[categorie]]);
+        }
     });
 
     zinnen.forEach(zin => {
         let woorden = zin.split(/\s+/);
-        woorden.forEach(word => {
+        
+        woorden.forEach(woord => {
+            let normalizedWoord = normalizeWord(woord);
+            if (!normalizedWoord) return;
             
-            frequentie[word] = (frequentie[word] || 0) + 1;
+            console.log(`Analyseer woord: "${normalizedWoord}"`);
+            frequentie[normalizedWoord] = (frequentie[normalizedWoord] || 0) + 1;
 
             Object.keys(thematischeData).forEach(categorie => {
-                if (thematischeData[categorie].has(word) && frequentie[word] >= MIN_FREQ) {  
-                    if (!clusters[categorie].includes(word)) {
-                        clusters[categorie].push(word);
-                    }
+                if (categorie === 'stopwoorden') return;
 
-                    if (!woordContext[word]) {
-                        woordContext[word] = new Set();
+                // Debug: Log elke vergelijking
+                [...thematischeData[categorie]].forEach(themaWoord => {
+                    let normalizedThemaWoord = normalizeWord(themaWoord);
+                    console.log(`Vergelijk "${normalizedWoord}" met "${normalizedThemaWoord}"`);
+                    
+                    if (normalizedThemaWoord === normalizedWoord) {
+                        console.log(`Match gevonden! "${normalizedWoord}" in categorie "${categorie}"`);
+                        if (!clusters[categorie].includes(normalizedWoord)) {
+                            clusters[categorie].push(normalizedWoord);
+                            if (!woordContext[normalizedWoord]) {
+                                woordContext[normalizedWoord] = new Set();
+                            }
+                            woordContext[normalizedWoord].add(zin.trim());
+                        }
                     }
-                    woordContext[word].add(zin);
-                }
+                });
             });
         });
     });
 
-    console.log("✅ AI-clustering uitgevoerd:", clusters);
-    console.log("📌 Woord-context mapping:", woordContext);
+    // Debug: Toon eindresultaat
+    console.log("Frequenties:", frequentie);
+    console.log("Eindresultaat clusters:", clusters);
     return { clusters, woordContext };
+}
+
+function normalizeWord(word) {
+    return word.toLowerCase()
+        .trim()
+        .replace(/[.,!?;:'"()]/g, '')
+        .replace(/\s+/g, ' ');
 }
 
 // **Kleuren toewijzen aan thema's**
@@ -205,7 +229,7 @@ function generateMindmap(themesData) {
         }),
         initialContentAlignment: go.Spot.Center,
         autoScale: go.Diagram.Uniform,
-        //"background": "lightblue", // ✅ Achtergrondkleur voor de mindmap
+        "background": "lightblue", // ✅ Achtergrondkleur voor de mindmap
     });
 
     console.log(diagram); // Controleer of het diagramobject correct is
