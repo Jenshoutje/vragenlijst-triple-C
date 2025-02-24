@@ -115,39 +115,41 @@ function filterStopwoorden(text) {
 
 // **Thematische analyse uitvoeren**
 function analyseZinnen(text) {
-    let zinnen = text.match(/[^.!?]+[.!?]+/g) || []; // Verbeterde zinsdetectie
+    let woorden = text.toLowerCase().split(/\s+/);
     let clusters = {};
-    let frequentie = {};  
-
-    const MIN_FREQ = 2; 
-
+    
+    // Initialiseer clusters
     Object.keys(thematischeData).forEach(categorie => {
-        clusters[categorie] = [];
+        if (categorie !== 'stopwoorden') {
+            clusters[categorie] = [];
+        }
     });
 
-    zinnen.forEach(zin => {
-        let woorden = zin.split(/\s+/);
-        woorden.forEach(word => {
+    // Analyseer elk woord
+    woorden.forEach(woord => {
+        woord = woord.trim();
+        console.log(`Analyseer woord: "${woord}"`);
+        
+        Object.keys(thematischeData).forEach(categorie => {
+            if (categorie === 'stopwoorden') return;
             
-            frequentie[word] = (frequentie[word] || 0) + 1;
-
-            Object.keys(thematischeData).forEach(categorie => {
-                if (thematischeData[categorie].has(word) && frequentie[word] >= MIN_FREQ) {  
-                    if (!clusters[categorie].includes(word)) {
-                        clusters[categorie].push(word);
+            // Check of het woord in de thematische data voorkomt
+            if (thematischeData[categorie].has(woord)) {
+                console.log(`Match gevonden! "${woord}" in categorie "${categorie}"`);
+                if (!clusters[categorie].includes(woord)) {
+                    clusters[categorie].push(woord);
+                    
+                    // Bewaar context
+                    if (!woordContext[woord]) {
+                        woordContext[woord] = new Set();
                     }
-
-                    if (!woordContext[word]) {
-                        woordContext[word] = new Set();
-                    }
-                    woordContext[word].add(zin);
+                    woordContext[woord].add(text);
                 }
-            });
+            }
         });
     });
 
-    console.log("✅ AI-clustering uitgevoerd:", clusters);
-    console.log("📌 Woord-context mapping:", woordContext);
+    console.log("✅ Clusters na analyse:", clusters);
     return { clusters, woordContext };
 }
 
@@ -164,106 +166,84 @@ function generateMindmap(themesData) {
     if (!mindmapContainer) return;
 
     let clusters = themesData?.clusters || {};
+    let woordContext = themesData?.woordContext || {};
 
-    // Verwijder bestaande mindmap
+    // ✅ Verwijder bestaande mindmap correct
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
         existingDiagram.clear();
-        existingDiagram.div = null;
+        existingDiagram.div = null; // Voorkomt geheugenlekken
     }
 
     let $ = go.GraphObject.make;
     let diagram = $(go.Diagram, "mindmap", {
-        initialContentAlignment: go.Spot.Center,
-        "animationManager.isEnabled": false,
+        "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, {
-            angle: 0,
-            nodeSpacing: 30,
-            layerSpacing: 60,
-            arrangement: go.TreeLayout.ArrangementFixedRoots
-        })
+            angle: 0,  // Horizontale layout
+            layerSpacing: 80,  // Ruimte tussen lagen
+            nodeSpacing: 40,   // Ruimte tussen nodes
+            arrangement: go.TreeLayout.ArrangementFixedRoots,
+            setsPortSpot: false,
+            setsChildPortSpot: false,
+            // Verdeel de nodes in een cirkel/boom structuur
+            commitLayout: function() {
+                go.TreeLayout.prototype.commitLayout.call(this);
+                // Bereken posities in een cirkel voor hoofdthema's
+                let radius = 200;  // Pas dit aan naar wens
+                let nodeCount = this.network.vertexes.count;
+                let angle = 2 * Math.PI / nodeCount;
+                
+                this.network.vertexes.each((v, i) => {
+                    if (v.node && !v.node.findTreeParentNode()) {
+                        // Alleen voor hoofdthema's
+                        let theta = i * angle;
+                        v.node.location = new go.Point(
+                            radius * Math.cos(theta),
+                            radius * Math.sin(theta)
+                        );
+                    }
+                });
+            }
+        }),
+        initialContentAlignment: go.Spot.Center,
+        autoScale: go.Diagram.Uniform,
+       // "background": "lightblue", // ✅ Achtergrondkleur voor de mindmap
     });
 
-    // Node template
-    diagram.nodeTemplate = $(go.Node, "Auto",
-        { click: showContext },
-        $(go.Shape, "RoundedRectangle",
-            {
-                fill: "white",
-                strokeWidth: 2,
-                stroke: null,
-                portId: "",
-                cursor: "pointer"
-            },
-            new go.Binding("fill", "color")
-        ),
-        $(go.TextBlock,
-            {
-                margin: 10,
-                font: "14px Arial",
-                stroke: "white",
-                textAlign: "center"
-            },
-            new go.Binding("text", "text")
-        )
-    );
-
-    // Link template
-    diagram.linkTemplate = $(go.Link,
-        {
-            curve: go.Link.Bezier,
-            toShortLength: 3
-        },
-        $(go.Shape,
-            { 
-                strokeWidth: 1.5,
-                stroke: "#555"
-            }
-        )
-    );
+    console.log(diagram); // Controleer of het diagramobject correct is
 
     let nodeDataArray = [];
     let linkDataArray = [];
 
-    // Hoofdnode voor Triple C analyse
-    nodeDataArray.push({ 
-        key: "Triple C",
-        text: "Triple C\nAnalyse",
-        color: "#808080"
-    });
-
     Object.keys(clusters).forEach((theme) => {
         let color = getColorBySentiment(theme);
-        
-        // Voeg thema toe
-        nodeDataArray.push({ 
-            key: theme,
-            text: theme,
-            color: color
-        });
-        
-        // Verbind met hoofdthema
-        linkDataArray.push({ 
-            from: "Triple C",
-            to: theme
-        });
+        nodeDataArray.push({ key: theme, text: theme, color: color });
 
-        // Voeg gevonden woorden toe
-        clusters[theme].forEach((word) => {
-            nodeDataArray.push({ 
-                key: word,
-                text: word,
-                color: color
-            });
-            linkDataArray.push({ 
-                from: theme,
-                to: word
-            });
+        let uniqueWords = new Set(clusters[theme]);  // ✅ Voorkom herhaling van woorden
+
+        uniqueWords.forEach((word) => {
+            nodeDataArray.push({ key: word, text: word, color: "#ddd" });
+            linkDataArray.push({ from: theme, to: word });
         });
     });
+
+    // **Mindmap-template met klikbare knoppen**
+    diagram.nodeTemplate = $(go.Node, "Auto",
+        { click: showContext },
+        $(go.Shape, "RoundedRectangle", 
+            { fill: "white", strokeWidth: 1, minSize: new go.Size(120, 50) }, // ✅ Grotere en nettere knooppunten
+            new go.Binding("fill", "color")
+        ),
+        $(go.TextBlock,
+            { margin: 12, font: "bold 14px Arial", textAlign: "center", wrap: go.TextBlock.WrapFit, width: 120 }, // ✅ Betere leesbaarheid
+            new go.Binding("text", "text")
+        )
+    );
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     mindmapContainer.style.display = "block";
+
+    console.log("✅ Mindmap met verbeterde TreeLayout gegenereerd.");
 }
 
 // **Functie voor contextweergave**
