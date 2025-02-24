@@ -3,72 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FFF-Bijeenkomst Analyse</title>
+    <title>FFF-bijeenkomst - Triple C Implementatie</title>
     <link rel="stylesheet" href="stijl-vragenlijst.css">
     <script src="js/fff-bijeenkomst.js" defer></script>
 </head>
-<body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>FFF-Bijeenkomst Analyse</h1>
-            <p>De plek waar waardevolle kennis van professionals wordt ingezet, om verantwoord te automatiseren.</p>
+<body class="fff-bijeenkomst-page">
+    <!-- Header met titel en uitleg -->
+    <header class="fff-bijeenkomst-header">
+        <h1>FFF-bijeenkomst - Implementatie Triple C</h1>
+        <p>
+            De plek waar waardevolle kennis van professionals wordt ingezet, om verantwoord te automatiseren. 
+        </p>
+    </header>
+
+    <!-- Context container -->
+    <div class="fff-bijeenkomstcontext-container">
+        <h2>Doel Bijeenkomst</h2>
+        <p>
+            Het FFF-moment is bedoeld om kritisch te reflecteren op het onderzoek en de volgende stappen te verfijnen. 
+            Door feedback te verzamelen van medestudenten, praktijkbegeleiders en docenten, biedt het een frisse blik op de onderzoeksopzet,
+            bevindingen en mogelijke verbeterpunten.
+        </p>
+    </div>
+
+    <!-- Vragenlijst sectie -->
+    <section class="input-panel">
+        <h2>FFF Analyse Vragen</h2>
+        <div class="question-container">
+            <!-- Vraag 1 -->
+            <div class="question active" id="question1">
+                <h3>Vraag 1: Onderzoeksopzet</h3>
+                <div class="options-grid">
+                    <div class="option">
+                        <img src="images/fff/option1A.jpg" alt="Duidelijke onderzoeksopzet" class="option-image">
+                        <button class="option-button" data-value="A">
+                            De onderzoeksopzet is helder en goed gestructureerd
+                        </button>
+                    </div>
+                    <div class="option">
+                        <img src="images/fff/option1B.jpg" alt="Onduidelijke onderzoeksopzet" class="option-image">
+                        <button class="option-button" data-value="B">
+                            De onderzoeksopzet behoeft meer structuur en duidelijkheid
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="question-navigation">
+            <span class="question-counter">Vraag 1/10</span>
+            <button id="nextQuestion" class="button" disabled>Volgende vraag</button>
         </div>
     </section>
 
-    <!-- Main Content -->
-
-
-        <!-- Content Container -->
-        <div class="content-container">
-            <!-- Doel Bijeenkomst Panel -->
-            <div class="info-panel">
-                <h2>Doel Bijeenkomst</h2>
-                <p>
-                    Het FFF-moment is bedoeld om kritisch te reflecteren op het onderzoek en de volgende stappen te verfijnen. 
-                    Door feedback te verzamelen van medestudenten, praktijkbegeleiders en docenten, biedt het een frisse blik op de onderzoeksopzet,
-                    bevindingen en mogelijke verbeterpunten.
-                </p>
-            </div>
-
-            <!-- Instructies Panel -->
-            <div class="instruction-panel">
-                <h2>Hoe werkt het?</h2>
-                <ol>
-                    <li>Voer je observaties in uit de FFF-bijeenkomst</li>
-                    <li>Klik op 'Analyseer' om de resultaten te zien</li>
-                    <li>Bekijk de gestructureerde analyse van je observaties</li>
-                </ol>
-            </div>
-
-            <!-- Analysis Section -->
-            <div class="analysis-grid">
-                <!-- Input Panel -->
-                <section class="input-panel">
-                    <h2>Observaties</h2>
-                    <div class="input-group">
-                        <label for="observationInput">Voer je observaties in:</label>
-                        <textarea id="observationInput" 
-                                class="textarea" 
-                                placeholder="Beschrijf hier wat je hebt waargenomen tijdens de FFF-bijeenkomst..."></textarea>
-                    </div>
-                    <button id="analyseButton" class="button">Analyseer</button>
-                </section>
-
-                <!-- Results Panel -->
-                <section class="results-panel">
-                    <h2>Analyse Resultaten</h2>
-                    <div id="analysisResults" class="results-container">
-                        <!-- Resultaten komen hier -->
-                    </div>
-                </section>
-            </div>
-                    <nav class="nav-menu">
-            <a href="index.html">Home</a>
-            <a href="tools.html">Onderzoeksmethode</a>
-        </nav>
-        </div>
-    </main>
+    <!-- Navigatie knoppen -->
+    <div class="button-container">
+        <a href="index.html" class="back-button">Terug naar Home</a>
+        <a href="tools.html" class="back-button">Terug naar Tools</a>
+        <button type="submit" class="submit-button" style="display: none;">Verstuur scores</button>
+    </div>
 
     <footer>
         <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
