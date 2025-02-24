@@ -43,16 +43,17 @@
     color: #6A35C1;
     margin-bottom: 15px;
 }
-.fff-bijeenkomstcontext-container h3 {
-    color: #6A35C1;
-    margin-bottom: 15px;
-}
+
 
 .question-container {
     background: var(--bg-light);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
+}
+.fff-bijeenkomstcontext-container h3 {
+    color: #6A35C1;
+    margin-bottom: 15px;
 }
 
 .question {
