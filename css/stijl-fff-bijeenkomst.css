@@ -1,6 +1,7 @@
 .fff-bijeenkomst-page {
     text-align: center;
     padding: 50px;
+    font-family: 'Nunito', sans-serif;
     background: linear-gradient(135deg, #b05df5, #f3e5ff);
     min-height: 100vh;
     box-sizing: border-box;
