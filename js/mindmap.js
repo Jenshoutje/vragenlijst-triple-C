@@ -229,7 +229,7 @@ function generateMindmap(themesData) {
         }),
         initialContentAlignment: go.Spot.Center,
         autoScale: go.Diagram.Uniform,
-        "background": "lightblue", // ✅ Achtergrondkleur voor de mindmap
+        //"background": "lightblue", // ✅ Achtergrondkleur voor de mindmap
     });
 
     console.log(diagram); // Controleer of het diagramobject correct is
