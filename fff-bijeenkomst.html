@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FFF-bijeenkomst - Triple C Implementatie</title>
-    <link rel="stylesheet" href="css/stijl-fff-bijeenkomst.css">
+    <link rel="stylesheet" href="stijl-vragenlijst.css">
     <script src="js/fff-bijeenkomst.js" defer></script>
 </head>
 <body class="fff-bijeenkomst-page">
@@ -29,6 +28,7 @@
 
     <!-- Vragenlijst sectie -->
     <section class="input-panel">
+        <h2>FFF Analyse Vragen</h2>
         <div class="question-container">
             <!-- Vraag 1 -->
             <div class="question active" id="question1">
@@ -38,17 +38,13 @@
                         <div class="image-container">
                             <img src="discover.png" alt="Duidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <button class="option-button" data-value="A" onclick="nextQuestion()">
-                            De onderzoeksopzet is helder en goed gestructureerd
-                        </button>
+                        <p class="option-description">De onderzoeksopzet is helder en goed gestructureerd</p>
                     </div>
                     <div class="option" onclick="nextQuestion()">
                         <div class="image-container">
                             <img src="develop.png" alt="Onduidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <button class="option-button" data-value="B" onclick="nextQuestion()">
-                            De onderzoeksopzet behoeft meer structuur en duidelijkheid
-                        </button>
+                        <p class="option-description">De onderzoeksopzet behoeft meer structuur en duidelijkheid</p>
                     </div>
                 </div>
             </div>
@@ -60,17 +56,13 @@
                         <div class="image-container">
                             <img src="define.png" alt="Duidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <button class="option-button" data-value="A" onclick="nextQuestion()">
-                            De onderzoeksopzet is helder en goed gestructureerd
-                        </button>
+                        <p class="option-description">De onderzoeksopzet is helder en goed gestructureerd</p>
                     </div>
                     <div class="option" onclick="nextQuestion()">
                         <div class="image-container">
                             <img src="deliver.png" alt="Onduidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <button class="option-button" data-value="B" onclick="nextQuestion()">
-                            De onderzoeksopzet behoeft meer structuur en duidelijkheid
-                        </button>
+                        <p class="option-description">De onderzoeksopzet behoeft meer structuur en duidelijkheid</p>
                     </div>
                 </div>
             </div>
@@ -82,17 +74,13 @@
                         <div class="image-container">
                             <img src="Alliadevogel.png" alt="Duidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <button class="option-button" data-value="A" onclick="nextQuestion()">
-                            De onderzoeksopzet is helder en goed gestructureerd
-                        </button>
+                        <p class="option-description">De onderzoeksopzet is helder en goed gestructureerd</p>
                     </div>
                     <div class="option" onclick="nextQuestion()">
                         <div class="image-container">
                             <img src="develop.png" alt="Onduidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <button class="option-button" data-value="B" onclick="nextQuestion()">
-                            De onderzoeksopzet behoeft meer structuur en duidelijkheid
-                        </button>
+                        <p class="option-description">De onderzoeksopzet behoeft meer structuur en duidelijkheid</p>
                     </div>
                 </div>
             </div>
@@ -106,7 +94,6 @@
 
     <!-- Navigatie knoppen -->
     <div class="button-container">
-        <button id="backButton" class="back-button">Terug</button>
         <a href="index.html" class="back-button">Terug naar Home</a>
         <a href="tools.html" class="back-button">Terug naar Tools</a>
         <button type="submit" class="submit-button" style="display: none;">Verstuur scores</button>
@@ -117,4 +104,3 @@
     </footer>
 </body>
 </html>
-
