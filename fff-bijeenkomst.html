@@ -26,86 +26,85 @@
         </p>
     </div>
 
-    <!-- Vragenlijst sectie -->
+    <!-- Vragenlijst sectie in een uitgelichte container -->
     <section class="input-panel">
-        <h2>FFF Analyse Vragen</h2>
         <div class="question-container">
             <!-- Vraag 1 -->
             <div class="question active" id="question1">
                 <h3>Vraag 1: Onderzoeksopzet</h3>
                 <div class="options-grid">
-                    <div class="option">
-                        <img src="images/fff/option1A.jpg" alt="Duidelijke onderzoeksopzet" class="option-image">
-                        <button class="option-button" data-value="A">
-                            De onderzoeksopzet is helder en goed gestructureerd
-                        </button>
+                    <div class="option" onclick="nextQuestion()">
+                        <div class="image-container">
+                            <img src="discover.png" alt="Duidelijke onderzoeksopzet" class="option-image">
+                        </div>
+                        <p class="option-description">De onderzoeksopzet is helder en goed gestructureerd</p>
                     </div>
-                    <div class="option">
-                        <img src="images/fff/option1B.jpg" alt="Onduidelijke onderzoeksopzet" class="option-image">
-                        <button class="option-button" data-value="B">
-                            De onderzoeksopzet behoeft meer structuur en duidelijkheid
-                        </button>
+                    <div class="option" onclick="nextQuestion()">
+                        <div class="image-container">
+                            <img src="develop.png" alt="Onduidelijke onderzoeksopzet" class="option-image">
+                        </div>
+                        <p class="option-description">De onderzoeksopzet behoeft meer structuur en duidelijkheid</p>
                     </div>
                 </div>
             </div>
+
             <!-- Vraag 2 -->
             <div class="question" id="question2">
-                <h3>Vraag 2: Vraag beschrijving</h3>
+                <h3>Vraag 2: Mooi icoontje</h3>
                 <div class="options-grid">
                     <div class="option" onclick="nextQuestion()">
                         <div class="image-container">
-                            <img src="image5.png" alt="Vraag 2 optie 1" class="option-image">
+                            <img src="define.png" alt="Duidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <p class="option-description">Optie 1 voor vraag 2</p>
+                        <p class="option-description">De onderzoeksopzet is helder en goed gestructureerd</p>
                     </div>
                     <div class="option" onclick="nextQuestion()">
                         <div class="image-container">
-                            <img src="image6.png" alt="Vraag 2 optie 2" class="option-image">
+                            <img src="deliver.png" alt="Onduidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <p class="option-description">Optie 2 voor vraag 2</p>
+                        <p class="option-description">De onderzoeksopzet behoeft meer structuur en duidelijkheid</p>
                     </div>
                 </div>
             </div>
+
             <!-- Vraag 3 -->
             <div class="question" id="question3">
                 <h3>Vraag 3: Ondersdoel</h3>
                 <div class="options-grid">
-                    <div class="option">
+                    <div class="option" onclick="nextQuestion()">
                         <div class="image-container">
                             <img src="Alliadevogel.png" alt="Duidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <button class="option-button" data-value="A">
-                            De onderzoeksopzet is helder en goed gestructureerd
-                        </button>
+                        <p class="option-description">De onderzoeksopzet is helder en goed gestructureerd</p>
                     </div>
-                    <div class="option">
+                    <div class="option" onclick="nextQuestion()">
                         <div class="image-container">
                             <img src="develop.png" alt="Onduidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <button class="option-button" data-value="B">
-                            De onderzoeksopzet behoeft meer structuur en duidelijkheid
-                        </button>
+                        <p class="option-description">De onderzoeksopzet behoeft meer structuur en duidelijkheid</p>
                     </div>
                 </div>
             </div>
+
             <!-- Vraag 4 -->
             <div class="question" id="question4">
-                <h3>Vraag 4: Vraag beschrijving</h3>
+                <h3>Vraag 4: Ander leuk icoontje</h3>
                 <div class="options-grid">
                     <div class="option" onclick="nextQuestion()">
                         <div class="image-container">
-                            <img src="image5.png" alt="Vraag 4 optie 1" class="option-image">
+                            <img src="Alliadevogel.png" alt="Duidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <p class="option-description">Optie 1 voor vraag 4</p>
+                        <p class="option-description">De onderzoeksopzet is helder en goed gestructureerd</p>
                     </div>
                     <div class="option" onclick="nextQuestion()">
                         <div class="image-container">
-                            <img src="image6.png" alt="Vraag 4 optie 2" class="option-image">
+                            <img src="develop.png" alt="Onduidelijke onderzoeksopzet" class="option-image">
                         </div>
-                        <p class="option-description">Optie 2 voor vraag 4</p>
+                        <p class="option-description">De onderzoeksopzet behoeft meer structuur en duidelijkheid</p>
                     </div>
                 </div>
             </div>
+
             <!-- Vraag 5 -->
             <div class="question" id="question5">
                 <h3>Vraag 5: Vraag beschrijving</h3>
@@ -124,101 +123,126 @@
                     </div>
                 </div>
             </div>
-            <!-- Vraag 6 -->
-            <div class="question" id="question6">
-                <h3>Vraag 6: Vraag beschrijving</h3>
-                <div class="options-grid">
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image5.png" alt="Vraag 6 optie 1" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 1 voor vraag 6</p>
-                    </div>
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image6.png" alt="Vraag 6 optie 2" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 2 voor vraag 6</p>
-                    </div>
-                </div>
+
+            <!-- Vraag 5 -->
+<div class="question" id="question5">
+    <h3>Vraag 5: Vraag beschrijving</h3>
+    <div class="options-grid">
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image5.png" alt="Vraag 5 optie 1" class="option-image">
             </div>
-            <!-- Vraag 7 -->
-            <div class="question" id="question7">
-                <h3>Vraag 7: Vraag beschrijving</h3>
-                <div class="options-grid">
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image5.png" alt="Vraag 7 optie 1" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 1 voor vraag 7</p>
-                    </div>
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image6.png" alt="Vraag 7 optie 2" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 2 voor vraag 7</p>
-                    </div>
-                </div>
+            <p class="option-description">Optie 1 voor vraag 5</p>
+        </div>
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image6.png" alt="Vraag 5 optie 2" class="option-image">
             </div>
-            <!-- Vraag 8 -->
-            <div class="question" id="question8">
-                <h3>Vraag 8: Vraag beschrijving</h3>
-                <div class="options-grid">
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image5.png" alt="Vraag 8 optie 1" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 1 voor vraag 8</p>
-                    </div>
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image6.png" alt="Vraag 8 optie 2" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 2 voor vraag 8</p>
-                    </div>
-                </div>
+            <p class="option-description">Optie 2 voor vraag 5</p>
+        </div>
+    </div>
+</div>
+
+<!-- Vraag 6 -->
+<div class="question" id="question6">
+    <h3>Vraag 6: Vraag beschrijving</h3>
+    <div class="options-grid">
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image5.png" alt="Vraag 6 optie 1" class="option-image">
             </div>
-            <!-- Vraag 9 -->
-            <div class="question" id="question9">
-                <h3>Vraag 9: Vraag beschrijving</h3>
-                <div class="options-grid">
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image5.png" alt="Vraag 9 optie 1" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 1 voor vraag 9</p>
-                    </div>
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image6.png" alt="Vraag 9 optie 2" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 2 voor vraag 9</p>
-                    </div>
-                </div>
+            <p class="option-description">Optie 1 voor vraag 6</p>
+        </div>
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image6.png" alt="Vraag 6 optie 2" class="option-image">
             </div>
-            <!-- Vraag 10 -->
-            <div class="question" id="question10">
-                <h3>Vraag 10: Vraag beschrijving</h3>
-                <div class="options-grid">
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image5.png" alt="Vraag 10 optie 1" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 1 voor vraag 10</p>
-                    </div>
-                    <div class="option" onclick="nextQuestion()">
-                        <div class="image-container">
-                            <img src="image6.png" alt="Vraag 10 optie 2" class="option-image">
-                        </div>
-                        <p class="option-description">Optie 2 voor vraag 10</p>
-                    </div>
-                </div>
+            <p class="option-description">Optie 2 voor vraag 6</p>
+        </div>
+    </div>
+</div>
+
+<!-- Vraag 7 -->
+<div class="question" id="question7">
+    <h3>Vraag 7: Vraag beschrijving</h3>
+    <div class="options-grid">
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image5.png" alt="Vraag 7 optie 1" class="option-image">
             </div>
+            <p class="option-description">Optie 1 voor vraag 7</p>
+        </div>
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image6.png" alt="Vraag 7 optie 2" class="option-image">
+            </div>
+            <p class="option-description">Optie 2 voor vraag 7</p>
+        </div>
+    </div>
+</div>
+
+<!-- Vraag 8 -->
+<div class="question" id="question8">
+    <h3>Vraag 8: Vraag beschrijving</h3>
+    <div class="options-grid">
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image5.png" alt="Vraag 8 optie 1" class="option-image">
+            </div>
+            <p class="option-description">Optie 1 voor vraag 8</p>
+        </div>
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image6.png" alt="Vraag 8 optie 2" class="option-image">
+            </div>
+            <p class="option-description">Optie 2 voor vraag 8</p>
+        </div>
+    </div>
+</div>
+
+<!-- Vraag 9 -->
+<div class="question" id="question9">
+    <h3>Vraag 9: Vraag beschrijving</h3>
+    <div class="options-grid">
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image5.png" alt="Vraag 9 optie 1" class="option-image">
+            </div>
+            <p class="option-description">Optie 1 voor vraag 9</p>
+        </div>
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image6.png" alt="Vraag 9 optie 2" class="option-image">
+            </div>
+            <p class="option-description">Optie 2 voor vraag 9</p>
+        </div>
+    </div>
+</div>
+
+<!-- Vraag 10 -->
+<div class="question" id="question10">
+    <h3>Vraag 10: Vraag beschrijving</h3>
+    <div class="options-grid">
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image5.png" alt="Vraag 10 optie 1" class="option-image">
+            </div>
+            <p class="option-description">Optie 1 voor vraag 10</p>
+        </div>
+        <div class="option" onclick="nextQuestion()">
+            <div class="image-container">
+                <img src="image6.png" alt="Vraag 10 optie 2" class="option-image">
+            </div>
+            <p class="option-description">Optie 2 voor vraag 10</p>
+        </div>
+    </div>
+</div><!-- Voeg hier vragen 6 t/m 10 toe met dezelfde structuur -->
         </div>
         <div class="question-navigation">
             <span class="question-counter">Vraag 1/10</span>
             <button id="nextQuestion" class="button" disabled>Volgende vraag</button>
         </div>
+        <button id="backButton" class="back-button">Terug</button>
     </section>
 
     <!-- Navigatie knoppen -->
