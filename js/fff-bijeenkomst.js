@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const questions = document.querySelectorAll('.question');
     const nextButton = document.getElementById('nextQuestion');
     const questionCounter = document.querySelector('.question-counter');
+    const backButton = document.getElementById('backButton');
     let currentQuestion = 0;
 
     function updateQuestion() {
@@ -19,15 +20,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.querySelectorAll('.option-button').forEach(button => {
-        button.addEventListener('click', () => {
-            // Verwijder de 'selected' klasse van alle knoppen
-            document.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('selected'));
-            // Voeg de 'selected' klasse toe aan de geklikte knop
-            button.classList.add('selected');
-            // Maak de volgende knop actief
-            nextButton.disabled = false;
+    // Voeg functionaliteit toe aan de afbeeldingen
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', () => {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                updateQuestion();
+            }
         });
+    });
+
+    // Terug knop functionaliteit
+    backButton.addEventListener('click', () => {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            updateQuestion();
+        }
     });
 
     updateQuestion(); // Initialiseer de eerste vraag
