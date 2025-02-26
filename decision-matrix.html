@@ -124,7 +124,8 @@
     </footer>
 
     <script type="module" src="js/firebase.js"></script>
-    <script>
+	    <script>
+       import { db } from './js/firebase.js'; 
         // Functie om de Decision Matrix op te slaan
         async function submitDecisionMatrix(event) {
             event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
