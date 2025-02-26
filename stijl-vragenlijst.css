@@ -595,7 +595,7 @@ body {
     font-size: 16px; /* Grotere tekst */
     color: #333; /* Donkere tekstkleur */
     appearance: none; /* Verberg de standaard pijl */
-    background-image: url(icons/matrix); /* Voeg een pijl of een ander icoon toe */
+    background-image: url(icons/matrix.png); /* Voeg een pijl of een ander icoon toe */
     background-repeat: no-repeat;
     background-position: right 10px center; /* Plaats het icoon aan de rechterkant */
 }
