@@ -44,7 +44,9 @@ export async function submitSurveyForm() {
 }
 
 // Functie om de ingevulde Decision Matrix op te slaan
-export async function submitDecisionMatrix() {
+async function submitDecisionMatrix(event) {
+    event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
+
     // Verzamel de data uit de Decision Matrix
     const formData = {
         knelpunt1: {
