@@ -65,6 +65,18 @@ export async function submitDecisionMatrix() {
             clientwelzijn: document.querySelector('select[name="knelpunt3_clientwelzijn"]').value,
             urgentie: document.querySelector('select[name="knelpunt3_urgentie"]').value,
         },
+        knelpunt4: {
+            effectiviteit: document.querySelector('select[name="knelpunt4_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt4_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt4_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt4_urgentie"]').value,
+        },
+        knelpunt5: {
+            effectiviteit: document.querySelector('select[name="knelpunt5_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt5_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt5_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt5_urgentie"]').value,
+        },
         timestamp: new Date() // Voeg een tijdstempel toe
     };
 
