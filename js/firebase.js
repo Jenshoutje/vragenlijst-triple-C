@@ -1,3 +1,4 @@
+
 // Firebase SDK importeren
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
@@ -15,11 +16,13 @@ const firebaseConfig = {
 
 // Firebase initialiseren
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = getFirestore(app); // Zorg ervoor dat db correct is geïnitialiseerd
+
+// Exporteer db voor gebruik in andere bestanden
+export { db };
 
 // ✅ **Functie om de vragenlijst (survey) op te slaan**
 export async function submitSurveyForm() {
-    // Gegevens verzamelen uit het formulier
     const formData = {
         name: document.getElementById("name").value.trim() || "Anoniem",
         experience: document.getElementById("experience").value.trim(),
@@ -32,7 +35,6 @@ export async function submitSurveyForm() {
     };
 
     try {
-        // Gegevens opslaan in Firestore onder 'surveyResponses'
         const docRef = await addDoc(collection(db, "surveyResponses"), formData);
         console.log("Survey opgeslagen met ID:", docRef.id);
         alert("Bedankt voor je bijdrage! De gegevens zijn succesvol opgeslagen.");
@@ -82,7 +84,6 @@ export async function submitDecisionMatrixForm(event) {
     };
 
     try {
-        // Opslaan in de Firestore-collectie "decisionMatrixResponses"
         const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
         console.log("Decision Matrix opgeslagen met ID:", docRef.id);
         alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
@@ -92,3 +93,4 @@ export async function submitDecisionMatrixForm(event) {
         alert("Er is een fout opgetreden bij het verzenden. Probeer het opnieuw.");
     }
 }
+
