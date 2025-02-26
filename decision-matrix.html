@@ -18,18 +18,17 @@
     </header>
 
     <div class="decisioncontext-container">
-    <h2>Doel decision matrix</h2>
-    <p>
-        Deze decision matrix-tool wordt ingezet om inzichtelijk en systematisch prioriteiten
-        te stellen binnen de implementatie van de Triple C-methodiek op woongroep ’t Rond 51.
-        Door middel van deze methode wordt bepaald welke uitdagingen en kansen de hoogste prioriteit hebben, op basis van input van begeleiders.
-    </p>
-
-</div>
+        <h2>Doel decision matrix</h2>
+        <p>
+            Deze decision matrix-tool wordt ingezet om inzichtelijk en systematisch prioriteiten
+            te stellen binnen de implementatie van de Triple C-methodiek op woongroep 't Rond 51.
+            Door middel van deze methode wordt bepaald welke uitdagingen en kansen de hoogste prioriteit hebben, op basis van input van begeleiders.
+        </p>
+    </div>
 
     <!-- Matrix-container -->
-      <section class="matrix-container">
-        <form id="decision-matrix-form">
+    <section class="matrix-container">
+        <form id="decision-matrix-form" onsubmit="submitDecisionMatrix(event)">
             <table>
                 <thead>
                     <tr>
@@ -44,51 +43,49 @@
                     <!-- Knelpunt 1 -->
                     <tr>
                         <td>Eenduidige interpretatie van Triple C</td>
-                        <td><select name="knelpunt1_effectiviteit"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt1_haalbaarheid"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt1_clientwelzijn"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt1_urgentie"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt1_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt1_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt1_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt1_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
                     </tr>
 
                     <!-- Knelpunt 2 -->
                     <tr>
                         <td>Werkdruk belemmert proactief handelen</td>
-                        <td><select name="knelpunt2_effectiviteit"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt2_haalbaarheid"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt2_clientwelzijn"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt2_urgentie"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt2_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt2_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt2_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt2_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
                     </tr>
 
                     <!-- Knelpunt 3 -->
                     <tr>
                         <td>Specifieke training en ondersteuning Triple C</td>
-                        <td><select name="knelpunt3_effectiviteit"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt3_haalbaarheid"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt3_clientwelzijn"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt3_urgentie"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt3_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt3_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt3_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt3_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
                     </tr>
 
                     <!-- Knelpunt 4 -->
                     <tr>
                         <td>Behoefte aan een gedeelde visie binnen het team</td>
-                        <td><select name="knelpunt4_effectiviteit"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt4_haalbaarheid"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt4_clientwelzijn"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt4_urgentie"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt4_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt4_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt4_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt4_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
                     </tr>
 
                     <!-- Knelpunt 5 -->
                     <tr>
                         <td>Ondersteuning vanuit Alliade</td>
-                        <td><select name="knelpunt5_effectiviteit"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt5_haalbaarheid"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt5_clientwelzijn"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
-                        <td><select name="knelpunt5_urgentie"> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt5_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt5_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt5_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt5_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
                     </tr>
                 </tbody>
             </table>
-
-          
 
             <!-- Knoppen -->
             <div class="button-container">
@@ -104,5 +101,14 @@
     </footer>
 
     <script type="module" src="js/firebase.js"></script>
+    <script>
+        // Functie om de Decision Matrix op te slaan
+        async function submitDecisionMatrix(event) {
+            event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
+
+            // Hier kun je de logica toevoegen om de gegevens naar Firebase te verzenden
+            // Bijvoorbeeld: await submitDecisionMatrix();
+        }
+    </script>
 </body>
 </html>
