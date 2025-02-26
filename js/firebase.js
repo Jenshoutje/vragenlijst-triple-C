@@ -4,13 +4,13 @@ import { getFirestore, collection, addDoc } from "https://www.gstatic.com/fireba
 
 // Firebase configuratie
 const firebaseConfig = {
-    apiKey: "AIzaSy...", // Vervang door jouw API-key
-    authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
-    projectId: "ontwerpgerichtonderzoek",
-    storageBucket: "ontwerpgerichtonderzoek.appspot.com",
-    messagingSenderId: "1087936453818",
-    appId: "1:1087936453818:web:9ec4f6c8b8cbcc503ff683",
-    measurementId: "G-078FVL26HV"
+  apiKey: "AIzaSyCWMYvuSm2vuq85Kr3LjeZ5NyJRHn8XnJs",
+  authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
+  projectId: "ontwerpgerichtonderzoek",
+  storageBucket: "ontwerpgerichtonderzoek.firebasestorage.app",
+  messagingSenderId: "1087936453818",
+  appId: "1:1087936453818:web:9ec4f6c8b8cbcc503ff683",
+  measurementId: "G-078FVL26HV"
 };
 
 // Firebase initialiseren
@@ -19,7 +19,6 @@ const db = getFirestore(app);
 
 // ✅ **Functie om de vragenlijst (survey) op te slaan**
 export async function submitSurveyForm() {
-    // Gegevens verzamelen uit het formulier
     const formData = {
         name: document.getElementById("name").value.trim() || "Anoniem",
         experience: document.getElementById("experience").value.trim(),
@@ -32,7 +31,6 @@ export async function submitSurveyForm() {
     };
 
     try {
-        // Gegevens opslaan in Firestore onder 'surveyResponses'
         const docRef = await addDoc(collection(db, "surveyResponses"), formData);
         console.log("Survey opgeslagen met ID:", docRef.id);
         alert("Bedankt voor je bijdrage! De gegevens zijn succesvol opgeslagen.");
@@ -43,11 +41,10 @@ export async function submitSurveyForm() {
     }
 }
 
-// Functie om de ingevulde Decision Matrix op te slaan
-async function submitDecisionMatrix(event) {
+// ✅ **Functie om de ingevulde Decision Matrix op te slaan**
+export async function submitDecisionMatrix(event) {
     event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
 
-    // Verzamel de data uit de Decision Matrix
     const formData = {
         knelpunt1: {
             effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
@@ -83,7 +80,6 @@ async function submitDecisionMatrix(event) {
     };
 
     try {
-        // Opslaan in de Firestore-collectie "decisionMatrixResponses"
         const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
         console.log("Decision Matrix opgeslagen met ID:", docRef.id);
         alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
