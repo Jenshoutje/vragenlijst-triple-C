@@ -131,7 +131,7 @@
             event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
 
             const formData = {
-                name: document.getElementById("name").value.trim(), // Voeg de naam toe
+                name: document.getElementById("name").value.trim(),
                 knelpunt1: {
                     effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
                     haalbaarheid: document.querySelector('select[name="knelpunt1_haalbaarheid"]').value,
@@ -164,11 +164,12 @@
                 },
             };
 
+            console.log("FormData:", formData); // Controleer de verzamelde gegevens
+
             try {
-                // Opslaan in de Firestore-collectie "decisionMatrixResponses"
                 const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
-                console.log("Decision Matrix opgeslagen met ID:", docRef.id);
-                alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
+                console.log("Document opgeslagen met ID:", docRef.id);
+                alert("Scores zijn verzonden!");
                 document.getElementById("decision-matrix-form").reset(); // Reset het formulier
             } catch (error) {
                 console.error("Fout bij opslaan van Decision Matrix:", error);
