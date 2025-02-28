@@ -50,7 +50,7 @@
     <section class="matrix-container">
         <form id="decision-matrix-form" onsubmit="submitDecisionMatrix(event)">
             <label for="name">Naam:</label>
-            <input type="text" id="name" name="name" required placeholder="Voer je naam in" autocomplete="name">
+            <input type="text" id="name" name="name" required placeholder="Voer je naam in">
 
             <table>
                 <thead>
@@ -124,15 +124,15 @@
     </footer>
 
     <script type="module" src="js/firebase.js"></script>
-    <script type="module">
-        import { db } from './js/firebase.js'; 
-
+	    <script type='module'>
+       import { db } from './js/firebase.js'; 
+        // Functie om de Decision Matrix op te slaan
         async function submitDecisionMatrix(event) {
             event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
-            console.log("submitDecisionMatrix functie aangeroepen");
+            alert("De functie is aangeroepen!"); // Test om te zien of de functie wordt aangeroepen
 
             const formData = {
-                name: document.getElementById("name").value.trim(),
+                name: document.getElementById("name").value.trim(), // Voeg de naam toe
                 knelpunt1: {
                     effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
                     haalbaarheid: document.querySelector('select[name="knelpunt1_haalbaarheid"]').value,
@@ -165,17 +165,15 @@
                 },
             };
 
-            console.log("FormData:", formData); // Controleer de verzamelde gegevens
-
-            try {
-                const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
-                console.log("Document opgeslagen met ID:", docRef.id);
-                alert("Scores zijn verzonden!");
-                document.getElementById("decision-matrix-form").reset(); // Reset het formulier
-            } catch (error) {
-                console.error("Fout bij opslaan van Decision Matrix:", error);
-                alert("Er is een fout opgetreden bij het verzenden. Probeer het opnieuw.");
-            }
+    	try {
+    const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
+    console.log("Document opgeslagen met ID:", docRef.id);
+    setTimeout(() => alert("Scores zijn verzonden!"), 100); // Wacht 100 ms voor de alert
+    document.getElementById("decision-matrix-form").reset(); // Reset het formulier
+} catch (error) {
+    console.error("Fout bij opslaan van Decision Matrix:", error);
+    setTimeout(() => alert("Er is een fout opgetreden bij het verzenden. Probeer het opnieuw."), 100);
+}
         }
     </script>
 </body>
