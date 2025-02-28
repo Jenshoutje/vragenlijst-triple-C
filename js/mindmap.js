@@ -179,63 +179,41 @@ function generateMindmap(themesData) {
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, {
-            angle: 0,  // Horizontale layout
-            layerSpacing: 80,  // Ruimte tussen lagen
-            nodeSpacing: 40,   // Ruimte tussen nodes
-            arrangement: go.TreeLayout.ArrangementFixedRoots,
-            setsPortSpot: false,
-            setsChildPortSpot: false,
-            // Verdeel de nodes in een cirkel/boom structuur
-            commitLayout: function() {
-                go.TreeLayout.prototype.commitLayout.call(this);
-                // Bereken posities in een cirkel voor hoofdthema's
-                let radius = 200;  // Pas dit aan naar wens
-                let nodeCount = this.network.vertexes.count;
-                let angle = 2 * Math.PI / nodeCount;
-                
-                this.network.vertexes.each((v, i) => {
-                    if (v.node && !v.node.findTreeParentNode()) {
-                        // Alleen voor hoofdthema's
-                        let theta = i * angle;
-                        v.node.location = new go.Point(
-                            radius * Math.cos(theta),
-                            radius * Math.sin(theta)
-                        );
-                    }
-                });
-            }
+            angle: 0,
+            layerSpacing: 80,
+            nodeSpacing: 40,
         }),
         initialContentAlignment: go.Spot.Center,
         autoScale: go.Diagram.Uniform,
-       // "background": "lightblue", // ✅ Achtergrondkleur voor de mindmap
     });
-
-    console.log(diagram); // Controleer of het diagramobject correct is
 
     let nodeDataArray = [];
     let linkDataArray = [];
 
+    // Voeg alleen thema's toe die woorden bevatten
     Object.keys(clusters).forEach((theme) => {
-        let color = getColorBySentiment(theme);
-        nodeDataArray.push({ key: theme, text: theme, color: color });
+        if (clusters[theme].length > 0) { // Controleer of er woorden zijn
+            let color = getColorBySentiment(theme);
+            nodeDataArray.push({ key: theme, text: theme, color: color });
 
-        let uniqueWords = new Set(clusters[theme]);  // ✅ Voorkom herhaling van woorden
+            let uniqueWords = new Set(clusters[theme]);
 
-        uniqueWords.forEach((word) => {
-            nodeDataArray.push({ key: word, text: word, color: "#ddd" });
-            linkDataArray.push({ from: theme, to: word });
-        });
+            uniqueWords.forEach((word) => {
+                nodeDataArray.push({ key: word, text: word, color: "#ddd" });
+                linkDataArray.push({ from: theme, to: word });
+            });
+        }
     });
 
     // **Mindmap-template met klikbare knoppen**
     diagram.nodeTemplate = $(go.Node, "Auto",
         { click: showContext },
         $(go.Shape, "RoundedRectangle", 
-            { fill: "white", strokeWidth: 1, minSize: new go.Size(120, 50) }, // ✅ Grotere en nettere knooppunten
+            { fill: "white", strokeWidth: 1, minSize: new go.Size(120, 50) },
             new go.Binding("fill", "color")
         ),
         $(go.TextBlock,
-            { margin: 12, font: "bold 14px Arial", textAlign: "center", wrap: go.TextBlock.WrapFit, width: 120 }, // ✅ Betere leesbaarheid
+            { margin: 12, font: "bold 14px Arial", textAlign: "center", wrap: go.TextBlock.WrapFit, width: 120 },
             new go.Binding("text", "text")
         )
     );
