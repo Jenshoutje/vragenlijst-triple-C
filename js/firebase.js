@@ -1,4 +1,3 @@
-
 // ✅ Firebase SDK importeren
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
@@ -110,3 +109,12 @@ export async function submitDecisionMatrix(event) {
         alert("Er is een fout opgetreden bij het verzenden. Probeer het opnieuw.");
     }
 }
+
+// Eenvoudige testfunctie
+export function testFunction(event) {
+    event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
+    alert("Test functie aangeroepen!"); // Bevestiging dat de functie werkt
+}
+
+// Voeg de event listener toe
+document.getElementById("decision-matrix-form").addEventListener("submit", testFunction);
