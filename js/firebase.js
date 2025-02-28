@@ -4,7 +4,7 @@ import { getFirestore, collection, addDoc } from "https://www.gstatic.com/fireba
 
 // Firebase configuratie
 const firebaseConfig = {
-    apiKey: "AIzaSy...", // Vervang door jouw API-key
+    apiKey: "AIzaSyCWMYvuSm2vuq85Kr3LjeZ5NyJRHn8XnJs", // Vervang door jouw API-key
     authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
     projectId: "ontwerpgerichtonderzoek",
     storageBucket: "ontwerpgerichtonderzoek.appspot.com",
@@ -44,49 +44,26 @@ export async function submitSurveyForm() {
 }
 
 // Functie om de ingevulde Decision Matrix op te slaan
-async function submitDecisionMatrixForm(event) {
+export async function submitDecisionMatrix(event) {
     event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
-    console.log("submitDecisionMatrixForm functie aangeroepen"); // Debugging
+    alert("De functie is aangeroepen!"); // Eenvoudige alert om te bevestigen dat de functie wordt aangeroepen
 
-    // Verzamelen van gegevens
+    // Verzamel de data uit de Decision Matrix
     const formData = {
-        name: document.getElementById("name").value.trim(),
         knelpunt1: {
             effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
             haalbaarheid: document.querySelector('select[name="knelpunt1_haalbaarheid"]').value,
             clientwelzijn: document.querySelector('select[name="knelpunt1_clientwelzijn"]').value,
             urgentie: document.querySelector('select[name="knelpunt1_urgentie"]').value,
         },
-        knelpunt2: {
-            effectiviteit: document.querySelector('select[name="knelpunt2_effectiviteit"]').value,
-            haalbaarheid: document.querySelector('select[name="knelpunt2_haalbaarheid"]').value,
-            clientwelzijn: document.querySelector('select[name="knelpunt2_clientwelzijn"]').value,
-            urgentie: document.querySelector('select[name="knelpunt2_urgentie"]').value,
-        },
-        knelpunt3: {
-            effectiviteit: document.querySelector('select[name="knelpunt3_effectiviteit"]').value,
-            haalbaarheid: document.querySelector('select[name="knelpunt3_haalbaarheid"]').value,
-            clientwelzijn: document.querySelector('select[name="knelpunt3_clientwelzijn"]').value,
-            urgentie: document.querySelector('select[name="knelpunt3_urgentie"]').value,
-        },
-        knelpunt4: {
-            effectiviteit: document.querySelector('select[name="knelpunt4_effectiviteit"]').value,
-            haalbaarheid: document.querySelector('select[name="knelpunt4_haalbaarheid"]').value,
-            clientwelzijn: document.querySelector('select[name="knelpunt4_clientwelzijn"]').value,
-            urgentie: document.querySelector('select[name="knelpunt4_urgentie"]').value,
-        },
-        knelpunt5: {
-            effectiviteit: document.querySelector('select[name="knelpunt5_effectiviteit"]').value,
-            haalbaarheid: document.querySelector('select[name="knelpunt5_haalbaarheid"]').value,
-            clientwelzijn: document.querySelector('select[name="knelpunt5_clientwelzijn"]').value,
-            urgentie: document.querySelector('select[name="knelpunt5_urgentie"]').value,
-        },
-        // Voeg hier knelpunt 2 tot en met 5 toe
+        // Voeg hier knelpunten 2, 3, 4 en 5 toe
+        timestamp: new Date() // Voeg een tijdstempel toe
     };
 
     try {
+        // Opslaan in de Firestore-collectie "decisionMatrixResponses"
         const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
-        console.log("Document opgeslagen met ID:", docRef.id);
+        console.log("Decision Matrix opgeslagen met ID:", docRef.id);
         alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
         document.getElementById("decision-matrix-form").reset(); // Reset het formulier
     } catch (error) {
