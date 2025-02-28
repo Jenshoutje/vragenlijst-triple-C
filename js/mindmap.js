@@ -178,9 +178,9 @@ function generateMindmap(themesData) {
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, {
-            angle: 0,
-            layerSpacing: 80,
-            nodeSpacing: 40,
+            angle: 90, // Draai de layout om de woorden onder de thema's te plaatsen
+            layerSpacing: 50,
+            nodeSpacing: 20,
         }),
         initialContentAlignment: go.Spot.Center,
         autoScale: go.Diagram.Uniform,
