@@ -117,6 +117,8 @@ function filterStopwoorden(text) {
 function analyseZinnen(text) {
     let woorden = text.toLowerCase().split(/\s+/);
     let clusters = {};
+    let zinnen = text.split('.'); // Splits de tekst in zinnen
+    let woordToegewezen = {}; // Houd bij welk woord al aan een thema is gekoppeld
     
     // Initialiseer clusters
     Object.keys(thematischeData).forEach(categorie => {
@@ -136,14 +138,21 @@ function analyseZinnen(text) {
             // Check of het woord in de thematische data voorkomt
             if (thematischeData[categorie].has(woord)) {
                 console.log(`Match gevonden! "${woord}" in categorie "${categorie}"`);
-                if (!clusters[categorie].includes(woord)) {
+                
+                // Controleer of het woord al aan een thema is gekoppeld
+                if (!woordToegewezen[woord]) {
                     clusters[categorie].push(woord);
-                    
-                    // Bewaar context
+                    woordToegewezen[woord] = true; // Markeer het woord als toegewezen
+
+                    // Bewaar context: voeg alleen de zinnen toe waarin het woord voorkomt
                     if (!woordContext[woord]) {
                         woordContext[woord] = new Set();
                     }
-                    woordContext[woord].add(text);
+                    zinnen.forEach(z => {
+                        if (z.toLowerCase().includes(woord)) {
+                            woordContext[woord].add(z.trim());
+                        }
+                    });
                 }
             }
         });
