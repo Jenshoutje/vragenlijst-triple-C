@@ -166,7 +166,6 @@ function generateMindmap(themesData) {
     if (!mindmapContainer) return;
 
     let clusters = themesData?.clusters || {};
-    let woordContext = themesData?.woordContext || {};
 
     // ✅ Verwijder bestaande mindmap correct
     let existingDiagram = go.Diagram.fromDiv("mindmap");
@@ -179,31 +178,9 @@ function generateMindmap(themesData) {
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, {
-            angle: 0,  // Horizontale layout
-            layerSpacing: 80,  // Ruimte tussen lagen
-            nodeSpacing: 40,   // Ruimte tussen nodes
-            arrangement: go.TreeLayout.ArrangementFixedRoots,
-            setsPortSpot: false,
-            setsChildPortSpot: false,
-            // Verdeel de nodes in een cirkel/boom structuur
-            commitLayout: function() {
-                go.TreeLayout.prototype.commitLayout.call(this);
-                // Bereken posities in een cirkel voor hoofdthema's
-                let radius = 200;  // Pas dit aan naar wens
-                let nodeCount = this.network.vertexes.count;
-                let angle = 2 * Math.PI / nodeCount;
-                
-                this.network.vertexes.each((v, i) => {
-                    if (v.node && !v.node.findTreeParentNode()) {
-                        // Alleen voor hoofdthema's
-                        let theta = i * angle;
-                        v.node.location = new go.Point(
-                            radius * Math.cos(theta),
-                            radius * Math.sin(theta)
-                        );
-                    }
-                });
-            }
+            angle: 0,
+            layerSpacing: 80,
+            nodeSpacing: 40,
         }),
         initialContentAlignment: go.Spot.Center,
         autoScale: go.Diagram.Uniform,
@@ -218,9 +195,7 @@ function generateMindmap(themesData) {
             let color = getColorBySentiment(theme);
             nodeDataArray.push({ key: theme, text: theme, color: color });
 
-            let uniqueWords = new Set(clusters[theme]);
-
-            uniqueWords.forEach((word) => {
+            clusters[theme].forEach((word) => {
                 nodeDataArray.push({ key: word, text: word, color: "#ddd" });
                 linkDataArray.push({ from: theme, to: word });
             });
