@@ -55,47 +55,56 @@ export async function submitSurveyForm() {
 export async function submitDecisionMatrix(event) {
     event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
     console.log("➡️ Functie submitDecisionMatrix() gestart...");
-    alert("De functie is aangeroepen!"); // Bevestiging dat de functie werkt
+
+    // Verzamel de data uit de Decision Matrix
+    const formData = {
+        name: document.getElementById("name").value.trim() || "Anoniem",
+        knelpunt1: {
+            effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt1_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt1_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt1_urgentie"]').value,
+        },
+        knelpunt2: {
+            effectiviteit: document.querySelector('select[name="knelpunt2_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt2_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt2_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt2_urgentie"]').value,
+        },
+        knelpunt3: {
+            effectiviteit: document.querySelector('select[name="knelpunt3_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt3_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt3_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt3_urgentie"]').value,
+        },
+        knelpunt4: {
+            effectiviteit: document.querySelector('select[name="knelpunt4_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt4_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt4_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt4_urgentie"]').value,
+        },
+        knelpunt5: {
+            effectiviteit: document.querySelector('select[name="knelpunt5_effectiviteit"]').value,
+            haalbaarheid: document.querySelector('select[name="knelpunt5_haalbaarheid"]').value,
+            clientwelzijn: document.querySelector('select[name="knelpunt5_clientwelzijn"]').value,
+            urgentie: document.querySelector('select[name="knelpunt5_urgentie"]').value,
+        },
+        timestamp: new Date() // Voeg een tijdstempel toe
+    };
+
+    // Validatie: Controleer of alle velden zijn ingevuld
+    for (const knelpunt of Object.values(formData).slice(1)) {
+        for (const waarde of Object.values(knelpunt)) {
+            if (waarde === "Selecteer") {
+                alert("Vul alstublieft alle velden in.");
+                return;
+            }
+        }
+    }
+
+    console.log("📌 Gegevens verzameld voor Decision Matrix:", formData);
 
     try {
-        // Verzamel de data uit de Decision Matrix
-        const formData = {
-            name: document.getElementById("name").value.trim() || "Anoniem",
-            knelpunt1: {
-                effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
-                haalbaarheid: document.querySelector('select[name="knelpunt1_haalbaarheid"]').value,
-                clientwelzijn: document.querySelector('select[name="knelpunt1_clientwelzijn"]').value,
-                urgentie: document.querySelector('select[name="knelpunt1_urgentie"]').value,
-            },
-            knelpunt2: {
-                effectiviteit: document.querySelector('select[name="knelpunt2_effectiviteit"]').value,
-                haalbaarheid: document.querySelector('select[name="knelpunt2_haalbaarheid"]').value,
-                clientwelzijn: document.querySelector('select[name="knelpunt2_clientwelzijn"]').value,
-                urgentie: document.querySelector('select[name="knelpunt2_urgentie"]').value,
-            },
-            knelpunt3: {
-                effectiviteit: document.querySelector('select[name="knelpunt3_effectiviteit"]').value,
-                haalbaarheid: document.querySelector('select[name="knelpunt3_haalbaarheid"]').value,
-                clientwelzijn: document.querySelector('select[name="knelpunt3_clientwelzijn"]').value,
-                urgentie: document.querySelector('select[name="knelpunt3_urgentie"]').value,
-            },
-            knelpunt4: {
-                effectiviteit: document.querySelector('select[name="knelpunt4_effectiviteit"]').value,
-                haalbaarheid: document.querySelector('select[name="knelpunt4_haalbaarheid"]').value,
-                clientwelzijn: document.querySelector('select[name="knelpunt4_clientwelzijn"]').value,
-                urgentie: document.querySelector('select[name="knelpunt4_urgentie"]').value,
-            },
-            knelpunt5: {
-                effectiviteit: document.querySelector('select[name="knelpunt5_effectiviteit"]').value,
-                haalbaarheid: document.querySelector('select[name="knelpunt5_haalbaarheid"]').value,
-                clientwelzijn: document.querySelector('select[name="knelpunt5_clientwelzijn"]').value,
-                urgentie: document.querySelector('select[name="knelpunt5_urgentie"]').value,
-            },
-            timestamp: new Date() // Voeg een tijdstempel toe
-        };
-
-        console.log("📌 Gegevens verzameld voor Decision Matrix:", formData);
-
         // Opslaan in de Firestore-collectie "decisionMatrixResponses"
         const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
         console.log("✅ Decision Matrix succesvol opgeslagen met ID:", docRef.id);
@@ -110,11 +119,6 @@ export async function submitDecisionMatrix(event) {
     }
 }
 
-// Eenvoudige testfunctie
-export function testFunction(event) {
-    event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
-    alert("Test functie aangeroepen!"); // Bevestiging dat de functie werkt
-}
-
 // Voeg de event listener toe
-document.getElementById("decision-matrix-form").addEventListener("submit", testFunction);
+document.getElementById("decision-matrix-form").addEventListener("submit", submitDecisionMatrix);
+ 
