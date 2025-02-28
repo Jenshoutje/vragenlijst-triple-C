@@ -4,27 +4,53 @@ import { getFirestore, collection, addDoc } from "https://www.gstatic.com/fireba
 
 // Firebase configuratie
 const firebaseConfig = {
-  apiKey: "AIzaSyCWMYvuSm2vuq85Kr3LjeZ5NyJRHn8XnJs",
-  authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
-  projectId: "ontwerpgerichtonderzoek",
-  storageBucket: "ontwerpgerichtonderzoek.firebasestorage.app",
-  messagingSenderId: "1087936453818",
-  appId: "1:1087936453818:web:9ec4f6c8b8cbcc503ff683",
-  measurementId: "G-078FVL26HV"
+    apiKey: "AIzaSy...", // Vervang door jouw API-key
+    authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
+    projectId: "ontwerpgerichtonderzoek",
+    storageBucket: "ontwerpgerichtonderzoek.appspot.com",
+    messagingSenderId: "1087936453818",
+    appId: "1:1087936453818:web:9ec4f6c8b8cbcc503ff683",
+    measurementId: "G-078FVL26HV"
 };
 
 // Firebase initialiseren
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app); // Zorg ervoor dat db correct is geïnitialiseerd
+const db = getFirestore(app);
 
-// Exporteer db voor gebruik in andere bestanden
-export { db };
-
-// ✅ **Functie om de ingevulde Decision Matrix op te slaan**
-export async function submitDecisionMatrixForm(event) {
-    event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
-
+// ✅ **Functie om de vragenlijst (survey) op te slaan**
+export async function submitSurveyForm() {
+    // Gegevens verzamelen uit het formulier
     const formData = {
+        name: document.getElementById("name").value.trim() || "Anoniem",
+        experience: document.getElementById("experience").value.trim(),
+        tripleC: document.getElementById("tripleC").value.trim(),
+        challenges: document.getElementById("challenges").value.trim(),
+        improvements: document.getElementById("improvements").value.trim(),
+        agreement: document.getElementById("agreement").value.trim(),
+        additional: document.getElementById("additional").value.trim(),
+        timestamp: new Date() // Timestamp toevoegen
+    };
+
+    try {
+        // Gegevens opslaan in Firestore onder 'surveyResponses'
+        const docRef = await addDoc(collection(db, "surveyResponses"), formData);
+        console.log("Survey opgeslagen met ID:", docRef.id);
+        alert("Bedankt voor je bijdrage! De gegevens zijn succesvol opgeslagen.");
+        document.getElementById("surveyForm").reset(); // Reset het formulier
+    } catch (error) {
+        console.error("Fout bij opslaan:", error);
+        alert("Er is een fout opgetreden bij het verzenden van de gegevens. Probeer het opnieuw.");
+    }
+}
+
+// Functie om de ingevulde Decision Matrix op te slaan
+async function submitDecisionMatrixForm(event) {
+    event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
+    console.log("submitDecisionMatrixForm functie aangeroepen"); // Debugging
+
+    // Verzamelen van gegevens
+    const formData = {
+        name: document.getElementById("name").value.trim(),
         knelpunt1: {
             effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
             haalbaarheid: document.querySelector('select[name="knelpunt1_haalbaarheid"]').value,
@@ -55,12 +81,12 @@ export async function submitDecisionMatrixForm(event) {
             clientwelzijn: document.querySelector('select[name="knelpunt5_clientwelzijn"]').value,
             urgentie: document.querySelector('select[name="knelpunt5_urgentie"]').value,
         },
-        timestamp: new Date() // Voeg een tijdstempel toe
+        // Voeg hier knelpunt 2 tot en met 5 toe
     };
 
     try {
         const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
-        console.log("Decision Matrix opgeslagen met ID:", docRef.id);
+        console.log("Document opgeslagen met ID:", docRef.id);
         alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
         document.getElementById("decision-matrix-form").reset(); // Reset het formulier
     } catch (error) {
