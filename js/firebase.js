@@ -1,3 +1,4 @@
+
 // ✅ Firebase SDK importeren
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
@@ -41,7 +42,9 @@ export async function submitSurveyForm() {
         const docRef = await addDoc(collection(db, "surveyResponses"), formData);
         console.log("✅ Survey succesvol opgeslagen met ID:", docRef.id);
         alert("Bedankt voor je bijdrage! De gegevens zijn succesvol opgeslagen.");
-        document.getElementById("surveyForm").reset(); // Reset het formulier
+        
+        // Reset het formulier **na** succesvolle opslag
+        document.getElementById("surveyForm").reset(); 
         console.log("🔄 Formulier gereset.");
     } catch (error) {
         console.error("❌ Fout bij opslaan van survey:", error);
@@ -98,7 +101,9 @@ export async function submitDecisionMatrix(event) {
         const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
         console.log("✅ Decision Matrix succesvol opgeslagen met ID:", docRef.id);
         alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
-        document.getElementById("decision-matrix-form").addEventListener("submit", submitDecisionMatrix);// Reset het formulier
+        
+        // Reset het formulier **na** succesvolle opslag
+        document.getElementById("decision-matrix-form").reset(); 
         console.log("🔄 Formulier gereset.");
     } catch (error) {
         console.error("❌ Fout bij opslaan van Decision Matrix:", error);
