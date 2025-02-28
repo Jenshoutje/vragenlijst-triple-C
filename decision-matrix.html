@@ -48,9 +48,9 @@
 
     <!-- Matrix-container -->
     <section class="matrix-container">
-        <form id="decision-matrix-form" 
+        <form id="decision-matrix-form" onsubmit="submitDecisionMatrix(event)">
             <label for="name">Naam:</label>
-            <input type="text" id="name" name="name" required placeholder="Voer je naam in">
+            <input type="text" id="name" name="name" required placeholder="Voer je naam in" autocomplete='name'>
 
             <table>
                 <thead>
@@ -124,57 +124,5 @@
     </footer>
 
     <script type="module" src="js/firebase.js"></script>
-	    <script type='module'>
-       import { db } from './js/firebase.js'; 
-        // Functie om de Decision Matrix op te slaan
-        async function submitDecisionMatrix(event) {
-            event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
-            alert("De functie is aangeroepen!"); // Test om te zien of de functie wordt aangeroepen
-
-            const formData = {
-                name: document.getElementById("name").value.trim(), // Voeg de naam toe
-                knelpunt1: {
-                    effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
-                    haalbaarheid: document.querySelector('select[name="knelpunt1_haalbaarheid"]').value,
-                    clientwelzijn: document.querySelector('select[name="knelpunt1_clientwelzijn"]').value,
-                    urgentie: document.querySelector('select[name="knelpunt1_urgentie"]').value,
-                },
-                knelpunt2: {
-                    effectiviteit: document.querySelector('select[name="knelpunt2_effectiviteit"]').value,
-                    haalbaarheid: document.querySelector('select[name="knelpunt2_haalbaarheid"]').value,
-                    clientwelzijn: document.querySelector('select[name="knelpunt2_clientwelzijn"]').value,
-                    urgentie: document.querySelector('select[name="knelpunt2_urgentie"]').value,
-                },
-                knelpunt3: {
-                    effectiviteit: document.querySelector('select[name="knelpunt3_effectiviteit"]').value,
-                    haalbaarheid: document.querySelector('select[name="knelpunt3_haalbaarheid"]').value,
-                    clientwelzijn: document.querySelector('select[name="knelpunt3_clientwelzijn"]').value,
-                    urgentie: document.querySelector('select[name="knelpunt3_urgentie"]').value,
-                },
-                knelpunt4: {
-                    effectiviteit: document.querySelector('select[name="knelpunt4_effectiviteit"]').value,
-                    haalbaarheid: document.querySelector('select[name="knelpunt4_haalbaarheid"]').value,
-                    clientwelzijn: document.querySelector('select[name="knelpunt4_clientwelzijn"]').value,
-                    urgentie: document.querySelector('select[name="knelpunt4_urgentie"]').value,
-                },
-                knelpunt5: {
-                    effectiviteit: document.querySelector('select[name="knelpunt5_effectiviteit"]').value,
-                    haalbaarheid: document.querySelector('select[name="knelpunt5_haalbaarheid"]').value,
-                    clientwelzijn: document.querySelector('select[name="knelpunt5_clientwelzijn"]').value,
-                    urgentie: document.querySelector('select[name="knelpunt5_urgentie"]').value,
-                },
-            };
-
-    	try {
-    const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
-    console.log("Document opgeslagen met ID:", docRef.id);
-    setTimeout(() => alert("Scores zijn verzonden!"), 100); // Wacht 100 ms voor de alert
-    document.getElementById("decision-matrix-form").reset(); // Reset het formulier
-} catch (error) {
-    console.error("Fout bij opslaan van Decision Matrix:", error);
-    setTimeout(() => alert("Er is een fout opgetreden bij het verzenden. Probeer het opnieuw."), 100);
-}
-        }
-    </script>
 </body>
 </html>
