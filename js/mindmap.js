@@ -117,7 +117,7 @@ function filterStopwoorden(text) {
 function analyseZinnen(text) {
     let woorden = text.toLowerCase().split(/\s+/);
     let clusters = {};
-    let zinnen = text.split('.'); // Splits de tekst in zinnen
+    let zinnen = text.split('.').map(z => z.trim()); // Splits de tekst in zinnen en trim whitespace
     let woordToegewezen = {}; // Houd bij welk woord al aan een thema is gekoppeld
     
     // Initialiseer clusters
@@ -150,7 +150,7 @@ function analyseZinnen(text) {
                     }
                     zinnen.forEach(z => {
                         if (z.toLowerCase().includes(woord)) {
-                            woordContext[woord].add(z.trim());
+                            woordContext[woord].add(z); // Voeg de zin toe
                         }
                     });
                 }
