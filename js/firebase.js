@@ -98,7 +98,7 @@ export async function submitDecisionMatrix(event) {
         const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
         console.log("✅ Decision Matrix succesvol opgeslagen met ID:", docRef.id);
         alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
-        document.getElementById("decision-matrix-form").reset(); // Reset het formulier
+        document.getElementById("decision-matrix-form").addEventListener("submit", submitDecisionMatrix);// Reset het formulier
         console.log("🔄 Formulier gereset.");
     } catch (error) {
         console.error("❌ Fout bij opslaan van Decision Matrix:", error);
