@@ -104,23 +104,24 @@ export async function submitDecisionMatrix(event) {
 
     console.log("📌 Gegevens verzameld voor Decision Matrix:", formData);
 
-   try {
-    // Opslaan in de Firestore-collectie "decisionMatrixResponses"
-    const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
-    console.log("✅ Decision Matrix succesvol opgeslagen met ID:", docRef.id);
-    
-    alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
-    
-    // Reset het formulier **voor** de redirect
-    document.getElementById("decision-matrix-form").reset(); 
-    console.log("🔄 Formulier gereset.");
-    
-    // Redirect naar de bevestigingspagina
-    window.location.href = 'bevestigtmatrix.html';
-} catch (error) {
-    console.error("❌ Fout bij opslaan van Decision Matrix:", error);
-    alert("Er is een fout opgetreden bij het verzenden. Probeer het opnieuw.");
+    try {
+        // Opslaan in de Firestore-collectie "decisionMatrixResponses"
+        const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
+        console.log("✅ Decision Matrix succesvol opgeslagen met ID:", docRef.id);
+        
+        alert("Bedankt! De Decision Matrix is succesvol opgeslagen.");
+        
+        // Reset het formulier **voor** de redirect
+        document.getElementById("decision-matrix-form").reset(); 
+        console.log("🔄 Formulier gereset.");
+        
+        // Redirect naar de bevestigingspagina
+        window.location.href = 'bevestigtmatrix.html';
+    } catch (error) {
+        console.error("❌ Fout bij opslaan van Decision Matrix:", error);
+        alert("Er is een fout opgetreden bij het verzenden. Probeer het opnieuw.");
+    }
 }
+
 // Voeg de event listener toe
 document.getElementById("decision-matrix-form").addEventListener("submit", submitDecisionMatrix);
- 
