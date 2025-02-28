@@ -179,9 +179,31 @@ function generateMindmap(themesData) {
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, {
-            angle: 0,
-            layerSpacing: 80,
-            nodeSpacing: 40,
+            angle: 0,  // Horizontale layout
+            layerSpacing: 80,  // Ruimte tussen lagen
+            nodeSpacing: 40,   // Ruimte tussen nodes
+            arrangement: go.TreeLayout.ArrangementFixedRoots,
+            setsPortSpot: false,
+            setsChildPortSpot: false,
+            // Verdeel de nodes in een cirkel/boom structuur
+            commitLayout: function() {
+                go.TreeLayout.prototype.commitLayout.call(this);
+                // Bereken posities in een cirkel voor hoofdthema's
+                let radius = 200;  // Pas dit aan naar wens
+                let nodeCount = this.network.vertexes.count;
+                let angle = 2 * Math.PI / nodeCount;
+                
+                this.network.vertexes.each((v, i) => {
+                    if (v.node && !v.node.findTreeParentNode()) {
+                        // Alleen voor hoofdthema's
+                        let theta = i * angle;
+                        v.node.location = new go.Point(
+                            radius * Math.cos(theta),
+                            radius * Math.sin(theta)
+                        );
+                    }
+                });
+            }
         }),
         initialContentAlignment: go.Spot.Center,
         autoScale: go.Diagram.Uniform,
