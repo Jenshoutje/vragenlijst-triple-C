@@ -3,64 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triple C Vragenlijst</title>
+    <title>Decision Matrix - Triple C Implementatie</title>
     <link rel="stylesheet" href="stijl-vragenlijst.css">
-    <script src="js/firebase.js" defer></script>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="onderzoek.html">Onderzoek</a></li>
-                <li><a href="tools.html">Onderzoekstools</a></li>
-            </ul>
-        </nav>
+<body class="matrix-page">
+
+    <!-- Header met titel en uitleg -->
+    <header class="matrix-header">
+        <h1>Decision Matrix - Implementatie Triple C</h1>
+        <p>
+            Beoordeel de onderstaande knelpunten op basis van vier criteria.<br>
+            Gebruik een schaal van <strong>1 (zeer laag belang)</strong> tot <strong>5 (zeer hoog belang)</strong>.
+        </p>
     </header>
 
-    <main class="tools-page">
-        <h1>Triple C Implementatie Evaluatie</h1>
-        <p>Deze vragenlijst is bedoeld om inzicht te krijgen in de behoefte van de begeleider.</p>
+
+       <div class="decisioncontext-container">
+        <h2>Doel decision matrix</h2>
+        <p>Deze decision matrix-tool wordt ingezet om inzichtelijk en systematisch prioriteiten
+            te stellen binnen de implementatie van de Triple C-methodiek op woongroep 't Rond 51.
+            Door middel van deze methode wordt bepaald welke uitdagingen en kansen de hoogste prioriteit hebben, op basis van input van begeleiders.
+            
+        </p>
         
-        <form id="surveyForm">
-            <label for="name">Naam (optioneel):</label>
-            <input type="text" id="name" name="name">
+        <h3>Waarom deze tool?</h3>
+        <p>
+            De tool is opgezet om patronen en trends uit kwantitatieve data efficiënt en 
+            gestructureerd inzichtelijk te maken. De input van betrokken begleiders is cruciaal en vormt de basis van dit onderzoek. Hierover leest u meer in het Develop hoofdstuk ontwerpgericht onderzoek. 
+        </p>
 
-            <label for="experience">Hoe lang werk je al op deze woongroep?</label>
-            <select id="experience" name="experience">
-                <option value="minder dan 1 jaar">Minder dan 1 jaar</option>
-                <option value="1-3 jaar">1-3 jaar</option>
-                <option value="3-5 jaar">3-5 jaar</option>
-                <option value="meer dan 5 jaar">Meer dan 5 jaar</option>
-            </select>
+        <h3>Hoe werkt het?</h3>
 
-            <label for="tripleC">Welke elementen van de Tiple zie jij terug op de groep?</label>
-            <textarea id="tripleC" name="tripleC" rows="4" placeholder="Schrijf hier je ervaring..."></textarea>
+        <p>
+            De knelpunten worden beoordeeld op vier criteria:<br>
+	•	Effectiviteit – In hoeverre draagt het oplossen van dit knelpunt bij aan een betere implementatie van Triple C?<br>
+	•	Haalbaarheid – Hoe realistisch is het om dit knelpunt binnen de huidige werkomgeving aan te pakken?<br>
+	•	Impact op cliëntwelzijn – Welke directe invloed heeft het oplossen van dit knelpunt op de kwaliteit van zorg voor cliënten?<br>
+	•	Urgentie – Hoe dringend is het om dit knelpunt op korte termijn aan te pakken?<br>
 
-            <label for="challenges">Welke knelpunten ervaar je bij het toepassen van Triple C?</label>
-            <textarea id="challenges" name="challenges" rows="4" placeholder="Schrijf hier je antwoord..."></textarea>
+		Door op basis van deze vier crieterea uw gevoel te uiten op de onderstaande spelende thema's, kunnen wij samen werken aan een relevant en toepasbare strategie.
 
-            <label for="improvements">Waar zie je mogelijkheden voor verbetering, om in de praktijk winst te halen?</label>
-            <textarea id="improvements" name="improvements" rows="4" placeholder="Schrijf hier je suggesties..."></textarea>
+        </p>
+    </div>
 
-            <label for="agreement">Ben je het eens met de stelling: 'Collega's van 't Rond 51  '?</label>
-            <select id="agreement" name="agreement">
-                <option value="Helemaal mee eens">Helemaal mee eens</option>
-                <option value="Mee eens">Mee eens</option>
-                <option value="Neutraal">Neutraal</option>
-                <option value="Oneens">Oneens</option>
-                <option value="Helemaal oneens">Helemaal oneens</option>
-            </select>
+    <!-- Matrix-container -->
+    <section class="matrix-container">
+        <form id="decision-matrix-form" onsubmit="submitDecisionMatrix(event)">
+            <label for="name">Naam:</label>
+            <input type="text" id="name" name="name" required placeholder="Voer je naam in" autocomplete="name">
 
-            <label for="additional">Opmerkingen of aanvullingen?</label>
-            <textarea id="additional" name="additional" rows="3" placeholder="Extra informatie..."></textarea>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Knelpunt</th>
+                        <th>Effectiviteit</th>
+                        <th>Haalbaarheid</th>
+                        <th>Impact op cliëntwelzijn</th>
+                        <th>Urgentie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Knelpunt 1 -->
+                    <tr>
+                        <td>Eenduidige interpretatie van Triple C</td>
+                        <td><select name="knelpunt1_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt1_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt1_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt1_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                    </tr>
 
-            <button type="button" id="submitButton">Verstuur</button>
+                    <!-- Knelpunt 2 -->
+                    <tr>
+                        <td>Werkdruk belemmert proactief handelen</td>
+                        <td><select name="knelpunt2_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt2_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt2_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt2_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                    </tr>
+
+                    <!-- Knelpunt 3 -->
+                    <tr>
+                        <td>Specifieke training en ondersteuning Triple C</td>
+                        <td><select name="knelpunt3_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt3_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt3_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt3_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                    </tr>
+
+                    <!-- Knelpunt 4 -->
+                    <tr>
+                        <td>Behoefte aan een gedeelde visie binnen het team</td>
+                        <td><select name="knelpunt4_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt4_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt4_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt4_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                    </tr>
+
+                    <!-- Knelpunt 5 -->
+                    <tr>
+                        <td>Ondersteuning vanuit Alliade</td>
+                        <td><select name="knelpunt5_effectiviteit" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt5_haalbaarheid" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt5_clientwelzijn" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                        <td><select name="knelpunt5_urgentie" required> <option value="">Selecteer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Knoppen -->
+            <div class="button-container">
+                <a href="index.html" class="back-button">Terug naar Home</a>
+                <a href="tools.html" class="back-button">Terug naar Tools</a>
+                <button type="submit" class="submit-button">Verstuur scores</button>
+            </div>
         </form>
-    </main>
+    </section>
 
     <footer>
         <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
     </footer>
+
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module">
+        import { db } from './js/firebase.js'; 
+
+        async function submitDecisionMatrix(event) {
+            event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
+            console.log("submitDecisionMatrix functie aangeroepen");
+
+            const formData = {
+                name: document.getElementById("name").value.trim(),
+                knelpunt1: {
+                    effectiviteit: document.querySelector('select[name="knelpunt1_effectiviteit"]').value,
+                    haalbaarheid: document.querySelector('select[name="knelpunt1_haalbaarheid"]').value,
+                    clientwelzijn: document.querySelector('select[name="knelpunt1_clientwelzijn"]').value,
+                    urgentie: document.querySelector('select[name="knelpunt1_urgentie"]').value,
+                },
+                knelpunt2: {
+                    effectiviteit: document.querySelector('select[name="knelpunt2_effectiviteit"]').value,
+                    haalbaarheid: document.querySelector('select[name="knelpunt2_haalbaarheid"]').value,
+                    clientwelzijn: document.querySelector('select[name="knelpunt2_clientwelzijn"]').value,
+                    urgentie: document.querySelector('select[name="knelpunt2_urgentie"]').value,
+                },
+                knelpunt3: {
+                    effectiviteit: document.querySelector('select[name="knelpunt3_effectiviteit"]').value,
+                    haalbaarheid: document.querySelector('select[name="knelpunt3_haalbaarheid"]').value,
+                    clientwelzijn: document.querySelector('select[name="knelpunt3_clientwelzijn"]').value,
+                    urgentie: document.querySelector('select[name="knelpunt3_urgentie"]').value,
+                },
+                knelpunt4: {
+                    effectiviteit: document.querySelector('select[name="knelpunt4_effectiviteit"]').value,
+                    haalbaarheid: document.querySelector('select[name="knelpunt4_haalbaarheid"]').value,
+                    clientwelzijn: document.querySelector('select[name="knelpunt4_clientwelzijn"]').value,
+                    urgentie: document.querySelector('select[name="knelpunt4_urgentie"]').value,
+                },
+                knelpunt5: {
+                    effectiviteit: document.querySelector('select[name="knelpunt5_effectiviteit"]').value,
+                    haalbaarheid: document.querySelector('select[name="knelpunt5_haalbaarheid"]').value,
+                    clientwelzijn: document.querySelector('select[name="knelpunt5_clientwelzijn"]').value,
+                    urgentie: document.querySelector('select[name="knelpunt5_urgentie"]').value,
+                },
+            };
+
+            console.log("FormData:", formData); // Controleer de verzamelde gegevens
+
+            try {
+                const docRef = await addDoc(collection(db, "decisionMatrixResponses"), formData);
+                console.log("Document opgeslagen met ID:", docRef.id);
+                alert("Scores zijn verzonden!");
+                document.getElementById("decision-matrix-form").reset(); // Reset het formulier
+            } catch (error) {
+                console.error("Fout bij opslaan van Decision Matrix:", error);
+                alert("Er is een fout opgetreden bij het verzenden. Probeer het opnieuw.");
+            }
+        }
+    </script>
 </body>
 </html>
