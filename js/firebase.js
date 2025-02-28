@@ -124,4 +124,7 @@ export async function submitDecisionMatrix(event) {
 }
 
 // Voeg de event listener toe
-document.getElementById("decision-matrix-form").addEventListener("submit", submitDecisionMatrix);
+// Voeg de event listener toe na het laden van de DOM
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("decision-matrix-form").addEventListener("submit", submitDecisionMatrix);
+});
