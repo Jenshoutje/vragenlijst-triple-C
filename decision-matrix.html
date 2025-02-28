@@ -50,7 +50,7 @@
     <section class="matrix-container">
         <form id="decision-matrix-form" onsubmit="submitDecisionMatrix(event)">
             <label for="name">Naam:</label>
-            <input type="text" id="name" name="name" required placeholder="Voer je naam in" autocomplete='name'>
+            <input type="text" id="name" name="name" required placeholder="Voer je naam in" autocomplete="name">
 
             <table>
                 <thead>
@@ -124,11 +124,12 @@
     </footer>
 
     <script type="module" src="js/firebase.js"></script>
-	    <script type='module'>
-       import { db } from './js/firebase.js'; 
-        // Functie om de Decision Matrix op te slaan
+    <script type="module">
+        import { db } from './js/firebase.js'; 
+
         async function submitDecisionMatrix(event) {
             event.preventDefault(); // Voorkom dat de pagina opnieuw laadt
+            console.log("submitDecisionMatrix functie aangeroepen");
 
             const formData = {
                 name: document.getElementById("name").value.trim(),
