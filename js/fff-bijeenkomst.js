@@ -39,11 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Voeg functionaliteit toe aan de afbeeldingen
+    // Voeg functionaliteit toe aan de opties
     document.querySelectorAll('.option').forEach((option, index) => {
         option.addEventListener('click', () => {
             // Sla het antwoord op
-            antwoorden[currentQuestion] = option.dataset.waarde; // Zorg ervoor dat je de waarde van de optie opslaat
+            antwoorden[currentQuestion] = option.querySelector('.option-description').textContent; // Sla de tekst van de optie op
             if (currentQuestion < questions.length - 1) {
                 currentQuestion++;
                 updateQuestion();
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Functie om antwoorden op te slaan in Firebase
     function slaAntwoordenOp() {
-        const antwoordenRef = ref(database, 'fff-bijeenkomstResponses'); // Pas de pad aan zoals nodig
+        const antwoordenRef = ref(database, 'fff-bijeenkomstResponses'); // Gebruik de juiste collectie naam
         set(antwoordenRef, {
             antwoorden: antwoorden
         })
