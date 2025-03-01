@@ -117,7 +117,7 @@ function filterStopwoorden(text) {
 function analyseZinnen(text) {
     let woorden = text.toLowerCase().split(/\s+/);
     let clusters = {};
-    let zinnen = text.split('.').map(z => z.trim()); // Splits de tekst in zinnen en trim whitespace
+    let zinnen = text.split('.'); // Splits de tekst in zinnen
     let woordToegewezen = {}; // Houd bij welk woord al aan een thema is gekoppeld
     
     // Initialiseer clusters
@@ -150,7 +150,7 @@ function analyseZinnen(text) {
                     }
                     zinnen.forEach(z => {
                         if (z.toLowerCase().includes(woord)) {
-                            woordContext[woord].add(z); // Voeg de zin toe
+                            woordContext[woord].add(z.trim());
                         }
                     });
                 }
@@ -213,9 +213,9 @@ function generateMindmap(themesData) {
 
     // **Mindmap-template met klikbare knoppen**
     diagram.nodeTemplate = $(go.Node, "Auto",
-        { click: showContext },
+        { click: showContext, mouseEnter: (e, obj) => { obj.findObject("SHAPE").stroke = "#ff0000"; }, mouseLeave: (e, obj) => { obj.findObject("SHAPE").stroke = "#888"; } },
         $(go.Shape, "RoundedRectangle", 
-            { fill: "white", strokeWidth: 1, minSize: new go.Size(120, 50) },
+            { name: "SHAPE", fill: "#f9f9f9", strokeWidth: 2, stroke: "#888", minSize: new go.Size(120, 50) },
             new go.Binding("fill", "color")
         ),
         $(go.TextBlock,
