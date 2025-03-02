@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 // Initialiseer Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const db = getFiresore(app);
 console.log("✅ Firebase succesvol geïnitialiseerd!");
 
 document.addEventListener('DOMContentLoaded', () => {
