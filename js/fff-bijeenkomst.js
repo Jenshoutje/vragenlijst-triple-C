@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Voeg een event listener toe voor het opslaan van antwoorden bij het voltooien van de quiz
-    document.getElementById('.submit-button').addEventListener('click', () => {
+ submitButton.addEventListener('click', () => {
         slaAntwoordenOp();
     });
 
