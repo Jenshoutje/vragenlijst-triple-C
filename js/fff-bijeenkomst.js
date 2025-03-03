@@ -92,3 +92,4 @@ submitButton.addEventListener('click', (event) => {
 
 // Initialiseer de eerste vraag
 updateQuestion();
+});
