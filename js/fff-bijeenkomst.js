@@ -19,7 +19,7 @@ const db = getFirestore(app);
 console.log("✅ Firebase succesvol geïnitialiseerd!");
 
 document.addEventListener('DOMContentLoaded', () => {
-    const questions = document.querySelectorAll('.option');
+    const questions = document.querySelectorAll('.question');
     const nextButton = document.getElementById('nextQuestion');
     const questionCounter = document.querySelector('.question-counter');
     const backButton = document.getElementById('backButton');
@@ -62,22 +62,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Functie om antwoorden op te slaan in Firestore
-    async function slaAntwoordenOp() {
-        try {
-            const docRef = await addDoc(collection(db, 'fff-bijeenkomstResponses'), {
-                antwoorden: antwoorden
-            });
-            console.log("Antwoorden succesvol opgeslagen met ID:", docRef.id);
-        } catch (error) {
-            console.error("Fout bij het opslaan van antwoorden:", error);
-        }
+ // Functie om antwoorden op te slaan in Firestore
+async function slaAntwoordenOp() {
+    // Controleer of alle vragen zijn beantwoord
+    if (antwoorden.length < questions.length) {
+        alert("Bedankt!.");
+        return; // Stop de functie als niet alle vragen zijn beantwoord
     }
 
-    // Voeg een event listener toe voor het opslaan van antwoorden bij het voltooien van de quiz
-    submitButton.addEventListener('click', () => {
-        slaAntwoordenOp();
-    });
+    try {
+        const docRef = await addDoc(collection(db, 'fff-bijeenkomstResponses'), {
+            antwoorden: antwoorden
+        });
+        console.log("Antwoorden succesvol opgeslagen met ID:", docRef.id);
+        alert("Antwoorden succesvol opgeslagen!"); // Feedback aan de gebruiker
+        // Optioneel: Navigeer naar een andere pagina
+        window.location.href = "bedankt.html"; // Vervang met de juiste URL
+    } catch (error) {
+        console.error("Fout bij het opslaan van antwoorden:", error);
+        alert("Er is een fout opgetreden bij het opslaan van je antwoorden. Probeer het opnieuw.");
+    }
+}
 
-    updateQuestion(); // Initialiseer de eerste vraag
+// Voeg een event listener toe voor het opslaan van antwoorden bij het voltooien van de quiz
+submitButton.addEventListener('click', (event) => {
+    event.preventDefault(); // Voorkomt dat het formulier wordt verzonden
+    slaAntwoordenOp();
 });
+
+// Initialiseer de eerste vraag
+updateQuestion();
