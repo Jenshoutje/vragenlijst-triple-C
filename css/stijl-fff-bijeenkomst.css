@@ -160,6 +160,7 @@
 .submit-button {
     padding: 12px 20px;
     background-color: #6A35C1;
+    display: flex;
     color: white;
     border: none;
     border-radius: 5px;
