@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
-
+import { ref, set } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"; // Voeg deze regel toe
 
 // Firebase configuratie
 const firebaseConfig = {
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('nextQuestion');
     const questionCounter = document.querySelector('.question-counter');
     const backButton = document.getElementById('backButton');
+    const submitButton = document.querySelector('.submit-button'); // Zorg ervoor dat deze correct is
     let currentQuestion = 0;
     let antwoorden = []; // Array om antwoorden op te slaan
 
@@ -61,22 +62,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Functie om antwoorden op te slaan in Firebase
-    function slaAntwoordenOp() {
-        const antwoordenRef = ref(database, 'fff-bijeenkomstResponses'); // Gebruik de juiste collectie naam
-        set(antwoordenRef, {
-            antwoorden: antwoorden
-        })
-        .then(() => {
-            console.log("Antwoorden succesvol opgeslagen!");
-        })
-        .catch((error) => {
+    // Functie om antwoorden op te slaan in Firestore
+    async function slaAntwoordenOp() {
+        try {
+            const docRef = await addDoc(collection(db, 'fff-bijeenkomstResponses'), {
+                antwoorden: antwoorden
+            });
+            console.log("Antwoorden succesvol opgeslagen met ID:", docRef.id);
+        } catch (error) {
             console.error("Fout bij het opslaan van antwoorden:", error);
-        });
+        }
     }
 
     // Voeg een event listener toe voor het opslaan van antwoorden bij het voltooien van de quiz
- submitButton.addEventListener('click', () => {
+    submitButton.addEventListener('click', () => {
         slaAntwoordenOp();
     });
 
