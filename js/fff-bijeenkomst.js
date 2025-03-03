@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             console.log("Antwoorden succesvol opgeslagen met ID:", docRef.id);
             alert("Antwoorden succesvol opgeslagen!");
-            window.location.href = "bedankt.html"; // Vervang met de juiste URL
+            window.location.href = "bevestigtfff-bijeenkomst.html"; // Vervang met de juiste URL
         } catch (error) {
             console.error("Fout bij het opslaan van antwoorden:", error);
             alert("Er is een fout opgetreden bij het opslaan van je antwoorden. Probeer het opnieuw.");
