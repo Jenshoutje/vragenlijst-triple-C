@@ -19,7 +19,7 @@ const db = getFirestore(app);
 console.log("✅ Firebase succesvol geïnitialiseerd!");
 
 document.addEventListener('DOMContentLoaded', () => {
-    const questions = document.querySelectorAll('.question');
+    const questions = document.querySelectorAll('.option');
     const nextButton = document.getElementById('nextQuestion');
     const questionCounter = document.querySelector('.question-counter');
     const backButton = document.getElementById('backButton');
