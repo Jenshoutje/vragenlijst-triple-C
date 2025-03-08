@@ -1,1 +1,209 @@
+/* Algemene styling voor de vragenlijstpagina */
+.vragenlijst-page {
+    text-align: center;
+    padding: 50px;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+    min-height: 100vh;
+    box-sizing: border-box;
+}
 
+/* Header voor de vragenlijst */
+.vragenlijst-header {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto 30px;
+    max-width: 900px;
+}
+
+.vragenlijst-header h1 {
+    color: #6A35C1;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.vragenlijst-header p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Container voor de vragenlijstsectie */
+.vragenlijst-container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+}
+
+.vragenlijst-container h2 {
+    color: #6A35C1;
+    margin-bottom: 15px;
+}
+
+/* Stijl voor vragenblokken */
+.vraag-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-light);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.vraag-container h3 {
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.vraag {
+    display: none;
+}
+
+.vraag.active {
+    display: block;
+}
+
+/* Opties grid */
+.opties-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-items: center;
+}
+
+/* Stijl voor de antwoordopties */
+.optie {
+    background-color: #6A35C1;
+    border-radius: 12px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 250px;
+    margin: 10px;
+}
+
+/* Afbeelding styling voor de opties */
+.optie-afbeelding {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 2px solid var(--border);
+}
+
+/* Knoppen voor opties */
+.optie-knop {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.optie-knop:hover {
+    background: var(--primary);
+    color: var(--text-light);
+}
+
+.optie-knop.selected {
+    background: var(--primary);
+    color: var(--text-light);
+    border-color: var(--primary);
+}
+
+/* Navigatieknoppen voor de vragenlijst */
+.vragen-navigatie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.vragen-teller {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.knop-container {
+    margin-top: 52px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Terugknop */
+.terug-knop {
+    padding: 12px 20px;
+    background-color: #6A35C1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.terug-knop:hover {
+    background-color: #5028A1;
+}
+
+/* Stijl voor de verzendknop */
+.verzend-knop {
+    padding: 12px 20px;
+    background-color: #6A35C1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.verzend-knop:hover {
+    background-color: #5028A1;
+}
+
+/* Responsiviteit */
+@media (max-width: 768px) {
+    .opties-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Footer styling */
+footer {
+    background-color: white;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Invoerveld styling */
+.invoer-paneel {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 120px;
+}
