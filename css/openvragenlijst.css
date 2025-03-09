@@ -1,136 +1,116 @@
-/* Algemene styling voor de thematische analyse pagina */
-.matrix-page {
-    text-align: center;
-    padding: 50px;
-    font-family: 'Nunito', sans-serif;
-    background: linear-gradient(135deg, #6A35C1, #DCC6FF);
-    min-height: 100vh;
-    box-sizing: border-box;
+/* Algemene stijlen */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
+
+/* Header-stijlen */
 .matrix-header {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    margin: 0 auto 30px;
-    max-width: 900px;
+    background-color: #5e2ca5;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
 .matrix-header h1 {
-    color: #6A35C1;
-    font-size: 2rem;
-    margin-bottom: 15px;
+    margin: 0;
+    font-size: 24px;
 }
 
 .matrix-header p {
-    color: #555;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    margin-top: 5px;
+    font-size: 16px;
 }
-/* Container die de vragenlijst bevat */
+
+/* Vragenlijst container */
 .vragenlijst-container {
-    background-color: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: left;
+    max-width: 800px;
+    background: white;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Titel van de pagina */
-.vragenlijst-container h1 {
-    color: #5028A1;
-    font-size: 2.2rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.vragenlijst-container p {
-    color: #444;
-    font-size: 1.1rem;
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-/* Thema titels */
-.thema-titel {
-    color: #5028A1;
-    font-size: 1.6rem;
-    font-weight: bold;
-    margin-top: 30px;
-    border-bottom: 3px solid #6A35C1;
+/* Thema-titels */
+h2 {
+    color: #5e2ca5;
+    font-size: 20px;
+    border-bottom: 2px solid #5e2ca5;
     padding-bottom: 5px;
+    margin-top: 30px;
 }
 
-/* Vragen styling */
+/* Open vraag styling */
 .open-vraag {
-    font-size: 1.1rem;
-    color: #222;
-    margin-top: 15px;
-    font-weight: 600;
+    margin-top: 20px;
 }
 
-/* Invoervelden */
-textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 12px;
-    border: 2px solid #bbb;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: 'Nunito', sans-serif;
-    transition: all 0.3s ease;
-}
-
-textarea:focus {
-    border-color: #5028A1;
-    outline: none;
-    box-shadow: 0 0 10px rgba(80, 40, 161, 0.3);
-}
-
-/* Knoppen styling */
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 35px;
-}
-
-.submit-button, .back-button {
-    padding: 12px 24px;
-    background-color: #5028A1;
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+.open-vraag label {
     font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.open-vraag textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    resize: vertical;
+    transition: border 0.3s;
+}
+
+.open-vraag textarea:focus {
+    border: 1px solid #5e2ca5;
+    outline: none;
+}
+
+/* Knoppen */
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.back-button, .submit-button {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.back-button {
+    background-color: #ccc;
+    color: black;
+}
+
+.back-button:hover {
+    background-color: #bbb;
+}
+
+.submit-button {
+    background-color: #5e2ca5;
+    color: white;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.submit-button:hover, .back-button:hover {
-    background-color: #3A1C84;
-    transform: scale(1.05);
+.submit-button:hover {
+    background-color: #4a1f8d;
 }
 
-/* Responsiviteit */
-@media (max-width: 768px) {
-    .thema-analyse-container {
-        padding: 30px;
-    }
-
-    .thema-titel {
-        font-size: 1.4rem;
-    }
-
-    .vraag {
-        font-size: 1rem;
-    }
-
-    textarea {
-        min-height: 80px;
-    }
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #5e2ca5;
+    color: white;
+    margin-top: 40px;
 }
