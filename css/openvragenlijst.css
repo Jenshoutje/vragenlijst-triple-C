@@ -1,19 +1,38 @@
-/* Algemene styling voor de vragenlijstpagina */
-.vragenlijst-page {
+/* Algemene styling voor de thematische analyse pagina */
+.matrix-page {
     text-align: center;
     padding: 50px;
     font-family: 'Nunito', sans-serif;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
+    background: linear-gradient(135deg, #6A35C1, #DCC6FF);
     min-height: 100vh;
     box-sizing: border-box;
 }
+.matrix-header {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto 30px;
+    max-width: 900px;
+}
 
+.matrix-header h1 {
+    color: #6A35C1;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.matrix-header p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
 /* Container die de vragenlijst bevat */
 .vragenlijst-container {
     background-color: white;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     max-width: 900px;
     margin: 0 auto;
     text-align: left;
@@ -21,33 +40,34 @@
 
 /* Titel van de pagina */
 .vragenlijst-container h1 {
-    color: #6A35C1;
-    font-size: 2rem;
+    color: #5028A1;
+    font-size: 2.2rem;
+    font-weight: bold;
     margin-bottom: 15px;
     text-align: center;
 }
 
 .vragenlijst-container p {
-    color: #555;
+    color: #444;
     font-size: 1.1rem;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 /* Thema titels */
 .thema-titel {
-    color: #6A35C1;
-    font-size: 1.5rem;
+    color: #5028A1;
+    font-size: 1.6rem;
     font-weight: bold;
     margin-top: 30px;
-    border-bottom: 2px solid #6A35C1;
+    border-bottom: 3px solid #6A35C1;
     padding-bottom: 5px;
 }
 
 /* Vragen styling */
-.vraag {
+.open-vraag {
     font-size: 1.1rem;
-    color: #333;
+    color: #222;
     margin-top: 15px;
     font-weight: 600;
 }
@@ -55,19 +75,19 @@
 /* Invoervelden */
 textarea {
     width: 100%;
-    min-height: 80px;
-    padding: 10px;
-    border: 2px solid #ccc;
+    min-height: 100px;
+    padding: 12px;
+    border: 2px solid #bbb;
     border-radius: 8px;
     font-size: 1rem;
     font-family: 'Nunito', sans-serif;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 textarea:focus {
-    border-color: #6A35C1;
+    border-color: #5028A1;
     outline: none;
-    box-shadow: 0 0 8px rgba(106, 53, 193, 0.3);
+    box-shadow: 0 0 10px rgba(80, 40, 161, 0.3);
 }
 
 /* Knoppen styling */
@@ -75,12 +95,12 @@ textarea:focus {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
 .submit-button, .back-button {
-    padding: 12px 20px;
-    background-color: #6A35C1;
+    padding: 12px 24px;
+    background-color: #5028A1;
     color: white;
     text-decoration: none;
     border: none;
@@ -88,17 +108,22 @@ textarea:focus {
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .submit-button:hover, .back-button:hover {
-    background-color: #5028A1;
+    background-color: #3A1C84;
+    transform: scale(1.05);
 }
 
 /* Responsiviteit */
 @media (max-width: 768px) {
-    .vragenlijst-container {
+    .thema-analyse-container {
         padding: 30px;
+    }
+
+    .thema-titel {
+        font-size: 1.4rem;
     }
 
     .vraag {
@@ -106,6 +131,6 @@ textarea:focus {
     }
 
     textarea {
-        min-height: 60px;
+        min-height: 80px;
     }
 }
