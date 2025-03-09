@@ -1,46 +1,52 @@
-/* Algemene stijlen */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff);
     color: #333;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 /* Header-stijlen */
 .matrix-header {
-    background-color: #5e2ca5;
-    color: white;
-    padding: 20px;
-    text-align: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 30px auto;
+    max-width: 900px;
 }
 
 .matrix-header h1 {
-    margin: 0;
-    font-size: 24px;
+    color: #6A35C1;
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
 .matrix-header p {
-    margin-top: 5px;
-    font-size: 16px;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 /* Vragenlijst container */
 .vragenlijst-container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
     max-width: 800px;
-    background: white;
-    margin: 30px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Thema-titels */
 h2 {
-    color: #5e2ca5;
-    font-size: 20px;
-    border-bottom: 2px solid #5e2ca5;
-    padding-bottom: 5px;
+    color: #6A35C1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 2px solid #6A35C1;
+    padding-bottom: 10px;
     margin-top: 30px;
 }
 
@@ -50,67 +56,79 @@ h2 {
 }
 
 .open-vraag label {
+    color: #6A35C1;
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
+    font-size: 1rem;
 }
 
 .open-vraag textarea {
     width: 100%;
-    border: 1px solid #ccc;
+    border: 2px solid #6A35C1;
     border-radius: 5px;
-    padding: 10px;
-    font-size: 14px;
+    padding: 15px;
+    font-size: 1rem;
     resize: vertical;
-    transition: border 0.3s;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .open-vraag textarea:focus {
-    border: 1px solid #5e2ca5;
+    border-color: #5028A1;
+    box-shadow: 0 0 5px rgba(80, 40, 161, 0.5);
     outline: none;
 }
 
 /* Knoppen */
 .button-container {
-    text-align: center;
     margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .back-button, .submit-button {
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 14px;
-    border-radius: 5px;
-    margin: 5px;
-    transition: 0.3s;
-}
-
-.back-button {
-    background-color: #ccc;
-    color: black;
-}
-
-.back-button:hover {
-    background-color: #bbb;
-}
-
-.submit-button {
-    background-color: #5e2ca5;
+    padding: 12px 20px;
+    background-color: #6A35C1;
     color: white;
-    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
     cursor: pointer;
 }
 
-.submit-button:hover {
-    background-color: #4a1f8d;
+.back-button:hover, .submit-button:hover {
+    background-color: #5028A1;
 }
 
 /* Footer */
 footer {
+    background-color: white;
+    color: #333;
     text-align: center;
-    padding: 10px;
-    background-color: #5e2ca5;
-    color: white;
-    margin-top: 40px;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsiviteit */
+@media (max-width: 768px) {
+    .matrix-header, .vragenlijst-container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .open-vraag textarea {
+        font-size: 0.9rem;
+    }
+
+    .back-button, .submit-button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
 }
