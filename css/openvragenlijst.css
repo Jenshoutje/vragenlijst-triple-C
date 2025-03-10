@@ -1,3 +1,4 @@
+/* Algemene body styling */
 body {
     font-family: 'Nunito', sans-serif;
     background: linear-gradient(135deg, #b05df5, #f3e5ff);
@@ -41,9 +42,13 @@ body {
     max-width: 800px;
 }
 
-/* Thema-sectie styling */
+/* Thema-sectie styling: extra visuele scheiding */
 .thema-sectie {
     margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 /* Thema-titels */
@@ -53,7 +58,7 @@ h2 {
     font-weight: bold;
     border-bottom: 2px solid #6A35C1;
     padding-bottom: 10px;
-    margin-top: 30px;
+    margin-top: 0; /* Verwijder extra top-margin binnen de sectie */
 }
 
 /* Open vraag styling */
