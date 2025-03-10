@@ -1,8 +1,8 @@
-// **Globale opslag voor stopwoorden en thematische data**\\
+/** Globale opslag voor stopwoorden en thematische data **/
 let stopwoorden = new Set();
-let thematischeData = {};
-let isCsvLoaded = false; // ✅ Controle of CSV is geladen
-let woordContext = {}; // Zorg ervoor dat deze variabele is gedefinieerd
+let thematischeData = {};  // Structuur: { mainTheme: { subTheme: Set([...]) } }
+let isCsvLoaded = false;   // Controle of CSV is geladen
+let woordContext = {};     // Bewaart context per woord
 
 document.addEventListener("DOMContentLoaded", async function () {
     console.log("📌 JavaScript geladen: Start Mindmap-setup...");
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    // **Zoek knoppen en tekstvelden**
+    // Zoek knoppen en tekstvelden
     let analyseButton = document.getElementById("analyseButton");
     let exportButton = document.getElementById("exportButton");
     let inputText = document.getElementById("inputText");
@@ -24,32 +24,43 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    // **Laad CSV-bestand**
+    /** Laad CSV-bestand en verwerk de 4 kolommen **/
     async function loadCSV() {
         try {
             const response = await fetch("data/thematische_analyse.csv");
             const text = await response.text();
+            // Verwijder de headerregel
             const rows = text.split("\n").slice(1);
 
             rows.forEach(row => {
+                // Gebruik regex om te splitsen, zodat komma's binnen aanhalingstekens behouden blijven
                 const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                if (columns.length >= 4) {
+                    const mainTheme = columns[0].trim();
+                    const subTheme = columns[1].trim();
+                    // Verwijder eventuele omringende quotes en splits op komma's
+                    const kernwoorden = columns[2].replace(/^"|"$/g, '').split(",").map(word => word.trim()).filter(word => word);
+                    const synoniemen = columns[3].replace(/^"|"$/g, '').split(",").map(word => word.trim()).filter(word => word);
 
-                if (columns.length >= 3) {
-                    const categorie = columns[0].trim();
-                    const kernwoord = columns[1].trim();
-                    const synoniemen = columns[2].split(";").map(word => word.trim());
+                    console.log("Main theme:", mainTheme, "Subtheme:", subTheme, "Kernwoorden:", kernwoorden, "Synoniemen:", synoniemen);
 
-                    console.log("Categorie:", categorie, "Kernwoord:", kernwoord, "Synoniemen:", synoniemen); // Debugging
-
-                    if (categorie.toLowerCase() === "stopwoorden") {
-                        stopwoorden.add(kernwoord);
+                    // Als het hoofdthema 'stopwoorden' is, voeg de woorden toe aan de stopwoorden-set
+                    if (mainTheme.toLowerCase() === "stopwoorden") {
+                        kernwoorden.forEach(word => stopwoorden.add(word));
                         synoniemen.forEach(word => stopwoorden.add(word));
                     } else {
-                        if (!thematischeData[categorie]) {
-                            thematischeData[categorie] = new Set();
+                        if (!thematischeData[mainTheme]) {
+                            thematischeData[mainTheme] = {};
                         }
-                        thematischeData[categorie].add(kernwoord);
-                        synoniemen.forEach(word => thematischeData[categorie].add(word));
+                        if (!thematischeData[mainTheme][subTheme]) {
+                            thematischeData[mainTheme][subTheme] = new Set();
+                        }
+                        kernwoorden.forEach(word => {
+                            thematischeData[mainTheme][subTheme].add(word);
+                        });
+                        synoniemen.forEach(word => {
+                            thematischeData[mainTheme][subTheme].add(word);
+                        });
                     }
                 }
             });
@@ -62,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    await loadCSV(); // Wacht tot CSV is geladen voordat analyse start
+    await loadCSV(); // Wacht tot CSV volledig is geladen voordat de analyse start
 
     analyseButton.addEventListener("click", function () {
         if (!isCsvLoaded) {
@@ -80,9 +91,19 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("✅ Gefilterde tekst na stopwoorden:", filteredText);
 
         let themes = analyseZinnen(filteredText);
-        if (!themes || !themes.clusters || Object.keys(themes.clusters).length === 0) {
+        // Controleer of er thema's (met subthema's) gevonden zijn
+        let hasThemes = false;
+        for (let main in themes.clusters) {
+            for (let sub in themes.clusters[main]) {
+                if (themes.clusters[main][sub].length > 0) {
+                    hasThemes = true;
+                    break;
+                }
+            }
+        }
+        if (!hasThemes) {
             alert("⚠️ Er zijn geen thema's gevonden in de tekst. Probeer een andere invoer.");
-            return; // Fallback als er geen thema's zijn
+            return;
         }
 
         console.log("✅ Thema's na analyse:", themes);
@@ -95,7 +116,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.error("❌ Mindmap diagram niet gevonden.");
             return;
         }
-
         let imgData = diagram.makeImageData({ background: "white" });
         let a = document.createElement("a");
         a.href = imgData;
@@ -106,77 +126,79 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 });
 
-// **Stopwoorden filteren uit tekst**
+/** Stopwoorden filteren uit tekst **/
 function filterStopwoorden(text) {
+    // Bouw regex op basis van de inhoud van de stopwoorden-set
     let regex = new RegExp("\\b(" + [...stopwoorden].join("|") + ")\\b", "gi");
     let gefilterdeTekst = text.replace(regex, "").trim();
     return gefilterdeTekst;
 }
 
-// **Thematische analyse uitvoeren**
+/** Thematische analyse uitvoeren met hiërarchie (main theme > subtheme) **/
 function analyseZinnen(text) {
     let woorden = text.toLowerCase().split(/\s+/);
     let clusters = {};
     let zinnen = text.split('.'); // Splits de tekst in zinnen
-    let woordToegewezen = {}; // Houd bij welk woord al aan een thema is gekoppeld
-    
-    // Initialiseer clusters
-    Object.keys(thematischeData).forEach(categorie => {
-        if (categorie !== 'stopwoorden') {
-            clusters[categorie] = [];
-        }
+    let woordToegewezen = {}; // Houdt bij welk woord al gekoppeld is
+
+    // Initialiseert clusters met dezelfde hiërarchische structuur als in thematischeData
+    Object.keys(thematischeData).forEach(mainTheme => {
+        if (mainTheme.toLowerCase() === "stopwoorden") return;
+        clusters[mainTheme] = {};
+        Object.keys(thematischeData[mainTheme]).forEach(subTheme => {
+            clusters[mainTheme][subTheme] = [];
+        });
     });
 
     // Analyseer elk woord
     woorden.forEach(woord => {
         woord = woord.trim();
         console.log(`Analyseer woord: "${woord}"`);
-        
-        Object.keys(thematischeData).forEach(categorie => {
-            if (categorie === 'stopwoorden') return;
-            
-            // Check of het woord in de thematische data voorkomt
-            if (thematischeData[categorie].has(woord)) {
-                console.log(`Match gevonden! "${woord}" in categorie "${categorie}"`);
-                
-                // Controleer of het woord al aan een thema is gekoppeld
-                if (!woordToegewezen[woord]) {
-                    clusters[categorie].push(woord);
-                    woordToegewezen[woord] = true; // Markeer het woord als toegewezen
+        for (let mainTheme in thematischeData) {
+            if (mainTheme.toLowerCase() === "stopwoorden") continue;
+            for (let subTheme in thematischeData[mainTheme]) {
+                if (thematischeData[mainTheme][subTheme].has(woord)) {
+                    console.log(`Match gevonden! "${woord}" in mainTheme "${mainTheme}" -> subTheme "${subTheme}"`);
+                    // Gebruik een composiet-sleutel om dubbele toewijzing te voorkomen
+                    let compositeKey = mainTheme + "||" + subTheme + "||" + woord;
+                    if (!woordToegewezen[compositeKey]) {
+                        clusters[mainTheme][subTheme].push(woord);
+                        woordToegewezen[compositeKey] = true;
 
-                    // Bewaar context: voeg alleen de zinnen toe waarin het woord voorkomt
-                    if (!woordContext[woord]) {
-                        woordContext[woord] = new Set();
-                    }
-                    zinnen.forEach(z => {
-                        if (z.toLowerCase().includes(woord)) {
-                            woordContext[woord].add(z.trim());
+                        // Bewaar de context: voeg de zinnen toe waarin het woord voorkomt
+                        if (!woordContext[woord]) {
+                            woordContext[woord] = new Set();
                         }
-                    });
+                        zinnen.forEach(z => {
+                            if (z.toLowerCase().includes(woord)) {
+                                woordContext[woord].add(z.trim());
+                            }
+                        });
+                    }
                 }
             }
-        });
+        }
     });
 
     console.log("✅ Clusters na analyse:", clusters);
     return { clusters, woordContext };
 }
 
-// **Kleuren toewijzen aan thema's**
+/** Kleuren toewijzen aan hoofdthema's **/
 const kleuren = ["#FF9999", "#99FF99", "#66B2FF", "#FFD700", "#FFA07A"];
 function getColorBySentiment(theme) {
     let index = Object.keys(thematischeData).indexOf(theme) % kleuren.length;
     return kleuren[index] || "#D3D3D3"; // Grijs als fallback
 }
 
-// **Mindmap genereren met TreeLayout**
+/** Mindmap genereren met TreeLayout en hiërarchische structuur **/
 function generateMindmap(themesData) {
     let mindmapContainer = document.getElementById("mindmap");
     if (!mindmapContainer) return;
 
     let clusters = themesData?.clusters || {};
 
-    // ✅ Verwijder bestaande mindmap correct
+    // Verwijder eventuele bestaande mindmap
     let existingDiagram = go.Diagram.fromDiv("mindmap");
     if (existingDiagram) {
         existingDiagram.clear();
@@ -187,7 +209,7 @@ function generateMindmap(themesData) {
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, {
-            angle: 90, // Draai de layout om de woorden onder de thema's te plaatsen
+            angle: 90, // Woorden worden horizontaal uitgelijnd ten opzichte van de thema's
             layerSpacing: 50,
             nodeSpacing: 20,
         }),
@@ -198,28 +220,64 @@ function generateMindmap(themesData) {
     let nodeDataArray = [];
     let linkDataArray = [];
 
-    // Voeg alleen thema's toe die woorden bevatten
-    Object.keys(clusters).forEach((theme) => {
-        if (clusters[theme].length > 0) { // Controleer of er woorden zijn
-            let color = getColorBySentiment(theme);
-            nodeDataArray.push({ key: theme, text: theme, color: color });
+    // Bouw de hiërarchie: main theme > subtheme > woord
+    Object.keys(clusters).forEach(mainTheme => {
+        // Controleer of het hoofdthema ten minste één subthema met woorden bevat
+        let hasWords = false;
+        for (let sub in clusters[mainTheme]) {
+            if (clusters[mainTheme][sub].length > 0) {
+                hasWords = true;
+                break;
+            }
+        }
+        if (hasWords) {
+            let mainColor = getColorBySentiment(mainTheme);
+            nodeDataArray.push({ key: mainTheme, text: mainTheme, color: mainColor });
 
-            clusters[theme].forEach((word) => {
-                nodeDataArray.push({ key: word, text: word, color: "#ddd" });
-                linkDataArray.push({ from: theme, to: word });
+            // Itereer door de subthema's
+            Object.keys(clusters[mainTheme]).forEach(subTheme => {
+                if (clusters[mainTheme][subTheme].length > 0) {
+                    // Gebruik een samengestelde sleutel voor subthema's
+                    let subKey = mainTheme + "||" + subTheme;
+                    nodeDataArray.push({ key: subKey, text: subTheme, color: "#EEE" });
+                    linkDataArray.push({ from: mainTheme, to: subKey });
+
+                    // Voeg per subthema de individuele woorden toe
+                    clusters[mainTheme][subTheme].forEach(word => {
+                        let wordKey = subKey + "||" + word;
+                        nodeDataArray.push({ key: wordKey, text: word, color: "#ddd" });
+                        linkDataArray.push({ from: subKey, to: wordKey });
+                    });
+                }
             });
         }
     });
 
-    // **Mindmap-template met klikbare knoppen**
+    // Mindmap-template met klikbare knoppen
     diagram.nodeTemplate = $(go.Node, "Auto",
-        { click: showContext, mouseEnter: (e, obj) => { obj.findObject("SHAPE").stroke = "#ff0000"; }, mouseLeave: (e, obj) => { obj.findObject("SHAPE").stroke = "#888"; } },
+        {
+            click: showContext,
+            mouseEnter: (e, obj) => { obj.findObject("SHAPE").stroke = "#ff0000"; },
+            mouseLeave: (e, obj) => { obj.findObject("SHAPE").stroke = "#888"; }
+        },
         $(go.Shape, "RoundedRectangle", 
-            { name: "SHAPE", fill: "#f9f9f9", strokeWidth: 2, stroke: "#888", minSize: new go.Size(120, 50) },
+            {
+                name: "SHAPE",
+                fill: "#f9f9f9",
+                strokeWidth: 2,
+                stroke: "#888",
+                minSize: new go.Size(120, 50)
+            },
             new go.Binding("fill", "color")
         ),
         $(go.TextBlock,
-            { margin: 12, font: "bold 14px Arial", textAlign: "center", wrap: go.TextBlock.WrapFit, width: 120 },
+            {
+                margin: 12,
+                font: "bold 14px Arial",
+                textAlign: "center",
+                wrap: go.TextBlock.WrapFit,
+                width: 120
+            },
             new go.Binding("text", "text")
         )
     );
@@ -230,11 +288,11 @@ function generateMindmap(themesData) {
     console.log("✅ Mindmap met verbeterde TreeLayout gegenereerd.");
 }
 
-// **Functie voor contextweergave**
+/** Functie voor contextweergave: toont de originele zinnen waarin een woord voorkomt **/
 function showContext(event, obj) {
     if (!obj || !obj.part || !obj.part.data) {
         console.error("❌ Ongeldige objectgegevens:", obj);
-        return; // Voorkom fouten als obj niet geldig is
+        return;
     }
 
     let woord = obj.part.data.text;
