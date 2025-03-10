@@ -222,6 +222,9 @@ function generateMindmap(themesData) {
     let nodeDataArray = [];
     let linkDataArray = [];
 
+    // Voeg een dummy rootnode toe met de tekst "Triple C implementatie"
+    nodeDataArray.push({ key: "ROOT", text: "Triple C implementatie", color: "#fff" });
+
     // Bouw de hiërarchie: main theme > subtheme > woord
     Object.keys(clusters).forEach(mainTheme => {
         // Controleer of het hoofdthema ten minste één subthema met woorden bevat
@@ -234,7 +237,10 @@ function generateMindmap(themesData) {
         }
         if (hasWords) {
             let mainColor = getColorBySentiment(mainTheme);
+            // Voeg hoofdthema-node toe
             nodeDataArray.push({ key: mainTheme, text: mainTheme, color: mainColor });
+            // Koppel hoofdthema aan de dummy root
+            linkDataArray.push({ from: "ROOT", to: mainTheme });
 
             // Itereer door de subthema's
             Object.keys(clusters[mainTheme]).forEach(subTheme => {
@@ -287,7 +293,7 @@ function generateMindmap(themesData) {
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     mindmapContainer.style.display = "block";
 
-    console.log("✅ Mindmap met verbeterde TreeLayout gegenereerd.");
+    console.log("✅ Mindmap met dummy root en verbeterde TreeLayout gegenereerd.");
 }
 
 /** Functie voor contextweergave: toont de originele zinnen waarin een woord voorkomt **/
