@@ -209,12 +209,14 @@ function generateMindmap(themesData) {
     let diagram = $(go.Diagram, "mindmap", {
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout, {
-            angle: 90, // Woorden worden horizontaal uitgelijnd ten opzichte van de thema's
-            layerSpacing: 50,
-            nodeSpacing: 20,
+            angle: 90,                         // Boom groeit van boven naar beneden
+            layerSpacing: 100,                 // Vergroot de afstand tussen de niveaus
+            nodeSpacing: 30,                   // Vergroot de afstand tussen de knopen op hetzelfde niveau
+            arrangement: go.TreeLayout.ArrangementVertical,
+            alignment: go.TreeLayout.AlignmentCenter,
         }),
         initialContentAlignment: go.Spot.Center,
-        autoScale: go.Diagram.Uniform,
+        // autoScale niet gebruiken zodat de layout niet wordt samengedrukt
     });
 
     let nodeDataArray = [];
