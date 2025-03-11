@@ -1,0 +1,96 @@
+/* Algemene pagina-styling */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Header en Navigatie */
+header {
+  background: #fff;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #6A35C1;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+  color: #333;
+}
+
+/* Introductie sectie */
+.intro {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.intro h1 {
+  font-size: 2rem;
+  color: #6A35C1;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Chart Section */
+.chart-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+#chart-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Footer styling */
+footer {
+  background: #fff;
+  padding: 15px 20px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Responsiviteit */
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  #chart-container {
+    padding: 10px;
+  }
+}
