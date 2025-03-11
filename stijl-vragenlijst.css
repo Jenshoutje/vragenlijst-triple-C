@@ -247,62 +247,165 @@ footer {
 }
 
 /* Header bubbel */
-.header-bubble {
-    background: rgba(255, 255, 255, 0.9); /* Witte bubbel met lichte transparantie */
-    padding: 20px 30px;
-    border-radius: 15px; /* Afgeronde hoeken */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
-    text-align: center;
-    max-width: 600px; /* Zorg dat de bubbel niet te breed wordt */
-    margin: 30px auto; /* Centreert de bubbel */
+/* Algemene pagina-styling */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+  color: #333;
 }
 
-/* Titel en tekst in de bubbel */
+/* Header en Footer styling */
+header, footer {
+  background: #fff;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigatie */
+header nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #6A35C1;
+  font-weight: bold;
+}
+
+header nav ul li a.active {
+  color: #333;
+}
+
+/* Inhoudsopgave (TOC) styling */
+.toc {
+  background: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toc h2 {
+  margin-top: 0;
+  color: #6A35C1;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc ul li {
+  margin-bottom: 5px;
+}
+
+.toc ul li a {
+  text-decoration: none;
+  color: #6A35C1;
+}
+
+/* Onderzoeksverslag / Hoofdstukken specifieke stijlen */
+.onderzoek-page article {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.onderzoek-page section {
+  margin-bottom: 30px;
+}
+
+.onderzoek-page section h2 {
+  color: #6A35C1;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+  margin-top: 0;
+}
+
+.onderzoek-page section h3 {
+  color: #6A35C1;
+  margin-top: 15px;
+}
+
+/* Progressieve onthulling via <details> en <summary> */
+.onderzoek-page details {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.onderzoek-page summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Header-bubble (optioneel, voor extra visuele introductie) */
+.header-bubble {
+  background: rgba(255, 255, 255, 0.9); /* Witte bubbel met lichte transparantie */
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
 .header-bubble h1 {
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #6A35C1; /* Paarse kleur */
-    margin-bottom: 10px;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #6A35C1;
+  margin-bottom: 10px;
 }
 
 .header-bubble p {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 10px;
 }
 
+/* Fase-afbeelding-container styling */
 .fase-afbeelding-container {
-    background: linear-gradient(135deg, #6A35C1, #A873F7); /* Paarse achtergrond */
-    padding: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    text-align: center;
-    max-width: 150px; /* Maximale breedte van het venster */
-    margin: 130px auto; /* Centreer het venster */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtiele schaduw */
+  background: linear-gradient(135deg, #6A35C1, #A873F7); /* Paarse achtergrond */
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: center;
+  max-width: 150px;
+  margin: 130px auto; /* Pas deze margin aan indien nodig */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-/* Hover-effect op de fase-container */
+
 .fase-afbeelding-container:hover {
-    transform: scale(1.05); /* Zorgt voor lichte vergroting */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Extra schaduw bij hover */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Afbeeldingstijl */
 .fase-afbeelding-container img {
-    max-width: 100%; /* Schaal afbeelding tot maximale breedte van container */
-    height: auto;
-    border-radius: 5px; /* Maak hoeken licht afgerond */
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
 
-/* Eventuele bijschriften */
+/* Fase-bijschrift styling */
 .fase-bijschrift {
-    margin-top: 10px;
-    color: white;
-    font-size: 1rem;
-    text-align: center;
+  margin-top: 10px;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
 }
-
 /* Responsieve weergave */
 @media (max-width: 768px) {
     .header-bubble {
