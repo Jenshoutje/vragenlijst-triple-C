@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decision Matrix Chart - Triple C Implementatie</title>
+  <link rel="stylesheet" href="stijl-decisionmatrix.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Header / Navigatie -->
+  <header>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="onderzoek.html">Onderzoek</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="decisionmatrix.html" class="active">Decision Matrix</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Introductie -->
+  <section class="intro">
+    <h1>Decision Matrix Chart</h1>
+    <p>
+      Deze chart toont een overzicht van de gemiddelde scores per knelpunt en per criterium 
+      (effectiviteit, haalbaarheid, cliëntwelzijn en urgentie) op basis van de decision matrix responses 
+      uit Firebase. U kunt interactief de gegevens verkennen.
+    </p>
+  </section>
+
+  <!-- Chart Container -->
+  <main>
+    <section class="chart-section">
+      <div id="chart-container">
+        <canvas id="decisionChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="decisionmatrix.js"></script>
+</body>
+</html>
