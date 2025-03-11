@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Discoverfase - Onderzoek</title>
-  <link rel="stylesheet" href="stijl-vragenlijst.css">
+  <link rel="stylesheet" href="stijl-onderzoek.css">
 </head>
 <body>
   <!-- Navigatie -->
@@ -20,6 +20,15 @@
     </nav>
   </header>
 
+  <!-- Introductie: Doel van de pagina en Leeswijzer -->
+  <section class="intro">
+    <h1>Discoverfase</h1>
+    <p>
+      Op deze pagina vindt u een overzicht van de Discoverfase van het onderzoek, waarin we de doelgroep, de praktische relevantie van de Triple‑C methodiek en eerste observaties presenteren. 
+      Gebruik de inhoudsopgave om snel naar een specifiek onderwerp te navigeren en klik op “Lees meer” binnen elke sectie om de volledige details te bekijken.
+    </p>
+  </section>
+
   <!-- Inhoudsopgave met ankerlinks -->
   <div class="toc">
     <h2>Inhoudsopgave</h2>
@@ -34,130 +43,167 @@
     </ul>
   </div>
 
-  <!-- Hoofdinhoud -->
+  <!-- Hoofdinhoud in een card-grid -->
   <main class="onderzoek-page">
-    <article>
-      <header class="artikel-header">
-        <h1>Discoverfase</h1>
-        <p>Deze fase richt zich op het verkennen van de doelgroep, de praktische relevantie van de Triple‑C methodiek en de eerste observaties en inzichten.</p>
-      </header>
-
-      <!-- Doelgroep -->
-      <section id="doelgroep">
-        <h2>Doelgroep</h2>
-        <p><strong>Samenvatting:</strong> Cliënten met een (zeer) ernstige verstandelijke en meervoudige beperking hebben complexe zorgbehoeften op cognitief, motorisch en communicatief vlak.</p>
-        <details>
-          <summary>Lees meer</summary>
-          <p>
-            Cliënten met een (zeer) ernstige verstandelijke en meervoudige beperking ((Z)EVMB) worden gekenmerkt door een combinatie van ernstige cognitieve beperkingen met motorische, zintuiglijke en/of medische beperkingen (Vlaskamp, 1993). Deze beperkingen resulteren vaak in een volledige afhankelijkheid van anderen voor dagelijkse verzorging, communicatie en participatie in het dagelijks leven. Veelvoorkomende kenmerken binnen deze doelgroep zijn ernstige motorische beperkingen, zoals spasticiteit, evenals zintuiglijke beperkingen zoals slechtziendheid of gehoorproblemen. Daarnaast komen chronische gezondheidsproblemen vaak voor, waaronder epilepsie, slikproblemen en ademhalingsmoeilijkheden (De Jong et al., 2022).
+    <div class="cards-container">
+      <!-- Card: Doelgroep -->
+      <section id="doelgroep" class="card">
+        <div class="card-header">
+          <h2>Doelgroep</h2>
+        </div>
+        <div class="card-content">
+          <p class="card-summary">
+            Cliënten met een (zeer) ernstige verstandelijke en meervoudige beperking hebben complexe zorgbehoeften op cognitief, motorisch en communicatief vlak.
           </p>
-          <p>
-            Naast de fysieke complexiteit is ook de communicatieve interactie uitdagend. Veel personen met EVMB communiceren non-verbaal via lichaamstaal, gezichtsuitdrukkingen of subtiele geluiden, wat het voor zorgverleners moeilijk maakt de behoeften van de cliënt goed te interpreteren (Vlaskamp, 1993). Dit vraagt van zorgprofessionals niet alleen specifieke kennis, maar ook het vermogen om op subtiele signalen in te spelen.
-          </p>
-          <p>
-            De zorg voor personen met EVMB vereist een gestructureerde, methodische benadering. Het ontbreken van eenduidige zorgmethodieken leidt tot handelingsverlegenheid en een focus op het beheersen van probleemgedrag in plaats van het vervullen van onderliggende behoeften (De Jong et al., 2022).
-          </p>
-        </details>
+          <details>
+            <summary>Lees meer</summary>
+            <p>
+              Cliënten met een (zeer) ernstige verstandelijke en meervoudige beperking ((Z)EVMB) worden gekenmerkt door een combinatie van ernstige cognitieve beperkingen met motorische, zintuiglijke en/of medische beperkingen (Vlaskamp, 1993). Deze beperkingen resulteren vaak in een volledige afhankelijkheid van anderen voor dagelijkse verzorging, communicatie en participatie in het dagelijks leven. Veelvoorkomende kenmerken zijn onder andere ernstige motorische beperkingen, zoals spasticiteit, en zintuiglijke beperkingen zoals slechtziendheid of gehoorproblemen. Chronische gezondheidsproblemen, zoals epilepsie, slikproblemen en ademhalingsmoeilijkheden, komen eveneens voor (De Jong et al., 2022).
+            </p>
+            <p>
+              Bovendien is de communicatieve interactie uitdagend, omdat veel EVMB‑cliënten non-verbaal communiceren via lichaamstaal, gezichtsuitdrukkingen of subtiele geluiden. Dit vraagt specifieke kennis en het vermogen om op subtiele signalen in te spelen.
+            </p>
+            <p>
+              De zorg voor deze doelgroep vereist een gestructureerde, methodische benadering. Het ontbreken van eenduidige zorgmethodieken leidt tot handelingsverlegenheid en een focus op het beheersen van probleemgedrag in plaats van het vervullen van de onderliggende behoeften (De Jong et al., 2022).
+            </p>
+          </details>
+        </div>
       </section>
 
-      <!-- Praktische Relevantie Triple‑C -->
-      <section id="praktische-relevantie">
-        <h2>De Praktische Relevantie van de Triple‑C Methodiek binnen de Zorg voor (Z)EVMB</h2>
-        <p><strong>Samenvatting:</strong> Triple‑C verlegt de focus naar menselijke basisbehoeften en biedt een methodiek voor een veilige en gestructureerde zorgomgeving.</p>
-        <details>
-          <summary>Lees meer</summary>
-          <p>
-            Om adequaat in te spelen op de complexe zorgbehoeften van cliënten met EVMB, is binnen Alliade gekozen voor de implementatie van de Triple‑C methodiek. Deze methodiek is ontworpen om de focus te verleggen van probleemgedrag naar het vervullen van menselijke basisbehoeften, zoals veiligheid, voorspelbaarheid en stimulatie (Vlaskamp, 1993). Triple‑C biedt zorgverleners handvatten om een veilige en gestructureerde omgeving te creëren, waarin cliënten zich begrepen en gezien voelen.
+      <!-- Card: Praktische Relevantie Triple‑C -->
+      <section id="praktische-relevantie" class="card">
+        <div class="card-header">
+          <h2>Praktische Relevantie Triple‑C</h2>
+        </div>
+        <div class="card-content">
+          <p class="card-summary">
+            Triple‑C verlegt de focus naar menselijke basisbehoeften en biedt een methodiek voor een veilige en gestructureerde zorgomgeving.
           </p>
-          <p>
-            <strong>De drie kernprincipes van Triple‑C:</strong>
-          </p>
-          <ul>
-            <li>Onvoorwaardelijke ondersteuning: Zorg zonder voorwaarden, gericht op het welzijn van de cliënt.</li>
-            <li>Betekenisvolle daginvulling: Actieve participatie binnen de mogelijkheden van de cliënt.</li>
-            <li>Focus op menselijke behoeften: Prioriteit voor de onderliggende behoeften in plaats van probleemgedrag (Lysaght et al., 2018).</li>
-          </ul>
-          <p>
-            Triple‑C sluit aan bij de specifieke zorguitdagingen in woongroep ’t Rond 51, waar begeleiders behoefte hebben aan een eenduidige methodiek om voorspelbaarheid en veiligheid te waarborgen (De Jong et al., 2022).
-          </p>
-        </details>
+          <details>
+            <summary>Lees meer</summary>
+            <p>
+              Binnen Alliade is gekozen voor de implementatie van de Triple‑C methodiek om de complexe zorgbehoeften van EVMB‑cliënten te adresseren. De methodiek verschuift de focus van probleemgedrag naar het vervullen van basisbehoeften zoals veiligheid, voorspelbaarheid en stimulatie (Vlaskamp, 1993). Hierdoor krijgen zorgverleners de handvatten om een veilige en gestructureerde omgeving te creëren waarin cliënten zich begrepen en gezien voelen.
+            </p>
+            <p>
+              <strong>De drie kernprincipes van Triple‑C:</strong>
+            </p>
+            <ul>
+              <li>Onvoorwaardelijke ondersteuning</li>
+              <li>Betekenisvolle daginvulling</li>
+              <li>Focus op menselijke behoeften (Lysaght et al., 2018)</li>
+            </ul>
+            <p>
+              Triple‑C sluit naadloos aan bij de specifieke zorguitdagingen in woongroep ’t Rond 51, waar een eenduidige methodiek nodig is (De Jong et al., 2022).
+            </p>
+          </details>
+        </div>
       </section>
 
-      <!-- Conclusie Triple‑C -->
-      <section id="conclusie-triple-c">
-        <h2>Conclusie: Waarom Triple‑C Essentieel Is binnen de Zorg voor EVMB</h2>
-        <p><strong>Samenvatting:</strong> Triple‑C combineert inzichten en praktijkervaringen om de zorg voor EVMB-cliënten te optimaliseren.</p>
-        <details>
-          <summary>Lees meer</summary>
-          <p>
-            De combinatie van de complexe zorgbehoeften en de uitdagingen voor zorgprofessionals maakt een methodische aanpak zoals Triple‑C noodzakelijk. Literatuur (Vlaskamp, 1993; De Jong et al., 2022) benadrukt dat voorspelbaarheid, veiligheid en betekenisvolle interacties cruciaal zijn voor het welzijn van deze doelgroep. Door deze inzichten te combineren met praktijkervaringen vormt Triple‑C een passende methodiek die de kwaliteit van zorg versterkt.
+      <!-- Card: Conclusie Triple‑C -->
+      <section id="conclusie-triple-c" class="card">
+        <div class="card-header">
+          <h2>Conclusie Triple‑C voor EVMB</h2>
+        </div>
+        <div class="card-content">
+          <p class="card-summary">
+            Triple‑C combineert inzichten en praktijkervaringen om de zorg voor EVMB‑cliënten te optimaliseren.
           </p>
-        </details>
+          <details>
+            <summary>Lees meer</summary>
+            <p>
+              De combinatie van complexe zorgbehoeften en de uitdagingen voor zorgprofessionals maakt een methodische aanpak zoals Triple‑C essentieel. Literatuur (Vlaskamp, 1993; De Jong et al., 2022) benadrukt dat voorspelbaarheid, veiligheid en betekenisvolle interacties cruciaal zijn voor het welzijn van deze doelgroep. Door deze inzichten te combineren met praktijkervaringen vormt Triple‑C een passende methodiek die de kwaliteit van zorg versterkt.
+            </p>
+          </details>
+        </div>
       </section>
 
-      <!-- Aanleiding -->
-      <section id="aanleiding">
-        <h2>Aanleiding</h2>
-        <p><strong>Samenvatting:</strong> Een verschuiving in de doelgroep en zorgvraag binnen Alliade vraagt om intensievere zorg en een aangepaste methodiek.</p>
-        <details>
-          <summary>Lees meer</summary>
-          <p>
-            Persoonlijke communicatie met leidinggevende Susanne Waldstra heeft aangetoond dat er binnen Alliade sprake is van een verschuiving in de doelgroep, met een toename van cliënten met een Ernstige Verstandelijke en Meervoudige Beperking (EVMB). Deze verandering vraagt om intensievere zorg en begeleiding, waardoor het zorgprofiel verandert.
+      <!-- Card: Aanleiding -->
+      <section id="aanleiding" class="card">
+        <div class="card-header">
+          <h2>Aanleiding</h2>
+        </div>
+        <div class="card-content">
+          <p class="card-summary">
+            Een verschuiving in de doelgroep en zorgvraag binnen Alliade vraagt om intensievere zorg en een aangepaste methodiek.
           </p>
-          <p>
-            Naast een toename in aantal cliënten, stijgt ook de intensiteit en complexiteit van hun zorgbehoeften. Dit vraagt om zowel medische als gedragsmatige en psychologische ondersteuning, wat de zorgverlening extra bemoeilijkt.
-          </p>
-          <p>
-            Deze ontwikkelingen maken het noodzakelijk om te investeren in methodieken zoals Triple‑C, die inspelen op de veranderende zorgvraag en de groeiende druk op het personeelsbestand.
-          </p>
-        </details>
+          <details>
+            <summary>Lees meer</summary>
+            <p>
+              Persoonlijke communicatie met leidinggevende Susanne Waldstra wijst op een verschuiving in de doelgroep, met een toename van cliënten met EVMB. Dit vraagt om intensievere zorg en begeleiding, waardoor het zorgprofiel verandert.
+            </p>
+            <p>
+              Naast een toename in het aantal cliënten, stijgt ook de complexiteit van hun zorgbehoeften, wat extra medische, gedragsmatige en psychologische ondersteuning vereist.
+            </p>
+            <p>
+              Deze ontwikkelingen maken het noodzakelijk te investeren in methodieken zoals Triple‑C.
+            </p>
+          </details>
+        </div>
       </section>
 
-      <!-- Onderzoeksmethodes -->
-      <section id="methodes">
-        <h2>Onderzoeksmethodes</h2>
-        <p><strong>Samenvatting:</strong> Diverse methodes, waaronder Fly on the Wall, Brainwriting en Contextual Interviews, zijn ingezet om de implementatie van Triple‑C te onderzoeken.</p>
-        <details>
-          <summary>Lees meer</summary>
-          <h3>Fly on the Wall</h3>
-          <p>
-            Deze observatiemethode maakt het mogelijk om gedragingen en interacties in de dagelijkse praktijk te analyseren, zonder dat de aanwezigheid van de onderzoeker de natuurlijke dynamiek beïnvloedt (Van ’t Veer et al., 2020).
+      <!-- Card: Onderzoeksmethodes -->
+      <section id="methodes" class="card">
+        <div class="card-header">
+          <h2>Onderzoeksmethodes</h2>
+        </div>
+        <div class="card-content">
+          <p class="card-summary">
+            Diverse methodes, zoals Fly on the Wall, Brainwriting en Contextual Interviews, zijn ingezet om de implementatie van Triple‑C te onderzoeken.
           </p>
-          <h3>Brainwriting</h3>
-          <p>
-            Op 19 november 2024 vond het eerste FFF-moment plaats, waarbij klasgenoten en praktijkbegeleiders samenkwamen om onderzoeksideeën uit te wisselen. Deze sessie bood een gestructureerde manier om thema’s op een bredere schaal te bespreken (Van ’t Veer et al., 2020).
-          </p>
-          <h3>Contextual Interviews</h3>
-          <p>
-            Door middel van informele interviews met direct betrokkenen werden de observaties en inzichten verder geverifieerd en gekoppeld aan de dagelijkse praktijk.
-          </p>
-        </details>
+          <details>
+            <summary>Lees meer</summary>
+            <h3>Fly on the Wall</h3>
+            <p>
+              Deze observatiemethode maakt het mogelijk gedragingen en interacties in de dagelijkse praktijk te analyseren zonder de natuurlijke dynamiek te verstoren (Van ’t Veer et al., 2020).
+            </p>
+            <h3>Brainwriting</h3>
+            <p>
+              Tijdens het eerste FFF-moment op 19 november 2024 wisselden klasgenoten en praktijkbegeleiders onderzoeksideeën uit, wat leidde tot een gestructureerde discussie over thema’s (Van ’t Veer et al., 2020).
+            </p>
+            <h3>Contextual Interviews</h3>
+            <p>
+              Informele interviews met direct betrokkenen hebben de observaties en inzichten verder geverifieerd.
+            </p>
+          </details>
+        </div>
       </section>
 
-      <!-- Samenvatting en Conclusie -->
-      <section id="samenvatting">
-        <h2>Samenvatting en Conclusie Discoverfase</h2>
-        <p><strong>Samenvatting:</strong> De Discoverfase levert inzichten op in de veranderende zorgbehoeften en de praktische implementatie van Triple‑C binnen woongroep ’t Rond 51.</p>
-        <details>
-          <summary>Lees meer</summary>
-          <p>
-            De Discoverfase heeft systematisch inzicht gegeven in hoe de veranderende doelgroep binnen woongroep ’t Rond 51 zowel de zorgkwaliteit als de werkdruk beïnvloedt. De observaties, groepssessies en interviews tonen aan dat er een duidelijke behoefte is aan een methodiek die uniformiteit en maatwerk combineert. Ondanks de uitdagingen blijkt de implementatie van Triple‑C een passende aanpak te zijn die bijdraagt aan een ‘gewoon leven’ voor cliënten.
+      <!-- Card: Samenvatting en Conclusie -->
+      <section id="samenvatting" class="card">
+        <div class="card-header">
+          <h2>Samenvatting en Conclusie Discoverfase</h2>
+        </div>
+        <div class="card-content">
+          <p class="card-summary">
+            De Discoverfase levert inzichten op in de veranderende zorgbehoeften en de praktische implementatie van Triple‑C binnen woongroep ’t Rond 51.
           </p>
-        </details>
+          <details>
+            <summary>Lees meer</summary>
+            <p>
+              De Discoverfase heeft systematisch inzicht gegeven in hoe de veranderende doelgroep zowel de zorgkwaliteit als de werkdruk beïnvloedt. De observaties, groepssessies en interviews tonen aan dat er een duidelijke behoefte is aan een methodiek die uniformiteit en maatwerk combineert. Triple‑C blijkt ondanks uitdagingen een passende aanpak te zijn die bijdraagt aan een ‘gewoon leven’ voor cliënten.
+            </p>
+          </details>
+        </div>
       </section>
 
-      <!-- Reflectie -->
-      <section id="reflectie">
-        <h2>Reflectie</h2>
-        <p><strong>Samenvatting:</strong> Reflectie op de methodologie en uitvoering van de Discoverfase, met aandacht voor zowel sterke punten als beperkingen.</p>
-        <details>
-          <summary>Lees meer</summary>
-          <p>
-            De informele setting van de interviews bood ruimte voor open gesprekken, maar kende ook beperkingen zoals de beperkte duur tijdens diensten. Desondanks versterken deze inzichten, in combinatie met andere methodes, het iteratieve proces van het ontwerpgericht onderzoek.
+      <!-- Card: Reflectie -->
+      <section id="reflectie" class="card">
+        <div class="card-header">
+          <h2>Reflectie</h2>
+        </div>
+        <div class="card-content">
+          <p class="card-summary">
+            Reflectie op de methodologie en uitvoering van de Discoverfase, met aandacht voor sterke punten en beperkingen.
           </p>
-        </details>
+          <details>
+            <summary>Lees meer</summary>
+            <p>
+              De informele setting van de interviews bood ruimte voor open gesprekken, maar kende ook beperkingen zoals de beperkte duur tijdens diensten. Desondanks versterken deze inzichten, samen met andere methodes, het iteratieve proces van het ontwerpgericht onderzoek.
+            </p>
+          </details>
+        </div>
       </section>
-    </article>
+    </div>
   </main>
 
   <!-- Footer -->
