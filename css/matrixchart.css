@@ -90,6 +90,71 @@
   max-width: 800px;
   margin: 0 auto;
 }
+/* Interpretatie-sectie onder de chart */
+.matrix-interpretation {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  text-align: left;
+}
+
+.matrix-interpretation h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
+
+.matrix-interpretation p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.matrix-interpretation ul {
+  margin-bottom: 15px;
+  list-style: disc inside;
+}
+
+.matrix-interpretation ul li {
+  margin-left: 20px;
+  margin-bottom: 8px;
+}
+
+/* Uitklapbare ruwe data (details/summary) */
+.matrix-interpretation details {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.matrix-interpretation summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #6A35C1;
+  outline: none;
+  list-style: none; /* Verberg standaard driehoek als bullet */
+  margin-bottom: 10px;
+}
+
+.matrix-interpretation pre {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  max-height: 300px; /* evt. scrollable area */
+  overflow-y: auto;
+  font-size: 0.9rem;
+  color: #333;
+}
 
 /* Footer styling */
 footer {
