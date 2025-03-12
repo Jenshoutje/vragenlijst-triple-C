@@ -1,150 +1,201 @@
-/* Algemene body styling */
-body {
-    font-family: 'Nunito', sans-serif;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff);
-    color: #333;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    box-sizing: border-box;
-    line-height: 1.6;
+body.matrix-page {
+  text-align: center;
+  padding: 50px;
+  background: linear-gradient(135deg, #b05df5, #f3e5ff);
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
 }
 
-/* Header-stijlen */
+/* Navigatie etc. – hergebruik uit matrixchart.css of andere tool-pagina’s */
+header {
+  background: #fff;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 0;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #6A35C1;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+  color: #333;
+}
+
+/* Header-blok voor titel + subtitel */
 .matrix-header {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    margin: 30px auto;
-    max-width: 900px;
+  background: white;
+  color: #4A4A4A;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .matrix-header h1 {
-    color: #6A35C1;
-    font-size: 2rem;
-    margin-bottom: 15px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #6A35C1;
+  margin-bottom: 10px;
 }
 
 .matrix-header p {
-    color: #555;
-    font-size: 1.1rem;
-    line-height: 1.6;
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
 }
 
-/* Vragenlijst container */
-.vragenlijst-container {
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 800px;
+.matrix-header::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #6A35C1;
+  margin: 15px auto 0;
+  border-radius: 2px;
 }
 
-/* Thema-sectie styling: extra visuele scheiding */
-.thema-sectie {
-    margin-bottom: 30px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
+/* Container voor de context en wetenschappelijke onderbouwing */
+.openvragen-context-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  text-align: left;
 }
 
-/* Thema-titels */
-h2 {
-    color: #6A35C1;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-bottom: 2px solid #6A35C1;
-    padding-bottom: 10px;
-    margin-top: 0; /* Verwijder extra top-margin binnen de sectie */
+.openvragen-context-container h2,
+.openvragen-context-container h3 {
+  color: #333;
+  margin-bottom: 10px;
 }
 
-/* Open vraag styling */
-.open-vraag {
-    margin-top: 20px;
+.openvragen-context-container p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
 }
 
-.open-vraag label {
-    color: #6A35C1;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1rem;
+/* Hoofdcontainer voor de open vragen */
+.openvragen-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: left;
 }
 
-.open-vraag textarea {
-    width: 100%;
-    border: 2px solid #6A35C1;
-    border-radius: 5px;
-    padding: 15px;
-    font-size: 1rem;
-    resize: vertical;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.openvragen-container h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
 }
 
-.open-vraag textarea:focus {
-    border-color: #5028A1;
-    box-shadow: 0 0 5px rgba(80, 40, 161, 0.5);
-    outline: none;
+/* Blokken per vraag */
+.open-vraag-blok {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
-/* Knoppen */
-.button-container {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+.open-vraag-blok h3 {
+  font-size: 1.2rem;
+  color: #6A35C1;
+  margin-bottom: 10px;
 }
 
-.back-button, .submit-button {
-    padding: 12px 20px;
-    background-color: #6A35C1;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
+.open-vraag-blok p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
-.back-button:hover, .submit-button:hover {
-    background-color: #5028A1;
+.open-vraag-blok label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #444;
+}
+
+.open-vraag-blok textarea {
+  width: 100%;
+  min-height: 80px;
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+}
+
+/* Knop om het formulier te versturen */
+.submit-button {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 20px;
+  background-color: #6A35C1;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #4f278d;
 }
 
 /* Footer */
 footer {
-    background-color: white;
-    color: #333;
-    text-align: center;
-    padding: 20px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+  background: #fff;
+  padding: 15px 20px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  color: #555;
 }
 
 /* Responsiviteit */
 @media (max-width: 768px) {
-    .matrix-header, .vragenlijst-container {
-        padding: 20px;
-        max-width: 100%;
-    }
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    .open-vraag textarea {
-        font-size: 0.9rem;
-    }
-
-    .back-button, .submit-button {
-        font-size: 0.9rem;
-        padding: 10px 15px;
-    }
-
-    .button-container {
-        flex-direction: column;
-        gap: 10px;
-    }
+  .openvragen-context-container,
+  .openvragen-container {
+    width: 95%;
+    margin: 15px auto;
+  }
 }
