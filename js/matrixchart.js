@@ -13,7 +13,7 @@ const knelpuntLabels = [
   "Werkdruk belemmert \proactief handelen",
   "Specifieke training en \ondersteuning Triple C",
   "Fysieke belasting op \de werkvloer",
-  "Communicatie en \informatieoverdracht binnen het team"
+  "Communicatie en \informatieoverdracht\ binnen het team"
 ];
     const criteria = ["effectiviteit", "haalbaarheid", "clientwelzijn", "urgentie"];
 
