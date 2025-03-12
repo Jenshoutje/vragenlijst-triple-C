@@ -10,16 +10,38 @@ body {
 
 /* Header en Navigatie */
 .matrix-header {
-    background: white; /* Witte achtergrond */
-    color: #4A4A4A; /* Donkergrijze tekst */
-    text-align: center;
-    padding: 30px;
-    border-radius: 10px; /* Afgeronde hoeken */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
-    margin-bottom: 30px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+  background: white; /* Witte achtergrond */
+  color: #4A4A4A; /* Donkergrijze tekst */
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px; /* Afgeronde hoeken */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+  margin-bottom: 30px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.matrix-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #6A35C1; /* Paarse tekst */
+}
+
+.matrix-header p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 0;
+}
+
+.matrix-header::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #6A35C1; /* Paarse lijn */
+  margin: 15px auto 0;
+  border-radius: 2px;
 }
 
 /* Hoofdcontainer voor de pagina */
@@ -78,7 +100,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Zorgt dat de container niet de interactie blokkeert */
+  pointer-events: none; /* Voorkomt dat de container de interactie blokkeert */
 }
 
 /* Algemene stijl voor de fase-knoppen */
@@ -91,12 +113,12 @@ body {
   text-decoration: none;
   font-weight: bold;
   text-align: center;
-  pointer-events: auto; /* Knoppen blijven interactief */
+  pointer-events: auto; /* Zorgt dat de knoppen interactief blijven */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   font-size: 1rem;
 }
 
-/* Hover-effect */
+/* Hover-effect voor knoppen */
 .fase-button:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -152,7 +174,7 @@ footer {
     margin: 30px auto;
   }
 
-  /* Mogelijk moet u de knoppen herpositioneren bij kleine schermen */
+  /* Aanpassen van knoppen posities bij kleinere schermen */
   .discover {
     top: 40%;
     left: 5%;
