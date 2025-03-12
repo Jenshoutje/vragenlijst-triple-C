@@ -9,11 +9,11 @@ fetch('decisionMatrixResponses.json')
 
 // ...door de nieuwe benamingen:
 const knelpuntLabels = [
-  "Eenduidige interpretatie Triple C",
-  "Werkdruk belemmert proactief handelen",
-  "Specifieke training en ondersteuning Triple C",
-  "Fysieke belasting op de werkvloer",
-  "Communicatie en informatieoverdracht binnen het team"
+  "Eenduidige interpretatie\Triple C",
+  "Werkdruk belemmert \proactief handelen",
+  "Specifieke training en \ondersteuning Triple C",
+  "Fysieke belasting op \de werkvloer",
+  "Communicatie en \informatieoverdracht binnen het team"
 ];
     const criteria = ["effectiviteit", "haalbaarheid", "clientwelzijn", "urgentie"];
 
