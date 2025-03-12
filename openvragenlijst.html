@@ -5,131 +5,113 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Vragenlijst - Triple C Implementatie</title>
   <link rel="stylesheet" href="css/openvragenlijst.css">
+  <!-- Firebase App (basis) + Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js"></script>
 </head>
 <body class="matrix-page">
-  <!-- Header met titel en uitleg -->
-  <header class="matrix-header">
-      <h1>Open Vragenlijst - Thematische Analyse</h1>
-      <p>
-          Deze vragenlijst helpt bij het in kaart brengen van ervaringen en knelpunten rondom Triple C. 
-          Jouw input draagt bij aan de ontwikkeling van effectieve ondersteuning.
-      </p>
+  <!-- Header / Navigatie -->
+  <header>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="onderzoek.html">Onderzoek</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="decisionmatrix.html">Decision Matrix</a></li>
+        <li><a href="openvragenlijst.html" class="active">Open Vragenlijst</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Vragenlijst container -->
-  <section class="vragenlijst-container">
-      <form id="open-vragenlijst-form">
+  <!-- Titel en subtitel -->
+  <header class="matrix-header">
+    <h1>Open Vragenlijst - Implementatie Triple C</h1>
+    <p>Aanvullende, open vragen om dieper inzicht te krijgen in de knelpunten uit de Decision Matrix.</p>
+  </header>
 
-          <!-- THEMA 1: Behoefte aan visuele ondersteuning -->
-          <section class="thema-sectie">
-              <h2>Thema 1: Behoefte aan visuele ondersteuning</h2>
-
-              <div class="open-vraag">
-                  <label for="visuele-ervaringen">
-                      Kun je een concrete situatie beschrijven waarin je visuele ondersteuning miste binnen Triple C?
-                  </label>
-                  <textarea name="visuele-ervaringen" id="visuele-ervaringen" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-
-              <div class="open-vraag">
-                  <label for="visuele-belemmeringen">
-                      Welke factoren belemmeren op dit moment de inzet van visuele hulpmiddelen binnen jouw werk?
-                  </label>
-                  <textarea name="visuele-belemmeringen" id="visuele-belemmeringen" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-
-              <div class="open-vraag">
-                  <label for="visuele-behoeften">
-                      Wat zou jou helpen om visuele ondersteuning beter in te zetten binnen Triple C?
-                  </label>
-                  <textarea name="visuele-behoeften" id="visuele-behoeften" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-
-              <div class="open-vraag">
-                  <label for="visuele-verbeteringen">
-                      Heb je ideeën voor concrete hulpmiddelen die de visuele ondersteuning kunnen verbeteren?
-                  </label>
-                  <textarea name="visuele-verbeteringen" id="visuele-verbeteringen" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-          </section>
-
-          <!-- THEMA 2: Werkdruk en proactief handelen -->
-          <section class="thema-sectie">
-              <h2>Thema 2: Werkdruk en proactief handelen</h2>
-
-              <div class="open-vraag">
-                  <label for="werkdruk-ervaringen">
-                      Kun je een voorbeeld geven van een situatie waarin werkdruk je belemmerde in het methodisch toepassen van Triple C?
-                  </label>
-                  <textarea name="werkdruk-ervaringen" id="werkdruk-ervaringen" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-
-              <div class="open-vraag">
-                  <label for="werkdruk-factoren">
-                      Welke specifieke factoren binnen jouw werkcontext zorgen ervoor dat werkdruk een probleem blijft?
-                  </label>
-                  <textarea name="werkdruk-factoren" id="werkdruk-factoren" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-
-              <div class="open-vraag">
-                  <label for="werkdruk-behoeften">
-                      Wat heb jij nodig om ondanks werkdruk proactief te kunnen blijven handelen binnen Triple C?
-                  </label>
-                  <textarea name="werkdruk-behoeften" id="werkdruk-behoeften" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-
-              <div class="open-vraag">
-                  <label for="werkdruk-verbeteringen">
-                      Welke oplossingen zie jij om werkdruk beter te managen binnen Triple C?
-                  </label>
-                  <textarea name="werkdruk-verbeteringen" id="werkdruk-verbeteringen" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-          </section>
-
-          <!-- THEMA 3: Behoefte aan een gedeelde visie binnen het team -->
-          <section class="thema-sectie">
-              <h2>Thema 3: Behoefte aan een gedeelde visie binnen het team</h2>
-
-              <div class="open-vraag">
-                  <label for="teamvisie-ervaringen">
-                      Hoe ervaar jij momenteel de samenwerking binnen je team rondom Triple C?  
-                  </label>
-                  <textarea name="teamvisie-ervaringen" id="teamvisie-ervaringen" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-
-              <div class="open-vraag">
-                  <label for="teamvisie-belemmeringen">
-                      Welke uitdagingen ervaar jij in het creëren van een gedeelde visie binnen je team?
-                  </label>
-                  <textarea name="teamvisie-belemmeringen" id="teamvisie-belemmeringen" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-
-              <div class="open-vraag">
-                  <label for="teamvisie-behoeften">
-                      Wat zou helpen om meer onderlinge afstemming en een gedeelde visie te ontwikkelen binnen je team?
-                  </label>
-                  <textarea name="teamvisie-behoeften" id="teamvisie-behoeften" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-
-              <div class="open-vraag">
-                  <label for="teamvisie-verbeteringen">
-                      Heb je ideeën voor methoden of hulpmiddelen die de samenwerking en gedeelde visie kunnen versterken?
-                  </label>
-                  <textarea name="teamvisie-verbeteringen" id="teamvisie-verbeteringen" rows="3" placeholder="Jouw antwoord..." required></textarea>
-              </div>
-          </section>
-
-          <!-- Knoppen -->
-          <div class="button-container">
-              <a href="index.html" class="back-button">Terug naar Home</a>
-              <a href="tools.html" class="back-button">Terug naar Tools</a>
-              <button type="submit" class="submit-button">Verstuur antwoorden</button>
-          </div>
-      </form>
+  <!-- Context en wetenschappelijke onderbouwing -->
+  <section class="openvragen-context-container">
+    <h2>Context & Doel</h2>
+    <p>
+      Deze open vragen bieden kwalitatief inzicht in hoe begeleiders de geïdentificeerde knelpunten 
+      in de dagelijkse praktijk ervaren. De antwoorden worden anoniem opgeslagen en geanalyseerd 
+      om gerichte ondersteuning en interventies te ontwikkelen.
+    </p>
+    <h3>Wetenschappelijke onderbouwing</h3>
+    <p>
+      Door open vragen te stellen, sluiten we aan bij kwalitatieve onderzoeksstrategieën 
+      waarin inductieve data-analyse centraal staat (Braun & Clarke, 2006). 
+      De resultaten worden gebruikt om thema’s en oplossingsrichtingen te formuleren 
+      die in de Definefase nader worden uitgewerkt.
+    </p>
   </section>
 
+  <!-- Hoofdcontainer voor de open vragen + formulier -->
+  <main class="openvragen-container">
+    <h2>Open Vragen</h2>
+    <p>
+      Vul hieronder de vragen in. De antwoorden worden anoniem opgeslagen in onze database. 
+      We waarderen uw eerlijkheid en openheid.
+    </p>
+
+    <form id="openVragenForm">
+      <!-- 1. Algemene behoefte aan ondersteuning bij Triple C -->
+      <section class="open-vraag-blok">
+        <h3>1. Algemene behoefte aan ondersteuning bij Triple C</h3>
+        <label for="vraag1">Kun je een recente situatie beschrijven waarin je behoefte had aan extra ondersteuning om Triple C goed toe te passen?</label>
+        <textarea id="vraag1" name="vraag1" rows="4" placeholder="Beschrijf de situatie..."></textarea>
+
+        <label for="vraag1sub1">Wat maakte deze situatie voor jou uitdagend?</label>
+        <textarea id="vraag1sub1" name="vraag1sub1" rows="3" placeholder="Jouw antwoord..."></textarea>
+
+        <label for="vraag1sub2">Wat had jou op dat moment geholpen om beter methodisch te handelen volgens Triple C?</label>
+        <textarea id="vraag1sub2" name="vraag1sub2" rows="3" placeholder="Jouw antwoord..."></textarea>
+
+        <label for="vraag1sub3">Welke gevolgen had het gebrek aan passende ondersteuning voor jou of de cliënt?</label>
+        <textarea id="vraag1sub3" name="vraag1sub3" rows="3" placeholder="Jouw antwoord..."></textarea>
+      </section>
+
+      <!-- 2. Invloed van werkdruk op proactief handelen -->
+      <section class="open-vraag-blok">
+        <h3>2. Invloed van werkdruk op proactief handelen</h3>
+        <label for="vraag2">Beschrijf een recente situatie waarin werkdruk jouw proactief handelen volgens Triple C bemoeilijkte.</label>
+        <textarea id="vraag2" name="vraag2" rows="4" placeholder="Beschrijf de situatie..."></textarea>
+
+        <label for="vraag2sub1">Wat waren concrete oorzaken van deze verhoogde werkdruk?</label>
+        <textarea id="vraag2sub1" name="vraag2sub1" rows="3" placeholder="Jouw antwoord..."></textarea>
+
+        <label for="vraag2sub2">Welke specifieke ondersteuning had jou kunnen helpen om alsnog proactief te handelen?</label>
+        <textarea id="vraag2sub2" name="vraag2sub2" rows="3" placeholder="Jouw antwoord..."></textarea>
+
+        <label for="vraag2sub3">Hoe beïnvloedt terugkerende werkdruk jouw motivatie om volgens Triple C te blijven werken?</label>
+        <textarea id="vraag2sub3" name="vraag2sub3" rows="3" placeholder="Jouw antwoord..."></textarea>
+      </section>
+
+      <!-- 3. Behoefte aan een eenduidige visie en interpretatie binnen het team -->
+      <section class="open-vraag-blok">
+        <h3>3. Behoefte aan een eenduidige visie en interpretatie binnen het team</h3>
+        <label for="vraag3">Heb je recent ervaren dat verschillen in interpretatie of toepassing van Triple C binnen het team tot problemen of onduidelijkheden leidden?</label>
+        <textarea id="vraag3" name="vraag3" rows="4" placeholder="Beschrijf de situatie..."></textarea>
+
+        <label for="vraag3sub1">Kun je deze situatie beschrijven en aangeven wat de gevolgen waren?</label>
+        <textarea id="vraag3sub1" name="vraag3sub1" rows="3" placeholder="Jouw antwoord..."></textarea>
+
+        <label for="vraag3sub2">Welke afspraken of hulpmiddelen hadden deze situatie kunnen voorkomen?</label>
+        <textarea id="vraag3sub2" name="vraag3sub2" rows="3" placeholder="Jouw antwoord..."></textarea>
+
+        <label for="vraag3sub3">Wat zou het team concreet kunnen helpen om een meer eenduidige interpretatie van Triple C te bereiken?</label>
+        <textarea id="vraag3sub3" name="vraag3sub3" rows="3" placeholder="Jouw antwoord..."></textarea>
+      </section>
+
+      <button type="submit" class="submit-button">Verstuur Antwoorden</button>
+    </form>
+  </main>
+
   <footer>
-      <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+    <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
   </footer>
+
+  <!-- Firebase configuratie + JS -->
+  <scriptsrc="js/openvragen.js" type="module" defer></script>
 </body>
 </html>
