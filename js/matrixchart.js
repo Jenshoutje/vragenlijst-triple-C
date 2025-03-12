@@ -102,3 +102,25 @@ fetch('decisionMatrixResponses.json')
     });
   })
   .catch(error => console.error('Fout bij het laden van JSON-data:', error));
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Zoek het details-element op basis van de class
+  const detailsEl = document.querySelector('.raw-data');
+
+  // Voeg een event listener toe voor wanneer de gebruiker het <details> openklapt
+  detailsEl.addEventListener('toggle', async () => {
+    // Controleer of het <details> daadwerkelijk geopend is
+    if (detailsEl.open) {
+      try {
+        // Haal de JSON-data op (pas het pad aan als nodig)
+        const response = await fetch('data/decisionMatrixResponses.json');
+        const rawData = await response.json();
+
+        // Plaats de data als tekst in het <pre>-element
+        document.getElementById('rawDataContainer').textContent = JSON.stringify(rawData, null, 2);
+      } catch (err) {
+        console.error('Fout bij het laden van ruwe data:', err);
+      }
+    }
+  });
+});
