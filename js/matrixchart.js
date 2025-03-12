@@ -1,6 +1,6 @@
 // decisionmatrix.js
 
-fetch('decisionmatrixresponses.json')
+fetch('decisionMatrixResponses.json')
   .then(response => response.json())
   .then(data => {
     // Definieer knelpuntlabels en criteria
