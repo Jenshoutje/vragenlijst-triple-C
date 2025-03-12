@@ -46,8 +46,18 @@ p {
     line-height: 1.6; /* Goede leesbaarheid */
     margin: 10px 0;
 }
+.matrix-header {
+    background: white; /* Witte achtergrond */
+    color: #4A4A4A; /* Donkergrijze tekst */
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px; /* Afgeronde hoeken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 /* Stijl voor titel en beschrijving */
 .matrix-header h1 {
     font-size: 2.5rem;
