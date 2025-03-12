@@ -1,60 +1,70 @@
 /* Algemene pagina-styling voor de Matrix Chart-pagina */
-body.matrix-page {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #b05df5, #f3e5ff);
-  color: #333;
-  margin: 0;
-  padding: 20px;
-  line-height: 1.6;
+.matrix-page {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse gradient zoals bij onderzoek */
 }
 
-/* Header en Navigatie */
-header {
-  background: #fff;
-  padding: 15px 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* Header-stijl */
+.matrix-header {
+    background: white; /* Witte achtergrond */
+    color: #4A4A4A; /* Donkergrijze tekst */
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px; /* Afgeronde hoeken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-header nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 0;
+/* Stijl voor titel en beschrijving */
+.matrix-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #6A35C1; /* Paarse tekst */
+    margin-bottom: 10px;
 }
 
-header nav ul li a {
-  text-decoration: none;
-  color: #6A35C1;
-  font-weight: bold;
-  transition: color 0.3s ease;
+.matrix-header p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
 }
 
-header nav ul li a:hover,
-header nav ul li a.active {
-  color: #333;
+/* Decoratieve lijn onder de header */
+.matrix-header::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #6A35C1; /* Paarse lijn */
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
-/* Introductie sectie */
-.intro {
-  background: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.decisioncontext-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
 }
 
-.intro h1 {
-  font-size: 2.5rem;
-  color: #6A35C1;
-  margin-bottom: 10px;
+.decisioncontext-container h2, 
+.decisioncontext-container h3 {
+    color: #333;
+    margin-bottom: 10px;
 }
 
-.intro p {
-  font-size: 1.2rem;
-  color: #555;
+.decisioncontext-container p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
 }
 
 /* Chart Section */
