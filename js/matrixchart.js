@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (detailsEl.open) {
       try {
         // Haal de JSON-data op (pas het pad aan als nodig)
-        const response = await fetch('data/decisionMatrixResponses.json');
+        const response = await fetch('decisionMatrixResponses.json');
         const rawData = await response.json();
 
         // Plaats de data als tekst in het <pre>-element
