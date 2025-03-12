@@ -1,22 +1,51 @@
-/* Algemene pagina-styling voor de Matrix Chart-pagina */
-.matrix-page {
-    text-align: center;
-    padding: 50px;
-    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse gradient zoals bij onderzoek */
+nav {
+    background-color: #6A35C1; /* Effen paarse kleur voor navigatiebalk */
+    padding: 50px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky; /* Blijf bovenaan bij scrollen */
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtiele schaduw voor diepte */
 }
 
-/* Header-stijl */
-.matrix-header {
-    background: white; /* Witte achtergrond */
-    color: #4A4A4A; /* Donkergrijze tekst */
-    text-align: center;
-    padding: 30px;
-    border-radius: 10px; /* Afgeronde hoeken */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
-    margin-bottom: 30px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+/* Navigatielijst */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+/* Navigatie-items */
+nav ul li a {
+    text-decoration: none;
+    color: white; /* Witte tekst op de paarse balk */
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #FFA500; /* Oranje accent bij hover */
+}
+
+/* Algemene typografie */
+h1, h2, h3, h4, h5, h6 {
+    color: #6A35C1; /* Paarse kleur voor koppen */
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+p {
+    color: #555; /* Donkergrijze kleur voor paragrafen */
+    line-height: 1.6; /* Goede leesbaarheid */
+    margin: 10px 0;
+}
 }
 
 /* Stijl voor titel en beschrijving */
