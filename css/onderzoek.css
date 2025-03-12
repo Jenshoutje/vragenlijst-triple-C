@@ -75,6 +75,50 @@ body {
   color: #555;
   margin: 0;
 }
+/* Styling voor de Inhoudsopgave (TOC) */
+.toc {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toc h2 {
+  color: #6A35C1;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc ul li {
+  margin-bottom: 8px;
+}
+
+.toc ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.toc ul li a:hover {
+  color: #6A35C1;
+}
+
+/* Extra styling voor h3-elementen in de TOC */
+.toc-h3 {
+  margin-left: 20px;
+  font-size: 0.95rem;
+}
 
 /* Container voor de Double Diamond-afbeelding en knoppen */
 .double-diamond-container {
