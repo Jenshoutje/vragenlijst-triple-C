@@ -1,42 +1,82 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ontwerpdossier - Houtje Inc.</title>
-    <link rel="stylesheet" href="css/onderzoek.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ontwerpdossier - Onderzoek</title>
+  <link rel="stylesheet" href="css/onderzoek.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="onderzoek.html">Onderzoek</a></li>
-                <li><a href="product.html">Producten</a></li>
-                <li><a href="tools.html">Onderzoeksmethode</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Navigatie -->
+  <header>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="onderzoek.html" class="active">Onderzoek</a></li>
+        <li><a href="product.html">Producten</a></li>
+        <li><a href="tools.html">Onderzoeksmethode</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main class="onderzoek-page">
+  <!-- Hoofdpagina content -->
+  <main class="onderzoek-page">
+    <!-- Header-bubble met titel en introductie -->
     <div class="header-bubble">
-        <h1>Onderzoek</h1>
-        <p>Mijn Ontwerpdossier gevisualiseerd, het Double-Diamond model met al haar fases.</p>
+      <h1>Onderzoek</h1>
+      <p>Mijn Ontwerpdossier gevisualiseerd volgens het Double Diamond-model met alle fasen.</p>
     </div>
 
-<div class="double-diamond-container">
-    <img src="images/double-diamond.png" alt="Double diamond Model" class="double-diamond-afbeelding">
-    <div class="fase-buttons">
+    <!-- Double Diamond Visualisatie met fase-knoppen -->
+    <div class="double-diamond-container">
+      <img src="images/double-diamond.png" alt="Double Diamond Model" class="double-diamond-afbeelding">
+      <div class="fase-buttons">
         <a href="discover.html" class="fase-button discover">Discover</a>
         <a href="define.html" class="fase-button define">Define</a>
         <a href="develop.html" class="fase-button develop">Develop</a>
         <a href="deliver.html" class="fase-button deliver">Deliver</a>
+      </div>
     </div>
-    
-</main>
 
-    <footer>
-        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
-    </footer>
+    <!-- Dashboard met de hoofdstukken -->
+    <section class="hub-dashboard">
+      <h2>Hoofdstukken</h2>
+      <p>Selecteer een fase om verder te lezen:</p>
+      <div class="chapter-cards">
+        <a href="discover.html" class="chapter-card discover">
+          <h3>Discover</h3>
+          <p>Verkenning en eerste observaties</p>
+        </a>
+        <a href="define.html" class="chapter-card define">
+          <h3>Define</h3>
+          <p>Probleemdefinitie en knelpuntaanpak</p>
+        </a>
+        <a href="develop.html" class="chapter-card develop">
+          <h3>Develop</h3>
+          <p>Ontwikkeling van concepten en prototypes</p>
+        </a>
+        <a href="deliver.html" class="chapter-card deliver">
+          <h3>Deliver</h3>
+          <p>Implementatie en evaluatie</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Extra links voor tools en methodologische verantwoording -->
+    <section class="extra-links">
+      <h2>Extra Informatie</h2>
+      <p>Verken ook de interactieve tools en methodologische verantwoording:</p>
+      <ul>
+        <li><a href="decisionmatrix.html">Decision Matrix</a></li>
+        <li><a href="openvragenlijst.html">Open Vragenlijst</a></li>
+        <li><a href="mindmap.html">Thematische Analyse</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+  </footer>
 </body>
 </html>
