@@ -1,3 +1,8 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
+import { ref, set } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"; // Voeg deze regel toe
+
+// Firebase configuratie
 const firebaseConfig = {
   apiKey: "AIzaSyCWMYvuSm2vuq85Kr3LjeZ5NyJRHn8XnJs",
   authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
@@ -8,9 +13,10 @@ const firebaseConfig = {
   measurementId: "G-078FVL26HV"
 };
 
-    // 2. Initialiseer Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+// Initialiseer Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+console.log("✅ Firebase succesvol geïnitialiseerd!");
 
     // 3. Luister naar het submit-event van het formulier
     document.addEventListener('DOMContentLoaded', () => {
