@@ -1,14 +1,15 @@
+/* Algemene styling voor de open vragenlijstpagina */
 body.matrix-page {
-  text-align: center;
-  padding: 50px;
-  background: linear-gradient(135deg, #b05df5, #f3e5ff);
-  margin: 0;
   font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #b05df5, #f3e5ff);
   color: #333;
+  margin: 0;
+  padding: 50px;
   line-height: 1.6;
+  text-align: center;
 }
 
-/* Navigatie etc. – hergebruik uit matrixchart.css of andere tool-pagina’s */
+/* Navigatie en Header */
 header {
   background: #fff;
   padding: 15px 20px;
@@ -36,18 +37,16 @@ header nav ul li a.active {
   color: #333;
 }
 
-/* Header-blok voor titel + subtitel */
+/* Matrix-header (titel en subtitel) */
 .matrix-header {
-  background: white;
+  background: #fff;
   color: #4A4A4A;
   text-align: center;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto 30px;
   max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .matrix-header h1 {
@@ -73,9 +72,9 @@ header nav ul li a.active {
   border-radius: 2px;
 }
 
-/* Container voor de context en wetenschappelijke onderbouwing */
+/* Openvragen-context container (voor context & onderbouwing) */
 .openvragen-context-container {
-  background-color: white;
+  background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -98,7 +97,7 @@ header nav ul li a.active {
   margin-bottom: 15px;
 }
 
-/* Hoofdcontainer voor de open vragen */
+/* Hoofdcontainer voor de open vragen (formulier) */
 .openvragen-container {
   width: 90%;
   max-width: 800px;
@@ -114,12 +113,12 @@ header nav ul li a.active {
   padding-bottom: 5px;
 }
 
-/* Blokken per vraag */
+/* Open vraag blokken */
 .open-vraag-blok {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
@@ -136,6 +135,7 @@ header nav ul li a.active {
   margin-bottom: 10px;
 }
 
+/* Labels en Textareas */
 .open-vraag-blok label {
   display: block;
   margin-top: 15px;
@@ -155,10 +155,14 @@ header nav ul li a.active {
   font-family: Arial, sans-serif;
 }
 
-/* Knop om het formulier te versturen */
+/* Knoppen */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-button,
 .submit-button {
-  display: block;
-  margin: 20px auto;
   padding: 12px 20px;
   background-color: #6A35C1;
   color: #fff;
@@ -169,8 +173,10 @@ header nav ul li a.active {
   transition: background-color 0.3s ease;
   border: none;
   cursor: pointer;
+  margin: 10px;
 }
 
+.back-button:hover,
 .submit-button:hover {
   background-color: #4f278d;
 }
@@ -181,7 +187,7 @@ footer {
   padding: 15px 20px;
   text-align: center;
   margin-top: 20px;
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
   font-size: 0.9rem;
   color: #555;
 }
@@ -192,7 +198,6 @@ footer {
     flex-direction: column;
     gap: 10px;
   }
-
   .openvragen-context-container,
   .openvragen-container {
     width: 95%;
