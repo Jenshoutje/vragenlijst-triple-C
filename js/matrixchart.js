@@ -4,7 +4,17 @@ fetch('decisionMatrixResponses.json')
   .then(response => response.json())
   .then(data => {
     // Definieer knelpuntlabels en criteria
-    const knelpuntLabels = ["Knelpunt 1", "Knelpunt 2", "Knelpunt 3", "Knelpunt 4", "Knelpunt 5"];
+    // Vervang deze regel...
+// const knelpuntLabels = ["Knelpunt 1", "Knelpunt 2", "Knelpunt 3", "Knelpunt 4", "Knelpunt 5"];
+
+// ...door de nieuwe benamingen:
+const knelpuntLabels = [
+  "Eenduidige interpretatie Triple C",
+  "Werkdruk belemmert proactief handelen",
+  "Specifieke training en ondersteuning Triple C",
+  "Fysieke belasting op de werkvloer",
+  "Communicatie en informatieoverdracht binnen het team"
+];
     const criteria = ["effectiviteit", "haalbaarheid", "clientwelzijn", "urgentie"];
 
     // Initialiseer totalen per knelpunt en criterium
