@@ -1,0 +1,186 @@
+/* Algemene styling voor de onderzoek-pagina */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse gradient achtergrond */
+  line-height: 1.6;
+}
+
+/* Header en Navigatie */
+header {
+  background: #fff;
+  padding: 15px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #6A35C1;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+  color: #333;
+}
+
+/* Hoofdcontainer voor de pagina */
+.onderzoek-page {
+  text-align: center;
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Bubbel voor de titel en ondertekst */
+.header-bubble {
+  background: #fff;
+  color: #4A4A4A;
+  text-align: center;
+  padding: 20px 30px;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-bubble h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #6A35C1;
+}
+
+.header-bubble p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Container voor de Double Diamond-afbeelding en knoppen */
+.double-diamond-container {
+  position: relative;
+  max-width: 900px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+/* Afbeeldingstijl */
+.double-diamond-afbeelding {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+}
+
+/* Container voor de knoppen op de afbeelding */
+.fase-buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Zorgt dat de container niet de interactie blokkeert */
+}
+
+/* Algemene stijl voor de fase-knoppen */
+.fase-button {
+  position: absolute;
+  color: #fff;
+  background: linear-gradient(135deg, #381B85, #A873F7);
+  padding: 13px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: auto; /* Knoppen blijven interactief */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+}
+
+/* Hover-effect */
+.fase-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Specifieke posities voor knoppen */
+.discover {
+  top: 47%;
+  left: 3.5%;
+}
+
+.define {
+  top: 47%;
+  left: 36%;
+}
+
+.develop {
+  top: 47%;
+  left: 53.5%;
+}
+
+.deliver {
+  top: 47%;
+  left: 85%;
+}
+
+/* Footer-styling */
+footer {
+  background: #fff;
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 40px;
+}
+
+/* Responsiviteit */
+@media (max-width: 768px) {
+  .header-bubble {
+    padding: 15px;
+  }
+
+  .header-bubble h1 {
+    font-size: 2rem;
+  }
+
+  .header-bubble p {
+    font-size: 1rem;
+  }
+
+  .double-diamond-container {
+    margin: 30px auto;
+  }
+
+  /* Mogelijk moet u de knoppen herpositioneren bij kleine schermen */
+  .discover {
+    top: 40%;
+    left: 5%;
+  }
+  .define {
+    top: 40%;
+    left: 35%;
+  }
+  .develop {
+    top: 40%;
+    left: 55%;
+  }
+  .deliver {
+    top: 40%;
+    left: 80%;
+  }
+}
