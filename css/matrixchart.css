@@ -174,7 +174,8 @@ p {
 }
 
 /* Uitklapbare ruwe data (details/summary) */
-.matrix-interpretation details {
+/* Uitklapbare ruwe data (details/summary) */
+.raw-data {
   background: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -182,21 +183,20 @@ p {
   padding: 10px;
 }
 
-.matrix-interpretation summary {
+.raw-data summary {
   cursor: pointer;
   font-weight: bold;
   color: #6A35C1;
   outline: none;
-  list-style: none; /* Verberg standaard driehoek als bullet */
   margin-bottom: 10px;
 }
 
-.matrix-interpretation pre {
+#rawDataContainer {
   background: #fff;
   padding: 10px;
   border: 1px solid #eee;
   border-radius: 5px;
-  max-height: 300px; /* evt. scrollable area */
+  max-height: 300px; /* evt. scrollable */
   overflow-y: auto;
   font-size: 0.9rem;
   color: #333;
