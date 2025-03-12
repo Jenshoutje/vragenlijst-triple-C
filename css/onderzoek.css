@@ -9,31 +9,17 @@ body {
 }
 
 /* Header en Navigatie */
-header {
-  background: #fff;
-  padding: 15px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-}
-
-header nav ul li a {
-  text-decoration: none;
-  color: #6A35C1;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-header nav ul li a:hover,
-header nav ul li a.active {
-  color: #333;
+.matrix-header {
+    background: white; /* Witte achtergrond */
+    color: #4A4A4A; /* Donkergrijze tekst */
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px; /* Afgeronde hoeken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Hoofdcontainer voor de pagina */
