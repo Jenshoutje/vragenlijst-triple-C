@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Discoverfase - Triple C Implementatie</title>
-  <link rel="stylesheet" href="stijl-vragenlijst.css">
+  <link rel="stylesheet" href="css/onderzoek.css">
 </head>
 <body>
   <!-- Navigatie / Header -->
@@ -32,7 +32,13 @@
     </p>
   </section>
 
-  <!-- Hoofdinhoud -->
+  <!-- Dynamische Inhoudsopgave -->
+  <section id="toc-container" class="toc">
+    <h2>Inhoudsopgave</h2>
+    <!-- De dynamische TOC wordt hier ingeladen via dynamicToc.js -->
+  </section>
+
+  <!-- Hoofdinhoud in een article -->
   <main class="onderzoek-page">
     <article>
       <!-- 1. Doelgroep EVMB -->
@@ -133,7 +139,7 @@
         </details>
       </section>
 
-      <!-- 5. Onderzoeksvraag en Methodes (Fly on the Wall, Brainwriting, Interviews) -->
+      <!-- 5. Onderzoeksvraag en Methodes -->
       <section id="methodes">
         <h2>5. Onderzoeksvraag en Methodes</h2>
         <p>
@@ -177,7 +183,7 @@
         </details>
       </section>
 
-      <!-- 6. Samenvatting en Conclusie Discoverfase -->
+      <!-- 6. Samenvatting en Conclusie -->
       <section id="samenvatting-conclusie">
         <h2>6. Samenvatting en Conclusie van de Discoverfase</h2>
         <p>
@@ -224,5 +230,8 @@
   <footer>
     <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
   </footer>
+
+  <!-- Dynamische TOC JavaScript -->
+  <script src="js/dynamicToc.js"></script>
 </body>
 </html>
