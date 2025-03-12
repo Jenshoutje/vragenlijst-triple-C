@@ -1,3 +1,10 @@
+body {
+    overflow-x: hidden;
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse achtergrond */
+}
 nav {
     background-color: #6A35C1; /* Effen paarse kleur voor navigatiebalk */
     padding: 50px 50px;
