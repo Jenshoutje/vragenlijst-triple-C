@@ -16,7 +16,7 @@ body {
 header {
   background: #fff;
   padding: 15px 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header nav ul {
@@ -87,7 +87,7 @@ header nav ul li a.active {
 }
 
 /* ============================= */
-/* Sticky, Dynamische Inhoudsopgave (TOC) */
+/* Dynamische Inhoudsopgave (TOC) */
 /* ============================= */
 .toc {
   background: #fff;
@@ -188,7 +188,7 @@ header nav ul li a.active {
 .deliver { top: 47%; left: 85%; }
 
 /* ============================= */
-/* Collapsible Cards voor de Hoofdinhoud */
+/* Collapsible Cards voor Hoofdinhoud */
 /* ============================= */
 .collapsible-card {
   background: #fff;
@@ -237,7 +237,7 @@ header nav ul li a.active {
 
 .collapsible-card.open .collapsible-body {
   padding: 20px;
-  max-height: 1000px; /* Hoge waarde zodat alle inhoud zichtbaar wordt */
+  max-height: 1000px; /* Een grote waarde om alle inhoud te tonen */
 }
 
 .collapsible-card.open .collapsible-header::after {
@@ -245,7 +245,69 @@ header nav ul li a.active {
 }
 
 /* ============================= */
-/* Extra Informatie Sectie */
+/* Hub Dashboard (Chapter Cards) */
+/* ============================= */
+.hub-dashboard {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.hub-dashboard h2 {
+  color: #6A35C1;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
+
+.hub-dashboard p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.chapter-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.chapter-card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  width: 180px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chapter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.chapter-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #6A35C1;
+}
+
+.chapter-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+/* ============================= */
+/* Extra Informatie Sectie (Tool Cards) */
 /* ============================= */
 .extra-links {
   background: #fff;
@@ -292,7 +354,7 @@ header nav ul li a.active {
 }
 
 /* ============================= */
-/* Artikel & Secties (Discoverinhoud) */
+/* Artikel & Secties voor Discover Inhoud */
 /* ============================= */
 .onderzoek-page article {
   background: #fff;
@@ -328,7 +390,7 @@ header nav ul li a.active {
   margin-bottom: 10px;
 }
 
-/* Progressieve Onthulling binnen Artikel */
+/* Styling voor <details> in artikel */
 .onderzoek-page article details {
   margin-top: 10px;
   padding: 10px;
@@ -369,7 +431,8 @@ footer {
     gap: 10px;
   }
 
-  .header-bubble, .hub-dashboard, .extra-links, .onderzoek-page article {
+  .header-bubble, .hub-dashboard, .extra-links, .onderzoek-page article,
+  .toc, .collapsible-card {
     width: 95%;
     margin: 15px auto;
     padding: 15px;
@@ -389,12 +452,12 @@ footer {
   .define   { top: 40%; left: 35%; }
   .develop  { top: 40%; left: 55%; }
   .deliver  { top: 40%; left: 80%; }
-
+  
   .chapter-cards, .tool-cards {
     flex-direction: column;
     align-items: center;
   }
-
+  
   .chapter-card, .tool-card {
     width: 80%;
     margin-bottom: 20px;
