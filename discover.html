@@ -34,11 +34,16 @@
   </section>
 
   <!-- Dynamische Inhoudsopgave -->
-  <section id="toc-container" class="toc">
-    <h2>Inhoudsopgave</h2>
-    <!-- De dynamische TOC wordt hier ingeladen via dynamicToc.js -->
-  </section>
+<!-- Knop om de TOC te openen/sluiten -->
+<button id="tocToggle" class="toc-toggle">Inhoudsopgave</button>
 
+<!-- Uitklapbaar TOC-paneel -->
+<div id="tocPanel" class="toc-panel">
+  <h2>Inhoudsopgave</h2>
+  <ul id="tocList">
+    <!-- Dynamische TOC-items komen hier via JavaScript -->
+  </ul>
+</div>
   <!-- Hoofdinhoud in een article -->
   <main class="onderzoek-page">
     <article>
