@@ -55,6 +55,9 @@ p {
     color: #555; /* Donkergrijze kleur voor paragrafen */
     line-height: 1.6; /* Goede leesbaarheid */
     margin: 10px 0;
+
+
+
 }
 
 /* Flexibele containers */
@@ -76,6 +79,7 @@ p {
 
 
 /* Hoofdcontainer */
+
 .onderzoek-page {
   max-width: 1200px;
   margin: 0 auto;
@@ -84,6 +88,8 @@ p {
 }
 
 /* Header-Bubble */
+
+
 .header-bubble {
   background: #fff;
   color: #4A4A4A;
@@ -120,6 +126,7 @@ p {
 /* Dynamische Inhoudsopgave (TOC) */
 /* Dropdown Inhoudsopgave voor alle Fases */
 .dropdown-toc {
+
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -127,6 +134,9 @@ p {
   max-width: 800px;
   text-align: left;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+
+
 }
 
 .dropdown-toc h2 {
@@ -202,7 +212,14 @@ p {
   color: #6A35C1;
 }
 
+
+
+
+
+
+
 /* Double Diamond Visualisatie */
+
 .double-diamond-container {
   position: relative;
   max-width: 900px;
@@ -246,6 +263,7 @@ p {
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
+
 .discover { top: 47%; left: 3.5%; }
 .define   { top: 47%; left: 36%; }
 .develop  { top: 47%; left: 53.5%; }
@@ -253,6 +271,8 @@ p {
 
 /* Algemene Inleiding & Aanleiding */
 .introductie-aanleiding {
+
+
   background: #fff;
   padding: 30px;
   margin: 40px auto;
@@ -260,6 +280,8 @@ p {
   border-radius: 10px;
   text-align: left;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+
 }
 
 .introductie-aanleiding h2 {
@@ -296,6 +318,7 @@ p {
 }
 
 .tool-outcome-dashboard p {
+
   font-size: 1rem;
   color: #555;
   margin-bottom: 20px;
@@ -306,6 +329,7 @@ p {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+
 }
 
 .tool-card {
@@ -337,6 +361,8 @@ p {
 }
 
 /* Extra Informatie */
+
+
 .extra-links {
   background: #fff;
   padding: 30px;
@@ -345,6 +371,8 @@ p {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+
 }
 
 .extra-links h2 {
@@ -381,19 +409,19 @@ p {
   color: #333;
 }
 
-
-
-
-
-
-
-
-
-
-
+.intro-header-bubble {
+  background: #fff;
+  color: #4A4A4A;
+  text-align: center;
+  padding: 20px 30px;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 /* Artikel & Secties (voor Discover-pagina inhoud) */
 .onderzoek-page article {
-  background: #fff;  
+  background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -445,7 +473,17 @@ p {
   padding-left: 20px;
 }
 
+
 /* Footer */
+
+
+
+
+
+
+
+
+
 
 
 /* ============================= */
@@ -456,33 +494,33 @@ p {
     flex-direction: column;
     gap: 10px;
   }
-
+  
   .header-bubble, .hub-dashboard, .extra-links, .openvragen-context-container, .openvragen-container, .onderzoek-page article {
     width: 95%;
     margin: 15px auto;
     padding: 15px;
   }
-
+  
   .double-diamond-container {
     margin: 30px auto;
   }
-
+  
   .fase-button {
     font-size: 0.8rem;
     padding: 8px 12px;
   }
-
+  
   /* Aanpassen van fase-knoppen posities op kleinere schermen */
   .discover { top: 40%; left: 5%; }
   .define   { top: 40%; left: 35%; }
   .develop  { top: 40%; left: 55%; }
   .deliver  { top: 40%; left: 80%; }
-
+  
   .chapter-cards, .tool-cards {
     flex-direction: column;
     align-items: center;
   }
-
+  
   .chapter-card, .tool-card {
     width: 80%;
     margin-bottom: 20px;
