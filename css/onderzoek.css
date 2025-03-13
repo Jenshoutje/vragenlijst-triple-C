@@ -1,84 +1,90 @@
+/**********************************************************/
+/* 1. Algemene Basisstijlen (Body, Nav, Footer)           */
+/**********************************************************/
+
+/* Algemene opmaak voor de hele site */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   color: #333;
-  background: linear-gradient(135deg, #b05df5, #f3e5ff);
+  background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse gradient achtergrond */
   line-height: 1.6;
 }
 
-/* Navigatie & Header */
+/* Sticky navigatiebalk bovenaan (paarse balk) */
 nav {
-    background-color: #6A35C1; /* Effen paarse kleur voor navigatiebalk */
-    padding: 50px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky; /* Blijf bovenaan bij scrollen */
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtiele schaduw voor diepte */
+  background-color: #6A35C1; /* Paarse kleur */
+  padding: 50px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigatielijst */
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
 }
 
-/* Navigatie-items */
 nav ul li a {
-    text-decoration: none;
-    color: white; /* Witte tekst op de paarse balk */
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 10px 15px;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: white; /* Witte tekst op paarse balk */
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #FFA500; /* Oranje accent bij hover */
+  color: #FFA500; /* Oranje accent bij hover */
 }
 
-/* Algemene typografie */
+/* Footer (witte balk onderaan) */
+footer {
+  background: #fff;
+  color: #000;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  margin-top: auto; 
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  color: #555; /* iets zachter dan #000 */
+}
+
+/**********************************************************/
+/* 2. Algemene Typografie & Containers                    */
+/**********************************************************/
+
 h1, h2, h3, h4, h5, h6 {
-    color: #6A35C1; /* Paarse kleur voor koppen */
-    font-weight: bold;
-    margin: 20px 0 10px 0;
+  color: #6A35C1; /* Paarse koppen */
+  font-weight: bold;
+  margin: 20px 0 10px 0;
 }
 
 p {
-    color: #555; /* Donkergrijze kleur voor paragrafen */
-    line-height: 1.6; /* Goede leesbaarheid */
-    margin: 10px 0;
-
-
-
+  color: #555; /* Donkergrijs voor paragrafen */
+  line-height: 1.6;
+  margin: 10px 0;
 }
 
-/* Flexibele containers */
+/* Container voor algemene layouts (optioneel) */
 .container {
-    max-width: 1200px; /* Maximale breedte */
-    margin: 0 auto; /* Centreer de container */
-    padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Footer */
-.footer {
-    background-color: white; /* Witte achtergrond */
-    color: black; /* Zwarte tekst */
-    text-align: center;
-    padding: 10px;
-    font-size: 0.9rem;
-    margin-top: auto; /* Zorg dat de footer naar beneden wordt gedrukt */
-}
-
-
-/* Hoofdcontainer */
+/**********************************************************/
+/* 3. .onderzoek-page (Hoofdpagina's zoals hub/discover)  */
+/**********************************************************/
 
 .onderzoek-page {
   max-width: 1200px;
@@ -87,9 +93,7 @@ p {
   text-align: center;
 }
 
-/* Header-Bubble */
-
-
+/* Header-bubble voor titel & ondertitel (op hub/fasepagina) */
 .header-bubble {
   background: #fff;
   color: #4A4A4A;
@@ -123,10 +127,11 @@ p {
   border-radius: 2px;
 }
 
-/* Dynamische Inhoudsopgave (TOC) */
-/* Dropdown Inhoudsopgave voor alle Fases */
-.dropdown-toc {
+/**********************************************************/
+/* 4. Dropdown Inhoudsopgave (TOC)                        */
+/**********************************************************/
 
+.dropdown-toc {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -134,9 +139,6 @@ p {
   max-width: 800px;
   text-align: left;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-
-
-
 }
 
 .dropdown-toc h2 {
@@ -147,6 +149,7 @@ p {
   padding-bottom: 5px;
 }
 
+/* Container voor de dropdown-knop en -content */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -166,7 +169,6 @@ p {
   background-color: #4f278d;
 }
 
-/* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -178,12 +180,11 @@ p {
   z-index: 100;
 }
 
-/* Toon dropdown content wanneer de gebruiker over de dropdown beweegt */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Styling voor elke fase in de dropdown */
+/* Elke 'phase' in de dropdown */
 .dropdown-content .phase span {
   font-weight: bold;
   color: #6A35C1;
@@ -212,13 +213,9 @@ p {
   color: #6A35C1;
 }
 
-
-
-
-
-
-
-/* Double Diamond Visualisatie */
+/**********************************************************/
+/* 5. Double Diamond Visualisatie (op hub)                */
+/**********************************************************/
 
 .double-diamond-container {
   position: relative;
@@ -263,16 +260,16 @@ p {
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-
 .discover { top: 47%; left: 3.5%; }
 .define   { top: 47%; left: 36%; }
 .develop  { top: 47%; left: 53.5%; }
 .deliver  { top: 47%; left: 85%; }
 
-/* Algemene Inleiding & Aanleiding */
+/**********************************************************/
+/* 6. Introductie & Tool Outcome Dashboard                */
+/**********************************************************/
+
 .introductie-aanleiding {
-
-
   background: #fff;
   padding: 30px;
   margin: 40px auto;
@@ -280,8 +277,6 @@ p {
   border-radius: 10px;
   text-align: left;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-
-
 }
 
 .introductie-aanleiding h2 {
@@ -298,7 +293,6 @@ p {
   margin-bottom: 15px;
 }
 
-/* Tool Outcome Dashboard */
 .tool-outcome-dashboard {
   background: #fff;
   padding: 30px;
@@ -318,7 +312,6 @@ p {
 }
 
 .tool-outcome-dashboard p {
-
   font-size: 1rem;
   color: #555;
   margin-bottom: 20px;
@@ -329,7 +322,6 @@ p {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-
 }
 
 .tool-card {
@@ -360,8 +352,9 @@ p {
   margin: 0;
 }
 
-/* Extra Informatie */
-
+/**********************************************************/
+/* 7. Extra Links (Methodologie, Tools etc.)              */
+/**********************************************************/
 
 .extra-links {
   background: #fff;
@@ -371,8 +364,6 @@ p {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-
-
 }
 
 .extra-links h2 {
@@ -409,17 +400,10 @@ p {
   color: #333;
 }
 
-.intro-header-bubble {
-  background: #fff;
-  color: #4A4A4A;
-  text-align: center;
-  padding: 20px 30px;
-  border-radius: 15px;
-  max-width: 800px;
-  margin: 0 auto 30px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-/* Artikel & Secties (voor Discover-pagina inhoud) */
+/**********************************************************/
+/* 8. Artikel & Secties (Discover, etc.)                  */
+/**********************************************************/
+
 .onderzoek-page article {
   background: #fff;
   padding: 20px;
@@ -454,7 +438,7 @@ p {
   margin-bottom: 10px;
 }
 
-/* Progressieve Onthulling (details/summary) */
+/* <details> + <summary> progressieve onthulling */
 .onderzoek-page article details {
   margin-top: 10px;
   padding: 10px;
@@ -473,63 +457,52 @@ p {
   padding-left: 20px;
 }
 
+/**********************************************************/
+/* 9. Responsiviteit                                      */
+/**********************************************************/
 
-/* Footer */
-
-footer {
-  background: #fff;
-  padding: 15px 20px;
-  text-align: center;
-  margin-top: 20px;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-  font-size: 0.9rem;
-  color: #555;
-}
-
-
-
-
-
-
-
-
-
-/* ============================= */
-/* Responsiviteit */
-/* ============================= */
 @media (max-width: 768px) {
-  header nav ul {
+  nav {
+    padding: 20px;
+  }
+  nav ul {
     flex-direction: column;
     gap: 10px;
   }
-  
-  .header-bubble, .hub-dashboard, .extra-links, .openvragen-context-container, .openvragen-container, .onderzoek-page article {
+
+  .header-bubble, 
+  .introductie-aanleiding,
+  .tool-outcome-dashboard,
+  .extra-links,
+  .onderzoek-page article,
+  .dropdown-toc,
+  .container {
     width: 95%;
     margin: 15px auto;
     padding: 15px;
   }
-  
+
   .double-diamond-container {
     margin: 30px auto;
   }
-  
+
   .fase-button {
     font-size: 0.8rem;
     padding: 8px 12px;
   }
-  
-  /* Aanpassen van fase-knoppen posities op kleinere schermen */
+
+  /* Aanpassen van fase-knoppen posities */
   .discover { top: 40%; left: 5%; }
   .define   { top: 40%; left: 35%; }
   .develop  { top: 40%; left: 55%; }
   .deliver  { top: 40%; left: 80%; }
-  
-  .chapter-cards, .tool-cards {
+
+  .tool-cards {
     flex-direction: column;
     align-items: center;
   }
-  
-  .chapter-card, .tool-card {
+
+  .tool-card {
     width: 80%;
     margin-bottom: 20px;
   }
