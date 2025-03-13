@@ -1,22 +1,18 @@
-/* ============================= */
-/* Algemene Pagina-styling       */
-/* ============================= */
+/* Algemene Pagina-styling */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   color: #333;
-  background: linear-gradient(135deg, #b05df5, #f3e5ff); /* Paarse gradient achtergrond */
+  background: linear-gradient(135deg, #b05df5, #f3e5ff);
   line-height: 1.6;
 }
 
-/* ============================= */
-/* Navigatie & Header            */
-/* ============================= */
+/* Navigatie & Header */
 header {
   background: #fff;
   padding: 15px 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header nav ul {
@@ -40,9 +36,7 @@ header nav ul li a.active {
   color: #333;
 }
 
-/* ============================= */
-/* Algemene Container voor Onderzoekpagina's */
-/* ============================= */
+/* Hoofdcontainer */
 .onderzoek-page {
   max-width: 1200px;
   margin: 0 auto;
@@ -50,9 +44,7 @@ header nav ul li a.active {
   text-align: center;
 }
 
-/* ============================= */
-/* Header-Bubble (Titel & Introductie) */
-/* ============================= */
+/* Header-Bubble */
 .header-bubble {
   background: #fff;
   color: #4A4A4A;
@@ -86,76 +78,7 @@ header nav ul li a.active {
   border-radius: 2px;
 }
 
-/* ============================= */
-/* Double Diamond Visualisatie */
-/* ============================= */
-.double-diamond-container {
-  position: relative;
-  max-width: 900px;
-  margin: 50px auto;
-  text-align: center;
-}
-
-.double-diamond-afbeelding {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-  position: relative;
-}
-
-.fase-buttons {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Zorgt dat de container geen interactie blokkeert */
-}
-
-.fase-button {
-  position: absolute;
-  color: #fff;
-  background: linear-gradient(135deg, #381B85, #A873F7);
-  padding: 13px 15px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-  pointer-events: auto; /* Knoppen blijven interactief */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  font-size: 1rem;
-}
-
-.fase-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-/* Posities voor de fase-knoppen */
-.discover {
-  top: 47%;
-  left: 3.5%;
-}
-
-.define {
-  top: 47%;
-  left: 36%;
-}
-
-.develop {
-  top: 47%;
-  left: 53.5%;
-}
-
-.deliver {
-  top: 47%;
-  left: 85%;
-}
-
-/* ============================= */
 /* Dynamische Inhoudsopgave (TOC) */
-/* ============================= */
 .toc {
   background: #fff;
   padding: 20px;
@@ -194,26 +117,72 @@ header nav ul li a.active {
   color: #6A35C1;
 }
 
-/* Extra styling voor h3 in de TOC */
 .toc-h3 {
   margin-left: 20px;
   font-size: 0.95rem;
 }
 
-/* ============================= */
-/* Hub Dashboard (Hoofdstukken) */
-/* ============================= */
-.hub-dashboard {
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* Double Diamond Visualisatie */
+.double-diamond-container {
+  position: relative;
   max-width: 900px;
-  margin: 40px auto;
+  margin: 50px auto;
+  text-align: center;
 }
 
-.hub-dashboard h2 {
+.double-diamond-afbeelding {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.fase-buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.fase-button {
+  position: absolute;
+  color: #fff;
+  background: linear-gradient(135deg, #381B85, #A873F7);
+  padding: 13px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+}
+
+.fase-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.discover { top: 47%; left: 3.5%; }
+.define   { top: 47%; left: 36%; }
+.develop  { top: 47%; left: 53.5%; }
+.deliver  { top: 47%; left: 85%; }
+
+/* Algemene Inleiding & Aanleiding */
+.introductie-aanleiding {
+  background: #fff;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.introductie-aanleiding h2 {
   color: #6A35C1;
   font-size: 1.8rem;
   margin-bottom: 15px;
@@ -221,20 +190,45 @@ header nav ul li a.active {
   padding-bottom: 5px;
 }
 
-.hub-dashboard p {
+.introductie-aanleiding p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Tool Outcome Dashboard */
+.tool-outcome-dashboard {
+  background: #fff;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.tool-outcome-dashboard h2 {
+  color: #6A35C1;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
+
+.tool-outcome-dashboard p {
   font-size: 1rem;
   color: #555;
   margin-bottom: 20px;
 }
 
-.chapter-cards {
+.tool-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
 
-.chapter-card {
+.tool-card {
   background: #f9f9f9;
   border-radius: 10px;
   text-decoration: none;
@@ -245,34 +239,32 @@ header nav ul li a.active {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.chapter-card:hover {
+.tool-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-.chapter-card h3 {
+.tool-card h3 {
   font-size: 1.2rem;
   margin-bottom: 8px;
   color: #6A35C1;
 }
 
-.chapter-card p {
+.tool-card p {
   font-size: 0.9rem;
   color: #555;
   margin: 0;
 }
 
-/* ============================= */
-/* Extra Informatie Sectie */
-/* ============================= */
+/* Extra Informatie */
 .extra-links {
   background: #fff;
   padding: 30px;
+  margin: 40px auto;
+  max-width: 900px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-width: 900px;
-  margin: 40px auto;
 }
 
 .extra-links h2 {
@@ -309,9 +301,7 @@ header nav ul li a.active {
   color: #333;
 }
 
-/* ============================= */
-/* Artikel & Secties (Discoverpagina inhoud) */
-/* ============================= */
+/* Artikel & Secties (voor Discover-pagina inhoud) */
 .onderzoek-page article {
   background: #fff;
   padding: 20px;
@@ -365,9 +355,7 @@ header nav ul li a.active {
   padding-left: 20px;
 }
 
-/* ============================= */
 /* Footer */
-/* ============================= */
 footer {
   background: #fff;
   padding: 15px 20px;
@@ -386,62 +374,34 @@ footer {
     flex-direction: column;
     gap: 10px;
   }
-
-  .header-bubble {
-    padding: 15px;
-  }
-
-  .header-bubble h1 {
-    font-size: 2rem;
-  }
-
-  .header-bubble p {
-    font-size: 1rem;
-  }
-
-  .double-diamond-container {
-    margin: 30px auto;
-  }
-
-  .fase-button {
-    font-size: 0.8rem;
-    padding: 8px 12px;
-  }
-
-  /* Aanpassen van fase-knoppen posities */
-  .discover {
-    top: 40%;
-    left: 5%;
-  }
-  .define {
-    top: 40%;
-    left: 35%;
-  }
-  .develop {
-    top: 40%;
-    left: 55%;
-  }
-  .deliver {
-    top: 40%;
-    left: 80%;
-  }
-
-  .hub-dashboard,
-  .extra-links,
-  .openvragen-context-container,
-  .openvragen-container,
-  .onderzoek-page article {
+  
+  .header-bubble, .hub-dashboard, .extra-links, .openvragen-context-container, .openvragen-container, .onderzoek-page article {
     width: 95%;
     margin: 15px auto;
     padding: 15px;
   }
-
-  .chapter-cards {
+  
+  .double-diamond-container {
+    margin: 30px auto;
+  }
+  
+  .fase-button {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+  
+  /* Aanpassen van fase-knoppen posities op kleinere schermen */
+  .discover { top: 40%; left: 5%; }
+  .define   { top: 40%; left: 35%; }
+  .develop  { top: 40%; left: 55%; }
+  .deliver  { top: 40%; left: 80%; }
+  
+  .chapter-cards, .tool-cards {
     flex-direction: column;
     align-items: center;
   }
-
-  .chapter-card {
+  
+  .chapter-card, .tool-card {
     width: 80%;
     margin-bottom: 20px;
   }
