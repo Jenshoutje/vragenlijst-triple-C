@@ -1,4 +1,6 @@
-/* Algemene styling voor de onderzoek-pagina */
+/* ============================= */
+/* Algemene Pagina-styling       */
+/* ============================= */
 body {
   margin: 0;
   padding: 0;
@@ -8,51 +10,49 @@ body {
   line-height: 1.6;
 }
 
-/* Header en Navigatie */
-.matrix-header {
-  background: white; /* Witte achtergrond */
-  color: #4A4A4A; /* Donkergrijze tekst */
-  text-align: center;
-  padding: 30px;
-  border-radius: 10px; /* Afgeronde hoeken */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
-  margin-bottom: 30px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+/* ============================= */
+/* Navigatie & Header            */
+/* ============================= */
+header {
+  background: #fff;
+  padding: 15px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.matrix-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #6A35C1; /* Paarse tekst */
-}
-
-.matrix-header p {
-  font-size: 1.2rem;
-  color: #555;
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 0;
   margin: 0;
 }
 
-.matrix-header::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 3px;
-  background: #6A35C1; /* Paarse lijn */
-  margin: 15px auto 0;
-  border-radius: 2px;
+header nav ul li a {
+  text-decoration: none;
+  color: #6A35C1;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-/* Hoofdcontainer voor de pagina */
+header nav ul li a:hover,
+header nav ul li a.active {
+  color: #333;
+}
+
+/* ============================= */
+/* Algemene Container voor Onderzoekpagina's */
+/* ============================= */
 .onderzoek-page {
-  text-align: center;
-  padding: 50px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
 }
 
-/* Bubbel voor de titel en ondertekst */
+/* ============================= */
+/* Header-Bubble (Titel & Introductie) */
+/* ============================= */
 .header-bubble {
   background: #fff;
   color: #4A4A4A;
@@ -60,8 +60,8 @@ body {
   padding: 20px 30px;
   border-radius: 15px;
   max-width: 800px;
-  margin: 0 auto 30px auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 0 auto 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .header-bubble h1 {
@@ -75,7 +75,87 @@ body {
   color: #555;
   margin: 0;
 }
-/* Styling voor de Inhoudsopgave (TOC) */
+
+.header-bubble::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #6A35C1;
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* ============================= */
+/* Double Diamond Visualisatie */
+/* ============================= */
+.double-diamond-container {
+  position: relative;
+  max-width: 900px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.double-diamond-afbeelding {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.fase-buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Zorgt dat de container geen interactie blokkeert */
+}
+
+.fase-button {
+  position: absolute;
+  color: #fff;
+  background: linear-gradient(135deg, #381B85, #A873F7);
+  padding: 13px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: auto; /* Knoppen blijven interactief */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+}
+
+.fase-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Posities voor de fase-knoppen */
+.discover {
+  top: 47%;
+  left: 3.5%;
+}
+
+.define {
+  top: 47%;
+  left: 36%;
+}
+
+.develop {
+  top: 47%;
+  left: 53.5%;
+}
+
+.deliver {
+  top: 47%;
+  left: 85%;
+}
+
+/* ============================= */
+/* Dynamische Inhoudsopgave (TOC) */
+/* ============================= */
 .toc {
   background: #fff;
   padding: 20px;
@@ -83,7 +163,7 @@ body {
   margin: 20px auto;
   max-width: 800px;
   text-align: left;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .toc h2 {
@@ -114,94 +194,199 @@ body {
   color: #6A35C1;
 }
 
-/* Extra styling voor h3-elementen in de TOC */
+/* Extra styling voor h3 in de TOC */
 .toc-h3 {
   margin-left: 20px;
   font-size: 0.95rem;
 }
 
-/* Container voor de Double Diamond-afbeelding en knoppen */
-.double-diamond-container {
-  position: relative;
-  max-width: 900px;
-  margin: 50px auto;
+/* ============================= */
+/* Hub Dashboard (Hoofdstukken) */
+/* ============================= */
+.hub-dashboard {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
   text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 40px auto;
 }
 
-/* Afbeeldingstijl */
-.double-diamond-afbeelding {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-  position: relative;
+.hub-dashboard h2 {
+  color: #6A35C1;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
 }
 
-/* Container voor de knoppen op de afbeelding */
-.fase-buttons {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Voorkomt dat de container de interactie blokkeert */
+.hub-dashboard p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
 }
 
-/* Algemene stijl voor de fase-knoppen */
-.fase-button {
-  position: absolute;
-  color: #fff;
-  background: linear-gradient(135deg, #381B85, #A873F7);
-  padding: 13px 15px;
+.chapter-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.chapter-card {
+  background: #f9f9f9;
   border-radius: 10px;
   text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-  pointer-events: auto; /* Zorgt dat de knoppen interactief blijven */
+  color: #333;
+  width: 180px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chapter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.chapter-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #6A35C1;
+}
+
+.chapter-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+/* ============================= */
+/* Extra Informatie Sectie */
+/* ============================= */
+.extra-links {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.extra-links h2 {
+  color: #6A35C1;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
+
+.extra-links p {
   font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
 }
 
-/* Hover-effect voor knoppen */
-.fase-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+.extra-links ul {
+  list-style: none;
+  padding: 0;
 }
 
-/* Specifieke posities voor knoppen */
-.discover {
-  top: 47%;
-  left: 3.5%;
+.extra-links ul li {
+  margin-bottom: 8px;
 }
 
-.define {
-  top: 47%;
-  left: 36%;
+.extra-links ul li a {
+  text-decoration: none;
+  color: #6A35C1;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-.develop {
-  top: 47%;
-  left: 53.5%;
+.extra-links ul li a:hover {
+  color: #333;
 }
 
-.deliver {
-  top: 47%;
-  left: 85%;
+/* ============================= */
+/* Artikel & Secties (Discoverpagina inhoud) */
+/* ============================= */
+.onderzoek-page article {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  text-align: left;
 }
 
-/* Footer-styling */
+.onderzoek-page article section {
+  margin-bottom: 40px;
+}
+
+.onderzoek-page article section h2 {
+  color: #6A35C1;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #6A35C1;
+}
+
+.onderzoek-page article section h3 {
+  color: #6A35C1;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.onderzoek-page article section p,
+.onderzoek-page article section ul,
+.onderzoek-page article section li {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+/* Progressieve Onthulling (details/summary) */
+.onderzoek-page article details {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.onderzoek-page article summary {
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+}
+
+.onderzoek-page article details ul {
+  padding-left: 20px;
+}
+
+/* ============================= */
+/* Footer */
+/* ============================= */
 footer {
   background: #fff;
   padding: 15px 20px;
   text-align: center;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
   font-size: 0.9rem;
   color: #555;
-  margin-top: 40px;
 }
 
+/* ============================= */
 /* Responsiviteit */
+/* ============================= */
 @media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .header-bubble {
     padding: 15px;
   }
@@ -218,7 +403,12 @@ footer {
     margin: 30px auto;
   }
 
-  /* Aanpassen van knoppen posities bij kleinere schermen */
+  .fase-button {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  /* Aanpassen van fase-knoppen posities */
   .discover {
     top: 40%;
     left: 5%;
@@ -234,5 +424,25 @@ footer {
   .deliver {
     top: 40%;
     left: 80%;
+  }
+
+  .hub-dashboard,
+  .extra-links,
+  .openvragen-context-container,
+  .openvragen-container,
+  .onderzoek-page article {
+    width: 95%;
+    margin: 15px auto;
+    padding: 15px;
+  }
+
+  .chapter-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chapter-card {
+    width: 80%;
+    margin-bottom: 20px;
   }
 }
