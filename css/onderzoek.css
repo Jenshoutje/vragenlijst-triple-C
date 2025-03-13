@@ -66,7 +66,7 @@ p {
 }
 
 /* Footer */
-footer {
+.footer {
     background-color: white; /* Witte achtergrond */
     color: black; /* Zwarte tekst */
     text-align: center;
