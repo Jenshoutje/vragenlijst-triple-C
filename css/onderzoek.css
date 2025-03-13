@@ -131,6 +131,10 @@ p {
 /* 4. Dropdown Inhoudsopgave (TOC)                        */
 /**********************************************************/
 
+/**********************************************************/
+/* Dropdown TOC (Hubpagina)                              */
+/**********************************************************/
+/* Container voor de dropdown-toc */
 .dropdown-toc {
   background: #fff;
   padding: 20px;
@@ -149,12 +153,13 @@ p {
   padding-bottom: 5px;
 }
 
-/* Container voor de dropdown-knop en -content */
+/* De container die de dropbtn en dropdown-content bevat */
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
+/* De knop die de dropdown opent */
 .dropbtn {
   background-color: #6A35C1;
   color: white;
@@ -169,6 +174,7 @@ p {
   background-color: #4f278d;
 }
 
+/* Verborgen content die bij hover verschijnt */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -180,11 +186,12 @@ p {
   z-index: 100;
 }
 
+/* Toon dropdown-content bij hover over .dropdown */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Elke 'phase' in de dropdown */
+/* Styling voor elke "fase" in de dropdown */
 .dropdown-content .phase span {
   font-weight: bold;
   color: #6A35C1;
@@ -210,6 +217,48 @@ p {
 }
 
 .dropdown-content .phase ul li a:hover {
+  color: #6A35C1;
+}
+
+/**********************************************************/
+/* Eenvoudige TOC voor Hoofdstukken (chapter-toc)         */
+/**********************************************************/
+.chapter-toc {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.chapter-toc h2 {
+  color: #6A35C1;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
+
+.chapter-toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.chapter-toc ul li {
+  margin-bottom: 8px;
+}
+
+.chapter-toc ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.chapter-toc ul li a:hover {
   color: #6A35C1;
 }
 
