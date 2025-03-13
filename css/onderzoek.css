@@ -1,4 +1,6 @@
-/* Algemene Pagina-styling */
+/* ============================= */
+/* Algemene Pagina-styling       */
+/* ============================= */
 body {
   margin: 0;
   padding: 0;
@@ -8,75 +10,39 @@ body {
   line-height: 1.6;
 }
 
-/* Navigatie & Header */
-nav {
-    background-color: #6A35C1; /* Effen paarse kleur voor navigatiebalk */
-    padding: 50px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky; /* Blijf bovenaan bij scrollen */
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtiele schaduw voor diepte */
+/* ============================= */
+/* Navigatie & Header            */
+/* ============================= */
+header {
+  background: #fff;
+  padding: 15px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Navigatielijst */
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
 }
 
-/* Navigatie-items */
-nav ul li a {
-    text-decoration: none;
-    color: white; /* Witte tekst op de paarse balk */
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 10px 15px;
-    transition: color 0.3s ease;
+header nav ul li a {
+  text-decoration: none;
+  color: #6A35C1;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #FFA500; /* Oranje accent bij hover */
+header nav ul li a:hover,
+header nav ul li a.active {
+  color: #333;
 }
 
-/* Algemene typografie */
-h1, h2, h3, h4, h5, h6 {
-    color: #6A35C1; /* Paarse kleur voor koppen */
-    font-weight: bold;
-    margin: 20px 0 10px 0;
-}
-
-p {
-    color: #555; /* Donkergrijze kleur voor paragrafen */
-    line-height: 1.6; /* Goede leesbaarheid */
-    margin: 10px 0;
-}
-
-/* Flexibele containers */
-.container {
-    max-width: 1200px; /* Maximale breedte */
-    margin: 0 auto; /* Centreer de container */
-    padding: 20px;
-}
-
-/* Footer */
-.footer {
-    background-color: white; /* Witte achtergrond */
-    color: black; /* Zwarte tekst */
-    text-align: center;
-    padding: 10px;
-    font-size: 0.9rem;
-    margin-top: auto; /* Zorg dat de footer naar beneden wordt gedrukt */
-}
-
-
-/* Hoofdcontainer */
+/* ============================= */
+/* Algemene Container voor Onderzoekpagina's */
+/* ============================= */
 .onderzoek-page {
   max-width: 1200px;
   margin: 0 auto;
@@ -84,7 +50,9 @@ p {
   text-align: center;
 }
 
-/* Header-Bubble */
+/* ============================= */
+/* Header-Bubble (Titel & Introductie) */
+/* ============================= */
 .header-bubble {
   background: #fff;
   color: #4A4A4A;
@@ -118,9 +86,10 @@ p {
   border-radius: 2px;
 }
 
-/* Dynamische Inhoudsopgave (TOC) */
-/* Dropdown Inhoudsopgave voor alle Fases */
-.dropdown-toc {
+/* ============================= */
+/* Sticky, Dynamische Inhoudsopgave (TOC) */
+/* ============================= */
+.toc {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -128,9 +97,12 @@ p {
   max-width: 800px;
   text-align: left;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 20px;
+  z-index: 100;
 }
 
-.dropdown-toc h2 {
+.toc h2 {
   color: #6A35C1;
   font-size: 1.8rem;
   margin-bottom: 15px;
@@ -138,72 +110,34 @@ p {
   padding-bottom: 5px;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropbtn {
-  background-color: #6A35C1;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.dropbtn:hover {
-  background-color: #4f278d;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  min-width: 250px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 100;
-}
-
-/* Toon dropdown content wanneer de gebruiker over de dropdown beweegt */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Styling voor elke fase in de dropdown */
-.dropdown-content .phase span {
-  font-weight: bold;
-  color: #6A35C1;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.dropdown-content .phase ul {
+.toc ul {
   list-style: none;
   padding-left: 0;
-  margin: 0 0 10px 0;
 }
 
-.dropdown-content .phase ul li {
-  margin-bottom: 5px;
+.toc ul li {
+  margin-bottom: 8px;
 }
 
-.dropdown-content .phase ul li a {
+.toc ul li a {
   text-decoration: none;
   color: #333;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
-.dropdown-content .phase ul li a:hover {
+.toc ul li a:hover {
   color: #6A35C1;
 }
 
+.toc-h3 {
+  margin-left: 20px;
+  font-size: 0.95rem;
+}
+
+/* ============================= */
 /* Double Diamond Visualisatie */
+/* ============================= */
 .double-diamond-container {
   position: relative;
   max-width: 900px;
@@ -247,105 +181,80 @@ p {
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
+/* Posities voor de fase-knoppen */
 .discover { top: 47%; left: 3.5%; }
-.define   { top: 47%; left: 36%; }
-.develop  { top: 47%; left: 53.5%; }
-.deliver  { top: 47%; left: 85%; }
+.define { top: 47%; left: 36%; }
+.develop { top: 47%; left: 53.5%; }
+.deliver { top: 47%; left: 85%; }
 
-/* Algemene Inleiding & Aanleiding */
-.introductie-aanleiding {
+/* ============================= */
+/* Collapsible Cards voor de Hoofdinhoud */
+/* ============================= */
+.collapsible-card {
   background: #fff;
-  padding: 30px;
-  margin: 40px auto;
-  max-width: 900px;
   border-radius: 10px;
-  text-align: left;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.introductie-aanleiding h2 {
-  color: #6A35C1;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #6A35C1;
-  padding-bottom: 5px;
-}
-
-.introductie-aanleiding p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-/* Tool Outcome Dashboard */
-.tool-outcome-dashboard {
-  background: #fff;
-  padding: 30px;
-  margin: 40px auto;
-  max-width: 900px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.tool-outcome-dashboard h2 {
-  color: #6A35C1;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #6A35C1;
-  padding-bottom: 5px;
-}
-
-.tool-outcome-dashboard p {
-  font-size: 1rem;
-  color: #555;
   margin-bottom: 20px;
+  overflow: hidden;
 }
 
-.tool-cards {
+.collapsible-header {
+  background: linear-gradient(135deg, #381B85, #A873F7);
+  color: #fff;
+  padding: 15px 20px;
+  cursor: pointer;
+  user-select: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
 
-.tool-card {
-  background: #f9f9f9;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #333;
-  width: 180px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.collapsible-header:hover {
+  background: linear-gradient(135deg, #341779, #9660e7);
 }
 
-.tool-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-.tool-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-  color: #6A35C1;
-}
-
-.tool-card p {
-  font-size: 0.9rem;
-  color: #555;
+.collapsible-header h2,
+.collapsible-header h3 {
   margin: 0;
+  font-size: 1.4rem;
+  flex: 1;
 }
 
-/* Extra Informatie */
+.collapsible-header::after {
+  content: "▼";
+  font-size: 1rem;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.collapsible-body {
+  max-height: 0;
+  padding: 0 20px;
+  overflow: hidden;
+  background: #fafafa;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.collapsible-card.open .collapsible-body {
+  padding: 20px;
+  max-height: 1000px; /* Hoge waarde zodat alle inhoud zichtbaar wordt */
+}
+
+.collapsible-card.open .collapsible-header::after {
+  transform: rotate(180deg);
+}
+
+/* ============================= */
+/* Extra Informatie Sectie */
+/* ============================= */
 .extra-links {
   background: #fff;
   padding: 30px;
-  margin: 40px auto;
-  max-width: 900px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 40px auto;
 }
 
 .extra-links h2 {
@@ -382,17 +291,9 @@ p {
   color: #333;
 }
 
-.intro-header-bubble {
-  background: #fff;
-  color: #4A4A4A;
-  text-align: center;
-  padding: 20px 30px;
-  border-radius: 15px;
-  max-width: 800px;
-  margin: 0 auto 30px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-/* Artikel & Secties (voor Discover-pagina inhoud) */
+/* ============================= */
+/* Artikel & Secties (Discoverinhoud) */
+/* ============================= */
 .onderzoek-page article {
   background: #fff;
   padding: 20px;
@@ -427,7 +328,7 @@ p {
   margin-bottom: 10px;
 }
 
-/* Progressieve Onthulling (details/summary) */
+/* Progressieve Onthulling binnen Artikel */
 .onderzoek-page article details {
   margin-top: 10px;
   padding: 10px;
@@ -446,8 +347,18 @@ p {
   padding-left: 20px;
 }
 
+/* ============================= */
 /* Footer */
-
+/* ============================= */
+footer {
+  background: #fff;
+  padding: 15px 20px;
+  text-align: center;
+  margin-top: 40px;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  color: #555;
+}
 
 /* ============================= */
 /* Responsiviteit */
@@ -457,33 +368,33 @@ p {
     flex-direction: column;
     gap: 10px;
   }
-  
-  .header-bubble, .hub-dashboard, .extra-links, .openvragen-context-container, .openvragen-container, .onderzoek-page article {
+
+  .header-bubble, .hub-dashboard, .extra-links, .onderzoek-page article {
     width: 95%;
     margin: 15px auto;
     padding: 15px;
   }
-  
+
   .double-diamond-container {
     margin: 30px auto;
   }
-  
+
   .fase-button {
     font-size: 0.8rem;
     padding: 8px 12px;
   }
-  
-  /* Aanpassen van fase-knoppen posities op kleinere schermen */
+
+  /* Aanpassen van fase-knoppen posities */
   .discover { top: 40%; left: 5%; }
   .define   { top: 40%; left: 35%; }
   .develop  { top: 40%; left: 55%; }
   .deliver  { top: 40%; left: 80%; }
-  
+
   .chapter-cards, .tool-cards {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .chapter-card, .tool-card {
     width: 80%;
     margin-bottom: 20px;
