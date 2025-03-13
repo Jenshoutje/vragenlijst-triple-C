@@ -9,32 +9,72 @@ body {
 }
 
 /* Navigatie & Header */
-header {
-  background: #fff;
-  padding: 15px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+nav {
+    background-color: #6A35C1; /* Effen paarse kleur voor navigatiebalk */
+    padding: 50px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky; /* Blijf bovenaan bij scrollen */
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtiele schaduw voor diepte */
 }
 
-header nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 0;
-  margin: 0;
+/* Navigatielijst */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
 }
 
-header nav ul li a {
-  text-decoration: none;
-  color: #6A35C1;
-  font-weight: bold;
-  transition: color 0.3s ease;
+/* Navigatie-items */
+nav ul li a {
+    text-decoration: none;
+    color: white; /* Witte tekst op de paarse balk */
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
 }
 
-header nav ul li a:hover,
-header nav ul li a.active {
-  color: #333;
+nav ul li a:hover {
+    color: #FFA500; /* Oranje accent bij hover */
 }
+
+/* Algemene typografie */
+h1, h2, h3, h4, h5, h6 {
+    color: #6A35C1; /* Paarse kleur voor koppen */
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+p {
+    color: #555; /* Donkergrijze kleur voor paragrafen */
+    line-height: 1.6; /* Goede leesbaarheid */
+    margin: 10px 0;
+}
+
+/* Flexibele containers */
+.container {
+    max-width: 1200px; /* Maximale breedte */
+    margin: 0 auto; /* Centreer de container */
+    padding: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: white; /* Witte achtergrond */
+    color: black; /* Zwarte tekst */
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    margin-top: auto; /* Zorg dat de footer naar beneden wordt gedrukt */
+}
+
 
 /* Hoofdcontainer */
 .onderzoek-page {
@@ -356,15 +396,7 @@ header nav ul li a.active {
 }
 
 /* Footer */
-footer {
-  background: #fff;
-  padding: 15px 20px;
-  text-align: center;
-  margin-top: 40px;
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
-  font-size: 0.9rem;
-  color: #555;
-}
+
 
 /* ============================= */
 /* Responsiviteit */
