@@ -26,9 +26,12 @@
       <h1>Onderzoek</h1>
       <p>Mijn Ontwerpdossier gevisualiseerd volgens het Double Diamond-model met alle fasen.</p>
     </div>
+
+    <!-- Dynamische Inhoudsopgave -->
     <section id="toc-container" class="toc">
       <h2>Inhoudsopgave</h2>
-       </section>
+      <!-- Hier wordt via dynamicToc.js de lijst met koppen ingeladen -->
+    </section>
 
     <!-- Double Diamond Visualisatie met fase-knoppen -->
     <div class="double-diamond-container">
@@ -41,38 +44,42 @@
       </div>
     </div>
 
-    <!-- Dashboard met de hoofdstukken -->
-    <section class="hub-dashboard">
-      <h2>Hoofdstukken</h2>
-      <p>Selecteer een fase om verder te lezen:</p>
-      <div class="chapter-cards">
-        <a href="discover.html" class="chapter-card discover">
-          <h3>Discover</h3>
-          <p>Verkenning en eerste observaties</p>
+    <!-- Algemene Inleiding & Aanleiding -->
+    <section class="introductie-aanleiding">
+      <h2>Inleiding & Aanleiding</h2>
+      <p>
+        In dit verslag wordt onderzocht hoe de Triple C-methodiek kan worden geïmplementeerd binnen de zorg voor EVMB‑cliënten.
+        De aanpak is gebaseerd op het Double Diamond‑model, waarin zowel kwantitatieve als kwalitatieve methoden worden ingezet.
+        Deze centrale hub biedt een overzicht van het volledige onderzoek, de methodologische keuzes en de resultaten van de toegepaste tools.
+      </p>
+    </section>
+
+    <!-- Tool Outcome Dashboard -->
+    <section class="tool-outcome-dashboard">
+      <h2>Resultaten van de Tools</h2>
+      <p>Klik op een tool om de uitkomsten en analyses te bekijken:</p>
+      <div class="tool-cards">
+        <a href="matrixchart.html" class="tool-card">
+          <h3>Decision Matrix</h3>
+          <p>Prioriteiten en knelpunten inzichtelijk gemaakt</p>
         </a>
-        <a href="define.html" class="chapter-card define">
-          <h3>Define</h3>
-          <p>Probleemdefinitie en knelpuntaanpak</p>
+        <a href="openvragenlijst.html" class="tool-card">
+          <h3>Open Vragenlijst</h3>
+          <p>Kwalitatieve inzichten uit praktijkervaringen</p>
         </a>
-        <a href="develop.html" class="chapter-card develop">
-          <h3>Develop</h3>
-          <p>Ontwikkeling van concepten en prototypes</p>
-        </a>
-        <a href="deliver.html" class="chapter-card deliver">
-          <h3>Deliver</h3>
-          <p>Implementatie en evaluatie</p>
+        <a href="thematic-analysis.html" class="tool-card">
+          <h3>Thematische Analyse</h3>
+          <p>Visualisatie van de methodische data-analyse</p>
         </a>
       </div>
     </section>
 
-    <!-- Extra links voor tools en methodologische verantwoording -->
+    <!-- Extra Informatie -->
     <section class="extra-links">
       <h2>Extra Informatie</h2>
-      <p>Verken ook de interactieve tools en methodologische verantwoording:</p>
+      <p>Verken ook de aanvullende interactieve tools en methodologische verantwoording:</p>
       <ul>
-        <li><a href="decisionmatrix.html">Decision Matrix</a></li>
-        <li><a href="openvragenlijst.html">Open Vragenlijst</a></li>
-        <li><a href="mindmap.html">Thematische Analyse</a></li>
+        <li><a href="tools.html">Onderzoeksmethode</a></li>
       </ul>
     </section>
   </main>
@@ -81,6 +88,8 @@
   <footer>
     <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
   </footer>
+
+  <!-- Dynamische TOC JavaScript -->
   <script src="js/dynamicToc.js"></script>
 </body>
 </html>
