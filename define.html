@@ -1,43 +1,166 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Fase] - Houtje Inc.</title>
-    <link rel="stylesheet" href="stijl-vragenlijst.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Definefase - Triple C Implementatie</title>
+  <link rel="stylesheet" href="css/onderzoek.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html"> Home</a></li>
-                <li><a href="onderzoek.html"> Onderzoek</a></li>
-                <li><a href="discover.html">Discover</a></li>
-                <li><a href="define.html">Define</a></li>
-                <li><a href="develop.html">Develop</a></li>
-                <li><a href="deliver.html">Deliver</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Navigatie / Header -->
+  <header>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="onderzoek.html">Onderzoekspagina</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="define.html" class="active">Define</a></li>
+        <li><a href="develop.html">Develop</a></li>
+        <li><a href="deliver.html">Deliver</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main class="onderzoek-page">
-    <div class="header-bubble">
-        <h1>Define</h1>
-        <p>Hier wordt gewerkt aan de visuele representatie Definefase.</p>
-    </div>
+  <!-- Introductie en Leeswijzer -->
+  <section class="intro">
+    <h1>Definefase</h1>
+    <p>
+      De Definefase richt zich op het structureren en analyseren van de inzichten uit de Discoverfase. Door het inzetten van de Decision Matrix en Thematische Analyse worden de knelpunten en mogelijkheden concreet geprioriteerd. Klik op de onderstaande onderdelen voor meer details, context en de link naar de interactieve tools.
+    </p>
+  </section>
 
-      <div class="fase-afbeelding-container">
-    <a href="define.html" class="onderzoek-item">
-        <img src="define.png" alt="Define">
+  <!-- (Optioneel) Dynamische Inhoudsopgave -->
+  <section id="toc-container" class="toc">
+    <h2>Inhoudsopgave</h2>
+    <!-- Dynamische TOC-items worden hier via dynamicToc.js ingeladen -->
+  </section>
 
-        
-    </a>
-</div>
-    </main>
+  <!-- Hoofdinhoud in een article met collapsible cards -->
+  <main class="onderzoek-page">
+    <article>
+      <!-- Card 1: Algemene Inleiding Definefase -->
+      <section class="collapsible-card" id="inleiding-define">
+        <div class="collapsible-header">
+          <h2>Algemene Inleiding Definefase</h2>
+        </div>
+        <div class="collapsible-body">
+          <p>
+            De Discoverfase heeft waardevolle inzichten opgeleverd over de implementatie van Triple C binnen woongroep ’t Rond 51. Door middel van observaties, interviews en groepssessies is een breed beeld verkregen van hoe de methodiek in de praktijk wordt ervaren en welke factoren de toepassing beïnvloeden. Begeleiders streven naar een voorspelbare en veilige zorgomgeving, maar ervaren tegelijkertijd diverse uitdagingen.
+          </p>
+          <p>
+            De Definefase richt zich nu op het structureren en analyseren van deze inzichten om te bepalen waar de meeste winst te behalen is. Dit gebeurt aan de hand van twee methoden: de Decision Matrix en de Thematische Analyse.
+          </p>
+        </div>
+      </section>
 
-    <footer>
-        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
-    </footer>
+      <!-- Card 2: De Decision Matrix – Prioriteren van Knelpunten -->
+      <section class="collapsible-card" id="decision-matrix">
+        <div class="collapsible-header">
+          <h2>1. De Decision Matrix – Prioriteren van Knelpunten</h2>
+        </div>
+        <div class="collapsible-body">
+          <p>
+            De Decision Matrix is een methode binnen ontwerpgericht onderzoek die wordt ingezet om knelpunten in de implementatie van Triple C te prioriteren op basis van effectiviteit, haalbaarheid, impact op cliëntwelzijn en urgentie (Van ’t Veer et al., 2020). Deze methodiek helpt de perspectieven en behoeften van begeleiders systematisch in kaart te brengen.
+          </p>
+          <h3>Onderzoeksopzet en Uitvoering</h3>
+          <p>
+            De matrix werd op 11 maart digitaal aangeboden aan begeleiders van woongroep ’t Rond 51. Via een 5-puntenschaal beoordeelden zij vijf vooraf geselecteerde knelpunten. 
+          </p>
+          <h3>Evaluatiecriteria</h3>
+          <ul>
+            <li><strong>Effectiviteit:</strong> In hoeverre draagt het oplossen bij aan een betere implementatie?</li>
+            <li><strong>Haalbaarheid:</strong> Hoe realistisch is het om het knelpunt aan te pakken?</li>
+            <li><strong>Impact op cliëntwelzijn:</strong> Wat is de invloed op de zorgkwaliteit?</li>
+            <li><strong>Urgentie:</strong> Hoe dringend moet er actie worden ondernomen?</li>
+          </ul>
+          <details>
+            <summary>Lees meer: Uitdagingen, Kansen en Data-analyse</summary>
+            <p>
+              De verzamelde data worden zowel kwantitatief (gemiddelde scores) als kwalitatief geanalyseerd. De resultaten toonden aan dat bepaalde knelpunten, zoals 'Werkdruk belemmert proactief handelen', een hoge urgentie en impact op cliëntwelzijn hebben.
+            </p>
+          </details>
+          <details>
+            <summary>Lees meer: Verantwoording Methodekeuze</summary>
+            <p>
+              De keuze voor de Decision Matrix is gebaseerd op de noodzaak om praktijkervaringen te structureren en objectief te prioriteren. Deze participatieve aanpak vormt een brug tussen de theorie en de praktijk, zodat de inzichten uit de Discoverfase worden vertaald naar concrete ontwerpcriteria.
+            </p>
+          </details>
+          <h3>Uitkomsten en Conclusie</h3>
+          <p>
+            Uit de analyse bleek dat de knelpunten met betrekking tot werkdruk en een eenduidige interpretatie van Triple C het meest urgent zijn. Deze inzichten vormen de basis voor de vervolgstappen in de Developfase.
+          </p>
+        </div>
+      </section>
+
+      <!-- Card 3: Thematische Analyse -->
+      <section class="collapsible-card" id="thematische-analyse">
+        <div class="collapsible-header">
+          <h2>2. Thematische Analyse</h2>
+        </div>
+        <div class="collapsible-body">
+          <p>
+            Naast de Decision Matrix wordt de Thematische Analyse ingezet om de open antwoorden en interviews te analyseren. Deze methode onthult de onderliggende patronen en behoeften bij begeleiders en cliënten.
+          </p>
+          <h3>Doel en Opzet</h3>
+          <p>
+            In dit onderdeel worden aanvullende open vragen ingezet om een diepgaander inzicht te verkrijgen in de knelpunten. De aanpak is inductief; begeleiders reflecteren algemeen op hun ervaringen, waarna in de analyse concrete oplossingen en ondersteuningsvormen naar voren komen.
+          </p>
+          <h3>Wetenschappelijke Onderbouwing</h3>
+          <p>
+            Deze methode sluit aan bij kwalitatieve onderzoeksstrategieën waarbij inductieve data-analyse centraal staat (Braun & Clarke, 2006). De aanpak zorgt ervoor dat de authentieke ervaringen van zorgprofessionals direct worden meegenomen in de analyse.
+          </p>
+        </div>
+      </section>
+
+      <!-- Card 4: Synthese en Ontwerprichtlijnen -->
+      <section class="collapsible-card" id="synthese-ontwerpcriteria">
+        <div class="collapsible-header">
+          <h2>3. Synthese en Ontwerprichtlijnen</h2>
+        </div>
+        <div class="collapsible-body">
+          <p>
+            Door de uitkomsten van de Decision Matrix en Thematische Analyse samen te brengen, worden concrete ontwerpcriteria geformuleerd. De focus ligt op het versterken van de implementatie van Triple C door te investeren in duidelijke ondersteuning, uniforme interpretatie en aanvullende training.
+          </p>
+          <p>
+            Theoretische inzichten tonen aan dat visuele hulpmiddelen de cognitieve belasting verlagen en kennisretentie verhogen (Mayer, 2009; Sweller, 1988). Deze inzichten worden vertaald naar praktische interventies die in de Developfase verder worden uitgewerkt.
+          </p>
+        </div>
+      </section>
+
+      <!-- Card 5: Vervolgstappen -->
+      <section class="collapsible-card" id="vervolgstappen">
+        <div class="collapsible-header">
+          <h2>4. Vervolgstappen</h2>
+        </div>
+        <div class="collapsible-body">
+          <p>
+            Hoewel de Decision Matrix en Thematische Analyse duidelijk aangeven welke knelpunten de hoogste prioriteit hebben, blijven de uitkomsten op dit moment abstract. De volgende stap is om deze thema’s kwalitatief verder te onderzoeken middels open vragen, zodat ze worden vertaald naar concrete, praktijkgerichte ontwerpcriteria.
+          </p>
+          <p>
+            In de volgende fase (Develop) zal er dieper worden ingegaan op:
+          </p>
+          <ul>
+            <li>Hoe kunnen de hoogst scorende knelpunten snel worden aangepakt?</li>
+            <li>Welke acties verhogen de haalbaarheid van de voorgestelde oplossingen?</li>
+            <li>Op welke wijze kan de teamvisie verder worden versterkt?</li>
+          </ul>
+          <p>
+            Deze vervolgstappen worden in samenwerking met de betrokkenen verder uitgewerkt.
+          </p>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+  </footer>
+
+  <!-- Dynamische TOC JavaScript -->
+  <script src="js/dynamicToc.js"></script>
+  <!-- Collapsible Cards Script -->
+  <script src="js/collapsible.js"></script>
+  <!-- (Optioneel) Extra script voor andere interactieve elementen -->
+  <!-- <script src="js/extraInteractivity.js"></script> -->
 </body>
 </html>
