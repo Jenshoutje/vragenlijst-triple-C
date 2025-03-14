@@ -1,6 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
-import { ref, set } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"; // Voeg deze regel toe
 
 // Firebase configuratie
 const firebaseConfig = {
@@ -13,67 +12,74 @@ const firebaseConfig = {
   measurementId: "G-078FVL26HV"
 };
 
-// Initialiseer Firebase
+// 1. Initialiseer Firebase
 const app = initializeApp(firebaseConfig);
+
+// 2. Haal Firestore-referentie op
 const db = getFirestore(app);
-console.log("✅ Firebase succesvol geïnitialiseerd!");
+console.log("✅ Firebase (v9) succesvol geïnitialiseerd!");
 
-    // 3. Luister naar het submit-event van het formulier
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('openVragenForm');
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+// 3. Wacht tot de DOM geladen is
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('openVragenForm');
+  if (!form) return;
 
-        try {
-          // Haal de values op uit de textareas
-          const vraag1 = document.getElementById('vraag1').value.trim();
-          const vraag1sub1 = document.getElementById('vraag1sub1').value.trim();
-          const vraag1sub2 = document.getElementById('vraag1sub2').value.trim();
-          const vraag1sub3 = document.getElementById('vraag1sub3').value.trim();
+  // 4. Luister naar de submit van het formulier
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // voorkom herladen
 
-          const vraag2 = document.getElementById('vraag2').value.trim();
-          const vraag2sub1 = document.getElementById('vraag2sub1').value.trim();
-          const vraag2sub2 = document.getElementById('vraag2sub2').value.trim();
-          const vraag2sub3 = document.getElementById('vraag2sub3').value.trim();
+    try {
+      // Haal de values op uit de textareas
+      const vraag1 = document.getElementById('vraag1').value.trim();
+      const vraag1sub1 = document.getElementById('vraag1sub1').value.trim();
+      const vraag1sub2 = document.getElementById('vraag1sub2').value.trim();
+      const vraag1sub3 = document.getElementById('vraag1sub3').value.trim();
 
-          const vraag3 = document.getElementById('vraag3').value.trim();
-          const vraag3sub1 = document.getElementById('vraag3sub1').value.trim();
-          const vraag3sub2 = document.getElementById('vraag3sub2').value.trim();
-          const vraag3sub3 = document.getElementById('vraag3sub3').value.trim();
+      const vraag2 = document.getElementById('vraag2').value.trim();
+      const vraag2sub1 = document.getElementById('vraag2sub1').value.trim();
+      const vraag2sub2 = document.getElementById('vraag2sub2').value.trim();
+      const vraag2sub3 = document.getElementById('vraag2sub3').value.trim();
 
-          // Bouw een object met alle antwoorden
-          const antwoorden = {
-            vraag1: {
-              hoofdvraag: vraag1,
-              sub1: vraag1sub1,
-              sub2: vraag1sub2,
-              sub3: vraag1sub3
-            },
-            vraag2: {
-              hoofdvraag: vraag2,
-              sub1: vraag2sub1,
-              sub2: vraag2sub2,
-              sub3: vraag2sub3
-            },
-            vraag3: {
-              hoofdvraag: vraag3,
-              sub1: vraag3sub1,
-              sub2: vraag3sub2,
-              sub3: vraag3sub3
-            },
-            timestamp: new Date() // zodat we weten wanneer dit is ingevuld
-          };
+      const vraag3 = document.getElementById('vraag3').value.trim();
+      const vraag3sub1 = document.getElementById('vraag3sub1').value.trim();
+      const vraag3sub2 = document.getElementById('vraag3sub2').value.trim();
+      const vraag3sub3 = document.getElementById('vraag3sub3').value.trim();
 
-          // 4. Sla de data op in Firestore (bijv. in collectie 'openVragen')
-          await db.collection('openVragenResponses').add(antwoorden);
+      // Bouw een object met alle antwoorden
+      const antwoorden = {
+        vraag1: {
+          hoofdvraag: vraag1,
+          sub1: vraag1sub1,
+          sub2: vraag1sub2,
+          sub3: vraag1sub3
+        },
+        vraag2: {
+          hoofdvraag: vraag2,
+          sub1: vraag2sub1,
+          sub2: vraag2sub2,
+          sub3: vraag2sub3
+        },
+        vraag3: {
+          hoofdvraag: vraag3,
+          sub1: vraag3sub1,
+          sub2: vraag3sub2,
+          sub3: vraag3sub3
+        },
+        timestamp: new Date() // voor datum/tijd van invullen
+      };
 
-          // 5. Toon een succesmelding of wis het formulier
-          alert("Bedankt voor uw bijdrage! Uw antwoorden zijn opgeslagen.");
-          form.reset();
+      // 5. Sla de data op in Firestore (v9-syntax)
+      // let docRef = await db.collection('openVragenResponses').add(antwoorden); // v8-syntax (niet meer geldig in v9)
+      // v9-syntax: addDoc(collection(db, 'openVragenResponses'), data)
+      await addDoc(collection(db, 'openVragenResponses'), antwoorden);
 
-        } catch (err) {
-          console.error("Fout bij het opslaan van antwoorden:", err);
-          alert("Er is iets misgegaan. Probeer het later opnieuw.");
-        }
-      });
-    });
+      // 6. Toon een succesmelding of wis het formulier
+      alert("Bedankt voor uw bijdrage! Uw antwoorden zijn opgeslagen.");
+      form.reset();
+
+    } catch (err) {
+      console.error("Fout bij het opslaan van antwoorden:", err);
+      alert("Er is iets misgegaan. Probeer het later opnieuw.");
+    }
+  });
+});
