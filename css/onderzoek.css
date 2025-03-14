@@ -607,61 +607,47 @@ p {
 /* Flex-container voor de gecombineerde hub-card */
 /* Container: Diamond links, TOC rechts */
 /* Eén enkele container (witte card) voor Diamond + TOC-subcards */
-.hub-combined-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff; /* Witte achtergrond */
+/* De witte container voor Diamond + subcards */
+.hub-card {
+  background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  max-width: 1200px;
+  margin: 40px auto; /* Ruimte boven/onder */
 }
 
-/* Linker kolom (Diamond) */
-.hub-combined-card .hub-left {
-  flex: 0 1 60%;
+/* Diamond-wrapper voor centrering */
+.diamond-wrapper {
+  text-align: center;
+  margin-bottom: 20px; /* Ruimte tussen Diamond en de TOC-titel */
 }
 
-/* Rechter kolom (TOC-subcards) */
-.hub-combined-card .hub-right {
-  flex: 0 1 35%;
-}
-.toc-subcards-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-/* Mooi opvallende titel boven de subcards */
-.toc-subcards-title {
+/* Titel boven de subcards */
+.hub-toc-title {
   font-size: 1.8rem;
   color: #6A35C1;
   margin-bottom: 20px;
   border-bottom: 2px solid #6A35C1;
   padding-bottom: 5px;
-  text-align: left; /* of center, naar wens */
+  text-align: left; /* of center, naar smaak */
 }
-/* Container voor de subcards */
-.toc-subcards-container {
+
+/* Grid met 2 kolommen (auto-fit) voor de subcards */
+.subcards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  justify-content: flex-start; /* subcards uitlijnen aan linkerkant */
 }
 
-/* Elke subcard voor een fase */
+/* Subcards: Discover, Define, Develop, Deliver */
 .phase-subcard {
-  background: #f9f9f9; /* iets lichter dan wit voor subtiel contrast */
+  background: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   padding: 15px;
-  flex: 0 1 calc(50% - 20px); /* 2 subcards per rij */
 }
 
-/* Titel van de subcard */
 .phase-subcard h3 {
   margin-top: 0;
   font-size: 1.2rem;
@@ -671,7 +657,6 @@ p {
   padding-bottom: 5px;
 }
 
-/* Lijst in subcard */
 .phase-subcard ul {
   list-style: none;
   margin: 0;
@@ -692,22 +677,18 @@ p {
   color: #6A35C1;
 }
 
-/* Responsiviteit */
+/* Responsiviteit: onder 768px is alles in 1 kolom */
 @media (max-width: 768px) {
-  .hub-combined-card {
-    flex-direction: column;
-    align-items: center;
+  .hub-card {
+    padding: 15px;
   }
-  .hub-combined-card .hub-left,
-  .hub-combined-card .hub-right {
-    width: 100%;
-    margin-bottom: 20px;
+  .diamond-wrapper {
+    margin-bottom: 15px;
   }
-
-  .toc-subcards-container {
-    flex-direction: column;
+  .hub-toc-title {
+    text-align: center;
   }
-  .phase-subcard {
-    flex: 0 1 100%;
+  .subcards-grid {
+    grid-template-columns: 1fr; /* 1 kolom */
   }
 }
