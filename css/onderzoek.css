@@ -261,6 +261,53 @@ p {
 .chapter-toc ul li a:hover {
   color: #6A35C1;
 }
+/* Rechter deel: TOC */
+.hub-combined-card .hub-right {
+  flex: 0 1 35%;
+}
+
+/* Een extra card-achtige container voor de TOC en dropdown */
+.hub-toc-card {
+  background: #fff; /* al in outer card, maar kan laten staan */
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: none; /* Outer card heeft al schaduw */
+}
+
+/* Standaard styling voor .full-toc */
+.full-toc {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.full-toc > li {
+  margin-bottom: 10px;
+}
+
+.full-toc > li strong {
+  color: #6A35C1;
+}
+
+.full-toc ul {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+
+.full-toc ul li {
+  margin-bottom: 5px;
+}
+
+.full-toc ul li a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.full-toc ul li a:hover {
+  color: #6A35C1;
+}
 
 /**********************************************************/
 /* 5. Double Diamond Visualisatie (op hub)                */
