@@ -632,9 +632,9 @@ p {
 
 /* Container voor de subcards */
 .toc-subcards-container {
-  display: flex;
-  flex-wrap: wrap; /* meerdere rijen als nodig */
-  gap: 20px;       /* ruimte tussen subcards */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
   justify-content: flex-start; /* subcards uitlijnen aan linkerkant */
 }
 
