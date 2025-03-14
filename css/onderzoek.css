@@ -605,6 +605,7 @@ p {
 }
 
 /* Flex-container voor de gecombineerde hub-card */
+/* Container: Diamond links, TOC rechts */
 .hub-combined-card {
   display: flex;
   justify-content: space-between;
@@ -613,27 +614,65 @@ p {
   max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: none; /* Laat de achtergrond van de container door de paarse body */
 }
 
-/* Linkerkant: Double Diamond */
+/* Linker kolom: Diamond */
 .hub-combined-card .hub-left {
   flex: 0 1 60%;
 }
 
-/* Rechterkant: Dropdown TOC */
+/* Rechter kolom: TOC */
 .hub-combined-card .hub-right {
   flex: 0 1 35%;
 }
 
-/* (Eventueel extra padding of border voor de hub-right) */
-.hub-combined-card .hub-right .dropdown-toc {
+/* Witte card voor de TOC */
+.toc-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+/* Styling voor de TOC-lijst */
+.hub-toc-list {
+  list-style: none;
+  padding-left: 0;
   margin: 0;
 }
 
-/* Responsiviteit: bij smalle schermen onder elkaar */
+.hub-toc-list > li {
+  margin-bottom: 15px;
+}
+
+.hub-toc-list > li strong {
+  color: #6A35C1;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.hub-toc-list ul {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+
+.hub-toc-list ul li {
+  margin-bottom: 5px;
+}
+
+.hub-toc-list ul li a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.hub-toc-list ul li a:hover {
+  color: #6A35C1;
+}
+
+/* Responsiviteit */
 @media (max-width: 768px) {
   .hub-combined-card {
     flex-direction: column;
@@ -642,5 +681,6 @@ p {
   .hub-combined-card .hub-left,
   .hub-combined-card .hub-right {
     width: 100%;
+    margin-bottom: 20px;
   }
 }
