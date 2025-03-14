@@ -629,7 +629,21 @@ p {
 .hub-combined-card .hub-right {
   flex: 0 1 35%;
 }
+.toc-subcards-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 
+/* Mooi opvallende titel boven de subcards */
+.toc-subcards-title {
+  font-size: 1.8rem;
+  color: #6A35C1;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+  text-align: left; /* of center, naar wens */
+}
 /* Container voor de subcards */
 .toc-subcards-container {
   display: grid;
