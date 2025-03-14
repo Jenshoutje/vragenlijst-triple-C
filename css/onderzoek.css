@@ -556,3 +556,44 @@ p {
     margin-bottom: 20px;
   }
 }
+
+/* Flex-container voor de gecombineerde hub-card */
+.hub-combined-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Linkerkant: Double Diamond */
+.hub-combined-card .hub-left {
+  flex: 0 1 60%;
+}
+
+/* Rechterkant: Dropdown TOC */
+.hub-combined-card .hub-right {
+  flex: 0 1 35%;
+}
+
+/* (Eventueel extra padding of border voor de hub-right) */
+.hub-combined-card .hub-right .dropdown-toc {
+  margin: 0;
+}
+
+/* Responsiviteit: bij smalle schermen onder elkaar */
+@media (max-width: 768px) {
+  .hub-combined-card {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hub-combined-card .hub-left,
+  .hub-combined-card .hub-right {
+    width: 100%;
+  }
+}
