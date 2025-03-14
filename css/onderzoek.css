@@ -606,6 +606,7 @@ p {
 
 /* Flex-container voor de gecombineerde hub-card */
 /* Container: Diamond links, TOC rechts */
+/* Eén enkele container (witte card) voor Diamond + TOC-subcards */
 .hub-combined-card {
   display: flex;
   justify-content: space-between;
@@ -614,61 +615,66 @@ p {
   max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
-  background: none; /* Laat de achtergrond van de container door de paarse body */
+  background: #fff; /* Witte achtergrond */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Linker kolom: Diamond */
+/* Linker kolom (Diamond) */
 .hub-combined-card .hub-left {
   flex: 0 1 60%;
 }
 
-/* Rechter kolom: TOC */
+/* Rechter kolom (TOC-subcards) */
 .hub-combined-card .hub-right {
   flex: 0 1 35%;
 }
 
-/* Witte card voor de TOC */
-.toc-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 20px;
+/* Container voor de subcards */
+.toc-subcards-container {
+  display: flex;
+  flex-wrap: wrap; /* meerdere rijen als nodig */
+  gap: 20px;       /* ruimte tussen subcards */
+  justify-content: flex-start; /* subcards uitlijnen aan linkerkant */
 }
 
-/* Styling voor de TOC-lijst */
-.hub-toc-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
+/* Elke subcard voor een fase */
+.phase-subcard {
+  background: #f9f9f9; /* iets lichter dan wit voor subtiel contrast */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  padding: 15px;
+  flex: 0 1 calc(50% - 20px); /* 2 subcards per rij */
 }
 
-.hub-toc-list > li {
-  margin-bottom: 15px;
-}
-
-.hub-toc-list > li strong {
+/* Titel van de subcard */
+.phase-subcard h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
   color: #6A35C1;
-  display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
 }
 
-.hub-toc-list ul {
+/* Lijst in subcard */
+.phase-subcard ul {
   list-style: none;
-  padding-left: 15px;
-  margin-top: 5px;
+  margin: 0;
+  padding-left: 0;
 }
 
-.hub-toc-list ul li {
-  margin-bottom: 5px;
+.phase-subcard ul li {
+  margin-bottom: 6px;
 }
 
-.hub-toc-list ul li a {
+.phase-subcard ul li a {
   text-decoration: none;
   color: #333;
   transition: color 0.3s ease;
 }
 
-.hub-toc-list ul li a:hover {
+.phase-subcard ul li a:hover {
   color: #6A35C1;
 }
 
@@ -682,5 +688,12 @@ p {
   .hub-combined-card .hub-right {
     width: 100%;
     margin-bottom: 20px;
+  }
+
+  .toc-subcards-container {
+    flex-direction: column;
+  }
+  .phase-subcard {
+    flex: 0 1 100%;
   }
 }
