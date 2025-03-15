@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thematische Analyse - Triple C Implementatie</title>
+  <link rel="stylesheet" href="css/matrixchart.css">
+  <!-- Indien u Chart.js of een andere visualisatiebibliotheek gebruikt, kunt u die hier inladen -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="matrix-page">
+  <!-- Header / Navigatie -->
+  <header>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="onderzoek.html">Onderzoekspagina</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="define.html" class="active">Define</a></li>
+        <li><a href="develop.html">Develop</a></li>
+        <li><a href="deliver.html">Deliver</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Header met titel en uitleg -->
+  <header class="matrix-header">
+    <h1>Thematische Analyse - Triple C Implementatie</h1>
+    <p>Resultaten, interpretatie en vervolgstappen van de thematische analyse.</p>
+  </header>
+
+  <!-- Context en wetenschappelijke onderbouwing -->
+  <div class="decisioncontext-container">
+    <h2>Doel Thematische Analyse</h2>
+    <p>
+      Deze tool analyseert open antwoorden en interviews om onderliggende thema’s en patronen te identificeren. 
+      De verkregen inzichten ondersteunen het formuleren van concrete ontwerpcriteria.
+    </p>
+    <h3>Waarom deze tool?</h3>
+    <p>
+      Thematische analyse helpt om authentieke ervaringen van zorgprofessionals systematisch te coderen en te clusteren, 
+      zodat zowel sterke punten als knelpunten inzichtelijk worden.
+    </p>
+  </div>
+
+  <!-- (Optioneel) Visualisatie / Chart -->
+  <main>
+    <section class="chart-section">
+      <div id="chart-container">
+        <canvas id="thematicChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Interpretatie en vervolgstappen -->
+    <section class="matrix-interpretation">
+      <h2>Interpretatie van de Resultaten</h2>
+      <p>
+        De analyse toont dat thema’s zoals communicatie, ondersteuning en werkdruk prominent aanwezig zijn.
+        Deze inzichten geven richting aan de vervolgstappen:
+      </p>
+      <ul>
+        <li>Hoe kunnen we de communicatie tussen begeleiders optimaliseren?</li>
+        <li>Welke interventies verlagen de werkdruk?</li>
+        <li>Hoe kan de ondersteuning beter worden afgestemd op de behoeften van cliënten?</li>
+      </ul>
+      <h2>Vervolgstappen</h2>
+      <p>
+        De uitkomsten vormen de basis voor de Developfase, waarin de verkregen thema’s vertaald worden naar concrete ontwerpcriteria.
+      </p>
+
+      <!-- Ruwe data sectie -->
+      <details class="raw-data">
+        <summary>Ruwe data</summary>
+        <pre id="rawDataContainer"></pre>
+      </details>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+  </footer>
+
+  <!-- JavaScript voor visualisatie, indien nodig -->
+  <script src="js/thematicChart.js"></script>
+</body>
+</html>
