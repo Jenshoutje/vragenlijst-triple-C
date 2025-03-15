@@ -25,9 +25,9 @@ console.log("✅ Firebase (v9) succesvol geïnitialiseerd!");
 
 // 3. Definieer de velden en hun opties
 const fields = [
-  { name: "pictogram",     label: "1. Pictogramstijl",    optieA: "realistisch",   optieB: "abstract" },
+  { name: "pictogram",     label: "1. Pictogramstijl",    optieA: "realistisch",   optieB: "Abstract" },
   { name: "emotie",        label: "2. Emotie-uitdrukking", optieA: "neutraal",      optieB: "expressief" },
-  { name: "kleur",         label: "3. Kleurgebruik",       optieA: "monochroom",    optieB: "kleurgecodeerd" },
+  { name: "kleur",         label: "3. Kleurgebruik",       optieA: "Monochroom",    optieB: "kleurgecodeerd" },
   { name: "tekst",         label: "4. Tekstgebruik",       optieA: "informatief",   optieB: "visueel" },
   { name: "directie",      label: "5. Directie uitleg",    optieA: "situatiegericht", optieB: "algemeen" },
   { name: "focus",         label: "6. Focus op",           optieA: "cliënt",        optieB: "begeleider" },
