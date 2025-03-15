@@ -223,6 +223,56 @@ footer {
   .chart-section {
     padding: 20px;
   }
+
+    /* Legenda styling */
+.chart-legend {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.chart-legend h3 {
+  font-size: 1.8rem;
+  color: #6A35C1;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
+
+.chart-legend ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.chart-legend ul li {
+  margin-bottom: 15px;
+}
+
+.chart-legend ul li strong {
+  color: #6A35C1;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.chart-legend ul li em {
+  font-style: italic;
+  color: #333;
+}
+
+.chart-legend ul li a {
+  text-decoration: none;
+  color: #6A35C1;
+  transition: color 0.3s ease;
+}
+
+.chart-legend ul li a:hover {
+  color: #333;
+}
   
   #chart-container {
     padding: 10px;
