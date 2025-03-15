@@ -226,6 +226,7 @@ footer {
 
     /* Legenda styling */
 /* Container van de legenda */
+/* Legenda Container */
 .chart-legend {
   background: #fff;
   padding: 20px;
@@ -245,10 +246,9 @@ footer {
   padding-bottom: 5px;
 }
 
-/* Maak een grid van de <ul> */
+/* Grid van de lijst items */
 .chart-legend ul {
   display: grid;
-  /* Zorg voor minimaal 240px breedte per card, vult verder de ruimte */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   list-style: none;
@@ -256,7 +256,7 @@ footer {
   margin: 0;
 }
 
-/* Elk <li> is nu een “card” */
+/* Elke <li> wordt als een "card" gestyled */
 .chart-legend ul li {
   background: #f9f9f9;
   border-radius: 8px;
@@ -265,15 +265,15 @@ footer {
   line-height: 1.4;
 }
 
-/* De <strong> (bijv. “1. Pictogramstijl”) */
+/* Styling voor de titel in de kaart */
 .chart-legend ul li strong {
-  display: block;   /* Op eigen regel */
+  display: block;   /* Op een eigen regel */
   margin-bottom: 8px;
   color: #6A35C1;
   font-size: 1.1rem;
 }
 
-/* De <em> (bijv. “Optie A:”) */
+/* Styling voor de optie labels */
 .chart-legend ul li em {
   font-style: normal;  /* Geen schuine letters */
   color: #333;
@@ -281,8 +281,7 @@ footer {
   margin-right: 5px;
 }
 
-/* Responsiviteit: op kleine schermen is de grid al aangepast,
-   maar u kunt extra aanpassingen toevoegen als gewenst */
+/* Responsiviteit */
 @media (max-width: 768px) {
   .chart-legend {
     padding: 15px;
@@ -292,7 +291,8 @@ footer {
     text-align: center;
   }
 }
-  #chart-container {
-    padding: 10px;
-  }
+
+/* Extra padding voor de chart container, indien nodig */
+#chart-container {
+  padding: 10px;
 }
