@@ -1,6 +1,6 @@
-// fffchart.js (nieuwe modulaire Firebase v9 aanpak)
+// fffchart.js (Firebase v9, modulaire aanpak)
 
-// 1. Importeer Firebase modulaire modules (zonder -compat)
+// 1. Importeer Firebase-modulaire modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
@@ -19,20 +19,20 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 console.log("✅ Firebase (v9) succesvol geïnitialiseerd!");
 
-// 3. Definieer de vragen met labels en de verwachte opties
+// 3. Definieer de 9 vragen en hun bijbehorende opties
 const fields = [
-  { label: "1. Pictogramstijl", optieA: "realistisch", optieB: "abstract" },
-  { label: "2. Emotie-uitdrukking", optieA: "neutraal",     optieB: "expressief" },
-  { label: "3. Kleurgebruik",     optieA: "monochroom",   optieB: "kleurgecodeerd" },
-  { label: "4. Tekstgebruik",     optieA: "informatie voornamelijk als tekst", optieB: "korte tekst, ondersteund door visuele elementen" },
-  { label: "5. Directie uitleg",  optieA: "situatiegericht", optieB: "algemeen" },
-  { label: "6. Focus op",         optieA: "cliënt",       optieB: "begeleider" },
-  { label: "7. Videostructuur",   optieA: "lineair",      optieB: "interactief" },
-  { label: "8. Implementatie",    optieA: "losse onderdelen", optieB: "geïntegreerd" },
-  { label: "9. Tempo",            optieA: "vast",         optieB: "instelbaar" }
+  { label: "1. Pictogramstijl",    A: "realistisch",    B: "abstract" },
+  { label: "2. Emotie-uitdrukking", A: "neutraal",       B: "expressief" },
+  { label: "3. Kleurgebruik",       A: "monochroom",     B: "kleurgecodeerd" },
+  { label: "4. Tekstgebruik",       A: "informatief",    B: "visueel" },
+  { label: "5. Directie uitleg",    A: "situatiegericht", B: "algemeen" },
+  { label: "6. Focus op",           A: "cliënt",         B: "begeleider" },
+  { label: "7. Videostructuur",     A: "lineair",        B: "interactief" },
+  { label: "8. Implementatie",      A: "losse onderdelen", B: "geïntegreerd" },
+  { label: "9. Tempo",              A: "vast",           B: "instelbaar" }
 ];
 
-// 4. Data ophalen en aggregeren
+// 4. Haal de FFF-responses op uit Firestore en aggregeer de tellingen
 async function fetchAndAggregateFFFResponses() {
   try {
     const querySnap = await getDocs(collection(db, "fff-bijeenkomstResponses"));
@@ -41,31 +41,33 @@ async function fetchAndAggregateFFFResponses() {
       responses.push(doc.data());
     });
 
-    const numQuestions = fields.length; // Verwachte 9 vragen
+    console.log("🔎 Ontvangen documenten:", responses);
+
+    const numQuestions = fields.length; // Verwacht 9 antwoorden
     const countsA = Array(numQuestions).fill(0);
     const countsB = Array(numQuestions).fill(0);
 
-    // Voor elke response: gebruik het veld "antwoorden" (een array)
     responses.forEach((response, docIndex) => {
       const answers = response.antwoorden;
-      if (Array.isArray(answers)) {
-        answers.forEach((answer, idx) => {
-          if (typeof answer === "string") {
-            const cleaned = answer.trim().toUpperCase();
-            if (cleaned === "A") {
-              countsA[idx]++;
-            } else if (cleaned === "B") {
-              countsB[idx]++;
-            }
-          }
-        });
-      } else {
-        console.warn(`Document #${docIndex + 1} bevat geen 'antwoorden' array:`, response);
+      if (!Array.isArray(answers)) {
+        console.warn(`Document #${docIndex + 1} bevat geen 'antwoorden' array; overslaan.`);
+        return;
       }
+      answers.forEach((answer, idx) => {
+        if (idx >= numQuestions) return; // Negeer extra items
+        // Vergelijk case-insensitief
+        const cleaned = answer.trim().toLowerCase();
+        if (cleaned === fields[idx].A.toLowerCase()) {
+          countsA[idx]++;
+        } else if (cleaned === fields[idx].B.toLowerCase()) {
+          countsB[idx]++;
+        } else {
+          console.warn(`Geen match voor vraag ${idx + 1} in document #${docIndex + 1}, antwoord="${answer}"`);
+        }
+      });
     });
 
-    console.log("Aggregated Data (Optie A):", countsA);
-    console.log("Aggregated Data (Optie B):", countsB);
+    console.log("Aggregated Data => A:", countsA, "B:", countsB);
     return { countsA, countsB };
   } catch (error) {
     console.error("Fout bij ophalen van FFF-responses:", error);
@@ -73,7 +75,7 @@ async function fetchAndAggregateFFFResponses() {
   }
 }
 
-// 5. Chart.js aanmaken met de geaggregeerde data
+// 5. Maak de Chart.js bar chart aan met de geaggregeerde data
 async function renderFFFChart() {
   const aggregated = await fetchAndAggregateFFFResponses();
   if (!aggregated) return;
@@ -83,7 +85,7 @@ async function renderFFFChart() {
 
   const canvasEl = document.getElementById("fffChart");
   if (!canvasEl) {
-    console.warn("Geen canvas met id 'fffChart' gevonden in de HTML.");
+    console.warn("Geen #fffChart canvas gevonden in de HTML.");
     return;
   }
   const ctx = canvasEl.getContext("2d");
@@ -91,7 +93,7 @@ async function renderFFFChart() {
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: labels,
+      labels,
       datasets: [
         {
           label: "Optie A",
@@ -138,7 +140,7 @@ async function renderFFFChart() {
   });
 }
 
-// 6. Ruwe data weergeven in een <pre> element met id "rawDataContainer"
+// 6. Laad de ruwe data in een <pre> element met id "rawDataContainer"
 async function loadRawData() {
   try {
     const querySnap = await getDocs(collection(db, "fff-bijeenkomstResponses"));
@@ -155,7 +157,7 @@ async function loadRawData() {
   }
 }
 
-// 7. Zorg dat de chart en ruwe data worden gerenderd nadat de DOM volledig is geladen
+// 7. Zodra de DOM geladen is, render de chart en laad de ruwe data
 document.addEventListener("DOMContentLoaded", () => {
   renderFFFChart();
   loadRawData();
