@@ -40,7 +40,6 @@ async function fetchAndAggregateFFFResponses() {
     querySnap.forEach(doc => {
       responses.push(doc.data());
     });
-
     console.log("🔎 Ontvangen documenten:", responses);
 
     const numQuestions = fields.length; // Verwacht 9 antwoorden
@@ -55,14 +54,16 @@ async function fetchAndAggregateFFFResponses() {
       }
       answers.forEach((answer, idx) => {
         if (idx >= numQuestions) return; // Negeer extra items
-        // Vergelijk case-insensitief
-        const cleaned = answer.trim().toLowerCase();
-        if (cleaned === fields[idx].A.toLowerCase()) {
+        // Verwijder leestekens en extra spaties, en vergelijk case-insensitief
+        const cleaned = answer.trim().toLowerCase().replace(/[.,!?]/g, "");
+        const expectedA = fields[idx].A.toLowerCase().replace(/[.,!?]/g, "");
+        const expectedB = fields[idx].B.toLowerCase().replace(/[.,!?]/g, "");
+        if (cleaned === expectedA) {
           countsA[idx]++;
-        } else if (cleaned === fields[idx].B.toLowerCase()) {
+        } else if (cleaned === expectedB) {
           countsB[idx]++;
         } else {
-          console.warn(`Geen match voor vraag ${idx + 1} in document #${docIndex + 1}, antwoord="${answer}"`);
+          console.warn(`Geen match voor vraag ${idx + 1} in document #${docIndex + 1}, antwoord="${answer}" (cleaned="${cleaned}")`);
         }
       });
     });
@@ -157,7 +158,7 @@ async function loadRawData() {
   }
 }
 
-// 7. Zodra de DOM geladen is, render de chart en laad de ruwe data
+// 7. Zodra de DOM volledig is geladen, render de chart en laad de ruwe data
 document.addEventListener("DOMContentLoaded", () => {
   renderFFFChart();
   loadRawData();
