@@ -1,15 +1,12 @@
-// fffchart.js (Firebase v9)
+// fffchart.js (nieuwe modulaire Firebase v9 aanpak)
 
+// 1. Importeer Firebase modulaire modules (zonder -compat)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  getDocs
-} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
-// 1. Firebase config
+// 2. Firebase configuratie & initialisatie
 const firebaseConfig = {
-  apiKey: "AIzaSyCWMY...",
+  apiKey: "AIzaSyCWMYvuSm2vuq85Kr3LjeZ5NyJRHn8XnJs",
   authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
   projectId: "ontwerpgerichtonderzoek",
   storageBucket: "ontwerpgerichtonderzoek.firebasestorage.app",
@@ -18,25 +15,24 @@ const firebaseConfig = {
   measurementId: "G-078FVL26HV"
 };
 
-// 2. Initialiseer Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 console.log("✅ Firebase (v9) succesvol geïnitialiseerd!");
 
-// 3. Definieer de velden en hun opties
+// 3. Definieer de vragen met labels en de verwachte opties
 const fields = [
-  { name: "pictogram",     label: "1. Pictogramstijl",    optieA: "realistisch",   optieB: "Abstract" },
-  { name: "emotie",        label: "2. Emotie-uitdrukking", optieA: "neutraal",      optieB: "expressief" },
-  { name: "kleur",         label: "3. Kleurgebruik",       optieA: "Monochroom",    optieB: "kleurgecodeerd" },
-  { name: "tekst",         label: "4. Tekstgebruik",       optieA: "informatief",   optieB: "visueel" },
-  { name: "directie",      label: "5. Directie uitleg",    optieA: "situatiegericht", optieB: "algemeen" },
-  { name: "focus",         label: "6. Focus op",           optieA: "cliënt",        optieB: "begeleider" },
-  { name: "video",         label: "7. Videostructuur",     optieA: "lineair",       optieB: "interactief" },
-  { name: "implementatie", label: "8. Implementatie",      optieA: "losse onderdelen", optieB: "geïntegreerd" },
-  { name: "tempo",         label: "9. Tempo",              optieA: "vast",          optieB: "instelbaar" }
+  { label: "1. Pictogramstijl", optieA: "realistisch", optieB: "abstract" },
+  { label: "2. Emotie-uitdrukking", optieA: "neutraal",     optieB: "expressief" },
+  { label: "3. Kleurgebruik",     optieA: "monochroom",   optieB: "kleurgecodeerd" },
+  { label: "4. Tekstgebruik",     optieA: "informatie voornamelijk als tekst", optieB: "korte tekst, ondersteund door visuele elementen" },
+  { label: "5. Directie uitleg",  optieA: "situatiegericht", optieB: "algemeen" },
+  { label: "6. Focus op",         optieA: "cliënt",       optieB: "begeleider" },
+  { label: "7. Videostructuur",   optieA: "lineair",      optieB: "interactief" },
+  { label: "8. Implementatie",    optieA: "losse onderdelen", optieB: "geïntegreerd" },
+  { label: "9. Tempo",            optieA: "vast",         optieB: "instelbaar" }
 ];
 
-// 4. Data ophalen & aggregeren
+// 4. Data ophalen en aggregeren
 async function fetchAndAggregateFFFResponses() {
   try {
     const querySnap = await getDocs(collection(db, "fff-bijeenkomstResponses"));
@@ -45,32 +41,31 @@ async function fetchAndAggregateFFFResponses() {
       responses.push(doc.data());
     });
 
-    console.log("🔎 Ontvangen documenten:", responses); // Debug
+    const numQuestions = fields.length; // Verwachte 9 vragen
+    const countsA = Array(numQuestions).fill(0);
+    const countsB = Array(numQuestions).fill(0);
 
-    // Arrays voor tellingen
-    const countsA = Array(fields.length).fill(0);
-    const countsB = Array(fields.length).fill(0);
-
-    // Loop door alle responses
+    // Voor elke response: gebruik het veld "antwoorden" (een array)
     responses.forEach((response, docIndex) => {
-      console.log(`=== Document #${docIndex + 1} ===`, response); // Debug
-      fields.forEach((field, idx) => {
-        const value = response[field.name]; // Bv. response["pictogram"]
-        console.log(`  Veld: ${field.name} =>`, value); // Debug
-        if (value && typeof value === "string") {
-          const cleaned = value.trim().toLowerCase();
-          // Debug info
-          console.log(`    cleaned="${cleaned}", A="${field.optieA}", B="${field.optieB}"`);
-          if (cleaned === field.optieA.toLowerCase()) {
-            countsA[idx]++;
-          } else if (cleaned === field.optieB.toLowerCase()) {
-            countsB[idx]++;
+      const answers = response.antwoorden;
+      if (Array.isArray(answers)) {
+        answers.forEach((answer, idx) => {
+          if (typeof answer === "string") {
+            const cleaned = answer.trim().toUpperCase();
+            if (cleaned === "A") {
+              countsA[idx]++;
+            } else if (cleaned === "B") {
+              countsB[idx]++;
+            }
           }
-        }
-      });
+        });
+      } else {
+        console.warn(`Document #${docIndex + 1} bevat geen 'antwoorden' array:`, response);
+      }
     });
 
-    console.log("Aggregated Data (A/B):", countsA, countsB); // Debug
+    console.log("Aggregated Data (Optie A):", countsA);
+    console.log("Aggregated Data (Optie B):", countsB);
     return { countsA, countsB };
   } catch (error) {
     console.error("Fout bij ophalen van FFF-responses:", error);
@@ -78,17 +73,17 @@ async function fetchAndAggregateFFFResponses() {
   }
 }
 
-// 5. Chart.js aanmaken
+// 5. Chart.js aanmaken met de geaggregeerde data
 async function renderFFFChart() {
   const aggregated = await fetchAndAggregateFFFResponses();
   if (!aggregated) return;
 
   const { countsA, countsB } = aggregated;
-  const labels = fields.map(f => f.label);
+  const labels = fields.map(field => field.label);
 
   const canvasEl = document.getElementById("fffChart");
   if (!canvasEl) {
-    console.warn("Geen #fffChart canvas gevonden in de HTML.");
+    console.warn("Geen canvas met id 'fffChart' gevonden in de HTML.");
     return;
   }
   const ctx = canvasEl.getContext("2d");
@@ -96,7 +91,7 @@ async function renderFFFChart() {
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels,
+      labels: labels,
       datasets: [
         {
           label: "Optie A",
@@ -143,12 +138,12 @@ async function renderFFFChart() {
   });
 }
 
-// 6. Ruwe data weergeven in <pre id="rawDataContainer">
+// 6. Ruwe data weergeven in een <pre> element met id "rawDataContainer"
 async function loadRawData() {
   try {
-    const snap = await getDocs(collection(db, "fff-bijeenkomstResponses"));
+    const querySnap = await getDocs(collection(db, "fff-bijeenkomstResponses"));
     const rawData = [];
-    snap.forEach(doc => {
+    querySnap.forEach(doc => {
       rawData.push({ id: doc.id, ...doc.data() });
     });
     const rawDataContainer = document.getElementById("rawDataContainer");
@@ -160,7 +155,7 @@ async function loadRawData() {
   }
 }
 
-// 7. DOMContentLoaded
+// 7. Zorg dat de chart en ruwe data worden gerenderd nadat de DOM volledig is geladen
 document.addEventListener("DOMContentLoaded", () => {
   renderFFFChart();
   loadRawData();
