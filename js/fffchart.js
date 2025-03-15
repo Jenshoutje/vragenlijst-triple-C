@@ -22,11 +22,11 @@ console.log("✅ Firebase (v9) succesvol geïnitialiseerd!");
 // 3. Definieer de 9 vragen en hun bijbehorende opties
 const fields = [
   { label: "1. Pictogramstijl",    A: "realistisch",    B: "abstract" },
-  { label: "2. Emotie-uitdrukking", A: "neutraal",       B: "expressief" },
-  { label: "3. Kleurgebruik",       A: "monochroom",     B: "kleurgecodeerd" },
-  { label: "4. Tekstgebruik",       A: "informatief",    B: "visueel" },
-  { label: "5. Directie uitleg",    A: "situatiegericht", B: "algemeen" },
-  { label: "6. Focus op",           A: "cliënt",         B: "begeleider" },
+  { label: "2. Emotie-uitdrukking", A: "neutraal",       B: "gebruik van expressie" },
+  { label: "3. Kleurgebruik",       A: "monochroom",     B: "kleur gecodeerd" },
+  { label: "4. Tekstgebruik",       A: "informatie voornamelijk als tekst",    B: "minder informatie als tekst, met visuele ondersteuning" },
+  { label: "5. Directie uitleg",    A: "situatie/client gerichte uitleg", B: "algemene richtlijnen" },
+  { label: "6. Focus op",           A: "focus op cliënt, cliënt in hoofdpersoon",         B: "focus op cliënt, begeleider als hoofdpersoon" },
   { label: "7. Videostructuur",     A: "lineair",        B: "interactief" },
   { label: "8. Implementatie",      A: "losse onderdelen", B: "geïntegreerd" },
   { label: "9. Tempo",              A: "vast",           B: "instelbaar" }
