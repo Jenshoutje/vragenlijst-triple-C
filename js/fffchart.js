@@ -2,13 +2,9 @@
 
 // 1. Importeer Firebase modulaire modules (zonder -compat)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  getDocs
-} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
-// 2. Firebase config & initialisatie
+// 2. Firebase config & initialisatie (vervang de placeholders door uw eigen waarden)
 const firebaseConfig = {
   apiKey: "AIzaSyCWMYvuSm2vuq85Kr3LjeZ5NyJRHn8XnJs",
   authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
@@ -23,7 +19,20 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 console.log("✅ Firebase (v9) succesvol geïnitialiseerd!");
 
-// 3. Data ophalen & aggregeren
+// 3. Definieer de velden en de bijbehorende opties
+const fields = [
+  { name: "pictogram", label: "1. Pictogramstijl", optieA: "realistisch", optieB: "abstract" },
+  { name: "emotie",    label: "2. Emotie-uitdrukking", optieA: "neutraal",     optieB: "expressief" },
+  { name: "kleur",     label: "3. Kleurgebruik",     optieA: "monochroom",   optieB: "kleurgecodeerd" },
+  { name: "tekst",     label: "4. Tekstgebruik",     optieA: "informatief",  optieB: "visueel" },
+  { name: "directie",  label: "5. Directie uitleg",  optieA: "situatiegericht", optieB: "algemeen" },
+  { name: "focus",     label: "6. Focus op",         optieA: "cliënt",       optieB: "begeleider" },
+  { name: "video",     label: "7. Videostructuur",   optieA: "lineair",      optieB: "interactief" },
+  { name: "implementatie", label: "8. Implementatie", optieA: "losse onderdelen", optieB: "geïntegreerd" },
+  { name: "tempo",     label: "9. Tempo",            optieA: "vast",         optieB: "instelbaar" }
+];
+
+// 4. Data ophalen & aggregeren
 async function fetchAndAggregateFFFResponses() {
   try {
     const querySnap = await getDocs(collection(db, "fff-bijeenkomstResponses"));
@@ -32,26 +41,26 @@ async function fetchAndAggregateFFFResponses() {
       responses.push(doc.data());
     });
 
-    // We gaan uit van 9 vragen, question1..question9
-    const numQuestions = 9;
+    const numQuestions = fields.length; // 9 vragen
     const countsA = Array(numQuestions).fill(0);
     const countsB = Array(numQuestions).fill(0);
 
-    // Tel voor elke response hoeveel keer A en B is gekozen
+    // Voor elke response: loop over de velden en tel de antwoorden
     responses.forEach(response => {
-      for (let i = 1; i <= numQuestions; i++) {
-        const key = `question${i}`; // "question1", "question2", etc.
-        const answer = response[key];
-        if (answer && typeof answer === "string") {
-          if (answer.toUpperCase() === "A") {
-            countsA[i - 1]++;
-          } else if (answer.toUpperCase() === "B") {
-            countsB[i - 1]++;
+      fields.forEach((field, idx) => {
+        const value = response[field.name];
+        if (value && typeof value === "string") {
+          const cleaned = value.trim().toLowerCase();
+          if (cleaned === field.optieA.toLowerCase()) {
+            countsA[idx]++;
+          } else if (cleaned === field.optieB.toLowerCase()) {
+            countsB[idx]++;
           }
         }
-      }
+      });
     });
 
+    console.log("Aggregated Data:", countsA, countsB);
     return { countsA, countsB };
   } catch (error) {
     console.error("Fout bij ophalen van FFF-responses:", error);
@@ -59,28 +68,14 @@ async function fetchAndAggregateFFFResponses() {
   }
 }
 
-// 4. Chart.js aanmaken met de geaggregeerde data
+// 5. Chart.js aanmaken met de geaggregeerde data
 async function renderFFFChart() {
-  // Haal data op
   const aggregated = await fetchAndAggregateFFFResponses();
   if (!aggregated) return;
 
   const { countsA, countsB } = aggregated;
+  const labels = fields.map(field => field.label);
 
-  // Labels voor de vragen
-  const vragen = [
-    "1. Pictogramstijl",
-    "2. Emotie-uitdrukking",
-    "3. Kleurgebruik",
-    "4. Tekstgebruik",
-    "5. Directie uitleg",
-    "6. Focus op",
-    "7. Videostructuur",
-    "8. Implementatie",
-    "9. Tempo"
-  ];
-
-  // Pak het canvas-element met id="fffChart"
   const canvasEl = document.getElementById("fffChart");
   if (!canvasEl) {
     console.warn("Geen #fffChart canvas gevonden in de HTML.");
@@ -88,11 +83,10 @@ async function renderFFFChart() {
   }
   const ctx = canvasEl.getContext("2d");
 
-  // Maak de bar chart
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: vragen,
+      labels: labels,
       datasets: [
         {
           label: "Optie A",
@@ -139,15 +133,14 @@ async function renderFFFChart() {
   });
 }
 
-// 5. Ruwe data in <pre id="rawDataContainer">
+// 6. Ruwe data weergeven in een <pre> element met id "rawDataContainer"
 async function loadRawData() {
   try {
-    const snap = await getDocs(collection(db, "fff-bijeenkomstResponses"));
+    const querySnap = await getDocs(collection(db, "fff-bijeenkomstResponses"));
     const rawData = [];
-    snap.forEach(doc => {
+    querySnap.forEach(doc => {
       rawData.push({ id: doc.id, ...doc.data() });
     });
-
     const rawDataContainer = document.getElementById("rawDataContainer");
     if (rawDataContainer) {
       rawDataContainer.textContent = JSON.stringify(rawData, null, 2);
@@ -157,7 +150,7 @@ async function loadRawData() {
   }
 }
 
-// 6. DOMContentLoaded: chart renderen + ruwe data
+// 7. Zorg dat de chart en ruwe data worden gerenderd nadat de DOM volledig is geladen
 document.addEventListener("DOMContentLoaded", () => {
   renderFFFChart();
   loadRawData();
