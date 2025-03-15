@@ -50,3 +50,34 @@ new Chart(ctx, {
     }
   }
 });
+
+// Zorg dat u Firebase al hebt geïnitialiseerd en een Firestore-referentie (db) heeft
+
+// Importeer indien nodig de compat modules
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js";
+
+// Veronderstel dat 'db' al is geïnitialiseerd, bijvoorbeeld:
+// const db = getFirestore(app);
+
+async function loadRawData() {
+  try {
+    // Haal alle documenten op uit de collectie "fff-bijeenkomstResponses"
+    const querySnapshot = await getDocs(collection(db, "fff-bijeenkomstResponses"));
+    const rawData = [];
+    querySnapshot.forEach(doc => {
+      rawData.push({ id: doc.id, ...doc.data() });
+    });
+    // Plaats de ruwe data in het pre-element met id "rawDataContainer"
+    const rawDataContainer = document.getElementById("rawDataContainer");
+    if (rawDataContainer) {
+      rawDataContainer.textContent = JSON.stringify(rawData, null, 2);
+    }
+  } catch (error) {
+    console.error("Fout bij laden van ruwe data:", error);
+  }
+}
+
+// Roep de functie aan zodra de DOM geladen is
+document.addEventListener("DOMContentLoaded", () => {
+  loadRawData();
+});
