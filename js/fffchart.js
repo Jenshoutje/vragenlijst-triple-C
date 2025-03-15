@@ -1,5 +1,5 @@
 // Stel dat u de data al heeft verzameld en verwerkt naar bijvoorbeeld:
-const vragen = ["Vraag 1", "Vraag 2", "Vraag 3", "Vraag 4", "Vraag 5", "Vraag 6", "Vraag 7", "Vraag 8", "Vraag 9", "Vraag 10"];
+const vragen = ["1. Pictogramstijl", "2. Emotie-uitdrukking", "3. Kleurgebruik", "4. Tekstgebruik", "5. Directie uitleg", "6. Focus op", "7. Videostructuur", "8. Implementatie", "9. Tempo"];
 const optieAData = [8, 6, 7, 9, 5, 6, 8, 7, 9, 6]; // aantal keer gekozen voor optie A per vraag
 const optieBData = [2, 4, 3, 1, 5, 4, 2, 3, 1, 4]; // aantal keer gekozen voor optie B per vraag
 
