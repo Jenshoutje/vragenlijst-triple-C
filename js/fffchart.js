@@ -1,22 +1,44 @@
+// fffchart.js
 
+// 1. Importeer Firebase (compat) modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js";
 
-// Functie om de FFF-responses uit Firebase op te halen en te aggregeren
+// 2. Firebase configuratie – vervang met uw eigen waarden
+const firebaseConfig = {
+   apiKey: "AIzaSyCWMYvuSm2vuq85Kr3LjeZ5NyJRHn8XnJs",
+  authDomain: "ontwerpgerichtonderzoek.firebaseapp.com",
+  projectId: "ontwerpgerichtonderzoek",
+  storageBucket: "ontwerpgerichtonderzoek.firebasestorage.app",
+  messagingSenderId: "1087936453818",
+  appId: "1:1087936453818:web:9ec4f6c8b8cbcc503ff683",
+  measurementId: "G-078FVL26HV"
+};
+
+// 3. Initialiseer Firebase en Firestore
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+console.log("✅ Firebase succesvol geïnitialiseerd!");
+
+// 4. Data ophalen en aggregeren (FFF-bijeenkomst)
 async function fetchAndAggregateFFFResponses() {
   try {
+    // Haal alle documenten op uit de collectie "fff-bijeenkomstResponses"
     const querySnapshot = await getDocs(collection(db, "fff-bijeenkomstResponses"));
     const responses = [];
     querySnapshot.forEach(doc => {
       responses.push(doc.data());
     });
 
-    const numQuestions = 9;
-    // Maak twee arrays met 9 elementen (vragen 1 tot en met 9), voor optie A en optie B
+    const numQuestions = 9; // aantal vragen
+    // arrays om aantal stemmen voor A en B per vraag bij te houden
     const countsA = Array(numQuestions).fill(0);
     const countsB = Array(numQuestions).fill(0);
 
+    // Tel voor elke response de keuze A of B
     responses.forEach(response => {
       for (let i = 1; i <= numQuestions; i++) {
-        const key = `question${i}`;
+        const key = `question${i}`;  // "question1", "question2", ...
         const answer = response[key];
         if (answer && typeof answer === "string") {
           if (answer.toUpperCase() === "A") {
@@ -35,13 +57,14 @@ async function fetchAndAggregateFFFResponses() {
   }
 }
 
-// Functie om de Chart.js grouped bar chart te renderen met dynamische data
+// 5. Chart.js renderen met de geaggregeerde data
 async function renderFFFChart() {
   const aggregated = await fetchAndAggregateFFFResponses();
-  if (!aggregated) return;
-  
+  if (!aggregated) return; // stop als er geen data is
+
   const { countsA, countsB } = aggregated;
   
+  // labels voor de x-as
   const vragen = [
     "1. Pictogramstijl",
     "2. Emotie-uitdrukking",
@@ -53,7 +76,8 @@ async function renderFFFChart() {
     "8. Implementatie",
     "9. Tempo"
   ];
-  
+
+  // pak het canvas element met id="fffChart"
   const ctx = document.getElementById('fffChart').getContext('2d');
   new Chart(ctx, {
     type: 'bar',
@@ -105,7 +129,7 @@ async function renderFFFChart() {
   });
 }
 
-// Functie om ruwe data op te halen en weer te geven in een <pre> element
+// 6. Ruwe data tonen in <pre id="rawDataContainer">
 async function loadRawData() {
   try {
     const querySnapshot = await getDocs(collection(db, "fff-bijeenkomstResponses"));
@@ -115,6 +139,7 @@ async function loadRawData() {
     });
     const rawDataContainer = document.getElementById("rawDataContainer");
     if (rawDataContainer) {
+      // toon de JSON data netjes met 2 spaties indent
       rawDataContainer.textContent = JSON.stringify(rawData, null, 2);
     }
   } catch (error) {
@@ -122,7 +147,7 @@ async function loadRawData() {
   }
 }
 
-// Zorg dat alle functies worden uitgevoerd nadat de DOM volledig is geladen
+// 7. Voer alles uit als de DOM geladen is
 document.addEventListener("DOMContentLoaded", () => {
   renderFFFChart();
   loadRawData();
