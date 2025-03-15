@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FFF-Bijeenkomst - Triple C Implementatie</title>
+  <link rel="stylesheet" href="css/matrixchart.css">
+  <!-- Indien u Chart.js of een andere visualisatiebibliotheek gebruikt -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="matrix-page">
+  <!-- Header / Navigatie -->
+  <header>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="onderzoek.html">Onderzoekspagina</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="define.html" class="active">Define</a></li>
+        <li><a href="develop.html">Develop</a></li>
+        <li><a href="deliver.html">Deliver</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Header met titel en uitleg -->
+  <header class="matrix-header">
+    <h1>FFF-Bijeenkomst - Triple C Implementatie</h1>
+    <p>Resultaten, interpretatie en vervolgstappen van de FFF-Bijeenkomst.</p>
+  </header>
+
+  <!-- Context en uitleg -->
+  <div class="decisioncontext-container">
+    <h2>Doel FFF-Bijeenkomst</h2>
+    <p>
+      Tijdens de FFF-bijeenkomst werden ideeën en inzichten verzameld over de uitdagingen en mogelijkheden in de implementatie van Triple C.
+      Deze bijeenkomst bood ruimte voor multidisciplinaire input.
+    </p>
+    <h3>Waarom deze bijeenkomst?</h3>
+    <p>
+      De FFF-methode faciliteert een snelle en creatieve uitwisseling, waardoor diverse perspectieven samenkomen en een breed gedragen visie ontstaat.
+    </p>
+  </div>
+
+  <!-- (Optioneel) Visualisatie / Chart -->
+  <main>
+    <section class="chart-section">
+      <div id="chart-container">
+        <canvas id="fffChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Interpretatie en vervolgstappen -->
+    <section class="matrix-interpretation">
+      <h2>Interpretatie van de Resultaten</h2>
+      <p>
+        De analyse van de FFF-bijeenkomst laat zien dat thema’s zoals samenwerking, procesverbetering en communicatie centraal staan.
+        Dit leidt tot de volgende vragen:
+      </p>
+      <ul>
+        <li>Welke ideeën zijn direct toepasbaar in de praktijk?</li>
+        <li>Hoe kunnen we de geïdentificeerde thema’s verder uitwerken in concrete actiepunten?</li>
+        <li>Welke vervolgstappen zijn noodzakelijk om de input van de bijeenkomst te implementeren?</li>
+      </ul>
+      <h2>Vervolgstappen</h2>
+      <p>
+        De uitkomsten vormen een belangrijke basis voor de volgende fase, waarin de input wordt omgezet naar concrete ontwerpcriteria.
+      </p>
+
+      <!-- Ruwe data sectie -->
+      <details class="raw-data">
+        <summary>Ruwe data</summary>
+        <pre id="rawDataContainer"></pre>
+      </details>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+  </footer>
+
+  <!-- JavaScript voor visualisatie, indien nodig -->
+  <script src="js/fffChart.js"></script>
+</body>
+</html>
