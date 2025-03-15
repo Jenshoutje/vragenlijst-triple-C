@@ -212,21 +212,6 @@ footer {
   font-size: 0.9rem;
   color: #555;
 }
-
-/* Responsiviteit */
-@media (max-width: 768px) {
-  header nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .chart-section {
-    padding: 20px;
-  }
-
-    /* Legenda styling */
-/* Container van de legenda */
-/* Legenda Container */
 .chart-legend {
   background: #fff;
   padding: 20px;
@@ -280,6 +265,22 @@ footer {
   font-weight: bold;
   margin-right: 5px;
 }
+
+/* Responsiviteit */
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .chart-section {
+    padding: 20px;
+  }
+
+    /* Legenda styling */
+/* Container van de legenda */
+/* Legenda Container */
+
 
 /* Responsiviteit */
 @media (max-width: 768px) {
