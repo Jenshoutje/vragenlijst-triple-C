@@ -448,29 +448,7 @@ p {
   margin: 0;
 }
 
-.diamondcontext {
-  background: #fff;
-  padding: 30px;
-  margin: 40px auto;
-  max-width: 900px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
 
-.diamondcontext h2 {
-  color: #6A35C1;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #6A35C1;
-  padding-bottom: 5px;
-}
-
-.diamondcontext p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
-}
 
 /**********************************************************/
 /* 7. Extra Links (Methodologie, Tools etc.)              */
