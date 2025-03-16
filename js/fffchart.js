@@ -24,9 +24,9 @@ const fields = [
   { label: "1. Pictogramstijl",    A: "realistisch",    B: "abstract" },
   { label: "2. Emotie-uitdrukking", A: "neutraal",       B: "gebruik van expressie" },
   { label: "3. Kleurgebruik",       A: "monochroom",     B: "kleur gecodeerd" },
-  { label: "4. Tekstgebruik",       A: "informatie voornamelijk als tekst",    B: "minder informatie als tekst, met visuele ondersteuning" },
-  { label: "5. Directie uitleg",    A: "situatie/client gerichte uitleg", B: "algemene richtlijnen" },
-  { label: "6. Focus op",           A: "focus op cliënt, cliënt in hoofdpersoon",         B: "focus op cliënt, begeleider als hoofdpersoon" },
+  { label: "4. Vorm van ondersteuning",       A: "informatie voornamelijk als tekst",    B: "minder informatie als tekst, met visuele ondersteuning" },
+  { label: "5. Scenario gevarieerde uitleg",    A: "situatie/client gerichte uitleg", B: "algemene richtlijnen" },
+  { label: "6. Vraag beschrijving",           A: "focus op cliënt, cliënt in hoofdpersoon",         B: "focus op cliënt, begeleider als hoofdpersoon" },
   { label: "7. Videostructuur",     A: "lineair",        B: "interactief" },
   { label: "8. Implementatie",      A: "losse onderdelen", B: "geïntegreerd" },
   { label: "9. Tempo",              A: "vast",           B: "instelbaar" }
