@@ -696,69 +696,100 @@ p {
 }
 
 /* Algemene container styling */
-.onderzoek-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    padding: 30px;
-}
-
-/* Kaarten met methodes */
+/* Algemene styling voor onderzoeksmethoden */
 .onderzoek-card {
-    width: 100%;
-    max-width: 500px;
-    background: #ffffff;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
 }
 
-/* Hover-effect */
-.onderzoek-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Titel stijl */
 .onderzoek-card h3 {
-    font-size: 1.5rem;
+    font-size: 22px;
     font-weight: bold;
-    margin-bottom: 10px;
-    color: #222;
+    color: #333;
+    margin-bottom: 12px;
 }
 
-/* Algemene tekst */
 .onderzoek-card p {
-    font-size: 1rem;
-    color: #444;
-    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
 }
 
-/* Uitklapbare details-knop */
+/* Knop voor uitklapbare secties */
 .onderzoek-card button {
-    background: #007BFF;
+    background-color: #0078D7;
     color: white;
     border: none;
-    padding: 8px 14px;
-    font-size: 1rem;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: 0.3s ease;
+    margin-top: 10px;
 }
 
 .onderzoek-card button:hover {
-    background: #0056b3;
+    background-color: #0056a3;
 }
 
-/* Verborgen sectie (voor extra uitleg en ruwe data) */
+/* Verborgen content standaard verbergen */
 .onderzoek-content {
     display: none;
-    margin-top: 15px;
-    font-size: 0.95rem;
-    color: #333;
-    border-top: 1px solid #ddd;
     padding-top: 10px;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+/* Stijl voor koppen binnen onderzoeksmethoden */
+.onderzoek-content h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+    margin-top: 20px;
+}
+
+.onderzoek-content h5 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+}
+
+/* Link naar ruwe data */
+.onderzoek-content a {
+    color: #0078D7;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.onderzoek-content a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .onderzoek-card {
+        padding: 15px;
+    }
+
+    .onderzoek-card h3 {
+        font-size: 20px;
+    }
+
+    .onderzoek-card p,
+    .onderzoek-content h4,
+    .onderzoek-content h5 {
+        font-size: 15px;
+    }
+
+    .onderzoek-card button {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
 }
