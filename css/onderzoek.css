@@ -694,3 +694,71 @@ p {
     grid-template-columns: 1fr; /* 1 kolom */
   }
 }
+
+/* Algemene container styling */
+.onderzoek-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px;
+}
+
+/* Kaarten met methodes */
+.onderzoek-card {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover-effect */
+.onderzoek-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Titel stijl */
+.onderzoek-card h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+/* Algemene tekst */
+.onderzoek-card p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* Uitklapbare details-knop */
+.onderzoek-card button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.onderzoek-card button:hover {
+    background: #0056b3;
+}
+
+/* Verborgen sectie (voor extra uitleg en ruwe data) */
+.onderzoek-content {
+    display: none;
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: #333;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
