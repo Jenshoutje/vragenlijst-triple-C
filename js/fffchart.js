@@ -190,15 +190,15 @@ function setupLegendInteractions(aggregatedData) {
 function getExtraContext(index) {
   // Vul dit aan met eigen toelichtingen, per vraag
   const contextArray = [
-    "Context bij pictogramstijl: hoe realistisch vs. abstract werkt voor cliënten.",
-    "Context bij emotie-uitdrukking: neutraal vs. expressief.",
-    "Context bij kleurgebruik: monochroom vs. kleur gecodeerd.",
-    "Context bij vorm van ondersteuning: veel tekst vs. visuele ondersteuning.",
-    "Context bij scenario's: situatiegericht vs. algemene richtlijnen.",
-    "Context bij focus: perspectief van cliënt vs. begeleider.",
-    "Context bij videostructuur: lineair vs. interactief.",
-    "Context bij implementatie: losse onderdelen vs. geïntegreerd.",
-    "Context bij tempo: vast vs. instelbaar."
+    "Pictogrammen spelen een belangrijke rol in visuele communicatie. Een realistische stijl kan herkenning en begrip vergroten, terwijl een abstracte stijl eenvoudiger en minder afleidend kan zijn. In de context van Triple C, waarin eenduidigheid en voorspelbaarheid essentieel zijn, is het van belang om te onderzoeken welke stijl het best aansluit bij begeleiders en cliënten.",
+    "Gezichtsuitdrukkingen kunnen ondersteuning bieden bij de interpretatie van emoties en situaties. Expressieve pictogrammen kunnen de herkenbaarheid vergroten, terwijl neutrale pictogrammen minder ruimte laten voor subjectieve interpretatie. Binnen Triple C, waar voorspelbare interacties centraal staan, is het relevant te bepalen welke mate van emotie-uitdrukking het meest bijdraagt aan de effectiviteit van de instructie.",
+    "Kleurgebruik kan structuur aanbrengen en de verwerking van informatie versnellen. Kleurgecodeerde pictogrammen kunnen categorieën verduidelijken en de herkenbaarheid van instructies verbeteren. Tegelijkertijd kan te veel kleur afleiding veroorzaken. In een omgeving waarin begeleiders snel moeten handelen, is het belangrijk om te bepalen of kleur een functionele toevoeging is of juist overbodige ruis creëert.",
+    "De mate van detail in instructiemateriaal beïnvloedt de manier waarop begeleiders informatie verwerken. Korte instructies kunnen efficiënter zijn in de dagelijkse praktijk, terwijl uitgebreide uitleg meer context biedt en helpt bij dieper begrip. Binnen Triple C, waar begeleiders onder tijdsdruk werken, is het van belang om de balans te vinden tussen beknoptheid en volledigheid.",
+    "Casusgestuurde instructie kan helpen om kennis beter toepasbaar te maken in de praktijk. Door concrete situaties uit te werken, kunnen begeleiders beter inschatten hoe Triple C in specifieke gevallen kan worden toegepast. Algemene richtlijnen bieden daarentegen een bredere houvast. Deze keuze heeft invloed op de mate waarin de instructievideo aansluit bij de praktijkervaringen van begeleiders.",
+    "De focus in visueel materiaal kan liggen op de begeleider, om praktische handvatten te bieden, of op de cliënt, om inzicht te geven in de impact van Triple C. De keuze tussen deze perspectieven heeft invloed op de manier waarop begeleiders zich betrokken voelen bij de instructie en hoe zij deze kennis in de praktijk toepassen.",
+    "Een lineaire video biedt een vaste structuur en volgorde van instructies, terwijl een interactieve video de mogelijkheid biedt om zelf keuzes te maken en de leerervaring af te stemmen op de gebruiker. Binnen Triple C kan een interactieve video bijdragen aan een betere toepassing in de praktijk, omdat begeleiders actief worden betrokken bij het leerproces.",
+    "Een instructievideo kan zelfstandig worden ingezet of worden geïntegreerd in een bredere scholing. Blended learning, waarbij digitale instructie wordt gecombineerd met reflectie en oefening, wordt vaak als effectiever beschouwd. Binnen Triple C is het relevant om te bepalen of een video op zichzelf voldoende ondersteuning biedt, of dat een combinatie met andere scholingsvormen wenselijk is.",
+    "De snelheid waarmee instructiemateriaal wordt aangeboden, heeft invloed op de leerervaring. Een vast tempo zorgt voor uniformiteit, terwijl een instelbaar tempo gebruikers de mogelijkheid biedt om de instructie aan te passen aan hun eigen leerstijl en behoefte. Dit kan vooral relevant zijn in een team waarin begeleiders met verschillende ervaringsniveaus werken."
   ];
   return contextArray[index] || "";
 }
