@@ -139,6 +139,8 @@ async function renderFFFChart() {
       }
     }
   });
+  
+  setupLegendInteractions(aggregated);
 }
 
 // 6. Laad de ruwe data in een <pre> element met id "rawDataContainer"
@@ -157,6 +159,83 @@ async function loadRawData() {
     console.error("Fout bij laden van ruwe data:", error);
   }
 }
+function setupLegendInteractions(aggregatedData) {
+  // Haal alle <li data-question="X"> in de legenda op
+  const legendItems = document.querySelectorAll(".chart-legend ul li");
+  if (!legendItems) return;
+
+  legendItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      // Lees de index uit data-question
+      const index = parseInt(item.dataset.question, 10);
+      if (isNaN(index)) return;
+
+      // Bereken percentages
+      const aCount = aggregatedData.countsA[index];
+      const bCount = aggregatedData.countsB[index];
+      const total = aCount + bCount;
+      const pctA = total > 0 ? Math.round((aCount / total) * 100) : 0;
+      const pctB = total > 0 ? Math.round((bCount / total) * 100) : 0;
+
+      // Eventueel extra context
+      const extra = getExtraContext(index);
+
+      // Toon pop-up
+      showLegendPopup(index, pctA, pctB, extra);
+    });
+  });
+}
+
+// 7. Voorbeeld extra context per vraag
+function getExtraContext(index) {
+  // Vul dit aan met eigen toelichtingen, per vraag
+  const contextArray = [
+    "Context bij pictogramstijl: hoe realistisch vs. abstract werkt voor cliënten.",
+    "Context bij emotie-uitdrukking: neutraal vs. expressief.",
+    "Context bij kleurgebruik: monochroom vs. kleur gecodeerd.",
+    "Context bij vorm van ondersteuning: veel tekst vs. visuele ondersteuning.",
+    "Context bij scenario's: situatiegericht vs. algemene richtlijnen.",
+    "Context bij focus: perspectief van cliënt vs. begeleider.",
+    "Context bij videostructuur: lineair vs. interactief.",
+    "Context bij implementatie: losse onderdelen vs. geïntegreerd.",
+    "Context bij tempo: vast vs. instelbaar."
+  ];
+  return contextArray[index] || "";
+}
+
+// 8. Pop-up tonen
+function showLegendPopup(index, pctA, pctB, extraContext) {
+  const popup = document.getElementById("legendPopup");
+  if (!popup) {
+    console.warn("Geen #legendPopup element in HTML gevonden.");
+    return;
+  }
+
+  const contentDiv = popup.querySelector(".legend-popup-content");
+  if (!contentDiv) {
+    console.warn("Geen .legend-popup-content element in #legendPopup gevonden.");
+    return;
+  }
+
+  // Stel de HTML van de pop-up samen
+  contentDiv.innerHTML = `
+    <h4>Vraag ${index + 1}</h4>
+    <p><strong>Optie A:</strong> ${pctA}%</p>
+    <p><strong>Optie B:</strong> ${pctB}%</p>
+    <p class="extra-info">${extraContext}</p>
+    <button id="closePopupBtn">Sluiten</button>
+  `;
+
+  // Pop-up zichtbaar maken (verwijder .hidden class)
+  popup.classList.remove("hidden");
+
+  // Sluitknop
+  const closeBtn = document.getElementById("closePopupBtn");
+  closeBtn.addEventListener("click", () => {
+    popup.classList.add("hidden");
+  });
+}
+
 
 // 7. Zodra de DOM volledig is geladen, render de chart en laad de ruwe data
 document.addEventListener("DOMContentLoaded", () => {
