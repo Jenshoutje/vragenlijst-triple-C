@@ -770,7 +770,7 @@ p {
   width: 100%;       /* Kaart vult nu de hele breedte van .discover-methods */
   margin-bottom: 20px; /* Ruimte tussen kaarten */
   padding: 20px;
-  text-align: left;
+  text-align: center;
 }
 
 .onderzoek-card h3 {
