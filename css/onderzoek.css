@@ -758,12 +758,7 @@ p {
 
 /* Container voor de method-cards */
 /* Container (optioneel) - enkelkoloms layout */
-.discover-methods {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
+
 
 /* Card-styling - verwijder vaste breedte en maak 100% */
 .onderzoek-card {
@@ -901,4 +896,25 @@ p {
   .onderzoek-conclusie ul li {
     font-size: 0.9rem;
   }
+}
+
+.next-phase-button-container {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.next-phase-button {
+  background-color: #6A35C1;
+  color: #fff;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.next-phase-button:hover {
+  background-color: #53298f;
+  transform: scale(1.05);
 }
