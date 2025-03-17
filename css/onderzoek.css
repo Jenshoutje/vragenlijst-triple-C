@@ -759,15 +759,16 @@ p {
 /* Container voor de method-cards */
 /* Container (optioneel) - enkelkoloms layout */
 .discover-methods {
-  /* Zorgt dat alle cards onder elkaar komen */
-  display: block;
-  max-width: 800px; /* Pas aan naar wens */
-  margin: 0 auto;   /* Centreert de container horizontaal */
-  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 /* Card-styling - verwijder vaste breedte en maak 100% */
 .onderzoek-card {
+  flex: 1 1 600px; /* Zorgt ervoor dat elke kaart minimaal 300px breed is en evenredig groeit */
+  max-width: 300px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
