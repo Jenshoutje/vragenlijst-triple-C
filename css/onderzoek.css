@@ -772,11 +772,11 @@ p {
 }
 
 .onderzoek-card {
-  background: #7e4fff63;       /* of #fff, naar keuze */
+  background: #fff;       /* of #fff, naar keuze */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   width: 100%;                /* Vul de containerbreedte */
-  max-width: 600px;           /* Maar nooit breder dan 600px */
+  max-width: 750px;           /* Maar nooit breder dan 600px */
   margin: 0 auto;             /* Zorg dat de card zelf ook gecentreerd blijft */
   padding: 20px;
   text-align: center;         /* Tekst in het midden, optioneel */
@@ -927,3 +927,32 @@ p {
   background-color: #53298f;
   transform: scale(1.05);
 }
+
+
+.toolsdeel {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.tooldeel {
+  margin-bottom: 40px;
+}
+
+.toolsdeel  h2 {
+  color: #6A35C1;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #6A35C1;
+}
+
+.toolsdeel h3 {
+  color: #6A35C1;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
