@@ -890,3 +890,53 @@ p {
 .close:hover {
   color: #000;
 }
+
+.onderzoek-conclusie {
+  background: #fff;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.onderzoek-conclusie h2 {
+  font-size: 2rem;
+  color: #6A35C1;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 10px;
+}
+
+.onderzoek-conclusie p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.onderzoek-conclusie ul {
+  list-style: disc inside;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.onderzoek-conclusie ul li {
+  margin-bottom: 10px;
+}
+
+/* Responsive aanpassingen voor mobiele apparaten */
+@media (max-width: 768px) {
+  .onderzoek-conclusie {
+    padding: 20px;
+    margin: 20px auto;
+  }
+  .onderzoek-conclusie h2 {
+    font-size: 1.5rem;
+  }
+  .onderzoek-conclusie p,
+  .onderzoek-conclusie ul li {
+    font-size: 0.9rem;
+  }
+}
