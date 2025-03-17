@@ -764,7 +764,7 @@ p {
 .onderzoek-card {
   flex: 1 1 600px; /* Zorgt ervoor dat elke kaart minimaal 300px breed is en evenredig groeit */
   max-width: 600px;
-  background: #fff;
+  background: #7e4fff63;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   width: 100%;       /* Kaart vult nu de hele breedte van .discover-methods */
