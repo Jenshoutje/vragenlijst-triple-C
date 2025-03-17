@@ -796,21 +796,22 @@ p {
 
 
 /* Container voor de method-cards */
+/* Container (optioneel) - enkelkoloms layout */
 .discover-methods {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin: 30px auto;
-  max-width: 1200px;
+  /* Zorgt dat alle cards onder elkaar komen */
+  display: block;
+  max-width: 800px; /* Pas aan naar wens */
+  margin: 0 auto;   /* Centreert de container horizontaal */
+  padding: 20px;
 }
 
-/* Card-styling */
+/* Card-styling - verwijder vaste breedte en maak 100% */
 .onderzoek-card {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  width: 300px; /* Pas aan naar wens */
+  width: 100%;       /* Kaart vult nu de hele breedte van .discover-methods */
+  margin-bottom: 20px; /* Ruimte tussen kaarten */
   padding: 20px;
   text-align: left;
 }
@@ -826,6 +827,7 @@ p {
   margin-bottom: 15px;
 }
 
+/* Stijl voor de knop die de modal opent */
 .read-more-btn {
   background: #6A35C1;
   color: #fff;
@@ -836,11 +838,12 @@ p {
   font-size: 0.9rem;
   font-weight: bold;
 }
+
 .read-more-btn:hover {
   background: #53298f; 
 }
 
-/* Modal overlay */
+/* Modal overlay (ongewijzigd) */
 .modal {
   display: none; 
   position: fixed;
@@ -852,7 +855,7 @@ p {
   padding: 20px;
 }
 
-/* Modal content */
+/* Modal content (ongewijzigd) */
 .modal-content {
   background: #fff;
   margin: 50px auto;
@@ -874,7 +877,7 @@ p {
   line-height: 1.6;
 }
 
-/* Sluitknop in de modal */
+/* Sluitknop in de modal (ongewijzigd) */
 .close {
   position: absolute;
   top: 15px; 
