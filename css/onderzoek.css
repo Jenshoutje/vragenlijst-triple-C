@@ -761,16 +761,25 @@ p {
 
 
 /* Card-styling - verwijder vaste breedte en maak 100% */
+.discover-methods {
+  display: flex;
+  flex-direction: column; /* Zet de kaarten onder elkaar */
+  align-items: center;    /* Centreert de kaarten horizontaal */
+  gap: 20px;              /* Ruimte tussen de kaarten */
+  max-width: 1200px;      /* Of een andere max-breedte naar wens */
+  margin: 0 auto;         /* Centreert de hele container */
+  padding: 20px;
+}
+
 .onderzoek-card {
-  flex: 1 1 600px; /* Zorgt ervoor dat elke kaart minimaal 300px breed is en evenredig groeit */
-  max-width: 600px;
-  background: #7e4fff63;
+  background: #7e4fff63;       /* of #fff, naar keuze */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  width: 100%;       /* Kaart vult nu de hele breedte van .discover-methods */
-  margin-bottom: 20px; /* Ruimte tussen kaarten */
+  width: 100%;                /* Vul de containerbreedte */
+  max-width: 600px;           /* Maar nooit breder dan 600px */
+  margin: 0 auto;             /* Zorg dat de card zelf ook gecentreerd blijft */
   padding: 20px;
-  text-align: center;
+  text-align: center;         /* Tekst in het midden, optioneel */
 }
 
 .onderzoek-card h3 {
