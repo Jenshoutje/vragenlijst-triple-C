@@ -768,7 +768,7 @@ p {
 /* Card-styling - verwijder vaste breedte en maak 100% */
 .onderzoek-card {
   flex: 1 1 600px; /* Zorgt ervoor dat elke kaart minimaal 300px breed is en evenredig groeit */
-  max-width: 300px;
+  max-width: 600px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
