@@ -436,12 +436,14 @@ p {
   margin-bottom: 20px;
 }
 
-.tool-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+.toold-card {
+    display: flex;
+    gap: 34px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-content: flex-end;
 }
+
 
 .tool-card {
   background: #f9f9f9;
