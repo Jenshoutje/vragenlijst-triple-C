@@ -308,6 +308,32 @@ footer {
   background: #53248f;
 }
 
+  .next-phase-btn {
+  display: inline-block;
+  background-color: #6A35C1;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+}
+
+    
+.next-phase-btn:hover {
+  background-color: #53298f;
+  transform: scale(1.05);
+}
+
+.chart-illustration {
+  display: block;       /* Zorgt ervoor dat de afbeelding op een nieuwe regel begint */
+  max-width: 100%;      /* Past de breedte aan tot max. 100% van de container */
+  height: auto;         /* Houdt de verhoudingen in stand */
+  margin: 0 auto;       /* Centreert de afbeelding horizontaal (in combinatie met display:block) */
+}
+
 /* Responsiviteit */
 @media (max-width: 768px) {
   header nav ul {
@@ -340,20 +366,4 @@ footer {
   padding: 10px;
 }
 
-    .next-phase-btn {
-  display: inline-block;
-  background-color: #6A35C1;
-  color: #fff;
-  text-decoration: none;
-  padding: 12px 25px;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-top: 20px;
-}
-
-.next-phase-btn:hover {
-  background-color: #53298f;
-  transform: scale(1.05);
-}
+  
