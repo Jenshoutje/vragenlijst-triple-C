@@ -958,13 +958,13 @@ p {
 
 /* 1. De nieuwe sectie-bubble */
 .section-bubble {
-  background: #fafafa;      /* Lichte grijstint (of gebruik een lichte gradient) */
+  background: #dc9aff;      /* Lichte grijstint (of gebruik een lichte gradient) */
   border-radius: 15px;      /* Afgeronde hoeken */
   padding: 40px;            /* Ruime padding voor de “bubble”-look */
   margin: 40px auto;        /* Ruimte boven/onder, en center in horizontale richting */
   max-width: 1200px;        /* Maximale breedte */
   box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtiele schaduw */
-  text-align: center;       /* Kop en inleidende tekst gecentreerd */
+  text-align: left;       /* Kop en inleidende tekst gecentreerd */
 }
 
 /* 2. Eventueel styling voor de h2 en p binnen .section-bubble */
