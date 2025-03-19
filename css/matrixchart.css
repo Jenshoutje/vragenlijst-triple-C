@@ -327,12 +327,6 @@ footer {
   transform: scale(1.05);
 }
 
-.chart-illustration {
-  display: block;       /* Zorgt ervoor dat de afbeelding op een nieuwe regel begint */
-  max-width: 100%;      /* Past de breedte aan tot max. 100% van de container */
-  height: auto;         /* Houdt de verhoudingen in stand */
-  margin: 0 auto;       /* Centreert de afbeelding horizontaal (in combinatie met display:block) */
-}
 
 /* Responsiviteit */
 @media (max-width: 768px) {
