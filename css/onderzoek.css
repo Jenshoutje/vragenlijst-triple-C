@@ -364,6 +364,23 @@ p {
 /**********************************************************/
 /* 6. Introductie & Tool Outcome Dashboard                */
 /**********************************************************/
+.timeline-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.timeline-container h2 {
+  color: #6A35C1;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
 
 .introductie-aanleiding {
   background: #fff;
