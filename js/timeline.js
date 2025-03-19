@@ -1,45 +1,75 @@
-document.addEventListener("DOMContentLoaded", function() {
-  // Voorbeeld data: Pas dit aan op basis van jouw verslagdata
-  var items = new vis.DataSet([
-    { id: 1, content: 'Discover', start: '2025-01-01', title: 'Inleiding Discoverfase' },
-    { id: 2, content: 'Define',   start: '2025-03-01', title: 'Uitvoering Definefase' },
-    { id: 3, content: 'Develop',  start: '2025-05-01', title: 'Ontwikkeling en prototypes' },
-    { id: 4, content: 'Deliver',  start: '2025-07-01', title: 'Implementatie en evaluatie' }
+// timeline.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Definieer de timeline-items
+  const timelineItems = new vis.DataSet([
+    {
+      id: 1,
+      content: '<a href="discover.html#fly" target="_blank">Fly on the Wall</a>',
+      start: '2024-07-01',
+      group: 'Discover'
+    },
+    {
+      id: 2,
+      content: '<a href="discover.html#fff" target="_blank">FFF-Bijeenkomst</a>',
+      start: '2024-07-10',
+      group: 'Discover'
+    },
+    {
+      id: 3,
+      content: '<a href="discover.html#contextual" target="_blank">Contextual Interviews</a>',
+      start: '2024-07-20',
+      group: 'Discover'
+    },
+    {
+      id: 4,
+      content: '<a href="matrixchart.html" target="_blank">Decision Matrix</a>',
+      start: '2024-08-01',
+      group: 'Define'
+    },
+    {
+      id: 5,
+      content: '<a href="mindmapchart.html" target="_blank">Mindmap Chart</a>',
+      start: '2024-08-10',
+      group: 'Define'
+    }
   ]);
 
-  var container = document.getElementById('timeline');
-  var options = {
+  // 2. Definieer de groepen (fases)
+  const timelineGroups = new vis.DataSet([
+    { id: 'Discover', content: 'Discover fase' },
+    { id: 'Define', content: 'Define fase' }
+  ]);
+
+  // 3. Selecteer de container in de HTML waar de tijdlijn moet komen
+  const container = document.getElementById('timeline-container');
+  if (!container) {
+    console.error("Geen timeline-container gevonden in de HTML.");
+    return;
+  }
+
+  // 4. Definieer opties voor de tijdlijn
+  const options = {
     width: '100%',
-    height: '200px',
+    height: '300px',
+    stack: true,
+    groupOrder: 'content', // Sorteer groepen op inhoud
+    editable: false,
     margin: {
       item: 20
     },
-    selectable: true,
-    clickToUse: true,
-    showCurrentTime: true
+    selectable: true
   };
 
-  // Maak de tijdlijn aan
-  var timeline = new vis.Timeline(container, items, options);
+  // 5. Maak de tijdlijn aan
+  const timeline = new vis.Timeline(container, timelineItems, timelineGroups, options);
 
-  // Voeg een event listener toe: klik op een item leidt naar de bijbehorende pagina
-  timeline.on('select', function(properties) {
+  // Optioneel: Event listener voor wanneer een item wordt geselecteerd
+  timeline.on('select', function (properties) {
     if (properties.items.length > 0) {
-      var selectedId = properties.items[0];
-      switch (selectedId) {
-        case 1:
-          window.location.href = 'discover.html';
-          break;
-        case 2:
-          window.location.href = 'define.html';
-          break;
-        case 3:
-          window.location.href = 'develop.html';
-          break;
-        case 4:
-          window.location.href = 'deliver.html';
-          break;
-      }
+      const selectedItem = timelineItems.get(properties.items[0]);
+      console.log("Geselecteerd item:", selectedItem.content);
+      // Hier kun je eventueel extra acties ondernemen
     }
   });
 });
