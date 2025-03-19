@@ -958,7 +958,7 @@ p {
 
 /* 1. De nieuwe sectie-bubble */
 .section-bubble {
-  background: #dc9aff;      /* Lichte grijstint (of gebruik een lichte gradient) */
+  background: #dc9aff4f;      /* Lichte grijstint (of gebruik een lichte gradient) */
   border-radius: 15px;      /* Afgeronde hoeken */
   padding: 40px;            /* Ruime padding voor de “bubble”-look */
   margin: 40px auto;        /* Ruimte boven/onder, en center in horizontale richting */
