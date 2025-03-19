@@ -1035,3 +1035,75 @@ p {
 .read-more-btn:hover {
   background: #53298f; 
 }
+
+.tool-timeline {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Algemeen styling voor elk timeline-item */
+.timeline-item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Header van het item (altijd zichtbaar) */
+.timeline-header {
+  background: #6A35C1;
+  color: #fff;
+  padding: 15px;
+  cursor: default;
+}
+.timeline-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Samenvatting: direct zichtbaar inhoud */
+.timeline-summary {
+  padding: 15px;
+  text-align: left;
+}
+.timeline-summary p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #555;
+}
+.read-more-btn {
+  display: inline-block;
+  background: #6A35C1;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+.read-more-btn:hover {
+  background: #53298f;
+}
+
+/* Responsive aanpassingen */
+@media (max-width: 768px) {
+  .tool-timeline {
+    width: 95%;
+    padding: 10px;
+  }
+  .timeline-header h3 {
+    font-size: 1.3rem;
+  }
+  .timeline-summary p {
+    font-size: 0.95rem;
+  }
+  .read-more-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
