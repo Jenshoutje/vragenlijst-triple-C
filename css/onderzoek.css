@@ -956,3 +956,82 @@ p {
   margin-bottom: 10px;
 }
 
+/* 1. De nieuwe sectie-bubble */
+.section-bubble {
+  background: #fafafa;      /* Lichte grijstint (of gebruik een lichte gradient) */
+  border-radius: 15px;      /* Afgeronde hoeken */
+  padding: 40px;            /* Ruime padding voor de “bubble”-look */
+  margin: 40px auto;        /* Ruimte boven/onder, en center in horizontale richting */
+  max-width: 1200px;        /* Maximale breedte */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtiele schaduw */
+  text-align: center;       /* Kop en inleidende tekst gecentreerd */
+}
+
+/* 2. Eventueel styling voor de h2 en p binnen .section-bubble */
+.section-bubble h2 {
+  color: #6A35C1;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.section-bubble p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* 3. De container met de methode-cards */
+.discover-methods {
+  display: flex;            /* Zet op flex, zodat je kaarten kunt uitlijnen */
+  flex-direction: column;   /* Alles onder elkaar in één kolom */
+  align-items: center;      /* Centreer de kaarten horizontaal */
+  gap: 30px;                /* Ruimte tussen de kaarten */
+  max-width: 900px;         /* Eventueel max. breedte voor de kaarten zelf */
+  margin: 0 auto;           /* Centreer binnen de .section-bubble */
+}
+
+/* 4. De onderzoek-cards zelf (wit) */
+.onderzoek-card {
+  background: #fff; /* Houd de kaart wit, zodat 'ie opvalt in de .section-bubble */
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 100%;      /* Laat de kaart de volledige breedte van .discover-methods benutten */
+  max-width: 600px; /* Beperk de breedte nog wat, zodat de tekst prettig blijft */
+  padding: 20px;
+  text-align: left; /* Tekst in de kaart links uitlijnen */
+}
+
+/* Eventueel wat hover-effect */
+.onderzoek-card:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.onderzoek-card h3 {
+  margin-top: 0;
+  color: #6A35C1;
+  margin-bottom: 15px;
+}
+
+.onderzoek-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* De “Lees volledige uitwerking” knop */
+.read-more-btn {
+  background: #6A35C1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.read-more-btn:hover {
+  background: #53298f; 
+}
