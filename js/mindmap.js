@@ -46,6 +46,8 @@ async function loadCSV() {
           .filter(Boolean);
 
         // Verwerk data
+        if (!mainTheme) return;  // Sla lege rijen over
+
         if (mainTheme.toLowerCase() === "stopwoorden") {
           // Deze woorden gaan in de stopwoorden-set
           kernwoorden.forEach(word => stopwoorden.add(word));
@@ -55,11 +57,18 @@ async function loadCSV() {
           if (!thematischeData[mainTheme]) {
             thematischeData[mainTheme] = {};
           }
-          if (!thematischeData[mainTheme][subTheme]) {
-            thematischeData[mainTheme][subTheme] = new Set();
+          // Indien subTheme leeg is, geef een fallback
+          const validSub = subTheme && subTheme.trim() ? subTheme : "Onbekend subthema";
+
+          if (!thematischeData[mainTheme][validSub]) {
+            thematischeData[mainTheme][validSub] = new Set();
           }
-          kernwoorden.forEach(word => thematischeData[mainTheme][subTheme].add(word));
-          synoniemen.forEach(word => thematischeData[mainTheme][subTheme].add(word));
+          kernwoorden.forEach(word => {
+            if (word) thematischeData[mainTheme][validSub].add(word);
+          });
+          synoniemen.forEach(word => {
+            if (word) thematischeData[mainTheme][validSub].add(word);
+          });
         }
       }
     });
@@ -78,6 +87,7 @@ async function loadCSV() {
  * @returns {string} - Tekst zonder stopwoorden.
  */
 function filterStopwoorden(text) {
+  if (!text) return "";
   // Bouw een regex met alle stopwoorden
   const regex = new RegExp("\\b(" + [...stopwoorden].join("|") + ")\\b", "gi");
   return text.replace(regex, "").trim();
@@ -90,7 +100,7 @@ function filterStopwoorden(text) {
  * @returns {{clusters: object, woordContext: object}}
  */
 function analyseZinnen(text) {
-  const woorden = text.toLowerCase().split(/\s+/);
+  const woorden = text.toLowerCase().split(/\s+/).filter(Boolean);
   const zinnen = text.split(".");
   const clusters = {};
   const woordToegewezen = {};
@@ -142,6 +152,7 @@ function analyseZinnen(text) {
  */
 const kleuren = ["#FF9999", "#99FF99", "#66B2FF", "#FFD700", "#FFA07A"];
 function getColorBySentiment(theme) {
+  // Filter stopwoorden eruit
   const allThemes = Object.keys(thematischeData).filter(t => t.toLowerCase() !== "stopwoorden");
   const index = allThemes.indexOf(theme) % kleuren.length;
   return kleuren[index] || "#D3D3D3";
@@ -156,7 +167,10 @@ function getColorBySentiment(theme) {
  */
 function generateMindmap(themesData) {
   const mindmapContainer = document.getElementById("mindmap");
-  if (!mindmapContainer) return;
+  if (!mindmapContainer) {
+    console.warn("⚠️ mindmap-container niet gevonden in HTML.");
+    return;
+  }
 
   // Verwijder oude diagram (indien aanwezig)
   const existingDiagram = go.Diagram.fromDiv("mindmap");
@@ -182,7 +196,7 @@ function generateMindmap(themesData) {
   const linkDataArray = [];
 
   // Voeg dummy root toe
-  nodeDataArray.push({ key: "ROOT", text: "Triple C implementatie", color: "#ffffff" });
+  nodeDataArray.push({ key: "ROOT", text: "Triple C implementatie", color: "#FFFFFF" });
 
   const clusters = themesData?.clusters || {};
 
@@ -198,23 +212,37 @@ function generateMindmap(themesData) {
     }
     if (!hasWords) return;
 
-    const mainColor = getColorBySentiment(mainTheme);
-    nodeDataArray.push({ key: mainTheme, text: mainTheme, color: mainColor });
+    const mainColor = getColorBySentiment(mainTheme) || "#FFF";
+    nodeDataArray.push({
+      key: mainTheme,
+      text: mainTheme,
+      color: mainColor
+    });
     linkDataArray.push({ from: "ROOT", to: mainTheme });
 
     // Subthema's
     Object.keys(clusters[mainTheme]).forEach(subTheme => {
       const woorden = clusters[mainTheme][subTheme];
-      if (!woorden || woorden.length === 0) return;
+      if (!Array.isArray(woorden) || woorden.length === 0) return;
 
-      const subKey = `${mainTheme}||${subTheme}`;
-      nodeDataArray.push({ key: subKey, text: subTheme, color: "#EEEEEE" });
+      // Gebruik samengestelde key
+      const subKey = `${mainTheme}||${subTheme}`.trim();
+      nodeDataArray.push({
+        key: subKey,
+        text: subTheme || "Onbekend subthema",
+        color: "#EEEEEE"
+      });
       linkDataArray.push({ from: mainTheme, to: subKey });
 
       // Woorden
       woorden.forEach(word => {
-        const wordKey = `${subKey}||${word}`;
-        nodeDataArray.push({ key: wordKey, text: word, color: "#DDDDDD" });
+        if (!word) return;
+        const wordKey = `${subKey}||${word}`.trim();
+        nodeDataArray.push({
+          key: wordKey,
+          text: word,
+          color: "#DDDDDD"
+        });
         linkDataArray.push({ from: subKey, to: wordKey });
       });
     });
@@ -226,8 +254,14 @@ function generateMindmap(themesData) {
     "Auto",
     {
       click: showContext, // Klik op node => showContext
-      mouseEnter: (e, obj) => obj.findObject("SHAPE").stroke = "#ff0000",
-      mouseLeave: (e, obj) => obj.findObject("SHAPE").stroke = "#888",
+      mouseEnter: (e, obj) => {
+        const shape = obj.findObject("SHAPE");
+        if (shape) shape.stroke = "#ff0000";
+      },
+      mouseLeave: (e, obj) => {
+        const shape = obj.findObject("SHAPE");
+        if (shape) shape.stroke = "#888";
+      },
     },
     $(go.Shape, "RoundedRectangle",
       {
@@ -251,11 +285,13 @@ function generateMindmap(themesData) {
     )
   );
 
-  // Model
+  // Bouw het model
   diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+  // Toon container
   mindmapContainer.style.display = "block";
 
-  console.log("✅ Mindmap gegenereerd.");
+  console.log("✅ Mindmap gegenereerd:", { nodeDataArray, linkDataArray });
 }
 
 /**
@@ -310,10 +346,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
+    // 2a. Filter stopwoorden
     const filtered = filterStopwoorden(rawText);
+
+    // 2b. Analyseer
     const themes = analyseZinnen(filtered);
 
-    // Check of er thema's gevonden zijn
+    // 2c. Check of er thema's gevonden zijn
     let hasThemes = false;
     for (let main in themes.clusters) {
       for (let sub in themes.clusters[main]) {
@@ -329,7 +368,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-    // Genereer mindmap
+    // 2d. Genereer mindmap
     generateMindmap(themes);
   });
 
