@@ -1057,6 +1057,22 @@ select:focus {
     font-weight: bold;
 }
 
+    .next-phase-button {
+  background-color: #6A35C1;
+  color: #fff;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.next-phase-button:hover {
+  background-color: #53298f;
+  transform: scale(1.05);
+}
+
 /* Responsieve aanpassingen */
 @media (max-width: 768px) {
     .thema-analyse-container {
