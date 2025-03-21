@@ -341,9 +341,26 @@ footer {
 }
 
     
-.next-phase-btn:hover {
+.tool-link-btn:hover {
   background-color: #53298f;
   transform: scale(1.05);
+}
+
+.next-phase-btn {
+  background: #6A35C1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.next-phase-btn:hover {
+  background: #53298f; 
+  text-decoration: none;
 }
 
 
