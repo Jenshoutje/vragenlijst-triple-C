@@ -1073,6 +1073,62 @@ select:focus {
   transform: scale(1.05);
 }
 
+     .next-phase-btn {
+  display: inline-block;
+  background-color: #6A35C1;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+}
+
+    
+.tool-link-btn:hover {
+  background-color: #53298f;
+  transform: scale(1.05);
+}
+
+.tool-link-btn {
+  display: inline-block;
+  background-color: #6A35C1;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+}
+
+    
+.tool-link-btn:hover {
+  background-color: #53298f;
+  transform: scale(1.05);
+}
+
+.next-phase-btn {
+  background: #6A35C1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.next-phase-btn:hover {
+  background: #53298f; 
+  text-decoration: none;
+}
+
+
 /* Responsieve aanpassingen */
 @media (max-width: 768px) {
     .thema-analyse-container {
