@@ -828,10 +828,12 @@ p {
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .read-more-btn:hover {
   background: #53298f; 
+  text-decoration: none;
 }
 
 /* Modal overlay (ongewijzigd) */
