@@ -1,4 +1,4 @@
-// exportOpenVragen.js
+"use strict";
 
 // 1. Importeer Firebase-modulaire modules (zonder -compat)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -19,45 +19,99 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 console.log("✅ Firebase (v9) succesvol geïnitialiseerd!");
 
-// 3. Functie om open vragen antwoorden op te halen en te exporteren
-async function exportOpenVragen() {
+/**
+ * Exporteert de open vragen uit Firestore naar een platte-tekstbestand.
+ * - We bouwen een menselijk leesbare tekst op (in plaats van JSON).
+ * - Download eindigt als .txt.
+ */
+async function exportOpenVragenAsText() {
   try {
-    // Haal alle documenten op uit de collectie 'openVragenResponses'
+    // 1. Haal alle documenten op uit de collectie 'openVragenResponses'
     const querySnap = await getDocs(collection(db, "openVragenResponses"));
     const responses = [];
     querySnap.forEach(doc => {
       responses.push(doc.data());
     });
 
-    // Converteer de verzamelde data naar een JSON-string (met inspringing voor leesbaarheid)
-    const dataStr = JSON.stringify(responses, null, 2);
-    console.log("Geëxporteerde data:", dataStr);
+    if (responses.length === 0) {
+      alert("Er zijn geen responses gevonden in 'openVragenResponses'.");
+      return;
+    }
 
-    // Maak een blob aan van de JSON-string
-    const blob = new Blob([dataStr], { type: "application/json" });
+    // 2. Bouw een leesbare tekst op
+    //    - We gaan er hier vanuit dat jouw structuur van de antwoorden er als volgt uit ziet:
+    //    {
+    //       vraag1: { hoofdvraag: "...", sub1: "...", sub2: "...", sub3: "..." },
+    //       vraag2: { ... },
+    //       vraag3: { ... },
+    //       timestamp: Date
+    //    }
+    //    Pas dit naar wens aan!
+
+    const lines = [];
+    responses.forEach((resp, index) => {
+      lines.push(`=== Respons #${index + 1} ===`);
+      lines.push(`Timestamp: ${resp.timestamp ? resp.timestamp : "Onbekend"}`);
+
+      // === VRAAG 1 ===
+      if (resp.vraag1) {
+        lines.push("--- Vraag 1 ---");
+        lines.push(`Hoofdvraag: ${resp.vraag1.hoofdvraag || ""}`);
+        lines.push(`Sub 1: ${resp.vraag1.sub1 || ""}`);
+        lines.push(`Sub 2: ${resp.vraag1.sub2 || ""}`);
+        lines.push(`Sub 3: ${resp.vraag1.sub3 || ""}`);
+      }
+
+      // === VRAAG 2 ===
+      if (resp.vraag2) {
+        lines.push("--- Vraag 2 ---");
+        lines.push(`Hoofdvraag: ${resp.vraag2.hoofdvraag || ""}`);
+        lines.push(`Sub 1: ${resp.vraag2.sub1 || ""}`);
+        lines.push(`Sub 2: ${resp.vraag2.sub2 || ""}`);
+        lines.push(`Sub 3: ${resp.vraag2.sub3 || ""}`);
+      }
+
+      // === VRAAG 3 ===
+      if (resp.vraag3) {
+        lines.push("--- Vraag 3 ---");
+        lines.push(`Hoofdvraag: ${resp.vraag3.hoofdvraag || ""}`);
+        lines.push(`Sub 1: ${resp.vraag3.sub1 || ""}`);
+        lines.push(`Sub 2: ${resp.vraag3.sub2 || ""}`);
+        lines.push(`Sub 3: ${resp.vraag3.sub3 || ""}`);
+      }
+
+      // Voeg een extra lege regel toe voor leesbaarheid
+      lines.push("");
+    });
+
+    // 3. Maak een grote tekststring van de lines
+    const exportText = lines.join("\n");
+
+    // 4. Maak een blob aan van deze platte tekst
+    const blob = new Blob([exportText], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
 
-    // Maak een tijdelijke link en trigger een download
+    // 5. Maak een tijdelijke link en trigger een download als "openVragenExport.txt"
     const link = document.createElement("a");
     link.href = url;
-    link.download = "openVragenExport.json";
+    link.download = "openVragenExport.txt";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    // 6. Opruimen
     URL.revokeObjectURL(url);
 
+    console.log("✅ Platte tekst-export aangemaakt:\n", exportText);
   } catch (error) {
     console.error("Fout bij het exporteren van open vragen:", error);
   }
 }
 
-// 4. Zorg dat de exportfunctie wordt uitgevoerd wanneer de DOM geladen is
+// EventListener om de functie te triggeren (bijv. via een knop)
 document.addEventListener("DOMContentLoaded", () => {
   const exportButton = document.getElementById("exportButton");
   if (exportButton) {
-    exportButton.addEventListener("click", exportOpenVragen);
-  } else {
-    // Indien er geen knop is, kun je de functie ook automatisch aanroepen:
-    // exportOpenVragen();
+    exportButton.addEventListener("click", exportOpenVragenAsText);
   }
 });
