@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="css/onderzoek.css">
   <!-- Swiper.js CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.2.0/swiper-bundle.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/Draggable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/InertiaPlugin.min.js"></script>
 </head>
 <body>
   <!-- Header / Navigatie -->
@@ -95,6 +98,29 @@
     </ul>
   </section>
 
+   <div class="corkboard-container">
+    <div class="corkboard">
+      <!-- Voorbeeld Idea Cards -->
+      <div class="idea-card" id="card1">
+        <h3>Ontwerp Idee 1</h3>
+        <p>Korte omschrijving van idee 1.</p>
+        <a href="tool1.html" class="card-link">Lees meer</a>
+      </div>
+      <div class="idea-card" id="card2">
+        <h3>Ontwerp Idee 2</h3>
+        <p>Korte omschrijving van idee 2.</p>
+        <a href="tool2.html" class="card-link">Lees meer</a>
+      </div>
+      <div class="idea-card" id="card3">
+        <h3>Ontwerp Idee 3</h3>
+        <p>Korte omschrijving van idee 3.</p>
+        <a href="tool3.html" class="card-link">Lees meer</a>
+      </div>
+      <!-- Voeg meer kaarten toe naar behoefte -->
+    </div>
+  </div>
+
+  <script src="js/corkboard.js"></script>
   <!-- Sectie: Volgende Stappen -->
   <section class="next-steps">
     <h3>Volgende Stappen</h3>
