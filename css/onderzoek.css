@@ -817,6 +817,16 @@ p {
   color: #555;
   margin-bottom: 15px;
 }
+.onderzoek-card1 {
+  background: #c572ffcc;       /* of #fff, naar keuze */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 100%;                /* Vul de containerbreedte */
+  max-width: 900px;           /* Maar nooit breder dan 600px */
+  margin: 0 auto;             /* Zorg dat de card zelf ook gecentreerd blijft */
+  padding: 20px;
+  text-align: center;         /* Tekst in het midden, optioneel */
+}
 
 /* Stijl voor de knop die de modal opent */
 .read-more-btn {
