@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // HTML-elementen
   const analyseBtn  = document.getElementById("analyseButton");
   const exportBtn   = document.getElementById("exportButton");
+  const importtBtn   = document.getElementById("importButton");
   const inputTextEl = document.getElementById("inputText");
   const mindmapDiv  = document.getElementById("mindmap");
 
