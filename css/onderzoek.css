@@ -1098,3 +1098,109 @@ p {
     font-size: 0.9rem;
   }
 }
+
+.develop-intro {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Swiper Slider voor Scholingsonderdelen */
+.swiper-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+.swiper-slide {
+  text-align: center;
+  padding: 20px;
+}
+.swiper-slide h2 {
+  font-size: 1.8rem;
+  color: #6A35C1;
+  margin-bottom: 10px;
+}
+.swiper-slide p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+/* Swiper navigatie en paginering */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #6A35C1;
+}
+.swiper-pagination-bullet {
+  background: #6A35C1;
+}
+
+/* Sectie: Waarom Scholing Noodzakelijk is */
+.why-training {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.why-training h2 {
+  font-size: 1.8rem;
+  color: #6A35C1;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.why-training p,
+.why-training ul {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+.why-training ul {
+  list-style: disc inside;
+}
+
+/* Sectie: Volgende Stappen */
+.next-steps {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.next-steps h3 {
+  font-size: 1.8rem;
+  color: #6A35C1;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.next-steps p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+.next-steps .cta-button {
+  display: inline-block;
+  background: #6A35C1;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.next-steps .cta-button:hover {
+  background: #53298f;
+}
+
