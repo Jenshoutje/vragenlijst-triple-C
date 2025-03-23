@@ -2,6 +2,15 @@
 // Geavanceerde en professionele cards slider met Swiper.js
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Initialiseer flip effect: voeg click event toe aan elke card
+  const cards = document.querySelectorAll(".swiper-slide .card");
+  cards.forEach(card => {
+    card.addEventListener("click", function() {
+      // Toggle de 'flipped' klasse op de card
+      card.classList.toggle("flipped");
+    });
+  });
   const swiper = new Swiper('.swiper-container', {
     // Algemene instellingen
     loop: true,                   // Herhaal de slides oneindig
@@ -9,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     effect: 'coverflow',          // Gebruik het coverflow-effect
     grabCursor: true,             // Verander de cursor in een 'grab'-icoon
     centeredSlides: true,         // Actieve slide in het midden
-      slidesPerView: 1.7,  // 1,2 slides zichtbaar (de rest "piept" er net uit)
-    spaceBetween: 30,         // Automatische breedte voor de slides
+      slidesPerView: 1,  // 1,2 slides zichtbaar (de rest "piept" er net uit)
+    spaceBetween:430,         // Automatische breedte voor de slides
 
     // Coverflow-effect instellingen
     coverflowEffect: {
@@ -23,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Autoplay (optioneel, kan je desgewenst inschakelen)
     autoplay: {
-      delay: 5000,                // 5 seconden vertraging tussen slides
+      delay: 10000,                // 5 seconden vertraging tussen slides
       disableOnInteraction: false // Autoplay stopt niet bij interactie
     },
 
