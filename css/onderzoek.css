@@ -1127,8 +1127,9 @@ p {
 }
 /* Swiper Slides */
 .swiper-slide {
-  background: linear-gradient(135deg, #ffffff, #f3f3f3); /* Subtiele gradient */
+  background: linear-gradient(135deg, #896deb, #c2a3fd); /* Subtiele gradient */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+   max-width: 700px;
   border-radius: 12px;
   text-align: center;
   padding: 40px 20px;
