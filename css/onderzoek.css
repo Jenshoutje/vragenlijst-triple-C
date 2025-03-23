@@ -1204,6 +1204,12 @@ p {
   background: #53298f;
 }
 
+@font-face {
+  font-family: "Eagle Horizon";
+  src: url("../eagle-horizon-personal-use.regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 /* Algemene styling voor de corkboard-container */
 .corkboard-container {
   width: 100%;
@@ -1232,7 +1238,7 @@ p {
   position: absolute; /* Kan binnen een drag & drop omgeving absolute positionering gebruiken */   /* Zachte, lichte rand */
   border-radius: 4px;
   padding: 16px;
-  font-family: 'Indie Flower', cursive; /* Handschriftstijl */
+  font-family: "Eagle Horizon", sans-serif; /* Zet je eigen fallback (bv. sans-serif) */ /* Handschriftstijl */
   font-size: 1.2rem;
   line-height: 1.4;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
