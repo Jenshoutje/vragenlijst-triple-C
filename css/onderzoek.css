@@ -1208,7 +1208,7 @@ p {
 .corkboard-container {
   width: 100%;
   height: 100vh;
-  background: url('images/corkboard-bg.jpg') no-repeat center center; /* Zorg voor een passende achtergrondafbeelding */
+  background: src('images/cork.png') no-repeat center center; /* Zorg voor een passende achtergrondafbeelding */
   background-size: cover;
   display: flex;
   align-items: center;
