@@ -1163,12 +1163,75 @@ p {
 /* Swiper Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
-  color: #6A35C1;
+  color: #6A35C1; /* Paarse kleur passend bij je huisstijl */
+  width: 40px;
+  height: 40px;
+  margin-top: -20px; /* zodat de knoppen gecentreerd staan in de hoogte */
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #fff; /* witte achtergrond */
 }
 
-/* Swiper Pagination Bullets */
+/* Icoon (pijltje) zelf wat groter of anders gestyled */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px; 
+}
+
+/* Hover effect op de knoppen */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+/**********************************************************/
+/* 4. Paginatie-bolletjes                                 */
+/**********************************************************/
+.swiper-pagination {
+  bottom: 15px !important; /* iets omhoog */
+}
+
 .swiper-pagination-bullet {
-  background: #6A35C1;
+  width: 12px;
+  height: 12px;
+  background: #bbb;
+  opacity: 1; /* standaard beter zichtbaar */
+  margin: 0 6px !important; /* ruimte tussen de bullets */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Actieve bullet */
+.swiper-pagination-bullet-active {
+  background-color: #6A35C1;
+  transform: scale(1.2); /* net iets groter */
+}
+
+/**********************************************************/
+/* 5. Responsiviteit                                      */
+/**********************************************************/
+@media (max-width: 768px) {
+  .swiper-slide {
+    min-height: 250px; /* wat lager op kleinere schermen */
+    margin: 0 5px;
+  }
+  
+  .swiper-slide h2 {
+    font-size: 1.4rem;
+  }
+  
+  .swiper-slide p {
+    font-size: 0.9rem;
+    max-width: 90%;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
 }
 /* Sectie: Waarom Scholing Noodzakelijk is */
 .why-training {
