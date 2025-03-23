@@ -1164,6 +1164,63 @@ p {
   line-height: 1.5;
 }
 
+.card {
+  perspective: 1000px;
+  width: 700px;  /* Pas de breedte aan zoals gewenst */
+  height: 400px; /* Pas de hoogte aan zoals gewenst */
+}
+
+/* Inner container voor de flip */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* Voor- en achterkant van de kaart */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Voorkant styling */
+.card-front {
+  background: linear-gradient(135deg, #896deb, #c2a3fd);
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+/* Achterkant styling */
+.card-back {
+  background: #fff;
+  color: #333;
+  transform: rotateY(180deg);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: 'Courier New', Courier, monospace; /* Voor een handschrift-achtig effect kun je hier een andere font kiezen */
+  text-align: center;
+}
+
+/* Wanneer de kaart is omgedraaid */
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+
 /* Swiper Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
