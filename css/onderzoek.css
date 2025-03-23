@@ -1257,7 +1257,7 @@ p {
   max-width: 1200px;
   height: 80vh;
   border: 10px solid #8B4513;  /* Donkerbruine rand, vergelijkbaar met een kurken bord */
-  background: url('../images/cork.jpeg') no-repeat center center; /* Zorg voor een passende achtergrondafbeelding */
+  background: url('../images/blackboard.png') no-repeat center center; /* Zorg voor een passende achtergrondafbeelding */
   background-size: cover; /* Licht transparant wit zodat de achtergrond zichtbaar is */
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   overflow: hidden;
