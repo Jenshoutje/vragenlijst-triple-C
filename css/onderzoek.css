@@ -1229,9 +1229,7 @@ p {
 
 /* Styling voor de ideekaarten */
 .idea-card {
-  position: absolute; /* Kan binnen een drag & drop omgeving absolute positionering gebruiken */
-  background-color: #fff9c4;  /* Licht geel, memo papier */
-  border: 1px solid #f0e68c;    /* Zachte, lichte rand */
+  position: absolute; /* Kan binnen een drag & drop omgeving absolute positionering gebruiken */   /* Zachte, lichte rand */
   border-radius: 4px;
   padding: 16px;
   font-family: 'Indie Flower', cursive; /* Handschriftstijl */
@@ -1242,6 +1240,31 @@ p {
   transition: transform 0.3s ease;
   max-width: 250px;
 }
+idea-card:active {
+  cursor: grabbing;
+}
+
+/* Vijf verschillende kleuren met een half-transparante (90%) pastel-tint */
+.idea-card:nth-of-type(1) {
+  background-color: rgba(255, 229, 153, 0.9); /* Pastelgeel */
+}
+
+.idea-card:nth-of-type(2) {
+  background-color: rgba(255, 204, 204, 0.9); /* Pastelroze */
+}
+
+.idea-card:nth-of-type(3) {
+  background-color: rgba(204, 255, 204, 0.9); /* Pastelgroen */
+}
+
+.idea-card:nth-of-type(4) {
+  background-color: rgba(204, 229, 255, 0.9); /* Pastelblauw */
+}
+
+.idea-card:nth-of-type(5) {
+  background-color: rgba(255, 204, 229, 0.9); /* Pastelpaars */
+}
+
 
 /* Hover-effect: kaart komt iets recht */
 .idea-card:hover {
@@ -1264,7 +1287,7 @@ p {
 /* Zorg dat de hele kaart de handschriftstijl gebruikt */
 .idea-card {
   font-family: 'Indie Flower', cursive; /* Zorg dat je deze Google Font laadt in je HTML */
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   line-height: 1.4;
   color: #333;
 }
@@ -1283,7 +1306,7 @@ p {
 /* Paragrafen in de memo-kaarten */
 .idea-card p {
   font-family: 'Indie Flower', cursive;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   color: #555;
   margin-bottom: 15px;
 }
