@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     effect: 'coverflow',          // Gebruik het coverflow-effect
     grabCursor: true,             // Verander de cursor in een 'grab'-icoon
     centeredSlides: true,         // Actieve slide in het midden
-    slidesPerView: 'auto',        // Automatische breedte voor de slides
+      slidesPerView: 1.7,  // 1,2 slides zichtbaar (de rest "piept" er net uit)
+    spaceBetween: 30,         // Automatische breedte voor de slides
 
     // Coverflow-effect instellingen
     coverflowEffect: {
