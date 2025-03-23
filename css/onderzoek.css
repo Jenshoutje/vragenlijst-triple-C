@@ -1120,7 +1120,11 @@ p {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
-
+.swiper-wrapper {
+  display: flex;               /* Zorgt dat de slides naast elkaar komen te staan */
+  flex-direction: row;
+  transition: transform 0.8s ease;  /* Zorgt voor vloeiende transities */
+}
 /* Swiper Slides */
 .swiper-slide {
   background: linear-gradient(135deg, #ffffff, #f3f3f3); /* Subtiele gradient */
