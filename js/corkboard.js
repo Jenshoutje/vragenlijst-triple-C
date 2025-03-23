@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ corkboard.js geladen!");
 
   // Zoek het bord en alle kaarten
-  const board = document.querySelector(".idea-board");
+  const board = document.querySelector(".corkboard");
   if (!board) {
     console.warn("⚠ Geen element met class .idea-board gevonden. Drag & drop wordt overgeslagen.");
     return; // Stop als er geen bord is
