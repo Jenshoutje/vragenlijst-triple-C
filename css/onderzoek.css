@@ -1116,6 +1116,9 @@ p {
   max-width: 1200px;
   margin: 30px auto;
   background: #fff;
+  overflow: hidden;      /* Voorkomt dat slides buiten de container zichtbaar worden */
+  position: relative;    /* Nodig voor de navigatieknoppen */
+  padding-bottom: 50px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
