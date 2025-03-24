@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     finalCard.style.borderRadius = "10px";
     finalCard.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
     finalCard.innerHTML = `
-      <h3>Eindconcept</h3>
+      <h3>Prototype</h3>
       <div class="typing-text"></div>
     `;
 
