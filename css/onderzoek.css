@@ -1130,7 +1130,7 @@ p {
 }
 /* Swiper Slides */
 .swiper-slide {
-  background: linear-gradient(135deg, #c3b2ff, #c2a3fd4f); /* Subtiele gradient */
+  background: linear-gradient(135deg, #896deb, #c2a3fd); /* Subtiele gradient */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 600px;           /* Houd de slides lekker breed */
   height: 350px;  
@@ -1203,7 +1203,7 @@ p {
 
 /* Voorkant styling */
 .card-front {
-  background: linear-gradient(135deg, #896deb, #c2a3fd);
+  background: linear-gradient(135deg, #c3b2ff, #c2a3fd4f);
   color: #fff;
   font-family: 'Arial', sans-serif;
   text-align: center;
