@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Maak het nieuwe memo-element aan
     const finalCard = document.createElement("div");
-    finalCard.classList.add("idea-card");
+    finalCard.classList.add("idea-card", "final-memo");
     finalCard.style.position = "absolute";
     finalCard.style.left = `${leftPos}px`;
     finalCard.style.top = `${topPos}px`;
