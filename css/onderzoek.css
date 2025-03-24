@@ -1458,55 +1458,72 @@ p {
 }
 
 /* Styling voor de ideekaarten */
+/* =============================
+   Basisopmaak voor .idea-card
+   ============================= */
 .idea-card {
-  position: absolute; /* Kan binnen een drag & drop omgeving absolute positionering gebruiken */   /* Zachte, lichte rand */
-  border-radius: 4px;
+  position: absolute;          /* Handig voor drag & drop binnen .corkboard */
+  border-radius: 8px;          /* Zachte afgeronde hoeken */
   padding: 16px;
-  font-family: "Eagle Horizon", sans-serif; /* Zet je eigen fallback (bv. sans-serif) */ /* Handschriftstijl */
-  font-size: 1.2rem;
+  /* Handschriftstijl (zorg dat je deze font laadt in je <head>):
+     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  */
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.4rem;
   line-height: 1.4;
+  color: #333;
+
+  /* Subtiel schaduw */
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+
+  /* Licht scheve rotatie voor speels effect */
   transform: rotate(-3deg);
   transition: transform 0.3s ease;
-
-idea-card:active {
-  cursor: grabbing;
 }
 
-
-/* Voor de prototype memo, overschrijf de max-width */
-.idea-card.final-memo {
-  max-width: 600px; /* of een andere waarde die je mooi vindt */
-}
-
-/* Vijf verschillende kleuren met een half-transparante (90%) pastel-tint */
+/* =============================
+   Vijf pastelkleuren (eerste 5 kaarten)
+   ============================= */
 .idea-card:nth-of-type(1) {
   background-color: rgba(255, 229, 153, 0.9); /* Pastelgeel */
 }
-
 .idea-card:nth-of-type(2) {
   background-color: rgba(255, 204, 204, 0.9); /* Pastelroze */
 }
-
 .idea-card:nth-of-type(3) {
   background-color: rgba(204, 255, 204, 0.9); /* Pastelgroen */
 }
-
 .idea-card:nth-of-type(4) {
   background-color: rgba(204, 229, 255, 0.9); /* Pastelblauw */
 }
-
 .idea-card:nth-of-type(5) {
   background-color: rgba(255, 204, 229, 0.9); /* Pastelpaars */
 }
 
-
-/* Hover-effect: kaart komt iets recht */
+/* =============================
+   Hover-effect: kaart 'recht'
+   ============================= */
 .idea-card:hover {
   transform: rotate(0deg);
 }
 
-/* Optioneel: een pseudo-element voor een extra sticker-effect */
+/* =============================
+   Active state (bij drag)
+   ============================= */
+.idea-card:active {
+  cursor: grabbing;
+}
+
+/* =============================
+   Speciale kaart (zesde memo)
+   ============================= */
+.idea-card.final-memo {
+  max-width: 600px; /* Grotere breedte, pas naar wens aan */
+}
+
+/* =============================
+   Eventueel pseudo-element (pin/tape)
+   ============================= */
 .idea-card::before {
   content: "";
   position: absolute;
@@ -1514,69 +1531,49 @@ idea-card:active {
   left: 20px;
   width: 40px;
   height: 40px;
-  background: url('../images/memo.png') no-repeat center center;
+  /* Plaats hier een klein pin- of tape-afbeelding */
+  background: url('../images/memo-pin.png') no-repeat center center;
   background-size: contain;
   opacity: 0.8;
+  pointer-events: none; /* Zodat het element de drag niet hindert */
 }
 
-/* Zorg dat de hele kaart de handschriftstijl gebruikt */
-.idea-card {
-  font-family: 'Indie Flower', cursive; /* Zorg dat je deze Google Font laadt in je HTML */
-  font-size: 1.7rem;
-  line-height: 1.4;
-  color: #333;
-}
-
-/* Kopjes in de memo-kaarten, bijvoorbeeld h3 */
+/* =============================
+   Tekstopmaak in de kaart
+   ============================= */
 .idea-card h1,
 .idea-card h2,
 .idea-card h3,
 .idea-card h4 {
-  font-family: 'Indie Flower', cursive;
-  color: #6A35C1;  /* Bijvoorbeeld een tint die past bij je huisstijl */
   margin-top: 0;
   margin-bottom: 10px;
+  color: #6A35C1;  /* Bijvoorbeeld jouw huisstijl-kleur */
 }
 
-/* Paragrafen in de memo-kaarten */
 .idea-card p {
-  font-family: 'Indie Flower', cursive;
-  font-size: 1.7rem;
-  color: #555;
   margin-bottom: 15px;
-}
-/* Voorbeeld: Als je de kaarten gestapeld wilt tonen, kun je dit in je JS instellen.
-   Bijvoorbeeld: 
-   card.style.left = (baseX + index * offsetStep) + "px";
-   card.style.top  = (baseY + index * offsetStep) + "px";
-*/
-.idea-card.prototype {
-  opacity: 0;
+  color: #555;
 }
 
-/* Styling voor het typewriter-effect */
-.typing-text {
-  font-family: 'Courier New', Courier, monospace;
-  white-space: pre-wrap;
-  margin-top: 10px;
-}
-/* Eventueel een container die alle kaarten netjes centreert in het klembord */
-.idea-board {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  /* Geen extra styling nodig als .corkboard als container fungeert */
-}
-
-/* Link op de kaart */
-.card-link {
+/* =============================
+   De "Lees meer" link
+   ============================= */
+.idea-card .card-link {
   text-decoration: none;
   color: #0078D7;
   font-weight: bold;
 }
-
-.card-link:hover {
+.idea-card .card-link:hover {
   text-decoration: underline;
+}
+
+/* =============================
+   Typewriter-tekst (in de 6e memo)
+   ============================= */
+.typing-text {
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  margin-top: 10px;
 }
 
 .idea-card.final-memo {
