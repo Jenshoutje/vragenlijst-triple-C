@@ -1,5 +1,3 @@
-/* corkboard.js */
-
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,14 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
     console.warn("⚠ Geen .idea-card elementen gevonden in het klembord.");
   }
 
-  // (1) Gestapelde startpositie (zodat de kaarten niet allemaal exact overlappen)
+  // (1) Gestapelde startpositie: een lichte offset zodat de kaarten niet allemaal exact overlappen
   const baseX = 20;      // Beginpositie X binnen board
   const baseY = 20;      // Beginpositie Y binnen board
   const offsetStep = 15; // Offset per kaart
 
   cards.forEach((card, index) => {
     card.style.position = "absolute";
-    // Zet ze in een licht gestapelde positie
     card.style.left = `${baseX + index * offsetStep}px`;
     card.style.top = `${baseY + index * offsetStep}px`;
   });
@@ -34,9 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeCard = null;
   let offsetX = 0;
   let offsetY = 0;
-  const gridSize = 20; // Snap-to-grid van 20px (optioneel)
+  const gridSize = 20; // Snap-to-grid (20px)
 
   cards.forEach(card => {
+    // Zorg dat elke kaart een positionering heeft
+    if (!["absolute", "relative"].includes(window.getComputedStyle(card).position)) {
+      card.style.position = "absolute";
+    }
     card.addEventListener("pointerdown", onPointerDown);
   });
 
@@ -51,15 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!card) return;
     activeCard = card;
 
-    // Bepaal offset zodat de kaart niet 'springt'
     const rect = card.getBoundingClientRect();
     offsetX = e.clientX - rect.left;
     offsetY = e.clientY - rect.top;
 
-    // Voor pointer events
     card.setPointerCapture(e.pointerId);
-
-    // Visuele indicatie dat de kaart actief is
+    // Geef visuele indicatie dat de kaart wordt versleept
     card.style.boxShadow = "0 6px 15px rgba(0,0,0,0.3)";
   }
 
@@ -70,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let newX = e.clientX - boardRect.left - offsetX;
     let newY = e.clientY - boardRect.top - offsetY;
 
-    // Houd binnen de grenzen
     const maxX = boardRect.width - activeCard.offsetWidth;
     const maxY = boardRect.height - activeCard.offsetHeight;
     newX = Math.max(0, Math.min(newX, maxX));
@@ -87,51 +84,48 @@ document.addEventListener("DOMContentLoaded", () => {
   function onPointerUp(e) {
     if (activeCard) {
       activeCard.releasePointerCapture(e.pointerId);
-      // Verwijder tijdelijke schaduw
       activeCard.style.boxShadow = "";
-      console.log(`Kaart "${activeCard.querySelector("h3")?.innerText || "Zonder titel"}" neergezet.`);
+      console.log(`Kaart "${activeCard.querySelector("h3")?.innerText || "zonder titel"}" neergezet.`);
     }
     activeCard = null;
   }
 
   // (3) "Lees meer"-knoppen logica
   let readMoreCount = 0;
-  const totalNeeded = 5; // We hebben 5 kaarten waarvan de 'Lees meer' moet zijn aangeklikt
+  const totalNeeded = 5; // Aantal knoppen dat moet worden aangeklikt
 
-  // Zoek in elke kaart de .read-more-btn en voeg event toe
-  cards.forEach(card => {
-    const readMoreBtn = card.querySelector(".card-link");
-    if (readMoreBtn) {
-      readMoreBtn.addEventListener("click", () => {
-        // Tel het aantal aangeklikte 'Lees meer'
-        readMoreCount++;
-        console.log(`Lees meer geklikt! Totaal nu: ${readMoreCount}`);
+  // Zoek alle "Lees meer" knoppen binnen de kaarten (verondersteld dat ze de class .card-link hebben)
+  const readMoreButtons = board.querySelectorAll(".card-link");
+  readMoreButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      // Zorg dat deze klik niet door de drag-events wordt opgevangen
+      e.stopPropagation();
+      e.preventDefault();
+      readMoreCount++;
+      console.log(`Lees meer geklikt! Totaal nu: ${readMoreCount}`);
 
-        // Check of we alle 5 hebben
-        if (readMoreCount >= totalNeeded) {
-          // Roep de functie aan om de 6e memo te tonen
-          showFinalMemo();
-        }
-      });
-    }
+      if (readMoreCount >= totalNeeded) {
+        showFinalMemo();
+      }
+    });
   });
 
-  // (4) Functie: Toon de 6e memo met typing-animatie
-  let finalMemoShown = false; // Zodat we niet dubbel aanmaken
+  // (4) Functie: Toon de 6e memo met typewriter-effect
+  let finalMemoShown = false;
   function showFinalMemo() {
-    if (finalMemoShown) return; // voorkomen dat we het 2x doen
+    if (finalMemoShown) return;
     finalMemoShown = true;
 
-    // Maak een nieuw div-element voor de 6e memo
+    // Maak een nieuw memo-element aan
     const finalCard = document.createElement("div");
     finalCard.classList.add("idea-card");
     finalCard.style.position = "absolute";
-    // Plaats 'm rechtsboven op het bord
-    finalCard.style.right = "20px";  // of bereken left/top naar wens
+    // Plaats het in de rechterbovenhoek (pas aan naar wens)
+    finalCard.style.right = "20px";
     finalCard.style.top = "20px";
     finalCard.style.width = "220px";
     finalCard.style.height = "180px";
-    finalCard.style.backgroundColor = "#f5f3c1"; // lichtgeel memo
+    finalCard.style.backgroundColor = "rgba(245, 243, 193, 0.9)"; // Lichtgeel, semi-transparant
     finalCard.style.padding = "10px";
     finalCard.style.borderRadius = "10px";
     finalCard.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
@@ -140,17 +134,19 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="typing-text"></div>
     `;
 
-    // Voeg 'm toe aan het board
+    // Voeg de nieuwe memo toe aan het bord
     board.appendChild(finalCard);
 
-    // Start de typing-animatie
+    // Voeg drag functionaliteit toe aan de nieuwe kaart
+    finalCard.addEventListener("pointerdown", onPointerDown);
+
+    // Start de typewriter-animatie
     startTypingAnimation(finalCard.querySelector(".typing-text"));
   }
 
   // (5) Typewriter-effect voor de 6e memo
   function startTypingAnimation(textElem) {
     if (!textElem) return;
-
     const message = "Een AI-ondersteunde Triple C-tool \n die de werkdruk vermindert en \n eenduidige scholing bevordert!";
     let idx = 0;
     const speed = 50; // ms per character
@@ -163,5 +159,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }, speed);
   }
-
 });
