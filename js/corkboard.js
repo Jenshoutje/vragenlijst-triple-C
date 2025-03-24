@@ -157,8 +157,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Bepaal de positie in het midden van het board voor het prototype memo
     const boardRect = board.getBoundingClientRect();
-    const prototypeWidth = 500; // Aangepaste breedte voor prototype memo
-    const prototypeHeight = 350;
+    const prototypeWidth = 700; // Aangepaste breedte voor prototype memo
+    const prototypeHeight = 550;
     const centerX = boardRect.width / 2;
     const centerY = boardRect.height / 2;
     const leftPos = centerX - prototypeWidth / 2;
