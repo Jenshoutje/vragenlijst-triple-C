@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.warn("⚠ Geen .idea-card elementen gevonden in het klembord.");
   }
 
-  // (1) Gestapelde startpositie: een lichte offset zodat de kaarten niet allemaal exact overlappen
+  // (1) Gestapelde startpositie: een lichte offset zodat de kaarten niet exact overlappen
   const baseX = 20;      // Beginpositie X binnen board
   const baseY = 20;      // Beginpositie Y binnen board
   const offsetStep = 15; // Offset per kaart
@@ -47,29 +47,28 @@ document.addEventListener("DOMContentLoaded", () => {
     activeCard = null;
   });
 
- function onPointerDown(e) {
-  // 1. Controleer of de gebruiker op de link klikt
-  const link = e.target.closest(".card-link");
-  if (link) {
-    // Klik gebeurde op de "Lees meer"-link, dus niet gaan draggen.
-    return;
+  function onPointerDown(e) {
+    // Controleer of de klik op de "Lees meer"-link is
+    const link = e.target.closest(".card-link");
+    if (link) {
+      // Bij klikken op de link niet starten met draggen.
+      return;
+    }
+
+    const card = e.target.closest(".idea-card");
+    if (!card) return;
+
+    activeCard = card;
+
+    const rect = card.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+
+    card.setPointerCapture(e.pointerId);
+    card.style.boxShadow = "0 6px 15px rgba(0,0,0,0.3)";
+
+    e.preventDefault();
   }
-
-  // 2. Anders is het een echte drag op de kaart
-  const card = e.target.closest(".idea-card");
-  if (!card) return;
-
-  activeCard = card;
-
-  const rect = card.getBoundingClientRect();
-  offsetX = e.clientX - rect.left;
-  offsetY = e.clientY - rect.top;
-
-  card.setPointerCapture(e.pointerId);
-  card.style.boxShadow = "0 6px 15px rgba(0,0,0,0.3)";
-
-  e.preventDefault();
-}
 
   function onPointerMove(e) {
     if (!activeCard) return;
@@ -108,53 +107,97 @@ document.addEventListener("DOMContentLoaded", () => {
   const readMoreButtons = board.querySelectorAll(".card-link");
   readMoreButtons.forEach(btn => {
     btn.addEventListener("click", (e) => {
-      // Zorg dat deze klik niet door de drag-events wordt opgevangen
       e.stopPropagation();
       e.preventDefault();
       readMoreCount++;
       console.log(`Lees meer geklikt! Totaal nu: ${readMoreCount}`);
 
       if (readMoreCount >= totalNeeded) {
-        showFinalMemo();
+        // Start de huddle-animatie en maak daarna het prototype memo aan
+        animateHuddle().then(() => {
+          // Verwijder de oude kaarten
+          cards.forEach(card => card.remove());
+          showFinalMemo();
+        });
       }
     });
   });
 
-  // (4) Functie: Toon de 6e memo met typewriter-effect
+  // (4) Functie: Animatie waarbij alle kaarten naar het midden bewegen ("huddelen")
+  function animateHuddle() {
+    return new Promise((resolve) => {
+      const boardRect = board.getBoundingClientRect();
+      const centerX = boardRect.width / 2;
+      const centerY = boardRect.height / 2;
+
+      cards.forEach(card => {
+        // Voeg een CSS-transitie toe voor een vloeiende animatie
+        card.style.transition = "left 0.5s ease, top 0.5s ease";
+        const cardWidth = card.offsetWidth;
+        const cardHeight = card.offsetHeight;
+        // Bepaal de nieuwe positie zodat de kaart gecentreerd is
+        const newLeft = centerX - cardWidth / 2;
+        const newTop = centerY - cardHeight / 2;
+        card.style.left = `${newLeft}px`;
+        card.style.top = `${newTop}px`;
+      });
+
+      // Wacht tot de animatie voltooid is
+      setTimeout(() => {
+        resolve();
+      }, 600); // 600ms geeft wat speling voor de transitie
+    });
+  }
+
+  // (5) Functie: Maak het prototype memo blaadje aan met typewriter-effect
   let finalMemoShown = false;
   function showFinalMemo() {
     if (finalMemoShown) return;
     finalMemoShown = true;
 
-    // Maak een nieuw memo-element aan
+    // Bepaal de positie in het midden van het board voor het prototype memo
+    const boardRect = board.getBoundingClientRect();
+    const prototypeWidth = 300; // Aangepaste breedte voor prototype memo
+    const prototypeHeight = 350;
+    const centerX = boardRect.width / 2;
+    const centerY = boardRect.height / 2;
+    const leftPos = centerX - prototypeWidth / 2;
+    const topPos = centerY - prototypeHeight / 2;
+
+    // Maak het nieuwe memo-element aan
     const finalCard = document.createElement("div");
     finalCard.classList.add("idea-card");
     finalCard.style.position = "absolute";
-    // Plaats het in de rechterbovenhoek (pas aan naar wens)
-    finalCard.style.right = "20px";
-    finalCard.style.top = "20px";
-    finalCard.style.width = "3000px";
-    finalCard.style.height = "350px";
+    finalCard.style.left = `${leftPos}px`;
+    finalCard.style.top = `${topPos}px`;
+    finalCard.style.width = `${prototypeWidth}px`;
+    finalCard.style.height = `${prototypeHeight}px`;
     finalCard.style.backgroundColor = "#a84db8";
     finalCard.style.padding = "10px";
     finalCard.style.borderRadius = "10px";
     finalCard.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
+    finalCard.style.opacity = "0";
     finalCard.innerHTML = `
       <h3>Prototype</h3>
       <div class="typing-text"></div>
     `;
 
-    // Voeg de nieuwe memo toe aan het bord
     board.appendChild(finalCard);
 
-    // Voeg drag functionaliteit toe aan de nieuwe kaart
+    // Laat het prototype met een fade-in effect verschijnen
+    setTimeout(() => {
+      finalCard.style.transition = "opacity 0.5s ease";
+      finalCard.style.opacity = "1";
+    }, 50);
+
+    // Voeg drag functionaliteit toe aan het nieuwe element
     finalCard.addEventListener("pointerdown", onPointerDown);
 
     // Start de typewriter-animatie
     startTypingAnimation(finalCard.querySelector(".typing-text"));
   }
 
-  // (5) Typewriter-effect voor de 6e memo
+  // (6) Typewriter-effect voor het prototype memo
   function startTypingAnimation(textElem) {
     if (!textElem) return;
     const message = "Een AI-ondersteunde Triple C-tool \n die de werkdruk vermindert en \n eenduidige scholing bevordert!";
