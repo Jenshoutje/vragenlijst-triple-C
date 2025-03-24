@@ -47,19 +47,29 @@ document.addEventListener("DOMContentLoaded", () => {
     activeCard = null;
   });
 
-  function onPointerDown(e) {
-    const card = e.target.closest(".idea-card");
-    if (!card) return;
-    activeCard = card;
-
-    const rect = card.getBoundingClientRect();
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
-
-    card.setPointerCapture(e.pointerId);
-    // Geef visuele indicatie dat de kaart wordt versleept
-    card.style.boxShadow = "0 6px 15px rgba(0,0,0,0.3)";
+ function onPointerDown(e) {
+  // 1. Controleer of de gebruiker op de link klikt
+  const link = e.target.closest(".card-link");
+  if (link) {
+    // Klik gebeurde op de "Lees meer"-link, dus niet gaan draggen.
+    return;
   }
+
+  // 2. Anders is het een echte drag op de kaart
+  const card = e.target.closest(".idea-card");
+  if (!card) return;
+
+  activeCard = card;
+
+  const rect = card.getBoundingClientRect();
+  offsetX = e.clientX - rect.left;
+  offsetY = e.clientY - rect.top;
+
+  card.setPointerCapture(e.pointerId);
+  card.style.boxShadow = "0 6px 15px rgba(0,0,0,0.3)";
+
+  e.preventDefault();
+}
 
   function onPointerMove(e) {
     if (!activeCard) return;
