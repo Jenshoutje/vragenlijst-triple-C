@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Bepaal de positie in het midden van het board voor het prototype memo
     const boardRect = board.getBoundingClientRect();
-    const prototypeWidth = 300; // Aangepaste breedte voor prototype memo
+    const prototypeWidth = 500; // Aangepaste breedte voor prototype memo
     const prototypeHeight = 350;
     const centerX = boardRect.width / 2;
     const centerY = boardRect.height / 2;
@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     finalCard.style.top = `${topPos}px`;
     finalCard.style.width = `${prototypeWidth}px`;
     finalCard.style.height = `${prototypeHeight}px`;
-    finalCard.style.backgroundColor = "#a84db8";
+    finalCard.style.backgroundColor = "#ffff";
     finalCard.style.padding = "10px";
     finalCard.style.borderRadius = "10px";
     finalCard.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Laat het prototype met een fade-in effect verschijnen
     setTimeout(() => {
       finalCard.style.transition = "opacity 0.5s ease";
-      finalCard.style.opacity = "1";
+      finalCard.style.opacity = "0.7";
     }, 50);
 
     // Voeg drag functionaliteit toe aan het nieuwe element
