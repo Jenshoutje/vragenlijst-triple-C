@@ -1545,7 +1545,16 @@ idea-card:active {
    card.style.left = (baseX + index * offsetStep) + "px";
    card.style.top  = (baseY + index * offsetStep) + "px";
 */
+.idea-card.prototype {
+  opacity: 0;
+}
 
+/* Styling voor het typewriter-effect */
+.typing-text {
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  margin-top: 10px;
+}
 /* Eventueel een container die alle kaarten netjes centreert in het klembord */
 .idea-board {
   position: relative;
