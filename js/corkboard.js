@@ -133,9 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Plaats het in de rechterbovenhoek (pas aan naar wens)
     finalCard.style.right = "20px";
     finalCard.style.top = "20px";
-    finalCard.style.width = "220px";
-    finalCard.style.height = "180px";
-    finalCard.style.backgroundColor = "rgba(245, 243, 193, 0.9)"; // Lichtgeel, semi-transparant
+    finalCard.style.width = "3000px";
+    finalCard.style.height = "350px";
+    finalCard.style.backgroundColor = "linear-gradient(135deg, #c3b2ff, #c2a3fd4f)"; // Lichtgeel, semi-transparant
     finalCard.style.padding = "10px";
     finalCard.style.borderRadius = "10px";
     finalCard.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
