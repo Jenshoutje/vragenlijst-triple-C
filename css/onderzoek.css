@@ -1574,7 +1574,7 @@ idea-card:active {
   text-decoration: underline;
 }
 
-.final-memo {
+.idea-card.final-memo {
   /* Zorg dat deze afwijkt van de standaard .idea-card */
   width: 500px;           /* Groter dan de andere memo’s */
   min-height: 300px;      /* Extra hoogte */
