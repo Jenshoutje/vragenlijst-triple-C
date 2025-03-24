@@ -1225,58 +1225,69 @@ p {
 
 
 /* Swiper Navigation Buttons */
+/* Swiper Navigation Buttons: Vorige en Volgende */
 .swiper-button-next,
 .swiper-button-prev {
-  color: #6A35C1;         /* Kleur van de pijl */
-  background-color: #fff; /* Achtergrondkleur van de knop */
-  border: 2px solid #6A35C1; /* Eventueel een rand in jouw huisstijlkleur */
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;     /* Maakt er een cirkel van */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  
-  /* Swiper plaatst deze knoppen standaard halverwege de hoogte. 
-     Als je ze hoger of lager wilt, kun je top / bottom / transform instellen. 
-     Hieronder verplaatsen we ze iets omhoog. */
+  background: none; /* Verwijder de standaard achtergrond */
+  color: #6A35C1; /* Pas de kleur aan naar huisstijl */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border: 2px solid #6A35C1;
+  border-radius: 5px;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
 }
 
-/* Hover-/focus-effect voor de knoppen */
+/* Specifieke posities voor de knoppen */
+.swiper-button-next {
+  right: 20px;
+}
+.swiper-button-prev {
+  left: 20px;
+}
+
+/* Gebruik ::after voor de tekstinhoud */
+.swiper-button-next::after {
+  content: "Volgende";
+}
+.swiper-button-prev::after {
+  content: "Vorige";
+}
+
+/* Hover-effect voor de knoppen */
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  background-color: #6A35C1; 
-  color: #fff; /* Dan kleurt de pijl wit als je erover hovert */
-  transform: translateY(-50%) scale(1.05);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Eventueel de positie per knop iets aanpassen (bijv. wat verder van de randen) */
-.swiper-button-next {
-  right: 10px; /* Iets meer marge aan de rechterkant */
+/* Fractionele paginering: toont de huidige slide en totaal aantal slides */
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #6A35C1;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 10;
 }
 
-.swiper-button-prev {
-  left: 10px;  /* Iets meer marge aan de linkerkant */
-}
-
-/* Standaard gebruikt Swiper icons in pseudo-elementen.
-   Wil je eigen icon gebruiken? Dan kun je het content overschrijven: */
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-family: "Swiper Icons";
-  font-size: 16px;
-  text-transform: none;
-  letter-spacing: 0;
-  line-height: 1;
+/* Extra styling als je de paginatie wilt aanpassen (optioneel) */
+.swiper-pagination-current,
+.swiper-pagination-total {
+  margin: 0 5px;
 }
 
 /**********************************************************/
 /* 4. Paginatie-bolletjes                                 */
 /**********************************************************/
-.swiper-pagination {
-  bottom: 15px !important; /* iets omhoog */
-}
+
 
 .swiper-pagination-bullet {
   width: 12px;
