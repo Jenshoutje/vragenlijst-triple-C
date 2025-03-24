@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Zoek in elke kaart de .read-more-btn en voeg event toe
   cards.forEach(card => {
-    const readMoreBtn = card.querySelector(".read-more-btn");
+    const readMoreBtn = card.querySelector(".card-link");
     if (readMoreBtn) {
       readMoreBtn.addEventListener("click", () => {
         // Tel het aantal aangeklikte 'Lees meer'
