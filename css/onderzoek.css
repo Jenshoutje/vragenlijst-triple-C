@@ -1130,19 +1130,20 @@ p {
 }
 /* Swiper Slides */
 .swiper-slide {
-  background: linear-gradient(135deg, #896deb, #c2a3fd); /* Subtiele gradient */
+  background: linear-gradient(135deg, #c3b2ff, #c2a3fd4f); /* Subtiele gradient */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 600px;           /* Houd de slides lekker breed */
   height: 350px;  
   border-radius: 12px;
   text-align: center;
-  padding: 40px 170px;
+  padding: 40px 100px;
   margin: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
+} /* Subtiele gradient */
+
 
 /* Hover-effect: lichte opwaartse beweging en extra schaduw */
 .swiper-slide:hover {
