@@ -1574,4 +1574,44 @@ idea-card:active {
   text-decoration: underline;
 }
 
+.final-memo {
+  /* Zorg dat deze afwijkt van de standaard .idea-card */
+  width: 500px;           /* Groter dan de andere memo’s */
+  min-height: 300px;      /* Extra hoogte */
+  background-color: #ffffff; /* Lichtere achtergrond of wat je wilt */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  /* Desgewenst: animatie bij binnenkomst */
+  opacity: 0;             /* Begin onzichtbaar */
+  animation: fadeInScale 0.8s forwards ease-in-out;
+  /* Of als je echt wilt dat hij NIET dragbaar is: pointer-events: none; (maar dan kun je ‘m niet slepen) */
+}
+
+/* Eventueel een extra text-styling specifiek voor de final memo */
+.final-memo h3 {
+  font-size: 1.6rem;
+  color: #6A35C1;
+  margin-bottom: 1rem;
+}
+
+/* Voor de typewriter-tekst */
+.final-memo .typing-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #333;
+  white-space: pre-line; /* Zodat \n-tekens worden gerespecteerd */
+}
+
+/* Animatie om het laatste memo-blad mooi te laten 'binnenkomen' */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
