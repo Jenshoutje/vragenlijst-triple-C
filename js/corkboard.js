@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     finalCard.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
     finalCard.style.opacity = "0";
     finalCard.innerHTML = `
-      <h3>Prototype</h3>
+      <h2>Prototype</h2>
       <div class="typing-text"></div>
     `;
 
@@ -200,7 +200,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // (6) Typewriter-effect voor het prototype memo
   function startTypingAnimation(textElem) {
     if (!textElem) return;
-    const message = "Een AI-ondersteunde Triple C-tool \n die de werkdruk vermindert en \n eenduidige scholing bevordert!";
+const message = `Het uiteindelijke prototype zal worden ontwikkeld op basis van de inzichten uit het FFF-moment, de thematische analyse van open vragen over Triple C, het grafisch onderzoek naar gebruikersvriendelijkheid en pictogrammen, en een verkenning van bestaande AI-modellen.
+
+Het prototype wordt een AI-ondersteunde instructievideo, waarin op visueel aantrekkelijke wijze de praktische toepassing van de Triple C-methodiek centraal zal staan. Deze video richt zich specifiek op het verminderen van de ervaren werkdruk, het vergroten van een eenduidige interpretatie van Triple C, en het versterken van kennis en vaardigheden door doelgerichte scholing. Door middel van duidelijke pictogrammen, korte praktijkgerichte instructies en herkenbare voorbeelden uit de dagelijkse praktijk van woongroep ’t Rond 51 zal het prototype begeleiders ondersteunen om methodisch en consistent te handelen volgens de Triple C-principes.
+
+Het uiteindelijke doel van dit prototype zal zijn om begeleiders beter toe te rusten, een gezamenlijke taal en visie te stimuleren, en daarmee bij te dragen aan een verhoogde kwaliteit van zorg en ondersteuning.`;
     let idx = 0;
     const speed = 50; // ms per character
 
