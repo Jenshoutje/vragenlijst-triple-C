@@ -37,11 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     },
 
     // Paginatie instellingen
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,            // Klikbare paginatiepunten
-      dynamicBullets: true        // Dynamische bullets voor een moderner effect
-    },
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'fraction',  // Dit zorgt ervoor dat de paginering als "current/total" wordt weergegeven
+    clickable: true,
+  },
+
 
     // Navigatie instellingen
     navigation: {
