@@ -1472,9 +1472,7 @@ p {
 idea-card:active {
   cursor: grabbing;
 }
-  .idea-card:not(.final-memo) {
-  max-width: 250px;
-}
+
 
 /* Voor de prototype memo, overschrijf de max-width */
 .idea-card.final-memo {
