@@ -1468,10 +1468,17 @@ p {
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   transform: rotate(-3deg);
   transition: transform 0.3s ease;
-  max-width: 250px;
-}
+
 idea-card:active {
   cursor: grabbing;
+}
+  .idea-card:not(.final-memo) {
+  max-width: 250px;
+}
+
+/* Voor de prototype memo, overschrijf de max-width */
+.idea-card.final-memo {
+  max-width: 600px; /* of een andere waarde die je mooi vindt */
 }
 
 /* Vijf verschillende kleuren met een half-transparante (90%) pastel-tint */
