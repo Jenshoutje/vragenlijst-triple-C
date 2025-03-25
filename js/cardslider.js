@@ -1,72 +1,61 @@
 // cardsSlider.js
-// Geavanceerde en professionele cards slider met Swiper.js
+"use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  // Initialiseer flip effect: voeg click event toe aan elke card
+  // Initialiseer flip effect voor elke kaart
   const cards = document.querySelectorAll(".swiper-slide .card");
   cards.forEach(card => {
-    card.addEventListener("click", function() {
-      // Toggle de 'flipped' klasse op de card
-      card.classList.toggle("flipped");
+    card.addEventListener("click", function(e) {
+      // Alleen flippen als de klik niet plaatsvindt op een scrollable-content element
+      if (!e.target.closest('.scrollable-content')) {
+        card.classList.toggle("flipped");
+      }
     });
   });
+
+  // Initialiseer de Swiper instance voor de toolcards
   const swiper = new Swiper('.swiper-container', {
-    // Algemene instellingen
-    loop: true,                   // Herhaal de slides oneindig
-    speed: 800,                   // Overgangssnelheid (in ms)
-    effect: 'coverflow',          // Gebruik het coverflow-effect
-    grabCursor: true,             // Verander de cursor in een 'grab'-icoon
-    centeredSlides: true,         // Actieve slide in het midden
-      slidesPerView: 1,  // 1,2 slides zichtbaar (de rest "piept" er net uit)
-    spaceBetween:430,         // Automatische breedte voor de slides
-
-    // Coverflow-effect instellingen
+    loop: true,
+    speed: 800,
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 1,
+    spaceBetween: 430,
     coverflowEffect: {
-      rotate: 30,                 // Rotatiehoek van de slides
-      stretch: 0,                 // Pas dit aan voor extra ruimte tussen slides
-      depth: 100,                 // Diepte-effect voor 3D-look
-      modifier: 1,                // Multiplier voor effectwaarden
-      slideShadows: true          // Toon schaduwen bij de slides
+      rotate: 30,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true
     },
-
-    // Autoplay (optioneel, kan je desgewenst inschakelen)
     autoplay: {
-      delay: 10000,                // 5 seconden vertraging tussen slides
-      disableOnInteraction: false // Autoplay stopt niet bij interactie
+      delay: 10000,                // Slide elke 10 seconden
+      disableOnInteraction: false  // Autoplay stopt niet automatisch bij interactie
     },
-
-    // Paginatie instellingen
-  pagination: {
-    el: '.swiper-pagination',
-    type: 'fraction',  // Dit zorgt ervoor dat de paginering als "current/total" wordt weergegeven
-    clickable: true,
-  },
-
-
-    // Navigatie instellingen
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'fraction', // Geeft een fractionele paginering (current/total)
+      clickable: true,
+    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     },
-
-    // Responsieve breakpoints
     breakpoints: {
-      320: {                    // Mobiele apparaten
+      320: {                    
         slidesPerView: 1,
         spaceBetween: 10
       },
-      640: {                    // Kleine tablets
+      640: {                    
         slidesPerView: 2,
         spaceBetween: 20
       },
-      1024: {                   // Desktops
+      1024: {                   
         slidesPerView: 'auto',
         spaceBetween: 30
       }
     },
-
-    // Event callbacks voor extra functionaliteit en debugging
     on: {
       init: function () {
         console.log("✅ CardsSlider geïnitialiseerd met Swiper.js", this);
@@ -75,6 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Slide gewijzigd naar index:", this.activeIndex);
       }
     }
+  });
+
+  // Stop de autoplay wanneer de gebruiker in de scrollable content van een kaart zit
+  const scrollableElements = document.querySelectorAll('.card .scrollable-content');
+  scrollableElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      swiper.autoplay.stop();
+      console.log("Autoplay gestopt wegens hover in scrollable content.");
+    });
+    el.addEventListener('mouseleave', () => {
+      swiper.autoplay.start();
+      console.log("Autoplay hervat na hover.");
+    });
+    el.addEventListener('scroll', () => {
+      swiper.autoplay.stop();
+      console.log("Autoplay gestopt wegens scroll in content.");
+    });
   });
 
   console.log("✅ CardsSlider succesvol geïnitialiseerd!");
