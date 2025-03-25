@@ -1118,65 +1118,65 @@ p {
   background: #fff;
   overflow: hidden;      /* Voorkomt dat slides buiten de container zichtbaar worden */
   position: relative;    /* Nodig voor de navigatieknoppen */
-  padding-bottom: 50px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
 }
+
+/* Swiper Wrapper */
 .swiper-wrapper {
-  display: flex;               /* Zorgt dat de slides naast elkaar komen te staan */
-  flex-direction: row;
-  transition: transform 0.8s ease;  /* Zorgt voor vloeiende transities */
+  display: flex;
+  transition: transform 0.8s ease;
 }
-/* Swiper Slides */
+
+/* Swiper Slides: Zorgt dat de inhoud gecentreerd staat */
 .swiper-slide {
-  background: linear-gradient(135deg, #896deb, #c2a3fd); /* Subtiele gradient */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 600px;           /* Houd de slides lekker breed */
-  height: 350px;  
-  border-radius: 12px;
-  text-align: center;
-  padding: 40px 100px;
-  margin: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
-} /* Subtiele gradient */
+  align-items: center;  /* Zorgt voor horizontale centrering */
+  background: linear-gradient(135deg, #896deb, #c2a3fd);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 600px;           /* Stel de slide-breedte in */
+  height: 350px;          /* Stel de slide-hoogte in */
+  border-radius: 12px;
+  padding: 20px;          /* Pas de padding naar wens aan */
+  margin: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-
-/* Hover-effect: lichte opwaartse beweging en extra schaduw */
+/* Hover-effect: slide komt iets omhoog */
 .swiper-slide:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Slide Headings */
+/* Tekst in de slide */
 .swiper-slide h2 {
   font-size: 1.8rem;
   color: #6A35C1;
   margin-bottom: 10px;
 }
 
-/* Slide Paragraphs */
 .swiper-slide p {
   width: 90%;           /* Zorgt ervoor dat de tekst 90% van de slide breedte inneemt */
-  max-width: none; 
   font-size: 1rem;
   color: #555;
   line-height: 1.5;
+  margin: 0 auto;       /* Centreert de tekst horizontaal */
 }
 
+/* Flipcard styling (de card in de slide) */
 .card {
   perspective: 1000px;
-  width: 700px;  /* Pas de breedte aan zoals gewenst */
-  height: 400px; /* Pas de hoogte aan zoals gewenst */
+  width: 700px;  /* Breedte van de flipcard */
+  height: 400px; /* Hoogte van de flipcard */
+  margin: auto;  /* Centreert de flipcard binnen de slide */
 }
 
-/* Inner container voor de flip */
+/* Binnencontainer voor de flip (card-inner) */
 .card-inner {
-  position: center;
+  position: relative;  /* Gebruik 'relative' i.p.v. 'center' voor een geldige waarde */
   width: 100%;
   height: 100%;
   transition: transform 0.8s;
@@ -1184,7 +1184,7 @@ p {
   cursor: pointer;
 }
 
-/* Voor- en achterkant van de kaart */
+/* Voorkant en achterkant van de kaart */
 .card-front,
 .card-back {
   position: absolute;
@@ -1201,21 +1201,21 @@ p {
   box-sizing: border-box;
 }
 
-/* Voorkant styling */
+/* Styling voor de voorkant van de kaart */
 .card-front {
-  background: linear-gradient(135deg, #c3b2ff, #c2a3fd4f);
+  background: linear-gradient(135deg, #c3b2ff, rgba(194, 163, 253, 0.31));
   color: #fff;
   font-family: 'Arial', sans-serif;
   text-align: center;
 }
 
-/* Achterkant styling */
+/* Styling voor de achterkant van de kaart */
 .card-back {
   background: #fff;
   color: #333;
   transform: rotateY(180deg);
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  font-family: 'Courier New', Courier, monospace; /* Voor een handschrift-achtig effect kun je hier een andere font kiezen */
+  font-family: 'Courier New', Courier, monospace;
   text-align: center;
 }
 
@@ -1223,7 +1223,6 @@ p {
 .card.flipped .card-inner {
   transform: rotateY(180deg);
 }
-
 
 /* Swiper Navigation Buttons */
 /* Swiper Navigation Buttons: Vorige en Volgende */
