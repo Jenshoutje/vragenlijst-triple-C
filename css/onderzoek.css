@@ -1195,8 +1195,6 @@ p {
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
@@ -1208,16 +1206,20 @@ p {
   color: #fff;
   font-family: 'Arial', sans-serif;
   text-align: center;
+  align-items: center;      /* horizontaal centreren */
+  justify-content: center;
 }
 
 /* Styling voor de achterkant van de kaart */
 .card-back {
-  background: #fff;
+  background: #F8F5FF;
   color: #333;
   transform: rotateY(180deg);
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  font-family: 'Courier New', Courier, monospace;
-  text-align: center;
+  font-family: 'Arial', sans-serif;
+  align-items: flex-start;  /* links uitlijnen (horizontaal) */
+  justify-content: flex-start;
+  
 }
 
 /* Wanneer de kaart is omgedraaid */
