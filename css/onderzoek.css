@@ -1168,10 +1168,12 @@ p {
 
 /* Flipcard styling (de card in de slide) */
 .card {
-  perspective: 1000px;
-  width: 700px;  /* Breedte van de flipcard */
-  height: 400px; /* Hoogte van de flipcard */
-  margin: auto;  /* Centreert de flipcard binnen de slide */
+  width: 90%;             /* Card vult 90% van de slide */
+  max-width: 700px;       /* Beperk de maximale breedte */
+  height: 90%;            /* Hoogte is 90% van de slide */
+  overflow: hidden;       /* Verberg alles buiten de card (voor de flip) */
+  position: relative;     /* Zodat de front/back absolute posities binnen de card zijn */
+  perspective: 1000px;    /* Voor 3D-flip */
 }
 
 /* Binnencontainer voor de flip (card-inner) */
