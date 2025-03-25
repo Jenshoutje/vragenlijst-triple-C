@@ -1138,7 +1138,7 @@ p {
   background: linear-gradient(135deg, #896deb, #c2a3fd);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 600px;           /* Stel de slide-breedte in */
-  height: 350px;          /* Stel de slide-hoogte in */
+  height: 750px;          /* Stel de slide-hoogte in */
   border-radius: 12px;
   padding: 20px;          /* Pas de padding naar wens aan */
   margin: 10px;
@@ -1169,8 +1169,8 @@ p {
 /* Flipcard styling (de card in de slide) */
 .card {
   perspective: 1000px;
-  width: 600px;  /* Breedte van de flipcard */
-  height: 400px; /* Hoogte van de flipcard */
+  width: 700px;  /* Breedte van de flipcard */
+  height: 600px; /* Hoogte van de flipcard */
   margin: auto;  /* Centreert de flipcard binnen de slide */
 }
 
