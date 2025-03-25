@@ -1202,12 +1202,42 @@ p {
 
 /* Styling voor de voorkant van de kaart */
 .card-front {
-  background: linear-gradient(135deg, #c3b2ff, rgba(194, 163, 253, 0.31));
+  
   color: #fff;
   font-family: 'Arial', sans-serif;
   text-align: center;
   align-items: center;      /* horizontaal centreren */
   justify-content: center;
+}
+/* Pastelpaarse tinten voor 6 cards */
+.idea-card:nth-of-type(1) {
+  background-color: #EAD8F9; /* Licht pastelpaars 1 */
+  color: #fff;
+}
+
+.idea-card:nth-of-type(2) {
+  background-color: #DCC7F2; /* Licht pastelpaars 2 */
+  color: #fff;
+}
+
+.idea-card:nth-of-type(3) {
+  background-color: #CFA5ED; /* Licht pastelpaars 3 */
+  color: #fff;
+}
+
+.idea-card:nth-of-type(4) {
+  background-color: #C29BED; /* Licht pastelpaars 4 */
+  color: #fff;
+}
+
+.idea-card:nth-of-type(5) {
+  background-color: #B38DEA; /* Licht pastelpaars 5 */
+  color: #fff;
+}
+
+.idea-card:nth-of-type(6) {
+  background-color: #A27BD9; /* Licht pastelpaars 6 */
+  color: #fff;
 }
 
 /* Styling voor de achterkant van de kaart */
