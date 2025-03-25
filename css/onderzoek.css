@@ -1169,7 +1169,7 @@ p {
 /* Flipcard styling (de card in de slide) */
 .card {
   perspective: 1000px;
-  width: 700px;  /* Breedte van de flipcard */
+  width: 600px;  /* Breedte van de flipcard */
   height: 400px; /* Hoogte van de flipcard */
   margin: auto;  /* Centreert de flipcard binnen de slide */
 }
