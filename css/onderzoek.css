@@ -1197,7 +1197,7 @@ p {
 
 /* Styling voor de voorkant van de kaart */
 .card-front {
-  background: linear-gradient(135deg, #c3b2ff, rgba(194, 163, 253, 0.31));
+  background: linear-gradient(135deg, #a692eb, rgba(250, 250, 250, 0.8));
   color: #fff;
   font-family: 'Arial', sans-serif;
   text-align: center;
