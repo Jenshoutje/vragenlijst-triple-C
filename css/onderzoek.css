@@ -1207,7 +1207,24 @@ p {
 
 
 
+.card-title {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
 
+.card-line {
+  width: 60px;
+  height: 4px;
+  background-color: #fff;
+  border: none;
+  margin: 0 auto 10px;
+}
+
+.card-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #f5f5f5;
+}
 
 
 
