@@ -1212,12 +1212,15 @@ p {
   margin-bottom: 10px;
 }
 
-.card-line {
-  width: 60px;
-  height: 4px;
-  background-color: #fff;
-  border: none;
-  margin: 0 auto 10px;
+
+  .card-line {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #333, #999, #333);
+  border-radius: 2px;
+  margin: 10px auto 20px;
+  opacity: 0.8;
+}
 }
 
 .card-subtitle {
