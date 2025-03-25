@@ -1238,23 +1238,6 @@ p {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Styling voor de achterkant van de kaart */
 .card-back {
   background: #F8F5FF;
@@ -1317,11 +1300,11 @@ p {
 /* Fractionele paginering: toont de huidige slide en totaal aantal slides */
 .swiper-pagination {
   position: absolute;
-  bottom: 10px;
+  bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
   color: #6A35C1;
-  font-size: 14px;
+  font-size: 25px;
   font-weight: bold;
   z-index: 10;
 }
