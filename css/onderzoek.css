@@ -1158,7 +1158,7 @@ p {
   font-size: 1rem;
   color: #555;
   line-height: 1.5;
-  margin: 30 auto;       /* Centreert de tekst horizontaal */
+  margin: 30px auto;       /* Centreert de tekst horizontaal */
 }
 
 /* Flipcard styling (de card in de slide) */
