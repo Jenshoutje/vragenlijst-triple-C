@@ -1210,34 +1210,24 @@ p {
   justify-content: center;
 }
 /* Pastelpaarse tinten voor 6 cards */
-.card:nth-of-type(1) {
-  background-color: #EAD8F9; /* Licht pastelpaars 1 */
-  color: #fff;
-}
+.card:nth-child(1) {
+  background-color: #E1D5F7; /* lichte pastel paars */
 
-.card:nth-of-type(2) {
-  background-color: #DCC7F2; /* Licht pastelpaars 2 */
-  color: #fff;
 }
-
-.card:nth-of-type(3) {
-  background-color: #CFA5ED; /* Licht pastelpaars 3 */
-  color: #fff;
+.card:nth-child(2) {
+  background-color: #D7C0EB;
 }
-
-.card:nth-of-type(4) {
-  background-color: #C29BED; /* Licht pastelpaars 4 */
-  color: #fff;
+.card:nth-child(3) {
+  background-color: #CBB1F3;
 }
-
-.card:nth-of-type(5) {
-  background-color: #B38DEA; /* Licht pastelpaars 5 */
-  color: #fff;
+.card:nth-child(4) {
+  background-color: #BDA3F5;
 }
-
-.card:nth-of-type(6) {
-  background-color: #A27BD9; /* Licht pastelpaars 6 */
-  color: #fff;
+.card:nth-child(5) {
+  background-color: #B09AF7;
+}
+.card:nth-child(6) {
+  background-color: #A38FF9;
 }
 
 /* Styling voor de achterkant van de kaart */
