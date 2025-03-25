@@ -1201,6 +1201,7 @@ p {
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
+  overflow-y: auto; 
 }
 
 /* Styling voor de voorkant van de kaart */
