@@ -1,15 +1,12 @@
-// cardsSlider.js
 "use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialiseer flip effect voor elke kaart
+  // Initialiseer flip effect: iedere klik op de kaart togglet de flipped-klasse.
   const cards = document.querySelectorAll(".swiper-slide .card");
   cards.forEach(card => {
     card.addEventListener("click", function(e) {
-      // Alleen flippen als de klik niet plaatsvindt op een scrollable-content element
-      if (!e.target.closest('.scrollable-content')) {
-        card.classList.toggle("flipped");
-      }
+      // Voorkom conflicten met pointer-drag events als dat nodig is (optioneel)
+      card.classList.toggle("flipped");
     });
   });
 
@@ -31,11 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     autoplay: {
       delay: 10000,                // Slide elke 10 seconden
-      disableOnInteraction: false  // Autoplay stopt niet automatisch bij interactie
+      disableOnInteraction: false  // Autoplay stopt niet bij interactie
     },
     pagination: {
       el: '.swiper-pagination',
-      type: 'fraction', // Geeft een fractionele paginering (current/total)
+      type: 'fraction', // Geeft "current/total"
       clickable: true,
     },
     navigation: {
@@ -62,11 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       slideChange: function () {
         console.log("Slide gewijzigd naar index:", this.activeIndex);
+        // Reset alle kaarten naar de voorkant wanneer de slide verandert
+        document.querySelectorAll('.swiper-slide .card').forEach(card => {
+          card.classList.remove("flipped");
+        });
       }
     }
   });
 
-  // Stop de autoplay wanneer de gebruiker in de scrollable content van een kaart zit
+  // Stop de autoplay wanneer de gebruiker in scrollable content zit
   const scrollableElements = document.querySelectorAll('.card .scrollable-content');
   scrollableElements.forEach(el => {
     el.addEventListener('mouseenter', () => {
