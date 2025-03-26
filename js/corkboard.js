@@ -223,11 +223,46 @@ generateButton.addEventListener("click", () => {
   // (7) Typewriter-effect voor het prototype memo
   function startTypingAnimation(textElem) {
     if (!textElem) return;
-    const message = `Het uiteindelijke prototype zal worden ontwikkeld op basis van de inzichten uit het FFF-moment, de thematische analyse van open vragen over Triple C, het grafisch onderzoek naar gebruikersvriendelijkheid en pictogrammen, en een verkenning van bestaande AI-modellen.
+    const message = `Conceptprototype 
 
-Het prototype wordt een AI-ondersteunde instructievideo, waarin op visueel aantrekkelijke wijze de praktische toepassing van de Triple C-methodiek centraal zal staan. Deze video richt zich specifiek op het verminderen van de ervaren werkdruk, het vergroten van een eenduidige interpretatie van Triple C, en het versterken van kennis en vaardigheden door doelgerichte scholing. Door middel van duidelijke pictogrammen, korte praktijkgerichte instructies en herkenbare voorbeelden uit de dagelijkse praktijk van woongroep ’t Rond 51 zal het prototype begeleiders ondersteunen om methodisch en consistent te handelen volgens de Triple C-principes.
+In het hart van de Triple C-methodiek ligt het streven naar eenduidigheid, nabijheid en het bieden van een betekenisvol bestaan voor cliënten. Vanuit die visie is binnen dit ontwerpgericht onderzoek gezocht naar een interventie die begeleiders ondersteunt in het consequent toepassen van Triple C, ondanks werkdruk, beperkte scholing of uiteenlopende interpretaties binnen het team.
 
-Het uiteindelijke doel van dit prototype zal zijn om begeleiders beter toe te rusten, een gezamenlijke taal en visie te stimuleren, en daarmee bij te dragen aan een verhoogde kwaliteit van zorg en ondersteuning.`;
+Wat uit het onderzoek naar voren kwam, is dat begeleiders op woongroep ’t Rond 51 wel degelijk gemotiveerd zijn om methodisch te werken volgens Triple C, maar dat zij tegen praktische barrières aanlopen: een gebrek aan gezamenlijke taal, tijdsdruk en onvoldoende toegang tot concrete handvatten. Dit vormt de voedingsbodem voor het ontwerp van een interventie die compact, visueel en direct toepasbaar is in de praktijk.
+
+Visie op het prototype
+
+Het prototype – voorlopig aangeduid als Triple C Snapshots – is ontworpen als een digitale microleermodule die gebruikmaakt van korte, krachtige video’s van maximaal twintig seconden. Elke video belicht één essentieel aspect van Triple C, verankerd in herkenbare praktijksituaties en visueel vertaald naar de dagelijkse realiteit op de werkvloer.
+
+De insteek is niet om begeleiders op te leiden in de volledige methodiek, maar juist om bestaande kennis te activeren, te versterken en op visueel aantrekkelijke wijze te verhelderen. De kern ligt in herhaling, herkenbaarheid en eenvoud.
+
+De vorm sluit aan op het format van hedendaagse short-form content, zoals dat breed wordt ingezet op sociale en educatieve platforms, maar is specifiek afgestemd op de behoeften en context van begeleiders in de gehandicaptenzorg. Daarbij wordt rekening gehouden met beperkte cognitieve ruimte, verschillen in leerstijl en de noodzaak tot snel toepasbare informatie.
+
+ Inhoud en ontwikkeling
+
+De inhoud van de video’s is gebaseerd op de primaire principes uit het Triple C-handboek, aangevuld met inzichten uit de thematische analyse en reflecties van begeleiders zelf. Denk aan situaties als:
+• “Wat betekent het om naast iemand te staan in plaats van boven iemand te staan?”
+• “Hoe herken je spanning bij cliënten en hoe kun je hier proactief op inspelen?”
+• “Wat betekent het om de ‘normale dagstructuur’ leidend te maken, zelfs in onrustige momenten?”
+
+Deze fragmenten worden visueel uitgewerkt, met behulp van AI-tools zoals Sora, die realistische en aanpasbare video’s kan genereren op basis van tekstuele input. Daarbij blijft menselijke regie essentieel: begeleiders worden actief betrokken bij het toetsen van de inhoud, het herkennen van de situaties, en het beoordelen van begrijpelijkheid en toepasbaarheid.
+
+De vormgeving van de video’s wordt ontwikkeld volgens principes van visueel ontwerp voor begrijpelijke zorgcommunicatie. Denk aan rustige kleurcontrasten, gebruik van pictogrammen en herkenbare zorgsettings. Zo ontstaat een serie visuele miniaturen die als het ware ‘snaps’ vormen: kleine brokjes herkenbare, gedeelde kennis.
+
+Gebruik en implementatie
+
+De video’s kunnen op meerdere manieren worden ingezet:
+• Als aanvulling binnen het bestaande leerplein van Alliade;
+• Als visueel startpunt tijdens teamoverleggen of intervisies;
+• Of als ‘on the go’-tool via een mobiele webomgeving.
+
+Door deze flexibiliteit kan de tool inspelen op verschillende praktijksituaties – zonder dat er sprake is van een overbelasting of extra scholingsdruk.
+
+Reflectieve kanttekening
+
+Hoewel het prototype in potentie een krachtige bijdrage kan leveren aan het realiseren van een gedeelde visie binnen teams, staat het ontwerp nog in zijn conceptuele fase. Het is (nog) niet geïmplementeerd, getest of gevalideerd op grote schaal. In lijn met kritisch ontwerpdenken wordt in de Deliverfase van dit onderzoek stilgestaan bij de beperkingen, ethische overwegingen en vragen omtrent het gebruik van AI in zorgcontexten.
+
+De uiteindelijke keuze om het prototype daadwerkelijk te implementeren, zal afhangen van verdere toetsing, feedback uit de praktijk en het ethisch afwegingskader dat in het slothoofdstuk wordt behandeld.
+`;
     
     let idx = 0;
     const speed = 30; // iets snellere typingsnelheid
