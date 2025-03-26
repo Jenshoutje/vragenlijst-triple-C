@@ -137,6 +137,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const centerX = boardRect.width / 2;
       const centerY = boardRect.height / 2;
 
+       const allCards = board.querySelectorAll(".idea-card");
+
       cards.forEach(card => {
         // Voeg een CSS-transitie toe voor een vloeiende animatie
         card.style.transition = "left 0.5s ease, top 0.5s ease";
