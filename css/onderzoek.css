@@ -1635,6 +1635,19 @@ p {
   white-space: pre-line; /* Zodat \n-tekens worden gerespecteerd */
 }
 
+
+.genereer-knop {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.genereer-knop:hover {
+  background-color: #45a049;
+}
+
 /* Animatie om het laatste memo-blad mooi te laten 'binnenkomen' */
 @keyframes fadeInScale {
   0% {
