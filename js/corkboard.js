@@ -127,15 +127,16 @@ document.addEventListener("DOMContentLoaded", () => {
   board.appendChild(generateNote);
 
   // (4) Eventlistener voor de “Voeg samen & genereer” knop
-  const generateButton = generateNote.querySelector("#generatePrototype");
-  generateButton.addEventListener("click", () => {
-    console.log("Genereer Prototype knop geklikt.");
-    animateHuddle().then(() => {
-      // Verwijder de oude kaarten
-      allCards.forEach(card => card.remove());
-      showFinalMemo();
-    });
+const generateButton = generateNote.querySelector("#generatePrototype");
+generateButton.addEventListener("click", () => {
+  console.log("Genereer Prototype knop geklikt.");
+  animateHuddle().then(() => {
+    // Haal opnieuw alle .idea-card elementen op (inclusief de to-do memo)
+    const allCards = board.querySelectorAll(".idea-card");
+    allCards.forEach(card => card.remove());
+    showFinalMemo();
   });
+});
 
   // (5) Functie: Animatie waarbij alle kaarten naar het midden bewegen ("huddelen")
   function animateHuddle() {
