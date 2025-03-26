@@ -1681,7 +1681,7 @@ p {
   padding: 6px 12px;
   cursor: pointer;
   font-weight: 700;
-  font-family: 'Permanent Marker', cursive; /* Optioneel */
+  font-family: fangsong; /* Optioneel */
   color: #333;
   margin-top: 10px;
   transition: background-color 0.3s ease;
@@ -1704,7 +1704,7 @@ p {
 
   color: #000;
   font-weight: 700;
-  font-family: 'Permanent Marker', cursive; 
+  font-family: fangsong;
   line-height: 1.4em;
 
   /* Overige stijlen zoals breedte, hoogte, padding, border-radius, etc. 
