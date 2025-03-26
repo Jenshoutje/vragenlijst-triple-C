@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <h2 style="margin-bottom: 8px;">TO DO</h2>
   <p style="margin: 4px 0;">1. Plak alle memo-briefjes op het bord.</p>
   <p style="margin: 4px 0;">2. Lees meer over de vier componenten.</p>
-  <p style="margin: 4px 0;">3. Compleet? Klik op <strong>Voeg samen</strong> om het (concept) prototype te genereren.</p>
+  <p style="margin: 4px 0;">3. Compleet? Klik op <strong>"Voeg samen"</strong> om het (concept) prototype te genereren.</p>
   <button id="generatePrototype" style="margin-top:10px; cursor:pointer;">Voeg samen</button>
 `;
 
