@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
        const allCards = board.querySelectorAll(".idea-card");
 
-      cards.forEach(card => {
+      allCards.forEach(card => {
         // Voeg een CSS-transitie toe voor een vloeiende animatie
         card.style.transition = "left 0.5s ease, top 0.5s ease";
         const cardWidth = card.offsetWidth;
