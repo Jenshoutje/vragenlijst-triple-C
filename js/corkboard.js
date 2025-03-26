@@ -107,6 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
   generateNote.style.padding = "10px";
   generateNote.style.borderRadius = "8px";
   generateNote.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
+  generateNote.style.fontSize = "14px";
+  generateNote.style.lineHeight = "1.2";
+  generateNote.style.fontWeight = "700"; 
   generateNote.style.zIndex = "999"; // Zodat deze boven andere elementen blijft
 
   // Inhoud van het memo-briefje
