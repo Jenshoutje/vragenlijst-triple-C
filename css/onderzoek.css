@@ -1662,15 +1662,13 @@ p {
   line-height: 1.4em;
 
   /* Positionering kan in CSS of JS (JS is handig als u absoluut wilt dat hij rechtsonder staat) */
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+
 }
 
-/* Als u de titel en paragraaf apart wilt stylen */
-.generate-note h4,
+
+
 .generate-note p {
-  margin: 0.5em 0;
+  margin: 1.5em 0;
 }
 
 /* De knop binnen de generate-note */
