@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Genereer Prototype knop geklikt.");
     animateHuddle().then(() => {
       // Verwijder de oude kaarten
-      cards.forEach(card => card.remove());
+      allCards.forEach(card => card.remove());
       showFinalMemo();
     });
   });
