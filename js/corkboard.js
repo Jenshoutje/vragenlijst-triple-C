@@ -48,10 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function onPointerDown(e) {
-    // Controleer of de klik op de "Lees meer"-link is
+    // Controleer of de klik op de "Lees meer"-link is; zo niet, dan starten we met draggen.
     const link = e.target.closest(".card-link");
     if (link) {
-      // Bij klikken op de link niet starten met draggen.
       return;
     }
 
@@ -94,32 +93,31 @@ document.addEventListener("DOMContentLoaded", () => {
     if (activeCard) {
       activeCard.releasePointerCapture(e.pointerId);
       activeCard.style.boxShadow = "";
-      console.log(`Kaart "${activeCard.querySelector("h3")?.innerText || "zonder titel"}" neergezet.`);
+      console.log(`Kaart "${activeCard.querySelector("h4")?.innerText || "zonder titel"}" neergezet.`);
     }
     activeCard = null;
   }
 
-  // (3) "Lees meer"-knoppen logica
-  let readMoreCount = 0;
-  const totalNeeded = 5; // Aantal knoppen dat moet worden aangeklikt
+  // (3) Toevoegen van de "Genereer Prototype" knop
+  // Deze knop activeert de huddle-animatie en genereert het prototype memo
+  const generateButton = document.createElement("button");
+  generateButton.textContent = "Genereer Prototype";
+  generateButton.id = "generatePrototype";
+  // Positioneer de knop (bijvoorbeeld rechtsonder in het board)
+  generateButton.style.position = "absolute";
+  generateButton.style.bottom = "20px";
+  generateButton.style.right = "20px";
+  generateButton.style.padding = "10px 20px";
+  generateButton.style.fontSize = "16px";
+  generateButton.style.cursor = "pointer";
+  board.appendChild(generateButton);
 
-  // Zoek alle "Lees meer" knoppen binnen de kaarten (verondersteld dat ze de class .card-link hebben)
-  const readMoreButtons = board.querySelectorAll(".card-link");
-  readMoreButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-      readMoreCount++;
-      console.log(`Lees meer geklikt! Totaal nu: ${readMoreCount}`);
-
-      if (readMoreCount >= totalNeeded) {
-        // Start de huddle-animatie en maak daarna het prototype memo aan
-        animateHuddle().then(() => {
-          // Verwijder de oude kaarten
-          cards.forEach(card => card.remove());
-          showFinalMemo();
-        });
-      }
+  generateButton.addEventListener("click", (e) => {
+    console.log("Genereer Prototype knop geklikt.");
+    animateHuddle().then(() => {
+      // Verwijder de oude kaarten
+      cards.forEach(card => card.remove());
+      showFinalMemo();
     });
   });
 
@@ -176,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     finalCard.style.padding = "10px";
     finalCard.style.borderRadius = "10px";
     finalCard.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
-    finalCard.style.opacity = "0";
+    finalCard.style.opacity = "0.8";
     finalCard.innerHTML = `
       <h2>Prototype</h2>
       <div class="typing-text"></div>
@@ -200,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // (6) Typewriter-effect voor het prototype memo
   function startTypingAnimation(textElem) {
     if (!textElem) return;
-const message = `Het uiteindelijke prototype zal worden ontwikkeld op basis van de inzichten uit het FFF-moment, de thematische analyse van open vragen over Triple C, het grafisch onderzoek naar gebruikersvriendelijkheid en pictogrammen, en een verkenning van bestaande AI-modellen.
+    const message = `Het uiteindelijke prototype zal worden ontwikkeld op basis van de inzichten uit het FFF-moment, de thematische analyse van open vragen over Triple C, het grafisch onderzoek naar gebruikersvriendelijkheid en pictogrammen, en een verkenning van bestaande AI-modellen.
 
 Het prototype wordt een AI-ondersteunde instructievideo, waarin op visueel aantrekkelijke wijze de praktische toepassing van de Triple C-methodiek centraal zal staan. Deze video richt zich specifiek op het verminderen van de ervaren werkdruk, het vergroten van een eenduidige interpretatie van Triple C, en het versterken van kennis en vaardigheden door doelgerichte scholing. Door middel van duidelijke pictogrammen, korte praktijkgerichte instructies en herkenbare voorbeelden uit de dagelijkse praktijk van woongroep ’t Rond 51 zal het prototype begeleiders ondersteunen om methodisch en consistent te handelen volgens de Triple C-principes.
 
