@@ -1,0 +1,414 @@
+body {
+    overflow-x: hidden;
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgba(255, 204, 204, 0.9); /* Paarse achtergrond */
+}
+nav {
+    background-color: #6A35C1; /* Effen paarse kleur voor navigatiebalk */
+    padding: 50px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky; /* Blijf bovenaan bij scrollen */
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtiele schaduw voor diepte */
+}
+
+/* Navigatielijst */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+/* Navigatie-items */
+nav ul li a {
+    text-decoration: none;
+    color: white; /* Witte tekst op de paarse balk */
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #FFA500; /* Oranje accent bij hover */
+}
+
+/* Algemene typografie */
+h1, h2, h3, h4, h5, h6 {
+    color: #6A35C1; /* Paarse kleur voor koppen */
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+p {
+    color: #555; /* Donkergrijze kleur voor paragrafen */
+    line-height: 1.6; /* Goede leesbaarheid */
+    margin: 10px 0;
+}
+.matrix-header {
+    background: white; /* Witte achtergrond */
+    color: #4A4A4A; /* Donkergrijze tekst */
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px; /* Afgeronde hoeken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw */
+    margin-bottom: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Stijl voor titel en beschrijving */
+.matrix-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #6A35C1; /* Paarse tekst */
+    margin-bottom: 10px;
+}
+
+.matrix-header p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Decoratieve lijn onder de header */
+.matrix-header::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #6A35C1; /* Paarse lijn */
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.decisioncontext-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 100%;
+    max-width: 930px;
+    text-align: left;
+}
+
+.decisioncontext-container h2, 
+.decisioncontext-container h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.decisioncontext-container p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Chart Section */
+.chart-section {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+/* Specifieke styling voor de chart-container en canvas */
+#chart-container {
+  width: 100%;
+  padding: 20px;
+}
+
+#decisionChart {
+  /* Als u specifieke styling voor de canvas wilt, kunt u dat hier toevoegen */
+  width: 100% !important;
+  max-width: 800px;
+  margin: 0 auto;
+}
+/* Interpretatie-sectie onder de chart */
+.matrix-interpretation {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  text-align: left;
+}
+
+.matrix-interpretation h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
+
+.matrix-interpretation p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.matrix-interpretation ul {
+  margin-bottom: 15px;
+  list-style: disc inside;
+}
+
+.matrix-interpretation ul li {
+  margin-left: 20px;
+  margin-bottom: 8px;
+}
+
+/* Uitklapbare ruwe data (details/summary) */
+/* Uitklapbare ruwe data (details/summary) */
+.raw-data {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.raw-data summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #6A35C1;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+#rawDataContainer {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  max-height: 300px; /* evt. scrollable */
+  overflow-y: auto;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Footer styling */
+footer {
+  background: #fff;
+  padding: 15px 20px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  color: #555;
+}
+.chart-legend {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: left; /* Tekst links uitlijnen */
+}
+
+/* Titel van de legenda */
+.chart-legend h3 {
+  font-size: 1.8rem;
+  color: #6A35C1;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 5px;
+}
+
+/* Grid van de lijst items */
+.chart-legend ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Elke <li> wordt als een "card" gestyled */
+.chart-legend ul li {
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  padding: 15px;
+  line-height: 1.4;
+}
+
+/* Styling voor de titel in de kaart */
+.chart-legend ul li strong {
+  display: block;   /* Op een eigen regel */
+  margin-bottom: 8px;
+  color: #6A35C1;
+  font-size: 1.1rem;
+}
+
+/* Styling voor de optie labels */
+.chart-legend ul li em {
+  font-style: normal;  /* Geen schuine letters */
+  color: #333;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Container voor de pop-up */
+.legend-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 9999; /* Boven andere elementen */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  max-width: 300px;
+  width: 90%; /* voor kleinere schermen */
+}
+
+/* Standaard verbergen via display:none */
+.legend-popup.hidden {
+  display: none;
+}
+
+.legend-popup-content h4 {
+  margin-top: 0;
+  color: #6A35C1;
+}
+
+.legend-popup-content p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.legend-popup-content button {
+  background: #6A35C1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.legend-popup-content button:hover {
+  background: #53248f;
+}
+
+  .next-phase-btn {
+  display: inline-block;
+  background-color: #6A35C1;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+}
+
+    
+.tool-link-btn:hover {
+  background-color: #53298f;
+  transform: scale(1.05);
+}
+
+.tool-link-btn {
+  display: inline-block;
+  background-color: #6A35C1;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+}
+
+    
+.tool-link-btn:hover {
+  background-color: #53298f;
+  transform: scale(1.05);
+}
+
+.next-phase-btn {
+  background: #6A35C1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.next-phase-btn:hover {
+  background: #53298f; 
+  text-decoration: none;
+}
+
+
+/* Responsiviteit */
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .chart-section {
+    padding: 20px;
+  }
+
+    /* Legenda styling */
+/* Container van de legenda */
+/* Legenda Container */
+
+
+/* Responsiviteit */
+@media (max-width: 768px) {
+  .chart-legend {
+    padding: 15px;
+  }
+  .chart-legend h3 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+/* Extra padding voor de chart container, indien nodig */
+#chart-container {
+  padding: 10px;
+}
+
+  
+.terug-knop {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #e0d4ff;
+  color: #333;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.terug-knop:hover {
+  background-color: #cbb8ff;
+}
