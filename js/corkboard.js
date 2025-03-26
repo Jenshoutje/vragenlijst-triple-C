@@ -186,6 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     finalCard.style.borderRadius = "10px";
     finalCard.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
     finalCard.style.opacity = "0.8";
+    finalCard.style.transform = "rotate(3deg)";
     finalCard.innerHTML = `
       <h2>Prototype</h2>
       <div class="typing-text"></div>
