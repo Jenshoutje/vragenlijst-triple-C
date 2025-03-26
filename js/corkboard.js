@@ -98,28 +98,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // (3) Maak een “sticky note”-achtig memo-briefje rechtsonder aan
   const generateNote = document.createElement("div");
   generateNote.classList.add("idea-card", "generate-note");
-  generateNote.style.position = "absolute";
-  generateNote.style.top = "20x";
-  generateNote.style.left= "400px";
+  generateNote.style.position = "sticky";
+  generateNote.style.top = "13px";
+  generateNote.style.left= "850px";
   generateNote.style.width = "187px";
   generateNote.style.minHeight = "150px";
   generateNote.style.backgroundColor = "#fff8a8"; // Pastelkleur
   generateNote.style.padding = "10px";
   generateNote.style.borderRadius = "8px";
+  generateNote.style.boxSizing = "border-box";
   generateNote.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
-  generateNote.style.fontSize = "11px";
+  generateNote.style.fontSize = "15px";
   generateNote.style.lineHeight = "1.2";
   generateNote.style.fontWeight = "700"; 
   generateNote.style.zIndex = "999"; // Zodat deze boven andere elementen blijft
 
   // Inhoud van het memo-briefje
   generateNote.innerHTML = `
-    <h2>TO DO</h2>
-    <p> <ul>
+    <h5>TO DO</h5>
+    <p> 
     <li>Plak alle memo-briefjes op het bord.</li>
-    <li>Lees meer!.</li>
-    <li>Compleet? klik op "<strong>Voeg samen</strong>" voor het (concept) prototype  </li>
-  </ul></p>
+    <li>Lees meer.</li>
+    <li>klik op "<strong>Voeg samen</strong>" voor het (concept) prototype  </li>
+  </p>
     <button id="generatePrototype" style="margin-top:10px; cursor:pointer;">Voeg samen</button>
   `;
 
