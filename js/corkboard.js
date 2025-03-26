@@ -111,9 +111,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Inhoud van het memo-briefje
   generateNote.innerHTML = `
-    <h4>To-do list</h4>
-    <p>Lees eerst meer over de 5 componenten</p>
-    <button id="generatePrototype" style="margin-top:10px; cursor:pointer;">Voeg samen & genereer</button>
+    <h2>TO DO</h2>
+    <p> <ul>
+    <li>Plak alle memo-briefjes op het bord.</li>
+    <li>Lees rustig meer over de vijf verschillende componenten.</li>
+    <li>Wanner alles is doorlopen, klik op "<strong>Voeg samen</strong>" om het (concept) prototype samen te stellen. </li>
+  </ul></p>
+    <button id="generatePrototype" style="margin-top:10px; cursor:pointer;">Voeg samen</button>
   `;
 
   // Voeg het memo-briefje toe aan het board
