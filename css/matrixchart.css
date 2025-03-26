@@ -397,3 +397,18 @@ footer {
 }
 
   
+.terug-knop {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #e0d4ff;
+  color: #333;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.terug-knop:hover {
+  background-color: #cbb8ff;
+}
