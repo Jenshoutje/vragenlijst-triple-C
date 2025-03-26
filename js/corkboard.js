@@ -3,23 +3,21 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ corkboard.js geladen!");
 
-  // Zoek het 'corkboard' element (het klembord)
   const board = document.querySelector(".corkboard");
   if (!board) {
     console.error("❌ Geen element met class .corkboard gevonden.");
     return;
   }
 
-  // Selecteer alle memo-kaarten (idea-card)
   const cards = board.querySelectorAll(".idea-card");
   if (cards.length === 0) {
     console.warn("⚠ Geen .idea-card elementen gevonden in het klembord.");
   }
 
-  // (1) Gestapelde startpositie: een lichte offset zodat de kaarten niet exact overlappen
-  const baseX = 20;      // Beginpositie X binnen board
-  const baseY = 20;      // Beginpositie Y binnen board
-  const offsetStep = 15; // Offset per kaart
+  // (1) Plaats de kaarten met lichte offset
+  const baseX = 20;
+  const baseY = 20;
+  const offsetStep = 15;
 
   cards.forEach((card, index) => {
     card.style.position = "absolute";
@@ -27,11 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     card.style.top = `${baseY + index * offsetStep}px`;
   });
 
-  // (2) DRAG & DROP-instellingen
+  // (2) Drag & Drop
   let activeCard = null;
   let offsetX = 0;
   let offsetY = 0;
-  const gridSize = 20; // Snap-to-grid (20px)
+  const gridSize = 20;
 
   cards.forEach(card => {
     // Zorg dat elke kaart een positionering heeft
@@ -48,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function onPointerDown(e) {
-    // Controleer of de klik op de "Lees meer"-link is; zo niet, dan starten we met draggen.
+    // Als er op de link "Lees meer" wordt geklikt, geen drag starten
     const link = e.target.closest(".card-link");
     if (link) {
       return;
@@ -58,14 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!card) return;
 
     activeCard = card;
-
     const rect = card.getBoundingClientRect();
     offsetX = e.clientX - rect.left;
     offsetY = e.clientY - rect.top;
 
     card.setPointerCapture(e.pointerId);
     card.style.boxShadow = "0 6px 15px rgba(0,0,0,0.3)";
-
     e.preventDefault();
   }
 
@@ -78,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const maxX = boardRect.width - activeCard.offsetWidth;
     const maxY = boardRect.height - activeCard.offsetHeight;
+
     newX = Math.max(0, Math.min(newX, maxX));
     newY = Math.max(0, Math.min(newY, maxY));
 
@@ -98,21 +95,33 @@ document.addEventListener("DOMContentLoaded", () => {
     activeCard = null;
   }
 
-  // (3) Toevoegen van de "Genereer Prototype" knop
-  // Deze knop activeert de huddle-animatie en genereert het prototype memo
-  const generateButton = document.createElement("button");
-  generateButton.textContent = "Genereer Prototype";
-  generateButton.id = "generatePrototype";
-  // Positioneer de knop (bijvoorbeeld rechtsonder in het board)
-  generateButton.style.position = "absolute";
-  generateButton.style.bottom = "20px";
-  generateButton.style.right = "20px";
-  generateButton.style.padding = "10px 20px";
-  generateButton.style.fontSize = "16px";
-  generateButton.style.cursor = "pointer";
-  board.appendChild(generateButton);
+  // (3) Maak een “sticky note”-achtig memo-briefje rechtsonder aan
+  const generateNote = document.createElement("div");
+  generateNote.classList.add("idea-card", "generate-note");
+  generateNote.style.position = "absolute";
+  generateNote.style.bottom = "20px";
+  generateNote.style.right = "20px";
+  generateNote.style.width = "220px";
+  generateNote.style.minHeight = "150px";
+  generateNote.style.backgroundColor = "#fff8a8"; // Pastelkleur
+  generateNote.style.padding = "10px";
+  generateNote.style.borderRadius = "8px";
+  generateNote.style.boxShadow = "0 2px 8px rgba(0,0,0,0.2)";
+  generateNote.style.zIndex = "999"; // Zodat deze boven andere elementen blijft
 
-  generateButton.addEventListener("click", (e) => {
+  // Inhoud van het memo-briefje
+  generateNote.innerHTML = `
+    <h4>To-do list</h4>
+    <p>Lees eerst meer over de 5 componenten</p>
+    <button id="generatePrototype" style="margin-top:10px; cursor:pointer;">Voeg samen & genereer</button>
+  `;
+
+  // Voeg het memo-briefje toe aan het board
+  board.appendChild(generateNote);
+
+  // (4) Eventlistener voor de “Voeg samen & genereer” knop
+  const generateButton = generateNote.querySelector("#generatePrototype");
+  generateButton.addEventListener("click", () => {
     console.log("Genereer Prototype knop geklikt.");
     animateHuddle().then(() => {
       // Verwijder de oude kaarten
@@ -121,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // (4) Functie: Animatie waarbij alle kaarten naar het midden bewegen ("huddelen")
+  // (5) Functie: Animatie waarbij alle kaarten naar het midden bewegen ("huddelen")
   function animateHuddle() {
     return new Promise((resolve) => {
       const boardRect = board.getBoundingClientRect();
@@ -147,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // (5) Functie: Maak het prototype memo blaadje aan met typewriter-effect
+  // (6) Functie: Maak het prototype memo blaadje aan met typewriter-effect
   let finalMemoShown = false;
   function showFinalMemo() {
     if (finalMemoShown) return;
@@ -155,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Bepaal de positie in het midden van het board voor het prototype memo
     const boardRect = board.getBoundingClientRect();
-    const prototypeWidth = 700; // Aangepaste breedte voor prototype memo
+    const prototypeWidth = 700; 
     const prototypeHeight = 550;
     const centerX = boardRect.width / 2;
     const centerY = boardRect.height / 2;
@@ -191,11 +200,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Voeg drag functionaliteit toe aan het nieuwe element
     finalCard.addEventListener("pointerdown", onPointerDown);
 
+    // Geef de .typing-text een vaste hoogte en verberg overflow
+    const finalTextContainer = finalCard.querySelector(".typing-text");
+    finalTextContainer.style.height = "calc(100% - 40px)"; 
+    finalTextContainer.style.overflow = "hidden"; 
+    finalTextContainer.style.whiteSpace = "pre-wrap";
+
     // Start de typewriter-animatie
-    startTypingAnimation(finalCard.querySelector(".typing-text"));
+    startTypingAnimation(finalTextContainer);
   }
 
-  // (6) Typewriter-effect voor het prototype memo
+  // (7) Typewriter-effect voor het prototype memo
   function startTypingAnimation(textElem) {
     if (!textElem) return;
     const message = `Het uiteindelijke prototype zal worden ontwikkeld op basis van de inzichten uit het FFF-moment, de thematische analyse van open vragen over Triple C, het grafisch onderzoek naar gebruikersvriendelijkheid en pictogrammen, en een verkenning van bestaande AI-modellen.
@@ -203,8 +218,9 @@ document.addEventListener("DOMContentLoaded", () => {
 Het prototype wordt een AI-ondersteunde instructievideo, waarin op visueel aantrekkelijke wijze de praktische toepassing van de Triple C-methodiek centraal zal staan. Deze video richt zich specifiek op het verminderen van de ervaren werkdruk, het vergroten van een eenduidige interpretatie van Triple C, en het versterken van kennis en vaardigheden door doelgerichte scholing. Door middel van duidelijke pictogrammen, korte praktijkgerichte instructies en herkenbare voorbeelden uit de dagelijkse praktijk van woongroep ’t Rond 51 zal het prototype begeleiders ondersteunen om methodisch en consistent te handelen volgens de Triple C-principes.
 
 Het uiteindelijke doel van dit prototype zal zijn om begeleiders beter toe te rusten, een gezamenlijke taal en visie te stimuleren, en daarmee bij te dragen aan een verhoogde kwaliteit van zorg en ondersteuning.`;
+    
     let idx = 0;
-    const speed = 50; // ms per character
+    const speed = 30; // iets snellere typingsnelheid
 
     const timer = setInterval(() => {
       textElem.textContent = message.slice(0, idx);
