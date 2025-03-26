@@ -1635,16 +1635,80 @@ p {
 }
 
 
-.genereer-knop {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+/* Voor het kleine sticky note rechts onderin */
+.generate-note {
+  background-color: #fff8a8; 
+  /* Herhaal-lijn achtergrond voor gelinieerd effect */
+  background-image: repeating-linear-gradient(
+    #fff8a8 0px,
+    #fff8a8 24px,
+    #b0d2f0 24px,
+    #b0d2f0 25px
+  );
+
+  /* Overige stijlen die u nu in JS inline hebt staan, kunt u hierheen verplaatsen */
+  width: 220px;
+  min-height: 150px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 999;
+
+  /* Tekst in dikke zwarte ‘stift’ */
+  color: #000;
+  font-weight: 700;
+  font-family: 'Permanent Marker', cursive; /* als u een Google Font gebruikt */
+  font-size: 1.1em;
+  line-height: 1.4em;
+
+  /* Positionering kan in CSS of JS (JS is handig als u absoluut wilt dat hij rechtsonder staat) */
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
-.genereer-knop:hover {
-  background-color: #45a049;
+/* Als u de titel en paragraaf apart wilt stylen */
+.generate-note h4,
+.generate-note p {
+  margin: 0.5em 0;
+}
+
+/* De knop binnen de generate-note */
+.generate-note button {
+  background-color: #ffd85b;
+  border: 2px solid #333;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-family: 'Permanent Marker', cursive; /* Optioneel */
+  color: #333;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.generate-note button:hover {
+  background-color: #ffc947;
+}
+
+/* Voor het uiteindelijke prototype-blad */
+.final-memo {
+  /* Een ander tintje achtergrond, eventueel met gelinieerd effect */
+  background-color: #EEDBFFB3;
+  background-image: repeating-linear-gradient(
+    #EEDBFFB3 0px,
+    #EEDBFFB3 24px,
+    #b0d2f0    24px,
+    #b0d2f0    25px
+  );
+
+  color: #000;
+  font-weight: 700;
+  font-family: 'Permanent Marker', cursive; 
+  line-height: 1.4em;
+
+  /* Overige stijlen zoals breedte, hoogte, padding, border-radius, etc. 
+     kunt u ook hierheen verplaatsen als u wilt */
 }
 
 /* Animatie om het laatste memo-blad mooi te laten 'binnenkomen' */
