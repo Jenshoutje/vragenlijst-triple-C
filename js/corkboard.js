@@ -114,8 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
     <h2>TO DO</h2>
     <p> <ul>
     <li>Plak alle memo-briefjes op het bord.</li>
-    <li>Lees rustig meer over de vier verschillende componenten.</li>
-    <li>Wanner alles is doorlopen, klik op "<strong>Voeg samen</strong>" om het (concept) prototype samen te stellen. </li>
+    <li>Lees meer!.</li>
+    <li>Compleet? klik op "<strong>Voeg samen</strong>" voor het (concept) prototype  </li>
   </ul></p>
     <button id="generatePrototype" style="margin-top:10px; cursor:pointer;">Voeg samen</button>
   `;
