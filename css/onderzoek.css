@@ -1657,7 +1657,7 @@ p {
   /* Tekst in dikke zwarte ‘stift’ */
   color: #000;
   font-weight: 700;
-  font-family: 'fangsong; /* als u een Google Font gebruikt */
+  font-family: fangsong; /* als u een Google Font gebruikt */
   font-size: 1.1em;
   line-height: 1.4em;
 
