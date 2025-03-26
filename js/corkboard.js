@@ -99,8 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const generateNote = document.createElement("div");
   generateNote.classList.add("idea-card", "generate-note");
   generateNote.style.position = "absolute";
-  generateNote.style.bottom = "20px";
-  generateNote.style.right = "20px";
+  generateNote.style.bottom = "453px";
+  generateNote.style.right = "0px";
   generateNote.style.width = "220px";
   generateNote.style.minHeight = "150px";
   generateNote.style.backgroundColor = "#fff8a8"; // Pastelkleur
