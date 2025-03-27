@@ -195,7 +195,7 @@ generateButton.addEventListener("click", () => {
     finalCard.style.opacity = "0.8";
     finalCard.style.transform = "rotate(3deg)";
     finalCard.innerHTML = `
-      <h2>Prototype</h2>
+      <h2>Conclusie ontwikkel-procces</h2>
       <div class="typing-text"></div>
     `;
 
@@ -223,45 +223,20 @@ generateButton.addEventListener("click", () => {
   // (7) Typewriter-effect voor het prototype memo
   function startTypingAnimation(textElem) {
     if (!textElem) return;
-    const message = `Conceptprototype 
+    const message = `
 
-In het hart van de Triple C-methodiek ligt het streven naar eenduidigheid, nabijheid en het bieden van een betekenisvol bestaan voor cliënten. Vanuit die visie is binnen dit ontwerpgericht onderzoek gezocht naar een interventie die begeleiders ondersteunt in het consequent toepassen van Triple C, ondanks werkdruk, beperkte scholing of uiteenlopende interpretaties binnen het team.
+1.	Inhoud (Triple C-methodiek)
+De analyse van de oorspronkelijke Triple C-methodiek vormde de inhoudelijke basis van het ontwerp. Door de kernprincipes opnieuw te verkennen en te verbinden met de knelpunten uit het praktijkonderzoek – zoals gebrek aan eenduidige interpretatie – werd duidelijk welke onderdelen binnen de methodiek prioriteit verdienen in de communicatie naar begeleiders.
+	2.	Vorm (Short-form videocontent)
+Op basis van wetenschappelijke inzichten over cognitieve belasting, leerstijlen en effectiviteit van visuele content werd gekozen voor korte, krachtige video’s als informatiedrager. Deze vorm sluit aan bij de beperkte tijd en hoge werkdruk die begeleiders ervaren, zonder in te leveren op inhoudelijke diepgang.
+	3.	Creatie (AI-technologie zoals Sora)
+Het ontwikkelen van deze visuele interventie wordt gefaciliteerd door recente technologische innovaties zoals het AI-model Sora. Deze tool biedt de mogelijkheid om op een efficiënte en flexibele manier video’s te genereren die aansluiten bij de zorgcontext. Daarbij blijft menselijke toetsing essentieel om herkenbaarheid, ethiek en doelgerichtheid te waarborgen.
+	4.	Toegankelijkheid en doelgroepbetrokkenheid (visueel ontwerp en FFF-validatie)
+Door grafisch ontwerpprincipes te combineren met praktijkgerichte toetsing (zoals een FFF-quiz met professionals), wordt geborgd dat het eindproduct begrijpelijk, functioneel en breed toepasbaar is. Dit voorkomt dat het prototype losstaat van de praktijk en vergroot de kans op daadwerkelijke implementatie.
 
-Wat uit het onderzoek naar voren kwam, is dat begeleiders op woongroep ’t Rond 51 wel degelijk gemotiveerd zijn om methodisch te werken volgens Triple C, maar dat zij tegen praktische barrières aanlopen: een gebrek aan gezamenlijke taal, tijdsdruk en onvoldoende toegang tot concrete handvatten. Dit vormt de voedingsbodem voor het ontwerp van een interventie die compact, visueel en direct toepasbaar is in de praktijk.
+Samenhang en ontwerpimplicaties
 
-Visie op het prototype
-
-Het prototype – voorlopig aangeduid als Triple C Snapshots – is ontworpen als een digitale microleermodule die gebruikmaakt van korte, krachtige video’s van maximaal twintig seconden. Elke video belicht één essentieel aspect van Triple C, verankerd in herkenbare praktijksituaties en visueel vertaald naar de dagelijkse realiteit op de werkvloer.
-
-De insteek is niet om begeleiders op te leiden in de volledige methodiek, maar juist om bestaande kennis te activeren, te versterken en op visueel aantrekkelijke wijze te verhelderen. De kern ligt in herhaling, herkenbaarheid en eenvoud.
-
-De vorm sluit aan op het format van hedendaagse short-form content, zoals dat breed wordt ingezet op sociale en educatieve platforms, maar is specifiek afgestemd op de behoeften en context van begeleiders in de gehandicaptenzorg. Daarbij wordt rekening gehouden met beperkte cognitieve ruimte, verschillen in leerstijl en de noodzaak tot snel toepasbare informatie.
-
- Inhoud en ontwikkeling
-
-De inhoud van de video’s is gebaseerd op de primaire principes uit het Triple C-handboek, aangevuld met inzichten uit de thematische analyse en reflecties van begeleiders zelf. Denk aan situaties als:
-• “Wat betekent het om naast iemand te staan in plaats van boven iemand te staan?”
-• “Hoe herken je spanning bij cliënten en hoe kun je hier proactief op inspelen?”
-• “Wat betekent het om de ‘normale dagstructuur’ leidend te maken, zelfs in onrustige momenten?”
-
-Deze fragmenten worden visueel uitgewerkt, met behulp van AI-tools zoals Sora, die realistische en aanpasbare video’s kan genereren op basis van tekstuele input. Daarbij blijft menselijke regie essentieel: begeleiders worden actief betrokken bij het toetsen van de inhoud, het herkennen van de situaties, en het beoordelen van begrijpelijkheid en toepasbaarheid.
-
-De vormgeving van de video’s wordt ontwikkeld volgens principes van visueel ontwerp voor begrijpelijke zorgcommunicatie. Denk aan rustige kleurcontrasten, gebruik van pictogrammen en herkenbare zorgsettings. Zo ontstaat een serie visuele miniaturen die als het ware ‘snaps’ vormen: kleine brokjes herkenbare, gedeelde kennis.
-
-Gebruik en implementatie
-
-De video’s kunnen op meerdere manieren worden ingezet:
-• Als aanvulling binnen het bestaande leerplein van Alliade;
-• Als visueel startpunt tijdens teamoverleggen of intervisies;
-• Of als ‘on the go’-tool via een mobiele webomgeving.
-
-Door deze flexibiliteit kan de tool inspelen op verschillende praktijksituaties – zonder dat er sprake is van een overbelasting of extra scholingsdruk.
-
-Reflectieve kanttekening
-
-Hoewel het prototype in potentie een krachtige bijdrage kan leveren aan het realiseren van een gedeelde visie binnen teams, staat het ontwerp nog in zijn conceptuele fase. Het is (nog) niet geïmplementeerd, getest of gevalideerd op grote schaal. In lijn met kritisch ontwerpdenken wordt in de Deliverfase van dit onderzoek stilgestaan bij de beperkingen, ethische overwegingen en vragen omtrent het gebruik van AI in zorgcontexten.
-
-De uiteindelijke keuze om het prototype daadwerkelijk te implementeren, zal afhangen van verdere toetsing, feedback uit de praktijk en het ethisch afwegingskader dat in het slothoofdstuk wordt behandeld.
+Wat deze vier componenten bindt, is hun gezamenlijke bijdrage aan het realiseren van de ontwerpdoelen: het versterken van gedeelde visie, het verlagen van drempels voor methodisch handelen, en het ondersteunen van begeleiders in hun dagelijkse werkwijze.
 `;
     
     let idx = 0;
