@@ -464,28 +464,43 @@ Door rekening te houden met de bestaande werkdruk moet de interventie begeleider
   </button>
 </div>
 	   </section>
+<section>
+  <!-- Korte versie in de bestaande bubble -->
+  <div class="prototype-intro-bubble1">
+    <h2>Concept Prototype</h2>
+    <p>
+      Dit is een korte inleiding of samenvatting van het prototype. 
+      Wilt u de volledige rapportage lezen? Klik dan op de onderstaande knop.
+    </p>
+    <button id="openModal">Lees volledige rapportage</button>
+  </div>
+</section>
 
-	<section> <div class="prototype-intro-bubble1">
-  <h2>Concept Prototype</h2>
-  <p>
-    In dit gedeelte kunt u de volledige, meer rapportachtige uitwerking 
-    van uw concept prototype kwijt. Schrijf hier uitgebreid over de 
-    achtergrond, de aanleiding, de doelstellingen en de keuzes die 
-    gemaakt zijn tijdens het ontwerp.
-  </p>
-  <p>
-    U kunt ook subkopjes gebruiken om de tekst te structureren, 
-    bijvoorbeeld over de beoogde doelgroep, de implementatie, 
-    de technologieën die worden ingezet en de verwachte resultaten.
-  </p>
-  <p>
-    Beschrijf daarnaast hoe het prototype zich verhoudt tot 
-    de eerdergenoemde memo-briefjes, waarom u deze twee vormen 
-    combineert, en welke meerwaarde deze combinatie biedt.
-  </p>
-  <!-- Voeg hier meer paragrafen toe, of bijvoorbeeld <h3>-koppen -->
+<!-- De pop-up (modal) met het uitgebreide rapport -->
+<section>
+	  <div class="modal" id="rapportModal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>Volledige Rapportage</h2>
+    <p>
+      Hier komt de uitgebreide uitwerking van uw concept prototype. 
+      Schrijf hier uitgebreid over de achtergrond, de aanleiding, de 
+      doelstellingen en de keuzes die gemaakt zijn tijdens het ontwerp.
+    </p>
+    <p>
+      U kunt ook subkopjes (h3, h4) gebruiken om de tekst te structureren. 
+      Denk aan de beoogde doelgroep, implementatie, technologieën, 
+      verwachte resultaten, etc.
+    </p>
+    <p>
+      Beschrijf daarnaast hoe het prototype zich verhoudt tot de 
+      eerdergenoemde memo-briefjes, waarom u deze twee vormen combineert, 
+      en welke meerwaarde deze combinatie biedt.
+    </p>
+    <!-- Voeg hier meer paragrafen, opsommingen of afbeeldingen toe. -->
+  </div>
 </div>
-</section> 
+		  </section>
   <!-- Sectie: Volgende Stappen -->
   <section class="next-steps">
     <h3>Conclusie & vervolgstappen</h3>
@@ -506,5 +521,6 @@ Door rekening te houden met de bestaande werkdruk moet de interventie begeleider
   <script src="js/cardslider.js"></script>
     <script src="js/corkboard.js"></script>
           <script src="js/dynamicToc.js"></script>
+	  <script src="js/modals.js"></script>
 </body>
 </html>
