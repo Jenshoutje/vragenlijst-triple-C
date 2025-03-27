@@ -1838,5 +1838,55 @@ p {
   list-style: disc inside;
   margin-left: 20px;
 }
+.modal1 {
+  display: none;          /* Verborgen tot we het tonen via JavaScript */
+  position: fixed;        /* Blijft op dezelfde plek staan bij scrollen */
+  z-index: 9999;          /* Zodat het boven alle andere elementen ligt */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;         /* Scroll als de inhoud groter is dan het scherm */
+  background-color: rgba(0, 0, 0, 0.4); /* Donkere overlay */
+}
+
+/* De witte content-box in het midden */
+.modal1-content {
+  background: rgba(255, 255, 255, 0.9);
+  margin: 5% auto;        /* Automatisch centreren */
+  padding: 20px 30px;
+  width: 80%;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;     /* Voor de close-knop */
+  text-align: left;
+}
+
+/* De sluitknop (X) rechtsboven in de pop-up */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Overige tekststijlen binnen de modal */
+.modal1-content h2 {
+  color: #6A35C1;
+  margin-top: 0;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #6A35C1;
+  padding-bottom: 10px;
+}
+
+.modal1-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
 
 
