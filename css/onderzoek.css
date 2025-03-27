@@ -1467,7 +1467,7 @@ p {
 /* Algemene styling voor de corkboard-container */
 .corkboard-container {
   width: 100%;
-  height: 100vh;
+  height: 91vh;
   display: flex;
   align-items: center;
   justify-content: center;
