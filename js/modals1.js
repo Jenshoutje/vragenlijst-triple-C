@@ -28,6 +28,26 @@ window.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     const modals = document.querySelectorAll(".modal1");
-    modals.forEach((modal1) => (modal.style.display = "none"));
+    modals.forEach((modal1) => {
+      modal1.style.display = "none";
+    });
+  }
+});
+
+// Koppel de open-knop aan de openModal functie
+document.addEventListener("DOMContentLoaded", () => {
+  const openBtn = document.getElementById("openModal1");
+  if (openBtn) {
+    openBtn.addEventListener("click", function() {
+      openModal("rapportModal1");
+    });
+  }
+  
+  // Optioneel: koppelen van een close-knop als deze aanwezig is
+  const closeBtn = document.querySelector(".close-btn");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function() {
+      closeModal("rapportModal1");
+    });
   }
 });
