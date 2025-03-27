@@ -1474,6 +1474,69 @@ p {
   padding: 20px;
 }
 
+.explanation-bubble {
+  position: absolute;       /* Zorg dat de bubble boven het bord kan zweven */
+  top: 20px;                /* Pas aan om de verticale positie te regelen */
+  left: 50%;                /* Horizontaal centreren t.o.v. de parent container */
+  transform: translateX(-50%);
+  
+  width: 320px;             /* Breedte van de bubble */
+  padding: 16px 20px;
+  background-color: #fff8a8; /* Zachtgeel, passend bij de memo-stijl */
+  border: 2px solid #333;   
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 999;             /* Zodat het boven andere elementen ligt */
+}
+
+/* Pseudo-element voor het pijltje onder de bubble */
+.explanation-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;            /* Plaats het pijltje net onder de bubble */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  border-width: 10px 10px 0 10px;    /* Vorm van de pijl */
+  border-style: solid;
+  border-color: #fff8a8 transparent transparent transparent;
+  
+  /* Optioneel: zwarte rand rond het pijltje (als u de rand van de bubble wilt doortrekken) */
+  /* Om dit te doen, kunt u een extra ::before gebruiken of een outline simuleren. 
+     Voor eenvoud laten we het hier weg. */
+}
+
+/* Styling voor de titel en tekst in de bubble */
+.explanation-bubble h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.explanation-bubble p {
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* Styling voor de knop */
+.explanation-bubble .alternative-mode {
+  display: inline-block;
+  background-color: #ffd85b;
+  border: 2px solid #333;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.explanation-bubble .alternative-mode:hover {
+  background-color: #ffc947; /* Iets donkerder geel bij hover */
+}
+
 /* Styling voor het 'klembord' zelf */
 .corkboard {
   position: relative;
