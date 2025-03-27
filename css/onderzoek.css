@@ -1691,7 +1691,7 @@ p {
 
 /* Voor de typewriter-tekst */
 .final-memo .typing-text {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'ariel', cursive;
   font-size: 1.1rem;
   color: #333;
   white-space: pre-line; /* Zodat \n-tekens worden gerespecteerd */
