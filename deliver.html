@@ -1,41 +1,57 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover - Houtje Inc.</title>
-    <link rel="stylesheet" href="stijl-vragenlijst.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Definefase - Triple C Implementatie</title>
+  <link rel="stylesheet" href="css/onderzoek.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html"> Home</a></li>
-                <li><a href="onderzoek.html"> Onderzoek</a></li>
-                <li><a href="discover.html">Discover</a></li>
-                <li><a href="define.html">Define</a></li>
-                <li><a href="develop.html">Develop</a></li>
-                <li><a href="deliver.html">Deliver</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Navigatie / Header -->
+  <header>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="onderzoek.html">Onderzoekspagina</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="define.html" class="active">Define</a></li>
+        <li><a href="develop.html">Develop</a></li>
+        <li><a href="deliver.html">Deliver</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main class="onderzoek-page">
-    <div class="header-bubble">
-        <h1>Deliver</h1>
-        <p>Hier wordt gewerkt aan de visuele representatie Deliverfase.</p>
-    </div>
+  <!-- Introductie en Leeswijzer -->
+  <section class="header-bubble">
+    <h1>Deliverfase</h1>
+    <p>
+    Evalueren, Optimaliseren, Communiceren, Overdragen</p>
+  </section>
 
-     <div class="fase-afbeelding-container">
-        <a href="deliver.html" class="onderzoek-item">
-        <img src="deliver.png" alt="deliver">
-    </a>
+  <!-- (Optioneel) Dynamische Inhoudsopgave -->
+<div id="toc-container" class="chapter-toc">
+  <h2>Inhoudsopgave</h2>
+  <ul id="tocList">
+    <!-- Dynamische TOC-items komen hier via JavaScript -->
+  </ul>
 </div>
-    </main>
 
-    <footer>
-        <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
-    </footer>
+  <!-- Hoofdinhoud in een article met collapsible cards -->
+  <main class="onderzoek-page">
+    <article>
+      <!-- Card 1: Algemene Inleiding Definefase -->
+      
+
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Houtje Inc. Alle rechten voorbehouden.</p>
+  </footer>
+
+  <!-- Dynamische TOC JavaScript -->
+
+  <!-- (Optioneel) Extra script voor andere interactieve elementen -->
+  <!-- <script src="js/extraInteractivity.js"></script> -->
+    <script src="js/dynamicToc.js"></script>
 </body>
 </html>
