@@ -1935,7 +1935,7 @@ p {
 
 .bijlage-container img {
     flex: 1 1 200px; /* flexibel schalen, min-breedte 200px als uitgangspunt */
-    max-width: 100%; /* afbeelding nooit groter dan container */
+    max-width: 46%; /* afbeelding nooit groter dan container */
     height: auto; /* behoud originele verhouding */
     object-fit: cover; /* afbeeldingen passen netjes binnen hun frame */
     border-radius: 4px; /* afgeronde hoeken voor een verzorgde uitstraling */
