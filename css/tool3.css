@@ -363,6 +363,22 @@ footer {
   text-decoration: none;
 }
 
+.terug-knop {
+  background: #6A35C1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.terug-knop:hover {
+  background: #53298f; 
+  text-decoration: none;
+}
 
 /* Responsiviteit */
 @media (max-width: 768px) {
