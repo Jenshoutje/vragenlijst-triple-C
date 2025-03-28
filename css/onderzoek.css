@@ -1922,3 +1922,38 @@ p {
   text-decoration: none;
 }
 
+.bronnenlijst {
+  counter-reset: reference-counter;
+  padding-left: 20px;
+}
+
+.bronnenlijst li {
+  counter-increment: reference-counter;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 10px;
+}
+
+.bronnenlijst li::before {
+  content: counter(reference-counter) ". ";
+  position: absolute;
+  left: -25px;
+  color: #6A35C1;
+  font-weight: bold;
+}
+
+a {
+  color: #4b28a0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+em {
+  font-style: 'Georgia';
+}
+
+strong {
+  font-weight: bold;
