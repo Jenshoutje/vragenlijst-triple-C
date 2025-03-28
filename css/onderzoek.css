@@ -1922,4 +1922,29 @@ p {
   text-decoration: none;
 }
 
+.bijlage-container {
+    display: flex;
+    flex-wrap: wrap; /* afbeeldingen gaan automatisch naar volgende regel indien nodig */
+    gap: 15px; /* ruimte tussen afbeeldingen */
+    justify-content: center; /* afbeeldingen gecentreerd binnen container */
+    padding: 20px;
+    background-color: #f9f9f9; /* lichte achtergrond voor duidelijk onderscheid */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.bijlage-container img {
+    flex: 1 1 200px; /* flexibel schalen, min-breedte 200px als uitgangspunt */
+    max-width: 100%; /* afbeelding nooit groter dan container */
+    height: auto; /* behoud originele verhouding */
+    object-fit: cover; /* afbeeldingen passen netjes binnen hun frame */
+    border-radius: 4px; /* afgeronde hoeken voor een verzorgde uitstraling */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out; /* subtiele overgang bij hover-effect */
+}
+
+.bijlage-container img:hover {
+    transform: scale(1.05); /* subtiele vergroting bij hover */
+}
+
 
