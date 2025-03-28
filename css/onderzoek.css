@@ -1967,4 +1967,34 @@ p {
     box-shadow: 0 5px 15px rgba(255,255,255,0.3);
 }
 
+#openModal1 {
+    background-color: #4A90E2; /* Primaire kleur van de huisstijl */
+    color: #ffffff; /* Tekstkleur wit */
+    font-size: 16px; /* Goede leesbaarheid */
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#openModal1:hover {
+    background-color: #357ABD; /* Donkerder tint bij hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+#openModal1:active {
+    background-color: #2D6AA6; /* Nog donkerdere tint bij klikken */
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+#openModal1:focus {
+    outline: none; /* Geen standaard outline bij focus */
+    box-shadow: 0 0 0 3px rgba(74,144,226,0.5); /* Subtiele glow bij selectie */
+}
+
 
