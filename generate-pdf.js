@@ -4,6 +4,22 @@ const pages = [
   'https://jenshoutje.github.io/vragenlijst-triple-C/',
   'https://jenshoutje.github.io/vragenlijst-triple-C/onderzoek.html',
   'https://jenshoutje.github.io/vragenlijst-triple-C/discover.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/define.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/develop.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/deliver.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/matrixchart.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/mindmapchart.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/openvragenlijst.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/thematic-analysis.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/tool1.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/tool2.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/tool3.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/reflectie.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/bronnen.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/decision-matrix.html',
+  'https://jenshoutje.github.io/vragenlijst-triple-C/alternatieve_leeswijze.html',
+ 
+  
 
 ];
 
