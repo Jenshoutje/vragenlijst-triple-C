@@ -92,5 +92,19 @@
   <!-- (Optioneel) Extra script voor andere interactieve elementen -->
   <!-- <script src="js/extraInteractivity.js"></script> -->
     <script src="js/dynamicToc.js"></script>
+
+  <script>
+document.querySelectorAll('.vergroten').forEach(img => {
+    img.addEventListener('click', function() {
+        document.getElementById('overlay-img').src = this.src;
+        document.getElementById('img-overlay').style.display = 'flex';
+    });
+});
+
+function sluitOverlay() {
+    document.getElementById('img-overlay').style.display = 'none';
+}
+</script>
+  
 </body>
 </html>
