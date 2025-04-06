@@ -174,7 +174,7 @@ generateButton.addEventListener("click", () => {
     // Bepaal de positie in het midden van het board voor het prototype memo
     const boardRect = board.getBoundingClientRect();
     const prototypeWidth = 700; 
-    const prototypeHeight = 550;
+    const prototypeHeight = 600;
     const centerX = boardRect.width / 2;
     const centerY = boardRect.height / 2;
     const leftPos = centerX - prototypeWidth / 2;
