@@ -226,13 +226,13 @@ generateButton.addEventListener("click", () => {
     const message = `
 
 1.	Inhoud (Triple C-methodiek)
-De analyse van de oorspronkelijke Triple C-methodiek vormde de inhoudelijke basis van het ontwerp. Door de kernprincipes opnieuw te verkennen en te verbinden met de knelpunten uit het praktijkonderzoek – zoals gebrek aan eenduidige interpretatie – werd duidelijk welke onderdelen binnen de methodiek prioriteit verdienen in de communicatie naar begeleiders.
+De analyse van de oorspronkelijke Triple C-methodiek vormde de inhoudelijke basis van het ontwerp.  
 	2.	Vorm (Short-form videocontent)
-Op basis van wetenschappelijke inzichten over cognitieve belasting, leerstijlen en effectiviteit van visuele content werd gekozen voor korte, krachtige video’s als informatiedrager. Deze vorm sluit aan bij de beperkte tijd en hoge werkdruk die begeleiders ervaren, zonder in te leveren op inhoudelijke diepgang.
+Op basis van inzichten over cognitieve belasting, leerstijlen, trends en effectiviteit van visuele content werd gekozen voor korte, krachtige video’s als informatiedrager.
 	3.	Creatie (AI-technologie zoals Sora)
-Het ontwikkelen van deze visuele interventie wordt gefaciliteerd door recente technologische innovaties zoals het AI-model Sora. Deze tool biedt de mogelijkheid om op een efficiënte en flexibele manier video’s te genereren die aansluiten bij de zorgcontext. Daarbij blijft menselijke toetsing essentieel om herkenbaarheid, ethiek en doelgerichtheid te waarborgen.
+Het ontwikkelen van deze visuele interventie wordt gefaciliteerd door recente technologische innovaties zoals het AI-model Sora.
 	4.	Toegankelijkheid en doelgroepbetrokkenheid (visueel ontwerp en FFF-validatie)
-Door grafisch ontwerpprincipes te combineren met praktijkgerichte toetsing (zoals een FFF-quiz met professionals), wordt geborgd dat het eindproduct begrijpelijk, functioneel en breed toepasbaar is. Dit voorkomt dat het prototype losstaat van de praktijk en vergroot de kans op daadwerkelijke implementatie.
+Door grafisch ontwerpprincipes te combineren met praktijkgerichte toetsing (zoals een FFF-quiz met professionals), wordt geborgd dat het eindproduct begrijpelijk, functioneel en breed toepasbaar is. 
 
 Samenhang en ontwerpimplicaties
 
