@@ -110,7 +110,7 @@ async function exportOpenVragenAsText() {
 
 // EventListener om de functie te triggeren (bijv. via een knop)
 document.addEventListener("DOMContentLoaded", () => {
-  const exportButton = document.getElementById("exportButton");
+  const exportButton = document.getElementById("importButton");
   if (exportButton) {
     exportButton.addEventListener("click", exportOpenVragenAsText);
   }
