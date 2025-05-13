@@ -1,5 +1,55 @@
 "use strict";
 
+// ===============================
+// RadialLayout functie definieren
+// ===============================
+const RadialLayout = function() {
+  go.Layout.call(this);
+};
+go.Diagram.inherit(RadialLayout, go.Layout);
+
+/** @override */
+RadialLayout.prototype.doLayout = function(coll) {
+  const diagram = this.diagram;
+  if (diagram === null) return;
+  const root = diagram.findNodeForKey("ROOT");
+  if (root === null) return;
+
+  // Plaats root in het midden
+  root.location = diagram.initialPosition;
+
+  const visited = new go.Set();
+  visited.add(root);
+
+  this.layoutLayer(0, root, visited);
+};
+
+/**
+ * Recursieve functie om lagen te plaatsen
+ */
+RadialLayout.prototype.layoutLayer = function(layer, node, visited) {
+  const links = node.findLinksOutOf();
+  let angle = 360 / links.count;
+  let curAngle = 0;
+
+  links.each(link => {
+    const child = link.getOtherNode(node);
+    if (visited.has(child)) return;
+    visited.add(child);
+
+    const dist = 150 + (layer * 100);
+    const rad = (Math.PI / 180) * curAngle;
+    const x = node.location.x + dist * Math.cos(rad);
+    const y = node.location.y + dist * Math.sin(rad);
+
+    child.location = new go.Point(x, y);
+
+    this.layoutLayer(layer + 1, child, visited);
+
+    curAngle += angle;
+  });
+};
+
 /** =========================
  *  1. GLOBALE VARIABELEN
  * ========================= */
