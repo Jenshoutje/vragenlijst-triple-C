@@ -190,7 +190,7 @@ function generateMindmap(themesData) {
       const uniqueWords = [...new Set(woorden)];
       uniqueWords.forEach(word => {
         if (!word) return;
-        const wordKey = ${subKey}||${word};
+        const wordKey = `${subKey}||${word}`;
         nodeDataArray.push({ key: wordKey, text: word, color: "#DDDDDD" });
         linkDataArray.push({ from: subKey, to: wordKey });
       });
@@ -233,6 +233,7 @@ function generateMindmap(themesData) {
 
   // Model instellen
   diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
 
   // ** Stel RadialLayout in **
   diagram.layout = $(go.RadialLayout, {
@@ -283,10 +284,10 @@ function showContext(event, obj) {
 
   if (woordContext[woord]) {
     detailsDiv.style.display = "block";
-    contextText.innerHTML = <strong>Context van "${woord}":</strong><br> + [...woordContext[woord]].join("<br>");
+    contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
   } else {
     detailsDiv.style.display = "block";
-    contextText.innerHTML = <strong>Geen context beschikbaar voor "${woord}".</strong>;
+    contextText.innerHTML = `<strong>Geen context beschikbaar voor "${woord}".</strong>`;
   }
 }
 
@@ -338,4 +339,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.body.removeChild(a);
     });
   }
+
+
 });
