@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   console.log("📌 mindmap.js geladen. Start initialisatie...");
 
   const inputTextArea = document.getElementById("inputText");
-  const analyseButton = document.getElementById("analyseButton");
+  const analyseButton = document.getElementById("generateButton");
 
   if (!inputTextArea || !analyseButton) {
     console.error("Inputveld of Analyseerknop niet gevonden.");
