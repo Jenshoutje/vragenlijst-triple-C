@@ -182,7 +182,7 @@ function generateMindmap(themesData) {
     Object.keys(subthemas).forEach(sub => {
       const woorden = subthemas[sub];
       if (!woorden || woorden.length === 0) return;
-      const subKey = ${thema}||${sub};
+      const subKey = `${thema}||${sub}`;
       nodeDataArray.push({ key: subKey, text: sub, color: "#EEEEEE" });
       linkDataArray.push({ from: thema, to: subKey });
 
