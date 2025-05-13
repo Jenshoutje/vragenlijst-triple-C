@@ -102,12 +102,13 @@ function analyseTekst(wordsArray, originalText) {
           clusters[thema][sub].push(word);
 
           // Context opslaan
-          if (!woordContext[word]) {
-            woordContext[word] = new Set();
+       if (!woordContext[word]) {
+            woordContext[word] = { zinnen: new Set(), frequentie: 0 };
           }
           zinnen.forEach(z => {
             if (normalizeWord(z).includes(word)) {
-              woordContext[word].add(z);
+              woordContext[word].zinnen.add(z);
+              woordContext[word].frequentie += 1;
             }
           });
         }
@@ -282,9 +283,15 @@ function showContext(event, obj) {
   const detailsDiv = document.getElementById("contextDetails");
   const contextText = document.getElementById("contextText");
 
-  if (woordContext[woord]) {
+  const contextInfo = woordContext[woord]; // << Haal object met zinnen + frequentie op
+
+  if (contextInfo) {
     detailsDiv.style.display = "block";
-    contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
+    contextText.innerHTML = `
+      <strong>Context van "${woord}":</strong><br>
+      <em>Aantal voorkomens: ${contextInfo.frequentie} keer</em><br><br>
+      ${[...contextInfo.zinnen].join("<br>")}
+    `;
   } else {
     detailsDiv.style.display = "block";
     contextText.innerHTML = `<strong>Geen context beschikbaar voor "${woord}".</strong>`;
