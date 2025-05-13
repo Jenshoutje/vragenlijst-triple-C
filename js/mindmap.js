@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  const analyseButton = document.getElementById("analyseButton");
+  const analyseButton = document.getElementById("generateButton");
   const exportButton = document.getElementById("exportButton");
   const inputText = document.getElementById("inputText");
 
