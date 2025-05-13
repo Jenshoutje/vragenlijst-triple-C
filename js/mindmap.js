@@ -136,43 +136,69 @@ function generateMindmap(themesData) {
     oldDiagram.div = null;
   }
 
-  let $ = go.GraphObject.make;
-  let diagram = $(go.Diagram, "mindmap", {
+  const $ = go.GraphObject.make;
+
+  // Initieer diagram + meteen goede RadialLayout instellen
+  const diagram = $(go.Diagram, "mindmap", {
     initialContentAlignment: go.Spot.Center,
-    "undoManager.isEnabled": true,
     autoScale: go.Diagram.Uniform,
-    // We stellen later de layout in op RadialLayout
+    "undoManager.isEnabled": true,
+    layout: $(go.RadialLayout, {
+      maxLayers: 4,            // minder ringen (beter voor jouw structuur)
+      layerThickness: 180,     // meer ruimte tussen lagen
+      angleIncrement: 30,      // bredere verdeling
+      rotateNode: false,       // tekst niet draaien
+    }),
+    isReadOnly: true
   });
 
-  // Voor mooiere, gebogen lijnen:
+  // Templates
+  diagram.nodeTemplate = $(
+    go.Node, "Auto",
+    { click: showContext },
+    $(go.Shape, "RoundedRectangle",
+      {
+        name: "SHAPE",
+        fill: "#f9f9f9",
+        stroke: "#888",
+        strokeWidth: 2,
+        minSize: new go.Size(100, 40)
+      },
+      new go.Binding("fill", "color")
+    ),
+    $(go.TextBlock,
+      {
+        margin: 8,
+        font: "bold 12px Arial",
+        textAlign: "center",
+        wrap: go.TextBlock.WrapFit,
+        width: 140
+      },
+      new go.Binding("text", "text")
+    )
+  );
+
   diagram.linkTemplate = $(
     go.Link,
-    {
-      curve: go.Link.Bezier,
-      adjusting: go.Link.Stretch,
-      // evt. routing: go.Link.AvoidsNodes,
-      corner: 10
-    },
+    { curve: go.Link.Bezier },
     $(go.Shape, { strokeWidth: 2, stroke: "#888" }),
     $(go.Shape, { toArrow: "Standard", stroke: null, fill: "#888" })
   );
 
-  let nodeDataArray = [];
-  let linkDataArray = [];
+  // Maak data
+  const nodeDataArray = [];
+  const linkDataArray = [];
 
-  // Root
   nodeDataArray.push({
     key: "ROOT",
     text: "Triple C implementatie",
     color: "#ffffff",
-    isRoot: true // Markeer als root-node
+    isRoot: true
   });
 
-  // Themas -> subthemas -> woorden
   Object.keys(themesData.clusters).forEach(thema => {
     const subthemas = themesData.clusters[thema];
-    // Check of er data is
-    let hasData = Object.values(subthemas).some(arr => arr.length > 0);
+    const hasData = Object.values(subthemas).some(arr => arr.length > 0);
     if (!hasData) return;
 
     const themaColor = getThemeColor(thema);
@@ -182,13 +208,12 @@ function generateMindmap(themesData) {
     Object.keys(subthemas).forEach(sub => {
       const woorden = subthemas[sub];
       if (!woorden || woorden.length === 0) return;
+
       const subKey = `${thema}||${sub}`;
       nodeDataArray.push({ key: subKey, text: sub, color: "#EEEEEE" });
       linkDataArray.push({ from: thema, to: subKey });
 
-      // Unieke woorden
-      const uniqueWords = [...new Set(woorden)];
-      uniqueWords.forEach(word => {
+      [...new Set(woorden)].forEach(word => {
         if (!word) return;
         const wordKey = `${subKey}||${word}`;
         nodeDataArray.push({ key: wordKey, text: word, color: "#DDDDDD" });
@@ -197,69 +222,21 @@ function generateMindmap(themesData) {
     });
   });
 
-  // Node template
-  diagram.nodeTemplate = $(
-    go.Node,
-    "Auto",
-    {
-      click: showContext,
-      mouseEnter: (e, node) => { node.findObject("SHAPE").stroke = "#ff0000"; },
-      mouseLeave: (e, node) => { node.findObject("SHAPE").stroke = "#888"; }
-    },
-    $(
-      go.Shape,
-      "RoundedRectangle",
-      {
-        name: "SHAPE",
-        fill: "#f9f9f9",
-        stroke: "#888",
-        strokeWidth: 2,
-        minSize: new go.Size(120, 50)
-      },
-      new go.Binding("fill", "color")
-    ),
-    $(
-      go.TextBlock,
-      {
-        margin: 12,
-        font: "bold 14px Arial",
-        textAlign: "center",
-        wrap: go.TextBlock.WrapFit,
-        width: 120
-      },
-      new go.Binding("text", "text")
-    )
-  );
-
-  // Model instellen
+  // Stel model in
   diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
-
-  // ** Stel RadialLayout in **
-  diagram.layout = $(go.RadialLayout, {
-    maxLayers: 6,             // Aantal ringen dat we willen toestaan
-    layerThickness: 120,      // Afstand tussen de ringen
-    angleIncrement: 20,       // Minimale hoek tussen twee takken
-    rotateNode: false,        // De node-text niet meedraaien
-    // 'center' node bepalen in 'InitialLayoutCompleted' event:
-  });
-
-  // Zodra de layout klaar is, stellen we "ROOT" als echte centerNode in:
+  // Root vastzetten (zorgt dat RadialLayout weet wie echt centraal moet)
   diagram.addDiagramListener("InitialLayoutCompleted", e => {
-    let rootnode = diagram.findNodeForKey("ROOT");
-    if (rootnode) {
-      let radial = diagram.layout;
-      if (radial instanceof go.RadialLayout) {
-        radial.root = rootnode; // Forceer root in het midden
-        diagram.layoutDiagram(true);
-      }
+    const rootnode = diagram.findNodeForKey("ROOT");
+    if (rootnode && diagram.layout instanceof go.RadialLayout) {
+      diagram.layout.root = rootnode;
+      diagram.layoutDiagram(true);
     }
   });
 
   mindmapDiv.style.display = "block";
   console.log("✅ Radiale Mindmap gegenereerd:", { nodeDataArray, linkDataArray });
 }
-
 /** =========================
  *  6. KLEUR FUNCTIE
  * ========================= */
