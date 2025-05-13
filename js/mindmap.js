@@ -1,341 +1,242 @@
- "use strict";
-
-/** =========================
- *  1. GLOBALE VARIABELEN
- * ========================= */
-let stopwoorden = new Set();
-let thematischeData = {};  // { Thema: { Subthema: Set([...]) } }
-let isCsvLoaded = false;
-let woordContext = {};     // Bewaart contextzinnen per woord
+// Alias voor GoJS GraphObject.make functie (voor kortere notation in templates)
+const $ = go.GraphObject.make;
 
 /**
- * Normaliseert een woord: trim, lowercase en verwijdert leestekens.
- * @param {string} word
- * @returns {string}
+ * Parse het CSV-bestand (als tekst) en bouw een node-data-array voor de mindmap.
+ * @param {string} csvText - Inhoud van het CSV-bestand als string.
+ * @return {Array<Object>} nodeDataArray - Array van node data objecten voor GoJS model.
  */
-function normalizeWord(word) {
-  return word.trim().toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
-}
-
-/** =========================
- *  2. CSV LADEN & PARSEN
- * ========================= */
-async function loadCSV() {
-  try {
-    const response = await fetch("data/thematische_analyse.csv");
-    const text = await response.text();
-    // Verdeel in regels en sla de header over
-    const rows = text.split("\n").slice(1);
-    
-    rows.forEach(row => {
-      // Splits rekening houdend met aanhalingstekens
-      const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-      if (cols.length < 4) return; // Onvolledige rij, overslaan
-
-      const thema    = cols[0].trim();
-      const subthema = cols[1].trim();
-      const kernwoorden = cols[2]
-        .replace(/^"|"$/g, "")
-        .split(",")
-        .map(normalizeWord)
-        .filter(Boolean);
-      const synoniemen = cols[3]
-        .replace(/^"|"$/g, "")
-        .split(",")
-        .map(normalizeWord)
-        .filter(Boolean);
-      
-      // Als thema "stopwoorden" is, voeg toe aan set
-      if (thema.toLowerCase() === "stopwoorden") {
-        kernwoorden.forEach(w => stopwoorden.add(w));
-        synoniemen.forEach(w => stopwoorden.add(w));
-      } else {
-        if (!thematischeData[thema]) {
-          thematischeData[thema] = {};
-        }
-        if (!thematischeData[thema][subthema]) {
-          thematischeData[thema][subthema] = new Set();
-        }
-        kernwoorden.forEach(w => thematischeData[thema][subthema].add(w));
-        synoniemen.forEach(w => thematischeData[thema][subthema].add(w));
-      }
-    });
-    
-    isCsvLoaded = true;
-    console.log("✅ CSV succesvol geladen:", thematischeData);
-  } catch (error) {
-    console.error("❌ Fout bij het laden van CSV:", error);
-  }
-}
-
-/** =========================
- *  3. STOPWOORDEN FILTEREN
- * ========================= */
-function filterStopwoorden(text) {
-  const woorden = text.split(/\s+/).map(normalizeWord).filter(Boolean);
-  return woorden.filter(w => !stopwoorden.has(w));
-}
-
-/** =========================
- *  4. TEKST ANALYSEREN
- * ========================= */
-function analyseTekst(wordsArray, originalText) {
-  let clusters = {};
-  // Splits originele tekst in zinnen voor context
-  const zinnen = originalText.split(/[.!?]/).map(z => z.trim()).filter(Boolean);
-
-  // Initialiseer clusters met dezelfde structuur
-  Object.keys(thematischeData).forEach(thema => {
-    if (thema.toLowerCase() === "stopwoorden") return;
-    clusters[thema] = {};
-    Object.keys(thematischeData[thema]).forEach(sub => {
-      clusters[thema][sub] = [];
-    });
-  });
-
-  // Doorloop elk woord en match met thematische data
-  wordsArray.forEach(word => {
-    Object.keys(thematischeData).forEach(thema => {
-      if (thema.toLowerCase() === "stopwoorden") return;
-      Object.keys(thematischeData[thema]).forEach(sub => {
-        if (thematischeData[thema][sub].has(word)) {
-          clusters[thema][sub].push(word);
-
-          // Context opslaan
-          if (!woordContext[word]) {
-            woordContext[word] = new Set();
-          }
-          zinnen.forEach(z => {
-            if (normalizeWord(z).includes(word)) {
-              woordContext[word].add(z);
-            }
-          });
-        }
-      });
-    });
-  });
-
-  console.log("✅ Thema's na analyse:", clusters);
-  return { clusters, woordContext };
-}
-
-/** =========================
- *  5. MINDMAP (RadialLayout)
- * ========================= */
-function generateMindmap(themesData) {
-  const mindmapDiv = document.getElementById("mindmap");
-  if (!mindmapDiv) {
-    console.error("❌ Geen mindmap-container gevonden.");
-    return;
-  }
-
-  // Oude diagram opruimen
-  let oldDiagram = go.Diagram.fromDiv("mindmap");
-  if (oldDiagram) {
-    oldDiagram.clear();
-    oldDiagram.div = null;
-  }
-
-  let $ = go.GraphObject.make;
-  let diagram = $(go.Diagram, "mindmap", {
-    initialContentAlignment: go.Spot.Center,
-    "undoManager.isEnabled": true,
-    autoScale: go.Diagram.Uniform,
-    // We stellen later de layout in op RadialLayout
-  });
-
-  // Voor mooiere, gebogen lijnen:
-  diagram.linkTemplate = $(
-    go.Link,
-    {
-      curve: go.Link.Bezier,
-      adjusting: go.Link.Stretch,
-      // evt. routing: go.Link.AvoidsNodes,
-      corner: 10
-    },
-    $(go.Shape, { strokeWidth: 2, stroke: "#888" }),
-    $(go.Shape, { toArrow: "Standard", stroke: null, fill: "#888" })
-  );
-
-  let nodeDataArray = [];
-  let linkDataArray = [];
-
-  // Root
-  nodeDataArray.push({
-    key: "ROOT",
-    text: "Triple C implementatie",
-    color: "#ffffff",
-    isRoot: true // Markeer als root-node
-  });
-
-  // Themas -> subthemas -> woorden
-  Object.keys(themesData.clusters).forEach(thema => {
-    const subthemas = themesData.clusters[thema];
-    // Check of er data is
-    let hasData = Object.values(subthemas).some(arr => arr.length > 0);
-    if (!hasData) return;
-
-    const themaColor = getThemeColor(thema);
-    nodeDataArray.push({ key: thema, text: thema, color: themaColor });
-    linkDataArray.push({ from: "ROOT", to: thema });
-
-    Object.keys(subthemas).forEach(sub => {
-      const woorden = subthemas[sub];
-      if (!woorden || woorden.length === 0) return;
-      const subKey = `${thema}||${sub}`;
-      nodeDataArray.push({ key: subKey, text: sub, color: "#EEEEEE" });
-      linkDataArray.push({ from: thema, to: subKey });
-
-      // Unieke woorden
-      const uniqueWords = [...new Set(woorden)];
-      uniqueWords.forEach(word => {
-        if (!word) return;
-        const wordKey = `${subKey}||${word}`;
-        nodeDataArray.push({ key: wordKey, text: word, color: "#DDDDDD" });
-        linkDataArray.push({ from: subKey, to: wordKey });
-      });
-    });
-  });
-
-  // Node template
-  diagram.nodeTemplate = $(
-    go.Node,
-    "Auto",
-    {
-      click: showContext,
-      mouseEnter: (e, node) => { node.findObject("SHAPE").stroke = "#ff0000"; },
-      mouseLeave: (e, node) => { node.findObject("SHAPE").stroke = "#888"; }
-    },
-    $(
-      go.Shape,
-      "RoundedRectangle",
-      {
-        name: "SHAPE",
-        fill: "#f9f9f9",
-        stroke: "#888",
-        strokeWidth: 2,
-        minSize: new go.Size(120, 50)
-      },
-      new go.Binding("fill", "color")
-    ),
-    $(
-      go.TextBlock,
-      {
-        margin: 12,
-        font: "bold 14px Arial",
-        textAlign: "center",
-        wrap: go.TextBlock.WrapFit,
-        width: 120
-      },
-      new go.Binding("text", "text")
-    )
-  );
-
-  // Model instellen
-  diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-
-  // ** Stel RadialLayout in **
-  diagram.layout = $(go.RadialLayout, {
-    maxLayers: 6,             // Aantal ringen dat we willen toestaan
-    layerThickness: 120,      // Afstand tussen de ringen
-    angleIncrement: 20,       // Minimale hoek tussen twee takken
-    rotateNode: false,        // De node-text niet meedraaien
-    // 'center' node bepalen in 'InitialLayoutCompleted' event:
-  });
-
-  // Zodra de layout klaar is, stellen we "ROOT" als echte centerNode in:
-  diagram.addDiagramListener("InitialLayoutCompleted", e => {
-    let rootnode = diagram.findNodeForKey("ROOT");
-    if (rootnode) {
-      let radial = diagram.layout;
-      if (radial instanceof go.RadialLayout) {
-        radial.root = rootnode; // Forceer root in het midden
-        diagram.layoutDiagram(true);
-      }
+function parseCsvData(csvText) {
+    // Bepaal delimiter (kijk of er ; in de tekst staat en vrijwel geen komma's)
+    let delimiter = ',';
+    if (csvText.indexOf(';') >= 0 && csvText.indexOf(',') === -1) {
+        delimiter = ';';
     }
-  });
+    const lines = csvText.trim().split(/\r?\n/);
+    const nodeDataArray = [];
+    let keyCounter = 0;
+    // Voeg ROOT node toe
+    nodeDataArray.push({ key: keyCounter, text: "Triple C implementatie", category: "Root" });
+    const rootKey = keyCounter;
+    keyCounter++;
 
-  mindmapDiv.style.display = "block";
-  console.log("✅ Radiale Mindmap gegenereerd:", { nodeDataArray, linkDataArray });
+    // Kleur toewijzing per thema
+    const themeColorMap = {};
+    const colors = ["#6FB1FC", "#FF928F", "#8DEB7A", "#FFDC59", "#A68BFF", "#FF8DDA", "#7FFFD4", "#FFA07A"];
+    let colorIndex = 0;
+
+    // Object om gemaakte thema/subthema/woord nodes bij te houden, om duplicaten te vermijden
+    const createdNodes = { themes: {} };
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;  // sla lege regels over
+        const fields = line.split(delimiter);
+        if (fields.length < 4) {
+            console.error(`CSV regel ${i+1} heeft niet vier kolommen (gevonden ${fields.length}).`);
+            continue;
+        }
+        // Haal waarden uit velden, verwijder eventuele quotes en trim spaties
+        const themeName    = fields[0].replace(/^"|"$/g, '').trim();
+        const subthemeName = fields[1].replace(/^"|"$/g, '').trim();
+        const keyword      = fields[2].replace(/^"|"$/g, '').trim();
+        const synonymsField= fields[3].replace(/^"|"$/g, '').trim();
+
+        if (!themeName || !subthemeName || !keyword) {
+            console.error(`CSV regel ${i+1} mist vereiste gegevens (thema, subthema of kernwoord).`);
+            continue;
+        }
+        // Wijs kleur toe aan thema (als nieuw)
+        if (!themeColorMap[themeName]) {
+            themeColorMap[themeName] = colors[colorIndex % colors.length];
+            colorIndex++;
+        }
+        const color = themeColorMap[themeName];
+
+        // Maak thema-node aan indien nog niet gedaan
+        if (!createdNodes.themes[themeName]) {
+            const themeNode = { key: keyCounter++, parent: rootKey, text: themeName, color: color };
+            nodeDataArray.push(themeNode);
+            createdNodes.themes[themeName] = { key: themeNode.key, subthemes: {} };
+        }
+        const themeKey = createdNodes.themes[themeName].key;
+
+        // Maak subthema-node aan indien nodig
+        if (!createdNodes.themes[themeName].subthemes[subthemeName]) {
+            const subNode = { key: keyCounter++, parent: themeKey, text: subthemeName, color: color };
+            nodeDataArray.push(subNode);
+            createdNodes.themes[themeName].subthemes[subthemeName] = { key: subNode.key, keywords: {} };
+        }
+        const subKey = createdNodes.themes[themeName].subthemes[subthemeName].key;
+
+        // Maak kernwoord-node aan indien nodig
+        if (!createdNodes.themes[themeName].subthemes[subthemeName].keywords[keyword]) {
+            const keyNode = { key: keyCounter++, parent: subKey, text: keyword, color: color, contextSentences: [] };
+            nodeDataArray.push(keyNode);
+            createdNodes.themes[themeName].subthemes[subthemeName].keywords[keyword] = { key: keyNode.key, synonyms: {} };
+        }
+        const keywordKey = createdNodes.themes[themeName].subthemes[subthemeName].keywords[keyword].key;
+
+        // Maak synoniem-nodes aan voor alle synoniemen (gescheiden door komma of puntkomma)
+        let synonyms = [];
+        if (synonymsField) {
+            synonyms = synonymsField.split(/[;,]/).map(s => s.trim()).filter(s => s);
+        }
+        synonyms.forEach(syn => {
+            if (!createdNodes.themes[themeName].subthemes[subthemeName].keywords[keyword].synonyms[syn]) {
+                const synNode = { key: keyCounter++, parent: keywordKey, text: syn, color: color, contextSentences: [] };
+                nodeDataArray.push(synNode);
+                createdNodes.themes[themeName].subthemes[subthemeName].keywords[keyword].synonyms[syn] = synNode.key;
+            }
+        });
+    }
+    return nodeDataArray;
 }
 
-/** =========================
- *  6. KLEUR FUNCTIE
- * ========================= */
-function getThemeColor(thema) {
-  const baseColors = [
-    "#FF9999","#99FF99","#66B2FF",
-    "#FFD700","#FFA07A","#B19CD9","#90EE90"
-  ];
-  const themaList = Object.keys(thematischeData).filter(t => t.toLowerCase() !== "stopwoorden");
-  const idx = themaList.indexOf(thema);
-  return baseColors[idx % baseColors.length] || "#D3D3D3";
-}
-
-/** =========================
- *  7. CONTEXT WEERGEVEN
- * ========================= */
-function showContext(event, obj) {
-  if (!obj || !obj.part || !obj.part.data) return;
-  const woord = obj.part.data.text;
-  const detailsDiv = document.getElementById("contextDetails");
-  const contextText = document.getElementById("contextText");
-
-  if (woordContext[woord]) {
-    detailsDiv.style.display = "block";
-    contextText.innerHTML = `<strong>Context van "${woord}":</strong><br>` + [...woordContext[woord]].join("<br>");
-  } else {
-    detailsDiv.style.display = "block";
-    contextText.innerHTML = `<strong>Geen context beschikbaar voor "${woord}".</strong>`;
-  }
-}
-
-/** =========================
- *  8. DOMContentLoaded
- * ========================= */
-document.addEventListener("DOMContentLoaded", async () => {
-  console.log("📌 mindmap.js (RadialLayout) geladen. Start initialisatie...");
-
-  await loadCSV();
-  if (!isCsvLoaded) {
-    alert("⚠ CSV kon niet worden geladen. Probeer later opnieuw.");
-    return;
-  }
-
-  const analyseButton = document.getElementById("analyseButton");
-  const exportButton = document.getElementById("exportButton");
-  const inputText = document.getElementById("inputText");
-
-  if (analyseButton && inputText) {
-    analyseButton.addEventListener("click", () => {
-      const userInput = inputText.value.trim();
-      if (!userInput) {
-        alert("⚠ Voer eerst tekst in om te analyseren.");
-        return;
-      }
-      // Stopwoorden filteren
-      const wordsArray = filterStopwoorden(userInput);
-      // Analyseer tekst
-      const themes = analyseTekst(wordsArray, userInput);
-      // Genereer radiale mindmap
-      generateMindmap(themes);
+/**
+ * Doorzoek de tekst en vul de contextzinnen in bij de nodes.
+ * @param {string} text - De ingevoerde tekst.
+ * @param {Array<Object>} nodeDataArray - Array met node data (output van parseCsvData).
+ */
+function findContextSentences(text, nodeDataArray) {
+    // Split de tekst in zinnen (simple aanpak op punten, vraagtekens, uitroeptekens)
+    const sentences = text.split(/(?<=[\.!?])\s+(?=[A-Za-z])/).map(s => s.trim()).filter(s => s);
+    nodeDataArray.forEach(node => {
+        if (!node.contextSentences) return;  // alleen kernwoorden/synoniemen hebben deze property
+        node.contextSentences.length = 0;    // reset eventuele eerdere inhoud
+        const word = node.text;
+        // Regex voor het woord (case-insensitive, gehele woord)
+        const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`\\b${escaped}\\b`, 'i');
+        sentences.forEach(sentence => {
+            if (regex.test(sentence)) {
+                node.contextSentences.push(sentence);
+            }
+        });
     });
-  }
+}
 
-  if (exportButton) {
-    exportButton.addEventListener("click", () => {
-      const diagram = go.Diagram.fromDiv("mindmap");
-      if (!diagram) {
-        console.error("❌ Mindmap-diagram niet gevonden.");
+/**
+ * Event handler voor klik op een node in de mindmap.
+ * Toont de bijbehorende contextzinnen onderaan de pagina.
+ * @param {go.Node} node - De aangeklikte GoJS node.
+ */
+function onNodeClick(node) {
+    const data = node.data;
+    const contextDiv = document.getElementById("contextOutput");
+    if (!contextDiv) {
+        console.warn("Context output element niet gevonden.");
         return;
-      }
-      const imgData = diagram.makeImageData({ background: "white" });
-      const a = document.createElement("a");
-      a.href = imgData;
-      a.download = "mindmap.png";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+    }
+    contextDiv.innerHTML = "";  // schoon vorige inhoud
+    if (data.contextSentences && data.contextSentences.length > 0) {
+        let html = `<h3>Contextzinnen voor: ${data.text}</h3><ul>`;
+        data.contextSentences.forEach(sentence => {
+            html += `<li>${sentence}</li>`;
+        });
+        html += "</ul>";
+        contextDiv.innerHTML = html;
+    } else {
+        contextDiv.innerHTML = `<p><em>Geen contextzinnen gevonden voor: ${data.text}</em></p>`;
+    }
+}
+
+/**
+ * Genereer de GoJS mindmap op basis van gegeven CSV-tekst en invoertekst.
+ * @param {string} csvText - Inhoud van het CSV-bestand als string.
+ * @param {string} inputText - Ingevoerde tekst om te analyseren.
+ */
+function generateMindmap(csvText, inputText) {
+    // Parse CSV naar nodeDataArray
+    const nodeDataArray = parseCsvData(csvText);
+    if (nodeDataArray.length === 0) {
+        console.error("Geen geldige data uit CSV verkregen.");
+        return;
+    }
+    // Zoek contextzinnen in de input tekst
+    findContextSentences(inputText || "", nodeDataArray);
+    // Zoek het diagram div element
+    const diagramDiv = document.getElementById("myDiagramDiv");
+    if (!diagramDiv) {
+        console.error("Diagram container niet gevonden (controleer het ID).");
+        return;
+    }
+    // Initialiseer GoJS Diagram
+    const myDiagram = $(go.Diagram, diagramDiv, {
+        initialAutoScale: go.Diagram.Uniform,
+        layout: $(RadialLayout, {
+            rotateNode: function(node, angle) {
+                // Draai tekstlabels zodat ze leesbaar blijven
+                const tb = node.findObject("TEXTBLOCK");
+                if (tb) tb.angle = (angle > 90 && angle < 270) ? 180 : 0;
+            }
+        }),
+        isReadOnly: true  // geen interactie behalve klikken
     });
-  }
-});
+    // Template voor reguliere nodes (Thema, Subthema, Kernwoord, Synoniem)
+    myDiagram.nodeTemplate = $(
+        go.Node, "Auto",
+        { selectionAdorned: false, cursor: "pointer", click: (e, node) => onNodeClick(node) },
+        $(go.Shape, "Circle",
+          { name: "SHAPE", fill: "lightgray", stroke: null, strokeWidth: 0, desiredSize: new go.Size(16, 16) },
+          new go.Binding("fill", "color")),
+        $(go.TextBlock,
+          { name: "TEXTBLOCK", font: "10pt sans-serif", margin: 4 },
+          new go.Binding("text", "text"))
+    );
+    // Template voor de root node (categorie "Root")
+    myDiagram.nodeTemplateMap.add("Root", $(
+        go.Node, "Auto",
+        { selectionAdorned: false },
+        $(go.Shape, "Circle", { fill: "white", stroke: "gray", strokeWidth: 2, desiredSize: new go.Size(30, 30) }),
+        $(go.TextBlock, { font: "bold 12pt sans-serif", margin: 5 },
+          new go.Binding("text", "text"))
+    ));
+    // Template voor links (kromme lijnen met pijlen)
+    myDiagram.linkTemplate = $(
+        go.Link,
+        { curve: go.Link.Bezier, selectable: false },
+        $(go.Shape, { strokeWidth: 1, stroke: "#AAA" }),
+        $(go.Shape, { toArrow: "Standard", stroke: "#AAA", fill: "#AAA" })
+    );
+    // Stel het model in met de gegenereerde nodes (TreeModel past bij hiërarchie)
+    myDiagram.model = new go.TreeModel(nodeDataArray);
+    // Centreer de root node (optioneel, RadialLayout pakt meestal de eerste node als center)
+    const root = myDiagram.findNodeForKey(0);
+    if (root) {
+        myDiagram.layout.root = root;
+    }
+}
+
+// Event listener voor de genereer-knop (leest CSV en bouwt mindmap)
+const generateBtn = document.getElementById("generateButton");
+if (generateBtn) {
+    generateBtn.addEventListener("click", () => {
+        const fileInput = document.getElementById("csvFile");
+        const textInput = document.getElementById("textInput");
+        if (!fileInput) {
+            console.error("CSV file input element niet gevonden.");
+            return;
+        }
+        // Als een CSV-bestand is gekozen via <input type="file">
+        if (fileInput.files && fileInput.files.length > 0) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const csvText = e.target.result;
+                const inputText = textInput ? textInput.value : "";
+                generateMindmap(csvText, inputText);
+            };
+            reader.onerror = function(e) {
+                console.error("CSV bestand lezen mislukt:", e);
+            };
+            reader.readAsText(fileInput.files[0]);
+        } else {
+            // Indien geen bestand (mogelijk tekst direct ingevoerd in een textarea)
+            const csvText = fileInput.value || "";
+            const inputText = textInput ? textInput.value : "";
+            generateMindmap(csvText, inputText);
+        }
+    });
+} else {
+    console.warn("Generate-knop niet gevonden.");
+}
